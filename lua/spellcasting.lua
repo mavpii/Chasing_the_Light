@@ -373,7 +373,7 @@ function display_skills_dialog(selecting)
 		dialog_result = wesnoth.sync.evaluate_single(function()
             retval = gui.show_dialog( dialog, preshow )
             wml.variables["caster_" .. caster.id .. ".wait_to_select_spells"] = retval==2 and 'yes' or 'no' --not nil, or else the key appears blank
-            return result_table;
+            return result_table
         end)
 		
 		skills_equipped = {}
