@@ -25,6 +25,7 @@ Peaceful life of the Green Isle's inhabitants turned into a nightmare in an inst
 - [Dalas](https://github.com/Dalas121)
 - [inferno8](https://github.com/inferno8)
 - Maksiu
+- Mechanical
 - IftU
 - Archaic_Resources
 - [WesTactics](https://github.com/wtactics)
