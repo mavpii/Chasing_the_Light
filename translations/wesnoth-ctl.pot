@@ -66,7 +66,7 @@ msgid "Normal"
 msgstr ""
 
 #. [campaign]: id=Chasing_the_Light
-#. [unit_type]: id=haralin_3, race=human, gender=male, description=
+#. [unit_type]: id=Haralin_L3, race=human, gender=male, description=
 #: Chasing_the_Light/_main.cfg:76
 #: Chasing_the_Light/units/Haralin/Haralin_L3.cfg:4
 msgid "War Sorcerer"
@@ -1013,9 +1013,9 @@ msgid "Andrin"
 msgstr ""
 
 #. [unit]
-#. [unit]: type=haralin_0
+#. [unit]: type=Haralin_L0
 #. [part]
-#. [side]: id=haralin_fake, type=haralin_2
+#. [side]: id=Haralin_Fake, type=Haralin_L2
 #. [message]: speaker=narrator
 #. [event]
 #. Гаралін
@@ -2950,7 +2950,7 @@ msgstr ""
 msgid "Elementals"
 msgstr ""
 
-#. [side]: id=haralin_fake, type=haralin_2
+#. [side]: id=Haralin_Fake, type=Haralin_L2
 #. Храм Давньолісся
 #: Chasing_the_Light/scenarios/04_Daeola.cfg:164
 msgid "Oldwood Temple"
@@ -3204,7 +3204,7 @@ msgstr ""
 msgid "As you say, Teacher..."
 msgstr ""
 
-#. [message]: speaker=haralin_fake
+#. [message]: speaker=Haralin_Fake
 #. Ми почнемо як тільки ти будеш готова.
 #: Chasing_the_Light/scenarios/04_Daeola.cfg:998
 msgid "We'll start as soon as you're ready."
@@ -10473,12 +10473,12 @@ msgstr ""
 msgid "Harbinger of Light"
 msgstr ""
 
-#. [unit_type]: id=haralin_0, race=human
+#. [unit_type]: id=Haralin_L0, race=human
 #: Chasing_the_Light/units/Haralin/Haralin_L0.cfg:8
 msgid "Young Peasant"
 msgstr ""
 
-#. [unit_type]: id=haralin_0, race=human
+#. [unit_type]: id=Haralin_L0, race=human
 #. Селянська молодь Зеленого Острову з ранніх літ залучена до тяжкої праці на полі, випасу худоби чи навчанню професії своїх батьків. Проте, хоч і більшість свого дня вони не мають часу навіть спочити, час від часу вони збираються на сільські забави, боротьбу, а також щоб допомогти стражам села відбити напад загарбників
 #: Chasing_the_Light/units/Haralin/Haralin_L0.cfg:19
 msgid "From an early age, Green Isle's peasant youth are involved in hard labor in the fields, herding cattle, or learning their parents' craft. However, although most of their day is spent without even a moment of rest, they occasionally gather for village games, wrestling, and to help the village guards repel invaders."
@@ -10494,12 +10494,12 @@ msgstr ""
 msgid "sling"
 msgstr ""
 
-#. [unit_type]: id=haralin_1, race=human, gender=male
+#. [unit_type]: id=Haralin_L1, race=human, gender=male
 #: Chasing_the_Light/units/Haralin/Haralin_L1.cfg:8
 msgid "Autodidact Mage"
 msgstr ""
 
-#. [unit_type]: id=haralin_1, race=human, gender=male
+#. [unit_type]: id=Haralin_L1, race=human, gender=male
 #. Це справді неймовірна рідкість, щоб звичайна людина могла самостійно осягнути суть магії та зрозуміти її основи без допомоги більш досвідченого наставника, якою б вона талановитою не була та які б ресурси не мала. Деякі кажуть, що насправді маги-самоучки не досягли всього самі, а їм допомогала якась невідома вища сила, проте це все одно вражає, чи не так?
 #: Chasing_the_Light/units/Haralin/Haralin_L1.cfg:22
 msgid "It is indeed incredibly rare for an ordinary person to be able to understand the essence of magic and learn its basics without the help of a more experienced mentor, no matter how talented they are or what resources they have. Some people say that self-taught magicians didn't actually achieve everything on their own, but were helped by some unknown higher power, but it's still impressive anyway, isn't it?"
@@ -10512,12 +10512,12 @@ msgstr ""
 msgid "short sword"
 msgstr ""
 
-#. [unit_type]: id=haralin_2, race=human, gender=male
+#. [unit_type]: id=Haralin_L2, race=human, gender=male
 #: Chasing_the_Light/units/Haralin/Haralin_L2.cfg:8
 msgid "Sorcerer"
 msgstr ""
 
-#. [unit_type]: id=haralin_2, race=human, gender=male
+#. [unit_type]: id=Haralin_L2, race=human, gender=male
 #. Після багатьох років старанного вивчення магії, розробки заклинань та медитацій, маг іноді може досягнути рівня, коли він вважатиметься наймогутнішим серед своїх колег з Зеленого Острову, та й навіть деякі з західняків почнуть зважати на його силу. Хоча порівняно зі здібністю більшості некромантів це досі ніщо, а про безсмертних Ліч-Лордів взагалі й згадувати нема сенсу, вони поза будь-якою конкуренцією.
 #: Chasing_the_Light/units/Haralin/Haralin_L2.cfg:22
 msgid "After many years of hard study of magic, crafting spells and meditating, a sorcerers may sometimes reach a level where they are considered very powerful among their Green Isle colleagues, and even some Wesfolk will begin to take note of their skills. Although this is still nothing compared to the abilities of most necromancers, and there is no point in even mentioning the immortal Lich-Lords, they are beyond any competition."
@@ -10529,12 +10529,12 @@ msgstr ""
 msgid "blade staff"
 msgstr ""
 
-#. [unit_type]: id=haralin_3_shadow, race=human, gender=male, description=
+#. [unit_type]: id=Haralin_L3_shadow, race=human, gender=male, description=
 #: Chasing_the_Light/units/Haralin/Haralin_L3_Shadow.cfg:4
 msgid "Mage of Curses"
 msgstr ""
 
-#. [unit_type]: id=haralin_4, race=human, description=
+#. [unit_type]: id=Haralin_L4, race=human, description=
 #: Chasing_the_Light/units/Haralin/Haralin_L4.cfg:4
 msgid "Dark Enchanter"
 msgstr ""
@@ -11298,7 +11298,7 @@ msgstr ""
 msgid "Aah, no, no... Teacher, help me!"
 msgstr ""
 
-#. [message]: speaker=haralin_fake
+#. [message]: speaker=Haralin_Fake
 #. Даеоло, не помирай! Хай Світло змилується над усіма нами!
 #: Chasing_the_Light/utils/herodeaths.cfg:215
 msgid "Daeola, do not die! May the Light have mercy on all of us!"
