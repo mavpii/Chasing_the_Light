@@ -75,17 +75,17 @@ function display_skills_dialog(selecting)
 	-------------------------
 	-- HEADER
 	-------------------------
-	local spacer = "                                                                  "
+	table.insert( grid[2], T.row{ T.column{ border="bottom", border_size=15, T.image{  label="icons/banner1.png"  }}} )
 	local                title_text = selecting and casters[k].title_select       or casters[k].title_cast
 	
 	table.insert( grid[2], T.row{ T.column{ T.label{
 		definition="title",
 		horizontal_alignment="center",
-		label = spacer..title_text..spacer,
+		label = title_text,
 	}}} )
 	local                help_text = casters[k].description
 	table.insert( grid[2], T.row{ T.column{T.label{ use_markup=true, label=help_text }}} )
-	table.insert( grid[2], T.row{ T.column{T.label{label="  "}}} )
+	table.insert( grid[2], T.row{ T.column{ border="top", border_size=15, T.image{  label="icons/banner2.png"  }}} )
 	
 	-------------------------
 	-- SKILL GROUPS
@@ -165,11 +165,12 @@ function display_skills_dialog(selecting)
 	-------------------------
 	-- CONFIRM BUTTON
 	-------------------------
-	table.insert( grid[2], T.row{ T.column{T.label{label="  "}}} )
+	table.insert( grid[2], T.row{ T.column{T.image{  label="icons/banner2.png"  }}} )
 	table.insert( grid[2], T.row{  T.column{  T.button{
 		id="confirm_button", use_markup=true, return_value=1,
 		label=(selecting and _"Confirm Spells <small><i>(can be changed every scenario)</i></small>" or "Cancel"),
 	}}})
+	table.insert( grid[2], T.row{ T.column{ border="top", border_size=15,  T.image{  label="icons/banner4.png"  }}} )
 	
 	
 	
