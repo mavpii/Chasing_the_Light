@@ -40,10 +40,9 @@ Peaceful life of the Green Isle's inhabitants turned into a nightmare in an inst
 - 04x_Southbay✔                                                                                                                                      
 - 05_Aftermath✔
 - 06_Miscreants✔                                                                                                                              
-- 07_Scarhane🔁️                                                                                                                                        
+- 07_Scarhane✔                                                                                                                                        
 - 08_Quiescence🔁                                                                                                                                     
-- 08x_Divergence — Cancelled❌ 
-- 09_New_Journey                                                                                                                              
+- 09_New_Journey                                                                                                                             
 - 10_Faisim
 - 11_Negligence                                                                                                                                 
 - 12_Duty
