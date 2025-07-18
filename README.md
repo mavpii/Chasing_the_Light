@@ -47,14 +47,14 @@ Peaceful life of the Green Isle's inhabitants turned into a nightmare in an inst
 - 11_Negligence                                                                                                                                 
 - 12_Duty
 
-#### Haralin's branch 
+#### Haralin's A branch 
 - 13h_Avenger 
-- 13hx_Farewell
-- 14h_Massacre 
+- 13hxa_Farewell
+- 14ha_Massacre 
 - 15h_Southbay_Outskirts
 - 16h_Caror
-- 17h_Gambit
-- 17hx_Sins
+- 17ha_Gambit
+- 17hxa_Sins
 - 18h_Lenvan
 - 19h_Temple_in_the_Deep
 
