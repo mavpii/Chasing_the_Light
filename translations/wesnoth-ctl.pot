@@ -2514,7 +2514,7 @@ msgstr ""
 msgid "Prince Addroran IV"
 msgstr ""
 
-#. [unit]: id=blackmore_king, type=Lieutenant
+#. [unit]: id=Count_Edvar, type=Lieutenant
 #. Принц Едвар
 #: Chasing_the_Light/scenarios/03_Despair.cfg:1248
 msgid "Prince Edvar"
@@ -5026,7 +5026,7 @@ msgstr ""
 msgid "The camp is set, no enemies nearby."
 msgstr ""
 
-#. [message]: speaker=haralin
+#. [message]: speaker=Haralin
 #. Ім'ям Світла, я сподівався застати тут пекло з ордами мерців та ще живих покидьків-західняків, проте поки що ми не зустріли нічого, окрім цього оскверненого болота. Що ж, тоді я подам знак іншим, бо ж затримуватися не можна — серце кличе мене далі на північ.
 #: Chasing_the_Light/scenarios/05_Aftermath.cfg:534
 msgid "In the name of Light, I had hoped to find a hell with hordes of dead and still living Wesfolk, but so far we have found nothing but this desecrated swamp. Well, then, I will give a sign to the others, for I cannot linger — my heart calls me further north."
@@ -8296,7 +8296,7 @@ msgstr ""
 msgid "Aye, so be it! But mark me words — me axe’ll be watchin’ ye close!"
 msgstr ""
 
-#. [message]: speaker=haralin
+#. [message]: speaker=Haralin
 #. Ім'ям Світла, помр- *хрусь*
 #: Chasing_the_Light/scenarios/06_Miscreants.cfg:4373
 #: Chasing_the_Light/scenarios/06_Miscreants.cfg:4458
@@ -8888,14 +8888,14 @@ msgstr ""
 msgid "Кінець подорожі."
 msgstr ""
 
-#. [side]: id=blackmore_king, type=Royal Warrior
-#. [unit]: id=blackmore_king, type=Royal Warrior
+#. [side]: id=Count_Edvar, type=Royal Warrior
+#. [unit]: id=Count_Edvar, type=Royal Warrior
 #: Chasing_the_Light/scenarios/07_Scarhane.cfg:95
 #: Chasing_the_Light/scenarios/08_Quiescence.cfg:230
 msgid "Count Edvar"
 msgstr ""
 
-#. [side]: id=blackmore_king, type=Royal Warrior
+#. [side]: id=Count_Edvar, type=Royal Warrior
 #. [side]
 #. Захисники Скархейну
 #. Захисники Скархейну

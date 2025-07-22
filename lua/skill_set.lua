@@ -170,9 +170,9 @@ local skill_set = {
 		image       = "icons/polymorph.png",
 		description = _"<span color='#6ca364'><i><b>Spell:</b></i></span> Transform into a stoat (<span color='#00bbe6'><i>1xp</i></span>), bear (<span color='#00bbe6'><i>8xp</i></span>), crab (<span color='#00bbe6'><i>16xp</i></span>), or roc (<span color='#00bbe6'><i>32xp</i></span>). Lasts until cancelled.\n            Replaces Haralin’s attacks, spells, and passives, but does not affect hitpoints.",
 		subskills   = {
-			[1]={ id="skill_polymorph_lizard",  xp_cost=1,  label="   <span>Stoat (<span color='#00bbe6'><i >1xp</i></span>)</span>   " },
+			[1]={ id="skill_polymorph_lizard",  xp_cost=1,  label="   <span>Lizard (<span color='#00bbe6'><i >1xp</i></span>)</span>   " },
 			[2]={ id="skill_polymorph_bear",   xp_cost=8,  label="   <span>Bear (<span  color='#00bbe6'><i >8xp</i></span>)</span>   " },
-			[3]={ id="skill_polymorph_yeti",   xp_cost=16, label="   <span>Crab (<span  color='#00bbe6'><i>16xp</i></span>)</span>   " },
+			[3]={ id="skill_polymorph_yeti",   xp_cost=16, label="   <span>Yeti (<span  color='#00bbe6'><i>16xp</i></span>)</span>   " },
 			[4]={ id="skill_polymorph_orc",    xp_cost=32, label="   <span><span color='#a308b8'>Orcish Warlord</span> (<span   color='#00bbe6'><i>32xp</i></span>)</span>   " }, },	
 	},
 	-------------------------
@@ -263,7 +263,7 @@ local skill_set = {
 	-- MAGIC MISSILE
 	-------------------------
 	[26] = {
-		id          = "skill_magic_missile_d",
+		id          = "skill_magic_missile",
 		label       = label(_"Magic Missile"),
 		image       = "attacks/magic-missile.png",
 		description = _"<span color='#ad6a61'><i><b>Attack:</b></i></span> Ranged 7x3 fire, <i>magical</i>.",
@@ -291,19 +291,9 @@ local skill_set = {
 		xp_cost=8,
 	},
 	-------------------------
-	-- LEVITATE
-	-------------------------
-	[29] = {
-		id          = "skill_levitate_d",
-		label       = label(_"Levitate"),
-		image       = "icons/levitate.png",
-		description = _"<span color='#6ca364'><i><b>Spell:</b></i></span> Spend <span color='#00bbe6'><i>8xp</i></span> to gain <i>flight</i> and the <i>skirmisher</i> ability until the start of your next turn or until cancelled.",
-		xp_cost=8,
-	},
-	-------------------------
 	-- DISTANT HEAL
 	-------------------------
-	[30] = {
+	[29] = {
 		id          = "skill_disheal",
 		label       = label(_"Distant Heal"),
 		image       = "icons/disheal.png",
@@ -314,7 +304,7 @@ local skill_set = {
 	-------------------------
 	-- WARD
 	-------------------------
-	[31] = {
+	[30] = {
 		id          = "skill_ward",
 		label       = label(_"Holy Ward"),
 		image       = "icons/ward.png",
