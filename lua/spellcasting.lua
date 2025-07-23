@@ -399,13 +399,12 @@ function display_skills_dialog(selecting)
 	else
 		dialog_result = wesnoth.sync.evaluate_single(function()
 			gui.show_dialog( dialog, preshow )
-			if (wml.variables["caster_" .. caster.id .. ".spell_to_cast"]) then
+			if (wml.variables["caster_" .. wml.variables["current_caster"] .. ".spell_to_cast"]) then
 			    wml.fire.do_command({
                     wml.tag.fire_event {
-                        raise = wml.variables["caster_" .. caster.id .. ".spell_to_cast"]
+                        raise = wml.variables["caster_" .. wml.variables["current_caster"] .. ".spell_to_cast"]
                     }
                 })
-			    wml.variables["caster_" .. caster.id .. ".spell_to_cast"] = nil
 			end
 		end)
 	end
