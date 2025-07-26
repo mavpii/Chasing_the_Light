@@ -42,7 +42,7 @@ Peaceful life of the Green Isle's inhabitants turned into a nightmare in an inst
 - 06_Miscreants✔                                                                                                                              
 - 07_Scarhane✔                                                                                                                                        
 - 08_Quiescence✔                                                                                                                                     
-- 09_New_Journey                                                                                                                             
+- 09_New_Journey🔁️                                                                                                                             
 - 10_Faisim
 - 11_Negligence                                                                                                                                 
 - 12_Duty
