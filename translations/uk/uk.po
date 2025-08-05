@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2025-07-30 09:54 UTC\n"
-"PO-Revision-Date: 2025-08-05 00:38+0300\n"
+"PO-Revision-Date: 2025-08-05 23:02+0300\n"
 "Last-Translator: Oleksii Okhrimenko(lexa04) <e-mail: ohrimale@gmail.com "
 "discord: amakri>\n"
 "Language-Team: \n"
@@ -2721,6 +2721,9 @@ msgid ""
 "rundown hut. Hearing that undead were coming to them, the frightened people "
 "decided to join the sorcerer."
 msgstr ""
+"Опинившись за селом, Гараліну зустрілось кілька поранених селян, що ховалися "
+"в якійсь напіврозваленій халупі. Почувши, що мерці йдуть до них, перелякані "
+"люди вирішили приєднатися до чаклуна."
 
 #. [part]
 #. Тож купка вцілілих селян відходила все глибше у болота, намагаючись утекти від мерців, чиї жахливі голосіння безперестанку чулися позаду, не відстаючи, наближаючись все ближче й ближче з кожною хвилиною. Усі були зневірені, особливо Гаралін, бо хоч якими хоробрими не були його останні слова мерцям, він розумів і відчував, що шансів в них мало, занадто мало...
@@ -2733,18 +2736,23 @@ msgid ""
 "were, he knew and felt that villagers had little chance to escape, too "
 "little."
 msgstr ""
+"Тож купка вцілілих селян відходила все глибше у болота, намагаючись утекти "
+"від мерців, чиї жахливі голосіння безперестанку чулися позаду, не відстаючи, "
+"наближаючись все ближче й ближче з кожною хвилиною. Усі були зневірені, "
+"особливо Гаралін, бо хоч якими хоробрими не були його останні слова мерцям, "
+"він розумів і відчував, що шансів в них мало, занадто мало..."
 
 #. [side]
 #. Чудовиська болота
 #: Chasing_the_Light/scenarios/03_Despair.cfg:95
 msgid "Swamp Monsters"
-msgstr ""
+msgstr "Чудовиська болота"
 
 #. [side]
 #. Королівські сили
 #: Chasing_the_Light/scenarios/03_Despair.cfg:110
 msgid "Royal Forces"
-msgstr ""
+msgstr "Королівські сили"
 
 #. [attack]: type=pierce
 #. [attack]: type=blade
@@ -2752,7 +2760,7 @@ msgstr ""
 #: Chasing_the_Light/scenarios/03_Despair.cfg:134
 #: Chasing_the_Light/units/Wesfolk/Familiar.cfg:33
 msgid "bite"
-msgstr ""
+msgstr "укус"
 
 #. [set_variable]
 #. [event]
@@ -2762,14 +2770,14 @@ msgstr ""
 #: Chasing_the_Light/scenarios/06_Miscreants.cfg:2122
 #: Chasing_the_Light/scenarios/07_Scarhane.cfg:3176
 msgid "(optional) Explore the mysterious place of force"
-msgstr ""
+msgstr "(додатково) Дослідити загадкове місце сили"
 
 #. [event]
 #. Я... Ці прокляті мерці скоро наздоженуть нас... Що ж нам робити?..
 #: Chasing_the_Light/scenarios/03_Despair.cfg:387
 msgid ""
 "I... Those damned undead will soon catch up with us. What are we gonna do?.."
-msgstr ""
+msgstr "Я... Ці прокляті мерці скоро наздоженуть нас... Що ж нам робити?.."
 
 #. [event]
 #. Ми вже й самі, вважай, мертві. Оце все 'магія' винна, я вам кажу!
@@ -2777,7 +2785,7 @@ msgstr ""
 msgid ""
 "We are already almost dead ourselves. It's all the fault of 'magic', I tell "
 "you!"
-msgstr ""
+msgstr "Ми вже й самі, вважай, мертві. Оце все 'магія' винна, я вам кажу!"
 
 #. [event]
 #. Що ж... наші мисливці мають бути десь тут у болотах. Може, ми об'єднаймося з ними та... Щось вигадаємо, ти обов'язково щось вигадаєш, Гараліне.
@@ -2787,6 +2795,8 @@ msgid ""
 "up with them and... Something will come of it, you'll think of something, "
 "Haralin."
 msgstr ""
+"Що ж... наші мисливці мають бути десь тут у болотах. Може, ми об'єднаймося з "
+"ними та... Щось вигадаємо, ти обов'язково щось вигадаєш, Гараліне."
 
 #. [event]
 #. Вигадаємо? Але що... Ми ледве змогли затримати невеликий загін мерців, але ж їх легіони, я відчуваю це...
@@ -2795,48 +2805,50 @@ msgid ""
 "Shall we? But what... We barely managed to hold off a small group of undead, "
 "but there are legions of them, I can feel it..."
 msgstr ""
+"Вигадаємо? Але що... Ми ледве змогли затримати невеликий загін мерців, але ж "
+"їх легіони, я відчуваю це..."
 
 #. [event]
 #. Гараліне, не здавайся, відходь далі у болота...
 #: Chasing_the_Light/scenarios/03_Despair.cfg:396
 msgid "Haralin, don't give up, retreat further into the swamps..."
-msgstr ""
+msgstr "Гараліне, не здавайся, відходь далі у болота..."
 
 #. [event]
 #. Іменем Світла, ти маєш це зробити!
 #: Chasing_the_Light/scenarios/03_Despair.cfg:404
 msgid "In the name of Light, you must do it!"
-msgstr ""
+msgstr "Іменем Світла, ти маєш це зробити!"
 
 #. [event]
 #. Так, хай захистить нас Світло... ГЕЙ, ЧИ Є ТУТ ХТОСЬ??? АУУУ!
 #: Chasing_the_Light/scenarios/03_Despair.cfg:406
 msgid "Yes, may the Light protect us... HEY, IS ANYBODY THERE??? HELLO?"
-msgstr ""
+msgstr "Так, хай захистить нас Світло... ГЕЙ, ЧИ Є ТУТ ХТОСЬ??? АУУУ!"
 
 #. [unit]: id=Juangh, type=Bandit_Peasant
 #. Джуанг
 #: Chasing_the_Light/scenarios/03_Despair.cfg:424
 msgid "Juangh"
-msgstr ""
+msgstr "Джуанг"
 
 #. [event]
 #. Ґа? Ви чули щось чи ц' мні почулася?
 #: Chasing_the_Light/scenarios/03_Despair.cfg:450
 msgid "Eh? Y’all hear somethin’, or was it just me?"
-msgstr ""
+msgstr "Ґа? Ви чули щось чи ц' мні почулася?"
 
 #. [event]
 #. Шо, чоловіче, зовсім глухим став? Це ж Гаралін.
 #: Chasing_the_Light/scenarios/03_Despair.cfg:459
 msgid "Have you gone completely deaf, man? It's Haralin."
-msgstr ""
+msgstr "Шо, чоловіче, зовсім глухим став? Це ж Гаралін."
 
 #. [event]
 #. М, ну мож... ГАРАЛІНЕ, МИ ТУТ. ШО ТАМ?
 #: Chasing_the_Light/scenarios/03_Despair.cfg:461
 msgid "Hm, well mayb'... HARALIN, WE’RE HERE. WHAT'S GOIN' ON?"
-msgstr ""
+msgstr "М, ну мож... ГАРАЛІНЕ, МИ ТУТ. ШО ТАМ?"
 
 #. [event]
 #. Нас почули! НА СЕЛО НАПАЛИ МЕРЦІ ТА ЧАКЛУНИ! МИ ВРЯТУВАЛИ ВСІХ ДІТЕЙ, АЛЕ НАМ ДОВЕЛОСЯ ВІДІЙТИ!
@@ -2845,18 +2857,20 @@ msgid ""
 "We've been heard! THE VILLAGE IS UNDER ATTACK FROM UNDEAD AND SORCERERS! WE "
 "SAVED ALL THE CHILDREN, BUT WE HAD TO LEAVE!"
 msgstr ""
+"Нас почули! НА СЕЛО НАПАЛИ МЕРЦІ ТА ЧАКЛУНИ! МИ ВРЯТУВАЛИ ВСІХ ДІТЕЙ, АЛЕ "
+"НАМ ДОВЕЛОСЯ ВІДІЙТИ!"
 
 #. [event]
 #. І ЩЕ ВІН САМ ЧАКЛУН! АЛЕ ХОЧА Б ВІД НЬОГО ЯКАСЬ КОРИСТЬ!
 #: Chasing_the_Light/scenarios/03_Despair.cfg:465
 msgid "AND HE'S A SORCERER HIMSELF! BUT AT LEAST HE'S SOME USE!"
-msgstr ""
+msgstr "І ЩЕ ВІН САМ ЧАКЛУН! АЛЕ ХОЧА Б ВІД НЬОГО ЯКАСЬ КОРИСТЬ!"
 
 #. [event]
 #. Мерці, чалкуни... Це шо оті 'західняки'?
 #: Chasing_the_Light/scenarios/03_Despair.cfg:467
 msgid "Undead, magic-slingers… Are those them 'Wesfolk'?"
-msgstr ""
+msgstr "Мерці, чалкуни... Це шо оті 'західняки'?"
 
 #. [event]
 #. Схож на те, алє добрє, що хоч люде живі... ЙДІТЬ Н' МІЙ ГОЛОС ТА ОСТЄРЄГАЙТЕСЯ БОЛОТНИХ ТВАРЮК!
@@ -2865,18 +2879,20 @@ msgid ""
 "Looks like it, but at least the folks are still alive... FOLLOW MY VOICE AND "
 "WATCH OUT FOR THEM SWAMP CRITTERS!"
 msgstr ""
+"Схож на те, алє добрє, що хоч люде живі... ЙДІТЬ Н' МІЙ ГОЛОС ТА "
+"ОСТЄРЄГАЙТЕСЯ БОЛОТНИХ ТВАРЮК!"
 
 #. [event]
 #. Всі чули його, за мною!
 #: Chasing_the_Light/scenarios/03_Despair.cfg:471
 msgid "You all heard him, follow me!"
-msgstr ""
+msgstr "Всі чули його, за мною!"
 
 #. [event]
 #. Добром це не скінчиться...
 #: Chasing_the_Light/scenarios/03_Despair.cfg:473
 msgid "It won't end well..."
-msgstr ""
+msgstr "Добром це не скінчиться..."
 
 #. [objective]: condition=win
 #. Відступайте глибше в болота
@@ -2884,7 +2900,7 @@ msgstr ""
 #: Chasing_the_Light/scenarios/03_Despair.cfg:517
 #: Chasing_the_Light/scenarios/03_Despair.cfg:762
 msgid "Retreat deeper into the swamp"
-msgstr ""
+msgstr "Відступайте глибше в болота"
 
 #. [event]
 #. Гараліне, на захід звідси є місце, що випромінює магію, обов'язково навідайся туди.
@@ -2893,6 +2909,8 @@ msgid ""
 "Haralin, there's a site to the west of here that radiates magic, you should "
 "definitely go there."
 msgstr ""
+"Гараліне, на захід звідси є місце, що випромінює магію, обов'язково "
+"навідайся туди."
 
 #. [message]
 #. У деяких сценаріях вам зустрічатимуться особливі місця, де Гаралін матиме можливість вивчити нове заклинання. Але будьте уважні — деякі з них можуть заходитися посеред важкодоступної місцевості.
@@ -2902,6 +2920,9 @@ msgid ""
 "a new spell. But be careful — some of them may be located in the middle of "
 "inaccessible terrain."
 msgstr ""
+"У деяких сценаріях вам зустрічатимуться особливі місця, де Гаралін матиме "
+"можливість вивчити нове заклинання. Але будьте уважні — деякі з них можуть "
+"заходитися посеред важкодоступної місцевості."
 
 #. [then]
 #. Це те саме місце сили, яке я відчув. Щось підказує мені зосередити всі свої чуття та...
@@ -2910,18 +2931,20 @@ msgid ""
 "This is the same place of force that I felt. Something tells me to focus all "
 "my senses and..."
 msgstr ""
+"Це те саме місце сили, яке я відчув. Щось підказує мені зосередити всі свої "
+"чуття та..."
 
 #. [then]
 #. Куди це він подівся?
 #: Chasing_the_Light/scenarios/03_Despair.cfg:584
 msgid "Where did he go?"
-msgstr ""
+msgstr "Куди це він подівся?"
 
 #. [then]
 #. Я сподіваюся, що цей поганець не вирішив від нас отак втекти!
 #: Chasing_the_Light/scenarios/03_Despair.cfg:586
 msgid "I hope that this bastard didn't decide to run away from us like that!"
-msgstr ""
+msgstr "Я сподіваюся, що цей поганець не вирішив від нас отак втекти!"
 
 #. [event]
 #. Тепер я відчуваю її, відчуваю усю вогку землю, що ситить це болото, відчуваю її рух та розумію... розумію, як підкорити її своїй волі!
@@ -2930,24 +2953,26 @@ msgid ""
 "Now I feel it, I feel all the moist soil that feeds this swamp, I feel its "
 "movement and I understand... I understand how to subdue it to my will!"
 msgstr ""
+"Тепер я відчуваю її, відчуваю усю вогку землю, що ситить це болото, відчуваю "
+"її рух та розумію... розумію, як підкорити її своїй волі!"
 
 #. [event]
 #. Бульгль-бульгль...!
 #: Chasing_the_Light/scenarios/03_Despair.cfg:663
 msgid "Bulgle-bulgle...!"
-msgstr ""
+msgstr "Бульгль-бульгль...!"
 
 #. [then]
 #. Нічогеньки, стільки чудес, що я вже нічому не дивуюся...
 #: Chasing_the_Light/scenarios/03_Despair.cfg:674
 msgid "Wow, so many miracles that I'm not surprised at anything anymore..."
-msgstr ""
+msgstr "Нічогеньки, стільки чудес, що я вже нічому не дивуюся..."
 
 #. [then]
 #. Та ну тебе, оживити бруд? Це все, на що здатні чаклуни?
 #: Chasing_the_Light/scenarios/03_Despair.cfg:676
 msgid "Come on, bringing dirt to life? Is that all sorcerers can do?"
-msgstr ""
+msgstr "Та ну тебе, оживити бруд? Це все, на що здатні чаклуни?"
 
 #. [else]
 #. Це дуже добре, Гараліне, але мені здається, що нам від цього нема користі...
@@ -2955,6 +2980,7 @@ msgstr ""
 msgid ""
 "That's very good, Haralin, but I don't think it's going to do us any good..."
 msgstr ""
+"Це дуже добре, Гараліне, але мені здається, що нам від цього нема користі..."
 
 #. [else]
 #. Духи, що населяли це болото, допомогли б нам в битві, та, схоже, їх всіх вже було знищено нами чи проклятими мерцями. Проте тепер я розумію як створити нових їм на заміну.
@@ -2964,6 +2990,9 @@ msgid ""
 "but it seems that they have all been destroyed by us or the damned undead. "
 "But now I understand how to create new ones to replace them."
 msgstr ""
+"ухи, що населяли це болото, допомогли б нам в битві, та, схоже, їх всіх вже "
+"було знищено нами чи проклятими мерцями. Проте тепер я розумію як створити "
+"нових їм на заміну."
 
 #. [else]
 #. Аякже, що ти зробиш, оживиш бруд своїми чаклунськими витівками, щоб він бився замість тебе?
@@ -2972,6 +3001,8 @@ msgid ""
 "Sure, what are you going to do, bring the dirt to life with your witchcraft "
 "tricks so that it fights for you?"
 msgstr ""
+"Аякже, що ти зробиш, оживиш бруд своїми чаклунськими витівками, щоб він "
+"бився замість тебе?"
 
 #. [message]: speaker=narrator
 #. Гаралін вивчив нове закляття 'Summon', яке дає йому можливість закликати Брудоповзів до бою.
@@ -2980,6 +3011,8 @@ msgid ""
 "Haralin has learned a new spell — 'Summon', which gives him the ability to "
 "summon Mudcrawlers to battle."
 msgstr ""
+"Гаралін вивчив нове закляття 'Summon', яке дає йому можливість закликати "
+"Брудоповзів до бою."
 
 #. [set_variable]
 #. (додатково) Дослідити загадкове місце сили
@@ -2990,6 +3023,7 @@ msgid ""
 "<span strikethrough='true'>(optional) Explore the mysterious place of force</"
 "span>"
 msgstr ""
+"<span strikethrough='true'>(додатково) Дослідити загадкове місце сили</span>"
 
 #. [objective]: condition=win
 #. [then]
@@ -2998,7 +3032,7 @@ msgstr ""
 #: Chasing_the_Light/scenarios/03_Despair.cfg:874
 #: Chasing_the_Light/scenarios/07_Scarhane.cfg:3014
 msgid "Survive until the end of turns"
-msgstr ""
+msgstr "Вижити до кінця ходів"
 
 #. [objective]: condition=win
 #. альтернативно
@@ -3009,32 +3043,32 @@ msgstr ""
 #: Chasing_the_Light/scenarios/05_Aftermath.cfg:1825
 #: Chasing_the_Light/utils/macros.cfg:566
 msgid "(alternative) Defeat all enemy leaders"
-msgstr ""
+msgstr "(альтернативно) Переможіть ворожих ватажків"
 
 #. [event]
 #. Ось вони, ось вони! Вбийте, знищіть цих селюків!
 #: Chasing_the_Light/scenarios/03_Despair.cfg:850
 msgid "Here they are, here they are! Kill, destroy these peasants!"
-msgstr ""
+msgstr "Ось вони, ось вони! Вбийте, знищіть цих селюків!"
 
 #. [event]
 #. О ні, мерці нарешті наздогнали нас! Хай захистить нас Світло!
 #: Chasing_the_Light/scenarios/03_Despair.cfg:852
 msgid ""
 "Oh no, the undead have finally caught up with us! May the Light protect us!"
-msgstr ""
+msgstr "О ні, мерці нарешті наздогнали нас! Хай захистить нас Світло!"
 
 #. [event]
 #: Chasing_the_Light/scenarios/03_Despair.cfg:910
 msgid "UARGHHHH!"
-msgstr ""
+msgstr "ААРРРҐҐХХХХ!"
 
 #. [event]
 #. Що це за спотворене чудовисько?! Ми таких ще не бачили.
 #: Chasing_the_Light/scenarios/03_Despair.cfg:912
 msgid ""
 "What kind of disfigured monster is this? We have never seen anything like it!"
-msgstr ""
+msgstr "Що це за спотворене чудовисько?! Ми таких ще не бачили."
 
 #. [event]
 #. Краще не наближатися до нього... Певно, вороги послали за нами дуже пристосованих до боліт чудовиськ. Хай захистить нас Світло!
@@ -3043,6 +3077,8 @@ msgid ""
 "It is better not to approach it... The enemies must have sent creatures very "
 "adapted to the swamps after us. May the Light protect us!"
 msgstr ""
+"Краще не наближатися до нього... Певно, вороги послали за нами дуже "
+"пристосованих до боліт чудовиськ. Хай захистить нас Світло!"
 
 #. [then]
 #. Ні, будь ласка, не помирай, нас же залишилось так мало! Іменем Світла, продовжуй боротися!
@@ -3051,6 +3087,8 @@ msgid ""
 "No, please don't die, there are so few of us left! In the name of Light, "
 "keep fighting!"
 msgstr ""
+"Ні, будь ласка, не помирай, нас же залишилось так мало! Іменем Світла, "
+"продовжуй боротися!"
 
 #. [then]
 #. Я знову з вами! Начувайтеся, нечестиві вороги, я відплачу за село та за свою смерть!
@@ -3059,12 +3097,14 @@ msgid ""
 "I am with you again! Face it, you wicked enemies, I will take revenge for "
 "the village and for my death!"
 msgstr ""
+"Я знову з вами! Начувайтеся, нечестиві вороги, я відплачу за село та за свою "
+"смерть!"
 
 #. [then]
 #. Гараліне, що... Що це таке?..
 #: Chasing_the_Light/scenarios/03_Despair.cfg:1037
 msgid "Haralin, what... What is this?"
-msgstr ""
+msgstr "Гараліне, що... Що це таке?.."
 
 #. [then]
 #. Я й сам не знаю, але... Хвала Світлу й... Дякую, що повернувся, друже...
@@ -3073,6 +3113,7 @@ msgid ""
 "I don't know myself, but... Praise the Light and... Thank you for coming "
 "back, my friend..."
 msgstr ""
+"Я й сам не знаю, але... Хвала Світлу й... Дякую, що повернувся, друже..."
 
 #. [then]
 #. По відчуттях, наче ми б'ємося цілу вічність, і стільки наших полягло...
@@ -3081,12 +3122,13 @@ msgid ""
 "It feels as if we have been fighting for an eternity, and so many of us have "
 "been killed..."
 msgstr ""
+"По відчуттях, наче ми б'ємося цілу вічність, і стільки наших полягло..."
 
 #. [then]
 #. У нас нема іншого вибору... Ми маємо продовжувати боротися заради...
 #: Chasing_the_Light/scenarios/03_Despair.cfg:1136
 msgid "We have no other choice... We must continue to fight for the sake of..."
-msgstr ""
+msgstr "У нас нема іншого вибору... Ми маємо продовжувати боротися заради..."
 
 #. [then]
 #. Зачекайте, мерці чомусь відступають за заставу, наче щось наказало їм — певно, це саме Світло захистило нас! А ще хтось наближається зі сторони нашого села!
@@ -3096,6 +3138,9 @@ msgid ""
 "something ordered them — perhaps it was the Light that protected us! And "
 "someone is approaching from the direction of our village!"
 msgstr ""
+"Зачекайте, мерці чомусь відступають за заставу, наче щось наказало їм — "
+"певно, це саме Світло захистило нас! А ще хтось наближається зі сторони "
+"нашого села!"
 
 #. [else]
 #. Зачекайте, мерці чомусь відступають за заставу, певно, бо ми перемогли їхніх ватажків! А ще хтось наближається зі сторони нашого села!
@@ -3105,12 +3150,16 @@ msgid ""
 "because we defeated their leaders! And someone is approaching from the "
 "direction of our village!"
 msgstr ""
+"Зачекайте, мерці чомусь відступають за заставу, певно, бо ми перемогли їхніх "
+"ватажків! А ще хтось наближається зі сторони нашого села!"
 
 #. [else]
 #. Я знову залишився майже один... Коли ж це прокляте жахіття нарешті скінчиться?!
 #: Chasing_the_Light/scenarios/03_Despair.cfg:1163
 msgid "I am almost alone again... When will this damned nightmare finally end?"
 msgstr ""
+"Я знову залишився майже один... Коли ж це прокляте жахіття нарешті "
+"скінчиться?!"
 
 #. [else]
 #. Почекай-но, що це? Мерці чомусь відступають за заставу, а вершники наближаються зі сторони села!
@@ -3120,30 +3169,32 @@ msgid ""
 "the outpost for some reason, and the horsemen are approaching from the "
 "direction of my village!"
 msgstr ""
+"Почекай-но, що це? Мерці чомусь відступають за заставу, а вершники "
+"наближаються зі сторони села!"
 
 #. [event]
 #. Невже це ще вороги? Скільки ж їх...
 #: Chasing_the_Light/scenarios/03_Despair.cfg:1208
 msgid "Can these also be enemies? How many are there..."
-msgstr ""
+msgstr "Невже це ще вороги? Скільки ж їх..."
 
 #. [event]
 #. Ну ось і все, тепер нам точно кінець...
 #: Chasing_the_Light/scenarios/03_Despair.cfg:1211
 msgid "Well, that's it, now we're definitely finished..."
-msgstr ""
+msgstr "Ну ось і все, тепер нам точно кінець..."
 
 #. [unit]: id=southbay_king, type=Grand Knight
 #. Принц Аддроран IV
 #: Chasing_the_Light/scenarios/03_Despair.cfg:1227
 msgid "Prince Addroran IV"
-msgstr ""
+msgstr "Принц Аддроран IV"
 
 #. [unit]: id=Count_Edvar, type=Lieutenant
 #. Принц Едвар
 #: Chasing_the_Light/scenarios/03_Despair.cfg:1249
 msgid "Prince Edvar"
-msgstr ""
+msgstr "Принц Едвар"
 
 #. [event]
 #. Не страшіться, селяни. Ми, спадкоємні принци наших Королівств, надійшли заради вашого спасіння!
@@ -3152,6 +3203,8 @@ msgid ""
 "Fear not, peasants. We, the hereditary princes of our Kingdoms, have arrived "
 "for your salvation!"
 msgstr ""
+"Не страшіться, селяни. Ми, спадкоємні принци наших Королівств, надійшли "
+"заради вашого спасіння!"
 
 #. [event]
 #. То є так, проти нашої сяйної могуті не встоїть жоден ворог. Вдячними ви маєте бути нам.
@@ -3160,6 +3213,8 @@ msgid ""
 "Indeed, against our radiant might, no foe shall stand. Grateful you ought to "
 "be to us."
 msgstr ""
+"То є так, проти нашої сяйної могуті не встоїть жоден ворог. Вдячними ви "
+"маєте бути нам."
 
 #. [event]
 #. Самі Королі прийшли нам на поміч, я буду вдячним усе життя!
@@ -3168,6 +3223,7 @@ msgid ""
 "quietly^<i>The Kings themselves came to our aid, I will be grateful for the "
 "rest of my life!</i>"
 msgstr ""
+"quietly^<i>Самі Королі прийшли нам на поміч, я буду вдячним усе життя!</i>"
 
 #. [event]
 #. В жетті т'кого не бачив... Усє в сяйних одєжах т' при файній зброі!
@@ -3176,6 +3232,8 @@ msgid ""
 "quietly^<i>I ain't never seen the likes of it... All dressed up in shiny "
 "clothes an' carryin' fine weapons!</i>"
 msgstr ""
+"quietly^<i>В жетті т'кого не бачив... Усє в сяйних одєжах т' при файній "
+"зброі!</i>"
 
 #. [event]
 #. Нарешті, вони покладуть кінець цьому божевіллю. Хай ще з чаклуном розберуться...
@@ -3184,6 +3242,8 @@ msgid ""
 "quietly^<i>Finally, they will put an end to this madness. Also let them deal "
 "with our sorcerer...</i>"
 msgstr ""
+"quietly^<i>Нарешті, вони покладуть кінець цьому божевіллю. Хай ще з нашим "
+"чаклуном розберуться...</i>"
 
 #. [event]
 #. (трохи розлючений) Що ви, селюки, то ви збираєтеся мовчки споглядати нас чи, може, прокажете якісь слова? Хто є вашим старійшиною?
@@ -3192,6 +3252,8 @@ msgid ""
 "(angered) What is this, peasants? Are you simply going to stand there "
 "silently and gawk at us, or might you utter some words? Who is your elder?"
 msgstr ""
+"(трохи розлючений) Що ви, селюки, то ви збираєтеся мовчки споглядати нас чи, "
+"може, прокажете якісь слова? Хто є вашим старійшиною?"
 
 #. [message]
 #. Перелякані селяни розгублено переглядалися між собою, але врешті-решт усі погляди звелися до такого ж наляканого Гараліна.
@@ -3200,18 +3262,21 @@ msgid ""
 "The frightened villagers looked at each other in confusion, but in the end "
 "all eyes came to the equally frightened Haralin."
 msgstr ""
+"Перелякані селяни розгублено переглядалися між собою, але врешті-решт усі "
+"погляди звелися до такого ж наляканого Гараліна."
 
 #. [event]
 #. Гараліне, вони всі дивляться на тебе. Це ти, ти їхній лідер та поводир...
 #: Chasing_the_Light/scenarios/03_Despair.cfg:1415
 msgid "They are all looking at you, Haralin, you are their leader and guide..."
 msgstr ""
+"Гараліне, вони всі дивляться на тебе. Це ти, ти їхній лідер та поводир..."
 
 #. [event]
 #. Але ж мій батько, він...
 #: Chasing_the_Light/scenarios/03_Despair.cfg:1422
 msgid "<i>But my father, he...</i>"
-msgstr ""
+msgstr "<i>Але ж мій батько, він...</i>"
 
 #. [event]
 #. Ти ж знаєш, що він більше не з нами... А тепер, ім'ям Світла, зберися та твори свою долю!
@@ -3220,6 +3285,8 @@ msgid ""
 "You know that he is no longer with us... Now, in the name of the Light, "
 "gather yourself and create your destiny!"
 msgstr ""
+"Ти ж знаєш, що він більше не з нами... А тепер, ім'ям Світла, зберися та "
+"твори свою долю!"
 
 #. [event]
 #. Пробачте за чекання, Ваша Величносте... Мене звати Гаралін, я... я їхній очільник...
@@ -3228,6 +3295,8 @@ msgid ""
 "I apologize for the wait, Your Majesty... My name is Haralin, I'm... I'm "
 "their leader..."
 msgstr ""
+"Пробачте за чекання, Ваша Величносте... Мене звати Гаралін, я... я їхній "
+"очільник..."
 
 #. [event]
 #. Дуже добре, Гараліне, ви дуже добре боролися, однак чи зможеш ти назвати хоч одну причину чому я маю зберегти твоє життя?
@@ -3236,12 +3305,14 @@ msgid ""
 "Very well, Haralin, you fought most valiantly. However, can you name even a "
 "single reason why I should spare your life?"
 msgstr ""
+"Дуже добре, Гараліне, ви дуже добре боролися, однак чи зможеш ти назвати хоч "
+"одну причину чому я маю зберегти твоє життя?"
 
 #. [event]
 #. Зберегти?.. Що ви маєте на увазі, мій пане..?
 #: Chasing_the_Light/scenarios/03_Despair.cfg:1445
 msgid "Spare? What do you mean, my lord?"
-msgstr ""
+msgstr "Зберегти?.. Що ви маєте на увазі, мій пане..?"
 
 #. [then]
 #. Невже гадав, що твої дії загубляться в історії та будуть забуті усіма? Нами усіма було добре побачено як твоє чаклунство, так й оці дивні істоти (вказує своїм перстом на одного з духів).
@@ -3251,6 +3322,9 @@ msgid ""
 "by all? We all witnessed your sorcery well, as well as these peculiar "
 "creatures (points with his finger at one of the spirits)."
 msgstr ""
+"Невже гадав, що твої дії загубляться в історії та будуть забуті усіма? Нами "
+"усіма було добре побачено як твоє чаклунство, так й оці дивні істоти (вказує "
+"своїм перстом на одного з духів)."
 
 #. [else]
 #. Невже гадав, що твої дії загубляться в історії та будуть забуті усіма? Нами усіма було добре побачено як твоє чаклунство, так й оті дивні істоти.
@@ -3260,6 +3334,8 @@ msgid ""
 "by all? We all witnessed your sorcery well, as well as those peculiar "
 "creatures."
 msgstr ""
+"Невже гадав, що твої дії загубляться в історії та будуть забуті усіма? Нами "
+"усіма було добре побачено як твоє чаклунство, так й оті дивні істоти."
 
 #. [event]
 #. Схоже, пригоди чаклуна скінчилися... Що ж, мені його трохи шкода, все-таки він нас врятував...
@@ -3268,12 +3344,14 @@ msgid ""
 "quietly^<i>It looks like the sorcerer's adventures are over... Well, I feel "
 "a little sorry for him, after all, he saved us...</i>"
 msgstr ""
+"quietly^<i>Схоже, пригоди чаклуна скінчилися... Що ж, мені його трохи шкода, "
+"все-таки він нас врятував...</i>"
 
 #. [event]
 #. Шкод' хлопчака... Без н'його ми б мертві були.
 #: Chasing_the_Light/scenarios/03_Despair.cfg:1463
 msgid "quietly^<i>Poor lad... Without 'im, we’d be dead fer sure.</i>"
-msgstr ""
+msgstr "quietly^<i>Шкод' хлопчака... Без н'його ми б мертві були.</i>"
 
 #. [event]
 #. [then]
@@ -3282,7 +3360,7 @@ msgstr ""
 #: Chasing_the_Light/scenarios/03_Despair.cfg:1465
 #: Chasing_the_Light/scenarios/04_Daeola.cfg:2510
 msgid "I am..."
-msgstr ""
+msgstr "Я..."
 
 #. [event]
 #. З якої причини нам варто вислуховувати цього мерзенного чаклуна? То є очевидно, що це 'західняцький' поклонник. Віддаймо наказ покінчити з ним, та й все на цьому.
@@ -3292,6 +3370,9 @@ msgid ""
 "plain to see that he is a 'Wesfolk' worshipper. Let us give the order to "
 "finish him, and be done with it."
 msgstr ""
+"З якої причини нам варто вислуховувати цього мерзенного чаклуна? То є "
+"очевидно, що це 'західняцький' поклонник. Віддаймо наказ покінчити з ним, та "
+"й все на цьому."
 
 #. [event]
 #. Стримай свій праведний гнів, брате мій. Спала мені на думку гарна ідея, тож вирішено мною й запитати.
@@ -3300,18 +3381,22 @@ msgid ""
 "Restrain your righteous fury, my brother. A fine idea has come to me, and so "
 "I am resolved to ask."
 msgstr ""
+"Стримай свій праведний гнів, брате мій. Спала мені на думку гарна ідея, тож "
+"вирішено мною й запитати."
 
 #. [event]
 #. ... Хай буде так.
 #: Chasing_the_Light/scenarios/03_Despair.cfg:1471
 msgid "... Let it be so."
-msgstr ""
+msgstr "... Хай буде так."
 
 #. [event]
 #. Відповідай, Гараліне, не варто випробовувати Королівське терпіння. Хто ти такий?
 #: Chasing_the_Light/scenarios/03_Despair.cfg:1473
 msgid "Answer me, Haralin, do not test the patience of the Crown. Who are you?"
 msgstr ""
+"Відповідай, Гараліне, не варто випробовувати Королівське терпіння. Хто ти "
+"такий?"
 
 #. [event]
 #. Обирай слова мудро, бо від твоєї відповіді залежить не лише твоє життя, а й навіть те, що лежить далеко поза ним...
@@ -3320,6 +3405,8 @@ msgid ""
 "Choose your words wisely, because not only your life, but even what lies far "
 "beyond it depends on your answer..."
 msgstr ""
+"Обирай слова мудро, бо від твоєї відповіді залежить не лише твоє життя, а й "
+"навіть те, що лежить далеко поза ним..."
 
 #. [event]
 #. Я... Я — Гаралін — слуга Світла, силою якого я послуговуюся, щоб знищувати 'західняків' та інших мерзенних істот! Мій пане... я використовую свою магію лише заради добра, я не маю нічого спільного з тими темними чаклунами!
@@ -3329,6 +3416,9 @@ msgid ""
 "'Wesfolk' and other vile creatures! My lord... I use my magic only for good, "
 "I have nothing to do with those dark sorcerers!"
 msgstr ""
+"Я... Я — Гаралін — слуга Світла, силою якого я послуговуюся, щоб знищувати "
+"'західняків' та інших мерзенних істот! Мій пане... я використовую свою магію "
+"лише заради добра, я не маю нічого спільного з тими темними чаклунами!"
 
 #. [event]
 #. Гарні слова було сказано тобою, та й я маю в них мало сумніву — бо ж усіма тут було бачено, як відважно боровся ти з істотами темряви. Тому, Гараліне, сьогодні ти не лише вижив, але й здобув мою Королівську ласку — скажи, чого ти бажаєш за службу при мені?
@@ -3339,6 +3429,10 @@ msgid ""
 "Therefore, Haralin, today you have not only survived but have also earned my "
 "Royal favor. Speak, what do you desire as a reward for your service to me?"
 msgstr ""
+"Гарні слова було сказано тобою, та й я маю в них мало сумніву — бо ж усіма "
+"тут було бачено, як відважно боровся ти з істотами темряви. Тому, Гараліне, "
+"сьогодні ти не лише вижив, але й здобув мою Королівську ласку — скажи, чого "
+"ти бажаєш за службу при мені?"
 
 #. [event]
 #. Брате, чи ти певен, що тобі потрібен цей селюк? Це чаклунство дуже схоже на...
@@ -3347,6 +3441,8 @@ msgid ""
 "quietly^<i>Brother, are you certain you need this peasant? This sorcery "
 "looks very much like...</i>"
 msgstr ""
+"quietly^<i>Брате, чи ти певен, що тобі потрібен цей селюк? Це чаклунство "
+"дуже схоже на...</i>"
 
 #. [event]
 #. Мені зрозумілі твої почуття, брате мій, але настав той час, що кожна сила може знадобитися. І сила цього чоловіка, вона... надзвичайно дивна, надприродня, але все ж потрібна нам, бо нашим Королівстам доводиться мати справу з надприродним — з живими мерцями.
@@ -3357,6 +3453,10 @@ msgid ""
 "extraordinarily strange, supernatural even, yet we need it. For our Kingdoms "
 "must contend with the unnatural — living dead.</i>"
 msgstr ""
+"quietly^<i>Мені зрозумілі твої почуття, брате мій, але настав той час, що "
+"кожна сила може знадобитися. І сила цього чоловіка, вона... надзвичайно "
+"дивна, надприродня, але все ж потрібна нам, бо нашим Королівстам доводиться "
+"мати справу з надприродним — з живими мерцями.</i>"
 
 #. [event]
 #. Гаразд, я поступлюся тобі брате, бо ти все ж є спадкоємцем Південної Бухти, однак не забудь вспом'янути мої слова, коли трапиться щось лихе.
@@ -3366,12 +3466,15 @@ msgid ""
 "the heir to the Southbay. But do not forget my words when something ill "
 "befalls us.</i>"
 msgstr ""
+"quietly^<i>Гаразд, я поступлюся тобі брате, бо ти все ж є спадкоємцем "
+"Південної Бухти, однак не забудь вспом'янути мої слова, коли трапиться щось "
+"лихе.</i>"
 
 #. [event]
 #. Цього не станеться. То що, Гараліне, чого серце твоє бажає?
 #: Chasing_the_Light/scenarios/03_Despair.cfg:1487
 msgid "quietly^<i>That will not happen.</i>"
-msgstr ""
+msgstr "quietly^<i>Цього не станеться.</i>"
 
 #. [event]
 #: Chasing_the_Light/scenarios/03_Despair.cfg:1487
@@ -3379,12 +3482,14 @@ msgid ""
 "\n"
 "So, Haralin, what does your heart desire?"
 msgstr ""
+"\n"
+"То що, Гараліне, чого серце твоє бажає?"
 
 #. [event]
 #. Для мене це честь, мій пане, але... я мушу відмовитися.
 #: Chasing_the_Light/scenarios/03_Despair.cfg:1490
 msgid "I am honored, my lord, but... I must decline."
-msgstr ""
+msgstr "Для мене це честь, мій пане, але... я мушу відмовитися."
 
 #. [event]
 #. Що?! Невже вистачило тобі нахабності перечити самому Спадкоємцю, дурню?!
@@ -3392,12 +3497,13 @@ msgstr ""
 msgid ""
 "What?! Did you truly have the audacity to defy the Heir himself, you fool?!"
 msgstr ""
+"Що?! Невже вистачило тобі нахабності перечити самому Спадкоємцю, дурню?!"
 
 #. [event]
 #. От тепер ми всі точно покійники...
 #: Chasing_the_Light/scenarios/03_Despair.cfg:1494
 msgid "quietly^<i>Now we are all dead for sure...</i>"
-msgstr ""
+msgstr "quietly^<i>От тепер ми всі точно покійники...</i>"
 
 #. [event]
 #. Гараліне, твій шлях зрозумілий, однак він незрозумілий їм. Ім'я Світла, скажи їм, чого бажає твоє серце!
@@ -3406,6 +3512,8 @@ msgid ""
 "Haralin, your path is clear, but they do not understand it. In the name of "
 "Light, tell them what your heart desires!"
 msgstr ""
+"Гараліне, твій шлях зрозумілий, однак він незрозумілий їм. Ім'я Світла, "
+"скажи їм, чого бажає твоє серце!"
 
 #. [event]
 #. Ні-ні, ні в якому разі, Ваша величносте!.. Моя магія потребує самотності та відданості, Світло не потерпить... гучних збіговиськ. Тому я прошу лише тиху місцину, де я б далі зміг вивчати шлях Світла і... навчити йому інших, вам потрібна ця сила для боротьби з мерцями, мій пане.
@@ -3416,6 +3524,10 @@ msgid ""
 "where I can continue to study the way of the Light and... teach it to "
 "others, you need this power to fight the undead, my lord."
 msgstr ""
+"Ні-ні, ні в якому разі, Ваша величносте!.. Моя магія потребує самотності та "
+"відданості, Світло не потерпить... гучних збіговиськ. Тому я прошу лише тиху "
+"місцину, де я б далі зміг вивчати шлях Світла і... навчити йому інших, вам "
+"потрібна ця сила для боротьби з мерцями, мій пане."
 
 #. [event]
 #. Що ж, вже покраще буде це, я все ж виявлю ласку та погоджуся, але скажи — чи не будуть учні твої теж усамітнюватися, замість служби Королям?
@@ -3425,6 +3537,8 @@ msgid ""
 "me — will your disciples, too, retreat into seclusion rather than serve the "
 "Kings?"
 msgstr ""
+"Що ж, вже покраще буде це, я все ж виявлю ласку та погоджуся, але скажи — чи "
+"не будуть учні твої теж усамітнюватися, замість служби Королям?"
 
 #. [event]
 #. Я... я не знаю, мій пане. Кожна людина має свій шлях, тож я певний, що знайдуться і такі, й інші.
@@ -3433,6 +3547,8 @@ msgid ""
 "I... I don't know, my lord. Every man has his own way, so I'm sure there "
 "will be some, and some others."
 msgstr ""
+"Я... я не знаю, мій пане. Кожна людина має свій шлях, тож я певний, що "
+"знайдуться і такі, й інші."
 
 #. [event]
 #. Гаразд, Гараліне, хоч це й не те зовсім, що почути хотілося нам, проте, як на мою Королівську думку, варто спробувати. Однак обговорено буде все пізніше — наразі маємо прогнати ворогів! За мною, військо, ти, Гараліне, також!
@@ -3442,12 +3558,16 @@ msgid ""
 "is worth a try. However, all will be discussed later — right now, we must "
 "drive back the enemies! Follow me, army, and you too, Haralin!"
 msgstr ""
+"Гаразд, Гараліне, хоч це й не те зовсім, що почути хотілося нам, проте, як "
+"на мою Королівську думку, варто спробувати. Однак обговорено буде все "
+"пізніше — наразі маємо прогнати ворогів! За мною, військо, ти, Гараліне, "
+"також!"
 
 #. [event]
 #. Ось і все, хотів би я... щоб мій батько побачив нашу перемогу...
 #: Chasing_the_Light/scenarios/03_Despair.cfg:1595
 msgid "That's all, I wish my father could see our victory..."
-msgstr ""
+msgstr "Ось і все, хотів би я... щоб мій батько побачив нашу перемогу..."
 
 #. [event]
 #. Хай би що я не думав про твоє чаклунство, але впевнений, що він пишався б тобою...
@@ -3455,12 +3575,14 @@ msgstr ""
 msgid ""
 "Whatever I think of your witchcraft, I'm sure he would be proud of you..."
 msgstr ""
+"Хай би що я не думав про твоє чаклунство, але впевнений, що він пишався б "
+"тобою..."
 
 #. [then]
 #. Але як щодо мене, що мені робити тепер?
 #: Chasing_the_Light/scenarios/03_Despair.cfg:1614
 msgid "But what about me, what should I do now?"
-msgstr ""
+msgstr "Але як щодо мене, що мені робити тепер?"
 
 #. [then]
 #. Ім'ям Світла, що ти маєш на увазі? Хіба ти, як і інші духи, не маєш повернутися у потойбіччя?
@@ -3469,6 +3591,8 @@ msgid ""
 "In the name of Light, what do you mean? Don't you, like other spirits, have "
 "to return to the afterlife?"
 msgstr ""
+"Ім'ям Світла, що ти маєш на увазі? Хіба ти, як і інші духи, не маєш "
+"повернутися у потойбіччя?"
 
 #. [then]
 #. Хіба? То, може, підкажеш як це зробити? Я не відчуваю нічого, що може допомогти.
@@ -3477,30 +3601,32 @@ msgid ""
 "Really? So maybe you can tell me how to do it? I don't feel anything that "
 "can help."
 msgstr ""
+"Хіба? То, може, підкажеш як це зробити? Я не відчуваю нічого, що може "
+"допомогти."
 
 #. [then]
 #. Хай помилує нас Світло, невже...
 #: Chasing_the_Light/scenarios/03_Despair.cfg:1620
 msgid "May the Light have mercy on us, can it be..."
-msgstr ""
+msgstr "Хай помилує нас Світло, невже..."
 
 #. [then]
 #. ... всі, кого ти повернув, Гараліне, застрягли тут навічно?
 #: Chasing_the_Light/scenarios/03_Despair.cfg:1623
 msgid "... everyone you brought back, Haralin, are they stuck here forever?"
-msgstr ""
+msgstr "... всі, кого ти повернув, Гараліне, застрягли тут навічно?"
 
 #. [then]
 #. (хапається за голову) Ні-ні, це неможливо...
 #: Chasing_the_Light/scenarios/03_Despair.cfg:1625
 msgid "(grabbing his head) No-no, it's impossible..."
-msgstr ""
+msgstr "(хапається за голову) Ні-ні, це неможливо..."
 
 #. [then]
 #. Все можливо, Гараліне...
 #: Chasing_the_Light/scenarios/03_Despair.cfg:1627
 msgid "Everything is possible, Haralin..."
-msgstr ""
+msgstr "Все можливо, Гараліне..."
 
 #. [then]
 #. Що це ти одразу похнюпився? Мені варто було б це робити, все-таки це мене перетворили на істоту з казок. Але хай як там — мені довподоби, що я зможу затриматися тут та побачити, хто переможе в цій війні!
@@ -3510,12 +3636,15 @@ msgid ""
 "who was turned into a creature from fairy tales. But anyway, I'm glad I can "
 "stay here and see who wins this war!"
 msgstr ""
+"Що це ти одразу похнюпився? Мені варто було б це робити, все-таки це мене "
+"перетворили на істоту з казок. Але хай як там — мені довподоби, що я зможу "
+"затриматися тут та побачити, хто переможе в цій війні!"
 
 #. [then]
 #. ІМ'ЯМ СВІТЛА, Я КЛЯНУСЯ НІКОЛИ НЕ ВИКОРИСТОВУВАТИ ЦЕ ЗАКЛЯТТЯ!
 #: Chasing_the_Light/scenarios/03_Despair.cfg:1632
 msgid "IN THE NAME OF THE LIGHT, I SWEAR TO NEVER USE THIS SPELL!"
-msgstr ""
+msgstr "ІМ'ЯМ СВІТЛА, Я КЛЯНУСЯ НІКОЛИ НЕ ВИКОРИСТОВУВАТИ ЦЕ ЗАКЛЯТТЯ!"
 
 #. [then]
 #. (знизує 'плечима') Ну як хочеш, а тепер нам час йти за Принцем, Гараліне!
@@ -3524,6 +3653,7 @@ msgid ""
 "(shrugging its 'shoulders') As you wish, but now it's time to follow the "
 "Prince, Haralin!"
 msgstr ""
+"(знизує 'плечима') Ну як хочеш, а тепер нам час йти за Принцем, Гараліне!"
 
 #. [part]
 #. newlines at the beginning help to (depending on the screne size) center this vertically. The space at the end stops the last letter from getting cut off
@@ -3962,7 +4092,7 @@ msgstr ""
 #. Даеоло...
 #: Chasing_the_Light/scenarios/04_Daeola.cfg:940
 msgid "Daeola..."
-msgstr ""
+msgstr "Даеоло..."
 
 #. [then]
 #. ... однак ви врятували стількох людей і... врятували мене... За це я вдячна та буду вдячною вам усе своє життя! І саме тому ваш колишній кристал стільки означає для мене!
