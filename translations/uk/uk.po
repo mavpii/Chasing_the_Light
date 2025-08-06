@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2025-07-30 09:54 UTC\n"
-"PO-Revision-Date: 2025-08-06 23:49+0300\n"
+"PO-Revision-Date: 2025-08-07 00:16+0300\n"
 "Last-Translator: Oleksii Okhrimenko(lexa04) <e-mail: ohrimale@gmail.com "
 "discord: amakri>\n"
 "Language-Team: \n"
@@ -11705,6 +11705,8 @@ msgid ""
 "May the Light have mercy on us! Without the sergeant's authority, the other "
 "soldiers won't obey us, the King's mission is failed!"
 msgstr ""
+"Хай помилує нас Світло! Без примусу сержанта інші солдати не підкорятимуться "
+"нам, завдання Короля провалене!"
 
 #. [message]: speaker=Zeham
 #. Це все це кляте чаклу-... *хрусь*
@@ -17482,12 +17484,12 @@ msgstr "сокира"
 #. [illuminates]: id=illumination, description=
 #: Chasing_the_Light/utils/abilities.cfg:13
 msgid "illuminates"
-msgstr ""
+msgstr "освічує"
 
 #. [illuminates]: id=illumination, description=
 #: Chasing_the_Light/utils/abilities.cfg:14
 msgid "female^illuminates"
-msgstr ""
+msgstr "освічує"
 
 #. [message]
 #: Chasing_the_Light/utils/amlas.cfg:18
@@ -17540,36 +17542,36 @@ msgstr "Нульове утримання."
 #. Укгх... Батьку, рятуй!..
 #: Chasing_the_Light/utils/characters.cfg:23
 msgid "Uhhh... Dad, help me!"
-msgstr ""
+msgstr "Укгх... Батьку, рятуй!.."
 
 #. [event]
 #. Гараліне, нащо ж ти туди поліз?!
 #: Chasing_the_Light/utils/characters.cfg:25
 msgid "Haralin, why did you do that?!"
-msgstr ""
+msgstr "Гараліне, нащо ж ти туди поліз?!"
 
 #. [event]
 #. Укх... Я підвів усе своє село...
 #: Chasing_the_Light/utils/characters.cfg:34
 msgid "Ugh... I have failed my entire village..."
-msgstr ""
+msgstr "Укх... Я підвів усе своє село..."
 
 #. [if]
 #. Даеоло, тепер... все в твоїх руках...
 #: Chasing_the_Light/utils/characters.cfg:44
 msgid "Daeola, now... everything is in your hands..."
-msgstr ""
+msgstr "Даеоло, тепер... все в твоїх руках..."
 
 #. [if]
 #. Ні, Вчителю, ні! Не помирайте, будь ласка!
 #: Chasing_the_Light/utils/characters.cfg:46
 msgid "No, Teacher, no! Please don't die!"
-msgstr ""
+msgstr "Ні, Вчителю, ні! Не помирайте, будь ласка!"
 
 #. [if]
 #: Chasing_the_Light/utils/characters.cfg:48
 msgid "Аргх... Сподіваюсь... Даеола впорається з усім..."
-msgstr ""
+msgstr "Аргх... Сподіваюсь... Даеола впорається з усім..."
 
 #. [trait]
 #. наївна  Через свій обмежений життєвий досвід може вірити речам, які інші не вважатимуть нічим більшим за маячню.
@@ -17583,30 +17585,33 @@ msgid ""
 "Due to her limited life experience, Daeola may believe things that others "
 "would consider nothing more than nonsense."
 msgstr ""
+"Через свій обмежений життєвий досвід може вірити речам, які інші не "
+"вважатимуть нічим більшим за маячню."
 
 #. [event]
 #. Аах, ні, ні... Вчителю, рятуй!
 #: Chasing_the_Light/utils/characters.cfg:77
 msgid "Aah, no, no... Teacher, help me!"
-msgstr ""
+msgstr "Аах, ні, ні... Вчителю, рятуйте!"
 
 #. [event]
 #. Даеоло, не помирай! Хай Світло змилується над усіма нами!
 #: Chasing_the_Light/utils/characters.cfg:79
 msgid "Daeola, do not die! May the Light have mercy on all of us!"
-msgstr ""
+msgstr "Даеоло, не помирай! Хай Світло змилується над усіма нами!"
 
 #. [event]
 #. Аах, ні, ні... Я ще стільки всього повинна зробити, стільком допомогти...
 #: Chasing_the_Light/utils/characters.cfg:88
 msgid "Aah, no, no... I still have so much to do, so many people to help..."
 msgstr ""
+"Аах, ні, ні... Я ще стільки всього повинна зробити, стільком допомогти..."
 
 #. [event]
 #. Ні, Даеоло! Хай Світло змилується над усіма нами!
 #: Chasing_the_Light/utils/characters.cfg:90
 msgid "No, Daeola! May the Light have mercy on all of us!"
-msgstr ""
+msgstr "Ні, Даеоло! Хай Світло змилується над усіма нами!"
 
 #. [event]
 #: Chasing_the_Light/utils/characters.cfg:98
@@ -17617,38 +17622,38 @@ msgstr ""
 #. Архг... Село без мене приречене...
 #: Chasing_the_Light/utils/characters.cfg:112
 msgid "Argh... The village is doomed without me..."
-msgstr ""
+msgstr "Архг... Село без мене приречене..."
 
 #. [event]
 #. Ні! Батьку, не покидай нас!
 #: Chasing_the_Light/utils/characters.cfg:114
 msgid "No! Dad, don't leave us!"
-msgstr ""
+msgstr "Ні! Батьку, не покидай нас!"
 
 #. [event]
 #. Це все це кляте чаклунство винне... Ургх...
 #: Chasing_the_Light/utils/characters.cfg:128
 msgid "It's all that damned witchcraft... Urgh..."
-msgstr ""
+msgstr "Це все це кляте чаклунство винне... Ургх..."
 
 #. [event]
 #. Як ж ц' розуміти... Я вмєраю... Аргх...
 #: Chasing_the_Light/utils/characters.cfg:139
 msgid "How’s this even happenin’... I’m dyin’... Argh..."
-msgstr ""
+msgstr "Як ж ц' розуміти... Я вмєраю... Аргх..."
 
 #. [event]
 #. Я віддаю своє життя за Королів, хай процвітає їхній рід у віках!
 #: Chasing_the_Light/utils/characters.cfg:150
 msgid ""
 "I give my life for the Kings. May their lineage prosper through the ages!"
-msgstr ""
+msgstr "Я віддаю своє життя за Королів, хай процвітає їхній рід у віках!"
 
 #. [event]
 #. Коріння не зрушить наше з місця... Кінець це...
 #: Chasing_the_Light/utils/characters.cfg:166
 msgid "Move not our roots will... The end this is..."
-msgstr ""
+msgstr "Коріння не зрушить наше з місця... Кінець це..."
 
 #. [then]
 #. Хай помилує вас Світло, Долманнумбіле. Воістину, покидати ліс лісовику було неймовірно необачним кроком.
@@ -17657,17 +17662,19 @@ msgid ""
 "May the Light have mercy on you, Dolmannumbil. Truly, it was an incredibly "
 "unwise move for the wose to leave their forest."
 msgstr ""
+"Хай помилує вас Світло, Долманнумбіле. Воістину, покидати ліс лісовику було "
+"неймовірно необачним кроком."
 
 #. [else]
 #. Прощавайте, пане Долманнумбіле, я щиро сумуватиму за вами...
 #: Chasing_the_Light/utils/characters.cfg:177
 msgid "Goodbye, sir Dolmannumbil, I will sincerely miss you..."
-msgstr ""
+msgstr "Прощавайте, пане Долманнумбіле, я щиро сумуватиму за вами..."
 
 #. [set_variable]
 #: Chasing_the_Light/utils/macros.cfg:538
 msgid "destroyed"
-msgstr ""
+msgstr "destroyed"
 
 #. [then]
 #. Дякувати Світлу, схоже, це був останній моноліт. Мені відчутно як звільнені души покидають цей світ та радіє земля, проте, певно, пройде ще безліч років, перш ніж це прокляте болото повністю очиститься.
@@ -17678,6 +17685,9 @@ msgid ""
 "will probably take many more years before this cursed swamp is completely "
 "cleansed."
 msgstr ""
+"Дякувати Світлу, схоже, це був останній моноліт. Мені відчутно як звільнені "
+"души покидають цей світ та радіє земля, проте, певно, пройде ще безліч "
+"років, перш ніж це прокляте болото повністю очиститься."
 
 #. [objective]: condition=win
 #. (додатково) Знищити всі прокляті моноліти
@@ -17685,16 +17695,17 @@ msgstr ""
 msgid ""
 "<span strikethrough='true'>(optional) Destroy all cursed monoliths</span>"
 msgstr ""
+"<span strikethrough='true'>(додатково) Знищити всі прокляті моноліти</span>"
 
 #. У мене були погані відчуття щодо них, але я радий, що помилився.
 #: Chasing_the_Light/utils/macros.cfg:612
 msgid "I had a bad feeling about them, but I'm glad I was wrong."
-msgstr ""
+msgstr "У мене були погані відчуття щодо них, але я радий, що помилився."
 
 #. Витрата припасів не була марною — вони допомогли.
 #: Chasing_the_Light/utils/macros.cfg:614
 msgid "Supplies weren’t wasted — they indeed helped."
-msgstr ""
+msgstr "Витрата припасів не була марною — вони допомогли."
 
 #. Клянуся Світлом, тільки що ми зробили добру справу, врятувавши тих нещасних людей. Проте ми не маємо відволікатися від головної мети — порятунку Графа Блекмору.
 #: Chasing_the_Light/utils/macros.cfg:616
@@ -17703,6 +17714,9 @@ msgid ""
 "people. However, we mustn't be distracted from our main goal, which is to "
 "save Count of Blackmore."
 msgstr ""
+"Клянуся Світлом, тільки що ми зробили добру справу, врятувавши тих нещасних "
+"людей. Проте ми не маємо відволікатися від головної мети — порятунку Графа "
+"Чорнотопу."
 
 #. [then]
 #. Походу, тце був останній злий чаклун, тому ми забираємося атсюда. Внатурі дякуєм за допомогу, ми цього не забудємо.
@@ -17711,6 +17725,8 @@ msgid ""
 "Looks like that was the last wicked wizard, so we’re headin’ outta here. "
 "Really, thanks fer the help, we won’t be forgettin’ this."
 msgstr ""
+"Походу, тце був останній злий чаклун, тому ми забираємося атсюда. Внатурі "
+"дякуєм за допомогу, ми цього не забудємо."
 
 #. [message]
 #. Походу, тце був останній злий чаклун, тому ми забираємося атсюда. Внатурі дякуєм за допомогу, ми цього не забудємо.
@@ -17719,6 +17735,8 @@ msgid ""
 "Aye, seems that was the last evil wizard, so we’re clearin’ out now. Truly, "
 "thanks fer yer help, we’ll remember it fer sure."
 msgstr ""
+"Походу, тце був останній злий чаклун, тому ми забираємося атсюда. Внатурі "
+"дякуєм за допомогу, ми цього не забудємо."
 
 #. [then]
 #. Ми не маємо часу полювати на нього. Чаклуне, йдемо далі.
@@ -17726,7 +17744,7 @@ msgstr ""
 #: Chasing_the_Light/utils/macros.cfg:759
 #: Chasing_the_Light/utils/macros.cfg:1001
 msgid "We don’t have time to hunt him. Sorcerer, let's move on."
-msgstr ""
+msgstr "Ми не маємо часу полювати на нього. Чаклуне, йдемо далі."
 
 #. [then]
 #. Бачить Світло, ми припустимося великої помилки, дозволивши це, проте зараз вже запізно щось з цим робити.
@@ -17735,6 +17753,8 @@ msgid ""
 "The Light sees that we will make a big mistake if we allow this, but it is "
 "too late to do anything about it now."
 msgstr ""
+"Бачить Світло, ми припустимося великої помилки, дозволивши це, проте зараз "
+"вже запізно щось з цим робити."
 
 #. [then]
 #. І справді, йдіть вже, ви вбили майже всіх, тож хай тот злий чаклун тікає, і ми забираємося атсюда. Внатурі дякуєм за допомогу, ми цього не забудємо.
@@ -17744,6 +17764,8 @@ msgid ""
 "wizard run, and we’ll be on our way. Thanks kindly fer the help, we won’t "
 "forget this."
 msgstr ""
+"І справді, йдіть вже, ви вбили майже всіх, тож хай тот злий чаклун тікає, і "
+"ми забираємося атсюда. Внатурі дякуєм за допомогу, ми цього не забудємо."
 
 #. [message]
 #. І справді, ви вже врятували все болото, тож хай тот злий чаклун тікає, і ми забираємося атсюда. Внатурі дякуєм за допомогу, ми цього не забудємо.
@@ -17752,6 +17774,8 @@ msgid ""
 "Aye, ye’ve saved the whole swamp now, so let that wizard flee, an’ we’ll be "
 "leavin’. Much obliged fer the help, we’ll keep this in mind."
 msgstr ""
+"І справді, ви вже врятували все болото, тож хай тот злий чаклун тікає, і ми "
+"забираємося атсюда. Внатурі дякуєм за допомогу, ми цього не забудємо."
 
 #. [then]
 #. Ей, хлопці, м'ясо само лізе в нашу пещеру, це прям свято якесь! А ну ловіть їх негайно!
@@ -17760,6 +17784,8 @@ msgid ""
 "Hey, lads, the meat’s walkin’ right into our cave—it’s like a feast come t’ "
 "us! Grab ‘em quick!"
 msgstr ""
+"Ей, хлопці, м'ясо само лізе в нашу пещеру, це прям свято якесь! А ну ловіть "
+"їх негайно!"
 
 #. [message]
 #. Ей, хлопці, м'ясо само лізе в нашу пещеру, це прям свято якесь! А ну ловіть їх негайно!
@@ -17768,6 +17794,8 @@ msgid ""
 "Oi, lads, the meat’s crawlin’ straight into our lair—this is like some kinda "
 "holiday! Catch ‘em now!"
 msgstr ""
+"Ей, хлопці, м'ясо само лізе в нашу пещеру, це прям свято якесь! А ну ловіть "
+"їх негайно!"
 
 #. [then]
 #. Клянуся самим Світлом, вам це не вдастся, людожерські мерзотники, бо ж загублені були ваші душі в ту мить, як повстали проти всього людського.
@@ -17776,11 +17804,14 @@ msgid ""
 "By the Light itself, you will not succeed, you cannibalistic scum, for your "
 "souls were lost the moment you rebelled against everything human."
 msgstr ""
+"Клянуся самим Світлом, вам це не вдастся, людожерські мерзотники, бо ж "
+"загублені були ваші душі в ту мить, як повстали проти всього людського."
 
 #. Айх! Ми же не мали іншого вибору! Ми же просто... уфф... ми хотіли вижити!
 #: Chasing_the_Light/utils/macros.cfg:821
 msgid "Ouch! We had no other choice! We just... uh... we wanted to survive!"
 msgstr ""
+"Айх! Ми же не мали іншого вибору! Ми же просто... уфф... ми хотіли вижити!"
 
 #. Бачить Світло, жодне життя не варте того, щоб заради нього вбивати незнайомих вам людей, тим паче вчиняючи настільки мерзенний злочин — пожираючи собі подібних. Хай же буде само Світло тобі суддею, бо ж смерть не є достатньою карою!
 #: Chasing_the_Light/utils/macros.cfg:823
@@ -17789,28 +17820,32 @@ msgid ""
 "a heinous crime as devouring your own kind. Let the Light itself be your "
 "judge, for death is not a sufficient punishment!"
 msgstr ""
+"Бачить Світло, жодне життя не варте того, щоб заради нього вбивати "
+"незнайомих вам людей, тим паче вчиняючи настільки мерзенний злочин — "
+"пожираючи собі подібних. Хай же буде само Світло тобі суддею, бо ж смерть не "
+"є достатньою карою!"
 
 #. Але ж.... УАГХ!...
 #: Chasing_the_Light/utils/macros.cfg:832
 msgid "But.... UGH!!!.."
-msgstr ""
+msgstr "Але ж.... УАГХ!..."
 
 #. АААААААРГХ!
 #: Chasing_the_Light/utils/macros.cfg:846
 msgid "AAAAAAARGH!"
-msgstr ""
+msgstr "АААААААРГХ!"
 
 #. [then]
 #. Вчителю, що... Що це таке?..
 #: Chasing_the_Light/utils/macros.cfg:862
 msgid "Teacher, what... What is this?.."
-msgstr ""
+msgstr "Вчителю, що... Що це таке?.."
 
 #. [else]
 #. Пане, що... Що це таке сталося?
 #: Chasing_the_Light/utils/macros.cfg:874
 msgid "Master, what... What just happened?"
-msgstr ""
+msgstr "Пане, що... Що це таке сталося?"
 
 #. [event]
 #. Я й сам не знаю, як... проте, хвала Світлу, схоже, воно знову почуло мій заклик...
@@ -17819,6 +17854,8 @@ msgid ""
 "I do not know how... but, praise be to the Light, it seems that it has heard "
 "my call again..."
 msgstr ""
+"Я й сам не знаю, як... проте, хвала Світлу, схоже, воно знову почуло мій "
+"заклик..."
 
 #. [then]
 #. Прокляття, я б помстився за Пенеллу, але еті чаклуни дуже сильні. Треба відступати до інших!
@@ -17827,12 +17864,14 @@ msgid ""
 "Curse it, I’d avenge Penella, but these wizards are too damn strong. We "
 "gotta fall back t’ the others!"
 msgstr ""
+"Прокляття, я б помстився за Пенеллу, але еті чаклуни дуже сильні. Треба "
+"відступати до інших!"
 
 #. [then]
 #. Нас чекатиме битва в печері, ще одна затримка.
 #: Chasing_the_Light/utils/macros.cfg:915
 msgid "Battle awaits us in the cave — another delay."
-msgstr ""
+msgstr "Нас чекатиме битва в печері, ще одна затримка."
 
 #. [then]
 #. Це так, однак хоча б прохід всередину вже вільний. Нумо туди, доженемо того поганця!
@@ -17841,6 +17880,8 @@ msgid ""
 "It is true, but at least the passage inside is free. Let's go in there and "
 "catch up with that monster!"
 msgstr ""
+"Це так, однак хоча б прохід всередину вже вільний. Нумо туди, доженемо того "
+"поганця!"
 
 #. [then]
 #. Клянуся Світлом, тільки що ми зробили добру справу, очистивши це нещасне місце від стількох мерзенних речей. Проте ми не маємо відволікатися від головної мети — порятунку Графа Блекмору.
@@ -17850,12 +17891,15 @@ msgid ""
 "of so many vile things. However, we mustn't be distracted from our main "
 "goal, which is to save Count of Blackmore."
 msgstr ""
+"Клянуся Світлом, тільки що ми зробили добру справу, очистивши це нещасне "
+"місце від стількох мерзенних речей. Проте ми не маємо відволікатися від "
+"головної мети — порятунку Графа Чорнотопу."
 
 #. [then]
 #. Тепер рухаємося до входу в копальню, чаклуне.
 #: Chasing_the_Light/utils/macros.cfg:954
 msgid "Now we head to the mine entrance, sorcerer."
-msgstr ""
+msgstr "Тепер рухаємося до входу в копальню, чаклуне."
 
 #. [then]
 #. Ага, м'я палка файно тих мерців і нелюдів порішала! Але всередині точна сче гади б'дуть.
@@ -17866,6 +17910,8 @@ msgid ""
 "Aye, me stick did a fine job takin’ care o’ those dead ‘uns an’ monsters! "
 "But inside, there’ll surely be more vermin waitin’."
 msgstr ""
+"Ага, м'я палка файно тих мерців і нелюдів порішала! Але всередині точна сче "
+"гади б'дуть."
 
 #. [else]
 #. Клянуся Світлом, тільки що ми зробили добру справу, очистивши це нещасне місце від мерців та людожерів, проте шкода, що ми не змогли знищити всі прокляті моноліти, тому неупокоєні духи продовжуватимуть тинятися цією місциною.
@@ -17877,6 +17923,10 @@ msgid ""
 "of undead and cannibals, but it is a pity that we could not destroy all the "
 "cursed monoliths, so the restless spirits will continue to roam this place."
 msgstr ""
+"Клянуся Світлом, тільки що ми зробили добру справу, очистивши це нещасне "
+"місце від мерців та людожерів, проте шкода, що ми не змогли знищити всі "
+"прокляті моноліти, тому неупокоєні духи продовжуватимуть тинятися цією "
+"місциною."
 
 #. [else]
 #. Однак ми вже зробили більш, ніж достатньо, Вчителю! Це справжнє диво, що наш малий загін зміг розбити ворожі сили, нумо, ходімо!
@@ -17885,6 +17935,8 @@ msgid ""
 "However we have already done more than enough, Teacher! It is a real miracle "
 "that our small group was able to defeat the enemy forces, come on, let's go!"
 msgstr ""
+"Однак ми вже зробили більш, ніж достатньо, Вчителю! Це справжнє диво, що наш "
+"малий загін зміг розбити ворожі сили, нумо, ходімо!"
 
 #. [else]
 #. Даеола діло каже, Гараліне, нічого вже тут затримуватися — нам ще Графа Блекмору рятувати.
@@ -17895,6 +17947,8 @@ msgid ""
 "Daeola is right, Haralin, there's no point in staying here any longer - we "
 "have Count of Blackmore to rescue."
 msgstr ""
+"Даеола діло каже, Гараліне, нічого вже тут затримуватися — нам ще Графа "
+"Блекмору рятувати."
 
 #. [then]
 #. Клянуся Світлом, тільки що ми зробили добру справу, очистивши це нещасне місце від стількох мерзенних речей. Проте ми ще маємо розібратися з тим біглим чаклуном, інакше все це зло з часом знову повернеться на болота.
@@ -17904,6 +17958,9 @@ msgid ""
 "of so many vile things. However, we still have to deal with that fleeing "
 "adept, otherwise all this evil will eventually return to the swamp."
 msgstr ""
+"Клянуся Світлом, тільки що ми зробили добру справу, очистивши це нещасне "
+"місце від стількох мерзенних речей. Проте ми ще маємо розібратися з тим "
+"біглим чаклуном, інакше все це зло з часом знову повернеться на болота."
 
 #. [then]
 #. Бачить Світло, ми припустимося великої помилки, дозволивши це, проте й справді — в нас нема часу, йдемо до копальні.
@@ -17912,6 +17969,8 @@ msgid ""
 "The Light sees that we will make a big mistake if we allow this, but indeed "
 "we have no time, we are going to the mine."
 msgstr ""
+"Бачить Світло, ми припустимося великої помилки, дозволивши це, проте й "
+"справді — в нас нема часу, йдемо до копальні."
 
 #. [else]
 #. Ще й лишився отой біглий адепт, однак ми вже зробили більш, ніж достатньо, Вчителю! Це справжнє диво, що наш малий загін зміг розбити ворожі сили, нумо, ходімо!
@@ -17921,22 +17980,26 @@ msgid ""
 "enough, Teacher! It is a real miracle that our small group was able to "
 "defeat the enemy forces, come on, let's go!"
 msgstr ""
+"Ще й лишився отой біглий адепт, однак ми вже зробили більш, ніж достатньо, "
+"Вчителю! Це справжнє диво, що наш малий загін зміг розбити ворожі сили, "
+"нумо, ходімо!"
 
 #. [then]
 #: Chasing_the_Light/utils/macros.cfg:1283
 msgid "By the Light, there is something behind this cracked wall!"
-msgstr ""
+msgstr "Клянуся Світлом, за цією потрісканою стіною щось є!"
 
 #. [then]
 #: Chasing_the_Light/utils/macros.cfg:1285
 msgid ""
 "Looks like there is a passage behind this wall. My magic will help open it!"
 msgstr ""
+"Схоже, за цією стіною є якийсь прохід. Моя магія допоможе відкрити його!"
 
 #. [then]
 #: Chasing_the_Light/utils/macros.cfg:1287
 msgid "Passage behind the wall."
-msgstr ""
+msgstr "Прохід за стіною."
 
 #. [then]
 #: Chasing_the_Light/utils/macros.cfg:1289
@@ -17944,23 +18007,25 @@ msgid ""
 "There is something behind this cracked wall. I hope there are no mages or "
 "monsters hiding behind it..."
 msgstr ""
+"Схоже, за цією потрісканою стіною щось є. Сподіваюся, за ним не ховаються "
+"чаклуни чи чудовиська?.."
 
 #. [then]
 #: Chasing_the_Light/utils/macros.cfg:1291
 msgid "Eh, a hidden pass'ge... Y’all, come take a look here!"
-msgstr ""
+msgstr "Еге, ж потайной праход... Усє девіться сюда!"
 
 #. [then]
 #: Chasing_the_Light/utils/macros.cfg:1293
 msgid "Roots of ours crush the earth, we a passage noticed have, yes"
-msgstr ""
+msgstr "Коріння крушить землю наше, прохід ми помітили бо ж."
 
 #. [then]
 #: Chasing_the_Light/utils/macros.cfg:1295
 msgid ""
 "There's something behind this cracked wall. I'm going to try to break "
 "through it now."
-msgstr ""
+msgstr "Схоже, за цією потрісканою стіною щось є. Я зараз спробую її пробити."
 
 #. [then]
 #: Chasing_the_Light/utils/macros.cfg:1310
@@ -17969,56 +18034,60 @@ msgid ""
 "I'm sure that all these holes and rifts are the work of the same wicked "
 "creature who turned Esten into a miserable swamp."
 msgstr ""
+"Будьте уважніше, у цих печерах має бути повно подібних проходів. Бачить "
+"Світло, усі ці нори та розломи є справою рук того ж нечестивця, що "
+"перетворив Естен на злиденне болото."
 
 #. [then]
 #: Chasing_the_Light/utils/macros.cfg:1312
 msgid ""
 "I wonder if there are any other passages like this here? Probably yes, it's "
 "a cave!"
-msgstr ""
+msgstr "Цікаво, чи тут є ще такі проходи? Певно, що так, це ж печера!"
 
 #. [then]
 #: Chasing_the_Light/utils/macros.cfg:1315
 #: Chasing_the_Light/utils/macros.cfg:1321
 msgid "We need to be more careful, perhaps we will find more such passages."
-msgstr ""
+msgstr "Треба бути уважніше, можливо, ми знайдемо ще такі проходи."
 
 #. [then]
 #: Chasing_the_Light/utils/macros.cfg:1317
 msgid "Hey, stay sharp now. There’s bound t’ be more o’ these ‘round here."
-msgstr ""
+msgstr "Гой, будьтє уважніше. Тут точна ще такі є."
 
 #. [then]
 #: Chasing_the_Light/utils/macros.cfg:1319
 msgid ""
 "Careful, two-legged, look around you must. More such passages there must be."
-msgstr ""
+msgstr "Уважніше, двоногі, озирайтеся ви. Мають проходи бути ще такі."
 
 #: Chasing_the_Light/utils/macros.cfg:1337
 msgid ""
 "Teacher, you should look at this, there are some strange letters drawn here!"
 msgstr ""
+"Вчителю, ви маєте на це подивитися, тут якісь дивні літери намальовані!"
 
 #: Chasing_the_Light/utils/macros.cfg:1339
 msgid "Sorcerer, you should take a look."
-msgstr ""
+msgstr "Чаклуне, тобі варто поглянути."
 
 #: Chasing_the_Light/utils/macros.cfg:1341
 msgid "Something is written here — that's all I can say."
-msgstr ""
+msgstr "Тут щось написане — це все, що я можу сказати."
 
 #: Chasing_the_Light/utils/macros.cfg:1343
 msgid "... Haralin, there’s somethin’ writ down ‘ere... Come read it."
-msgstr ""
+msgstr "... Гараліне, тут чота напісано... іді почитай."
 
 #: Chasing_the_Light/utils/macros.cfg:1345
 msgid ""
 "Traces of ancient two-legged see we. Wise two-legged, this at look must you."
-msgstr ""
+msgstr "Давніх сліди двоногих. Мудрий двоногий, на це маєш подивитися ти."
 
 #: Chasing_the_Light/utils/macros.cfg:1347
 msgid "Master Haralin, look, there are some ancient symbols here."
-msgstr ""
+msgstr "Пане Гараліне, погляньте, тут якісь стародавні символи."
 
 #. [then]
 #. Гараліне, щоб підкорити тутешніх духів, ти маєш прочитати послання Древніх у правильному порядку й лиш після того торкнутися місця сили. Ти вільний це зробити, проте, ім'ям Світла, не вірь жодним оманливим словам, що почуєш!
@@ -18029,6 +18098,9 @@ msgid ""
 "are free to do so, but in the name of Light, don't believe any of the "
 "misleading words you hear!"
 msgstr ""
+"Гараліне, щоб підкорити тутешніх духів, ти маєш прочитати послання Древніх у "
+"правильному порядку й лиш після того торкнутися місця сили. Ти вільний це "
+"зробити, проте, ім'ям Світла, не вірь жодним оманливим словам, що почуєш!"
 
 #. [then]
 #. Клянуся Світлом, я сумніваюся, що пращури людей нашого Острову, якщо ці таблички дійсно лишили вони, могли написати щось брехливе. Я не жодної підстави так вважати, тому без вагань підкорю духів каменю, бо ж мені та людям Скархейну потрібна їхня сила.
@@ -18039,6 +18111,10 @@ msgid ""
 "reason to think so, therefore I will not hesitate to subdue spirits of the "
 "stone, for I and the people of Scarhane need their power.</i>"
 msgstr ""
+"<i>Клянуся Світлом, я сумніваюся, що пращури людей нашого Острову, якщо ці "
+"таблички дійсно лишили вони, могли написати щось брехливе. Я не жодної "
+"підстави так вважати, тому без вагань підкорю духів каменю, бо ж мені та "
+"людям Скархейну потрібна їхня сила.</i>"
 
 #. [then]
 #. Вирок за людожерство — смерть, але можливість виконати вирок було втрачено.
@@ -18046,6 +18122,7 @@ msgstr ""
 msgid ""
 "The penalty for cannibalism — death, but the chance to inforce it was lost."
 msgstr ""
+"Вирок за людожерство — смерть, але можливість виконати вирок було втрачено."
 
 #. [then]
 #. Це жахливо... Однак, Вчителю, невже ви й справді не помітили нічого дивного? Ті люди увесь час дивилися на нас голодними поглядами, хоч і намагалися здаватися дружніми.
@@ -18055,6 +18132,9 @@ msgid ""
 "strange? Those people were always looking at us with hungry eyes, although "
 "they tried to appear friendly..."
 msgstr ""
+"Це жахливо... Однак, Вчителю, невже ви й справді не помітили нічого дивного? "
+"Ті люди увесь час дивилися на нас голодними поглядами, хоч і намагалися "
+"здаватися дружніми."
 
 #. [then]
 #. Я не знаю, Даеоло... Я помітив їхню надту бліду шкіру, голодні жадібні очі, і моє чуття, йому зовсім це не сподобалося. Клянуся Світлом, у темні часи люди здатні на все, проте те, що я відчув на болотах... Я відмовлявся в це вірити.
@@ -18065,6 +18145,10 @@ msgid ""
 "times, people are capable of anything, but what I felt in that swamp... I "
 "just refused to believe it."
 msgstr ""
+"Я не знаю, Даеоло... Я помітив їхню надту бліду шкіру, голодні жадібні очі, "
+"і моє чуття, йому зовсім це не сподобалося. Клянуся Світлом, у темні часи "
+"люди здатні на все, проте те, що я відчув на болотах... Я відмовлявся в це "
+"вірити."
 
 #. [then]
 #. Це була важка битва, проте мені вдалося заспокоїти усіх лютуючих духів, і вони погодилися підкоритися мені.
@@ -18073,6 +18157,8 @@ msgid ""
 "It was a tough battle, but I managed to calm down all the raging spirits, "
 "and they agreed to obey me."
 msgstr ""
+"Це була важка битва, проте мені вдалося заспокоїти усіх лютуючих духів, і "
+"вони погодилися підкоритися мені."
 
 #. [else]
 #. Це була важка битва, і хоч мені й не вдалося заспокоїти усіх лютуючих духів, вони погодилися підкоритися мені.
@@ -18081,11 +18167,13 @@ msgid ""
 "It was a tough battle, and although I didn't manage to calm down all the "
 "raging spirits, they agreed to obey me."
 msgstr ""
+"Це була важка битва, і хоч мені й не вдалося заспокоїти усіх лютуючих духів, "
+"вони погодилися підкоритися мені."
 
 #. чаклун впорався непогано, як для мага цього острову...
 #: Chasing_the_Light/utils/macros.cfg:2028
 msgid "the sorcerer did a good job for a mage of this isle..."
-msgstr ""
+msgstr "чаклун впорався непогано, як для мага цього острову..."
 
 #. Мені дуже шкода, Гараліне, проте ти сам бачиш — усі спогади твого тіла повстають проти тебе й не лишилося більше нічого, що б могло тобі допомогти. Тому, хоч я й завжди пам'ятатиму тебе, ти маєш поступитися мені та відправитися в небуття...
 #: Chasing_the_Light/utils/macros.cfg:2200
@@ -18095,6 +18183,10 @@ msgid ""
 "Therefore, although I will always remember you, you must give up and leave "
 "this world..."
 msgstr ""
+"Мені дуже шкода, Гараліне, проте ти сам бачиш — усі спогади твого тіла "
+"повстають проти тебе й не лишилося більше нічого, що б могло тобі допомогти. "
+"Тому, хоч я й завжди пам'ятатиму тебе, ти маєш поступитися мені та "
+"відправитися в небуття..."
 
 #. (хапається за голову) Аргхх, ні... Даеоло, невже... ти не врятуєш мене цього разу?..
 #: Chasing_the_Light/utils/macros.cfg:2205
@@ -18102,6 +18194,8 @@ msgid ""
 "(grabbing his head) Arghhh, no... Daeola, are you... not going to save me "
 "this time?"
 msgstr ""
+"(хапається за голову) Аргхх, ні... Даеоло, невже... ти не врятуєш мене цього "
+"разу?.."
 
 #. [object]
 #: Chasing_the_Light/utils/spellcasting.cfg:61
@@ -18153,6 +18247,8 @@ msgid ""
 "No, I can't heal myself with a spell, not now! I won't go back on my promise "
 "— I'll wear my scar until I'm a real mage!"
 msgstr ""
+"Ні, я не можу вилікувати себе закляттям, тільки не зараз! Я не відмовлюся "
+"від своєї обіцянки — я носитиму свій шрам, поки не стану справжнім магом!"
 
 #. [object]
 #: Chasing_the_Light/utils/spellcasting.cfg:1440
