@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2025-07-30 09:54 UTC\n"
-"PO-Revision-Date: 2025-08-07 00:16+0300\n"
+"PO-Revision-Date: 2025-08-08 00:04+0300\n"
 "Last-Translator: Oleksii Okhrimenko(lexa04) <e-mail: ohrimale@gmail.com "
 "discord: amakri>\n"
 "Language-Team: \n"
@@ -8976,7 +8976,7 @@ msgstr "Бурін Загублений"
 #. Знайдіть шлях глибше в печери
 #: Chasing_the_Light/scenarios/06_Miscreants.cfg:1003
 msgid "Find the way deeper into the caves"
-msgstr ""
+msgstr "Знайдіть шлях глибше в печери"
 
 #. [then]
 #. Гори черепів, барикади прикрашені трупами. Це справа рук біженців?
@@ -8984,7 +8984,7 @@ msgstr ""
 msgid ""
 "Piles of skulls, barricades decorated with corpses. Is this the work of "
 "refugees?"
-msgstr ""
+msgstr "Гори черепів, барикади прикрашені трупами. Це справа рук біженців?"
 
 #. [then]
 #. Аякже, я чув, що навіть звичайнісінькі містяни полюбляли збирати голови мертвих і складати їх у купу. Тут навіть кляті чаклуни ні до чого!
@@ -8994,6 +8994,8 @@ msgid ""
 "the dead and put them in a pile. It has nothing to do with the damned "
 "sorcerers!"
 msgstr ""
+"Аякже, я чув, що навіть звичайнісінькі містяни полюбляли збирати голови "
+"мертвих і складати їх у купу. Тут навіть кляті чаклуни ні до чого!"
 
 #. [then]
 #. Якщо так, то це жахливо, пане — як правитель Естену міг дозволяти такі огидні розваги?
@@ -9002,6 +9004,8 @@ msgid ""
 "If so, it's terrible, sir — how could the ruler of Esten allow such "
 "disgusting entertainment?"
 msgstr ""
+"Якщо так, то це жахливо, пане — як правитель Естену міг дозволяти такі "
+"огидні розваги?"
 
 #. [then]
 #. Справді, Даеоло? Клятий Гаралін настільки задурив тобі голову, що ти віриш усьому, що чуєш?
@@ -9010,6 +9014,8 @@ msgid ""
 "Really, Daeola? Has the damned Haralin messed with your head so much that "
 "you believe everything you hear?"
 msgstr ""
+"Справді, Даеоло? Клятий Гаралін настільки задурив тобі голову, що ти віриш "
+"усьому, що чуєш?"
 
 #. [then]
 #. Я не...
@@ -9018,6 +9024,8 @@ msgid ""
 "...\n"
 "I'm no-..."
 msgstr ""
+"...\n"
+"Я не..."
 
 #. [then]
 #. Звісно ж, звісно ж. У будь-якому випадку мені все це видається надто підозрілим, тому ми маємо дослідити цю місцину, щоб утямити, що тут коїлося.
@@ -9027,6 +9035,8 @@ msgid ""
 "to me, so we have to investigate this place to find out what was going on "
 "here."
 msgstr ""
+"Звісно ж, звісно ж. У будь-якому випадку мені все це видається надто "
+"підозрілим, тому ми маємо дослідити цю місцину, щоб утямити, що тут коїлося."
 
 #. [then]
 #. Згода.
@@ -9038,7 +9048,7 @@ msgstr "Згода."
 #. Добре... Тоді я покличу Вчителя — він точно знає, що нам робити!
 #: Chasing_the_Light/scenarios/06_Miscreants.cfg:1083
 msgid "Okay... Then I will call the Teacher — he definitely knows what to do!"
-msgstr ""
+msgstr "Добре... Тоді я покличу Вчителя — він точно знає, що нам робити!"
 
 #. [else]
 #. Можливо це все залишки проклятих мерців, що напали на Естен? Однак нащо їм збирати їх у печері?
@@ -9047,6 +9057,8 @@ msgid ""
 "Perhaps these are parts of the damned undead who attacked Esten? However, "
 "why would they gather them in a cave?"
 msgstr ""
+"Можливо це все залишки проклятих мерців, що напали на Естен? Однак нащо їм "
+"збирати їх у печері?"
 
 #. [then]
 #. Ґа-ґа... Чєрєпушкі валяются, ну так їм і треба! ... Тфу, споткнувся! ... А гдє я?...
@@ -9055,18 +9067,20 @@ msgid ""
 "Huh?... Skulls lyin' 'round, serves 'em right! ... Pah, tripped! ... Where "
 "am I?..."
 msgstr ""
+"Ґа-ґа... Чєрєпушкі валяются, ну так їм і треба! ... Тфу, споткнувся! ... А "
+"гдє я?..."
 
 #. [then]
 #. Обережніше, пане Джуангу, у цій огидній норі легко впасти!
 #: Chasing_the_Light/scenarios/06_Miscreants.cfg:1102
 msgid "Be careful, sir Juangh, it's easy to fall in this disgusting hole!"
-msgstr ""
+msgstr "Обережніше, пане Джуангу, у цій огидній норі легко впасти!"
 
 #. [else]
 #. Чаклун має знати. Але нема часу на загадки — треба в Скархейн.
 #: Chasing_the_Light/scenarios/06_Miscreants.cfg:1105
 msgid "The sorcerer must know. But no time for riddles — Scarhane awaits."
-msgstr ""
+msgstr "Чаклун має знати. Але нема часу на загадки — треба в Скархейн."
 
 #. [else]
 #. Так нецікаво, бо ж Вчитель точно знатиме відповідь на це питання. Якби ж я могла сама відчути... відчути та зрозуміти...
@@ -9075,6 +9089,8 @@ msgid ""
 "That's not interesting, because the Teacher will know the answer for sure. "
 "If only I myself could feel... feel and understand..."
 msgstr ""
+"Так нецікаво, бо ж Вчитель точно знатиме відповідь на це питання. Якби ж я "
+"могла сама відчути... відчути та зрозуміти..."
 
 #. [else]
 #. Добре-добре, я зараз його покличу! Дивно, чому Вчителю схотілося зачекати посеред того огидного болота?...
@@ -9083,6 +9099,8 @@ msgid ""
 "Okay-okay, I'll call him now! I wonder why the Teacher wanted to wait in the "
 "middle of that disgusting swamp...."
 msgstr ""
+"Добре-добре, я зараз його покличу! Дивно, чому Вчителю схотілося зачекати "
+"посеред того огидного болота?..."
 
 #. [then]
 #. ...тож 'сь так ви потрапили в нашу лавушку і тєпер ми вас зжеремо.
@@ -9090,7 +9108,7 @@ msgstr ""
 msgid ""
 "...So, that’s how ya walked right into our trap, an’ now we’re gonna eat ya "
 "up."
-msgstr ""
+msgstr "...тож 'сь так ви потрапили в нашу лавушку і тєпер ми вас зжеремо."
 
 #. [then]
 #. Що, невже... невже ви людожери?... Це занадто огидно, щоб бути правдою!
@@ -9098,6 +9116,7 @@ msgstr ""
 msgid ""
 "What, really... are you really the cannibals? It's too disgusting to be true!"
 msgstr ""
+"Що, невже... невже ви людожери?... Це занадто огидно, щоб бути правдою!"
 
 #. [then]
 #. Я це помітив, занадто дивною буля їхня поведінка та їхні слова на болоті. Наші давні звичаї гласять, що подібні злочини має суворо каратися силами нашого Короля.
@@ -9107,6 +9126,9 @@ msgid ""
 "ancient customs state that such crimes must be severely punished by the "
 "King's forces."
 msgstr ""
+"Я це помітив, занадто дивною буля їхня поведінка та їхні слова на болоті. "
+"Наші давні звичаї гласять, що подібні злочини має суворо каратися силами "
+"нашого Короля."
 
 #. [then]
 #. Я сержант Королівського війська Південної Бухти. Вирок за людожерство — смерть.
@@ -9115,6 +9137,8 @@ msgid ""
 "I am a sergeant of the Royal Army of Southbay. The penalty for cannibalism — "
 "death."
 msgstr ""
+"Я сержант Королівського війська Південної Бухти. Вирок за людожерство — "
+"смерть."
 
 #. [else]
 #. ...ну як мнє доложилі, що вечеря сама рветься в нашу домівку, я сразу і нє повєріл. Ну што, є останній слова?
@@ -9123,6 +9147,8 @@ msgid ""
 "...Well, when I got word that supper was runnin’ straight into our home, I "
 "didn’t believe it at first. So then, any last words?"
 msgstr ""
+"...ну як мнє доложилі, що вечеря сама рветься в нашу домівку, я сразу і нє "
+"повєріл. Ну што, є останній слова?"
 
 #. [else]
 #. Вєрю, я повєріл! Как тільки Гаралін прийде... Вам всєм кінець будет, во!
@@ -9131,6 +9157,7 @@ msgid ""
 "Don't believe ya, I don't! Once Haralin comes... it’s the end for all o’ ya, "
 "ha!"
 msgstr ""
+"Вєрю, я повєріл! Как тільки Гаралін прийде... Вам всєм кінець будет, во!"
 
 #. [else]
 #. Як тільки Вчитель нарешті спуститься до цієї нори, він не залишить живого місця від вас, проклятих людожерів.
@@ -9139,6 +9166,8 @@ msgid ""
 "When the Teacher finally descends into this hole, he won't leave a living "
 "place for you damned cannibals."
 msgstr ""
+"Як тільки Вчитель нарешті спуститься до цієї нори, він не залишить живого "
+"місця від вас, проклятих людожерів."
 
 #. [else]
 #. Лише одне — я, сержант Королівського війська Південної Бухти, присуджую вас до смерті за людожерство!
@@ -9147,6 +9176,8 @@ msgid ""
 "Only one thing — as a sergeant of the Royal Army of Southbay, I sentence you "
 "to death for cannibalism!"
 msgstr ""
+"Лише одне — я, сержант Королівського війська Південної Бухти, присуджую вас "
+"до смерті за людожерство!"
 
 #. [else]
 #. Так-так, а наплєвать мені, дівчинко, всім нам! Ми виживаємо як можем, наскільки це можливо в цьому проклятому місці. Будь-хто поступіл также!
@@ -9155,6 +9186,8 @@ msgid ""
 "Yeah, yeah, like I care, lass, none of us do! We’re just survivin’ the best "
 "we can in this cursed place. Anyone woulda done the same!"
 msgstr ""
+"Так-так, а наплєвать мені, дівчинко, всім нам! Ми виживаємо як можем, "
+"наскільки це можливо в цьому проклятому місці. Будь-хто поступіл также!"
 
 #. [else]
 #. Як ви тільки змогли опуститися так низько та занепастити свої душі? Мій Вчитель завжди казав, що як би не було тяжко, людина має залишатися людиною.
@@ -9163,6 +9196,8 @@ msgid ""
 "How did you manage to sink so low and corrupt your souls? My Teacher always "
 "said that no matter how hard it is, a human must remain a human."
 msgstr ""
+"Як ви тільки змогли опуститися так низько та занепастити свої душі? Мій "
+"Вчитель завжди казав, що як би не було тяжко, людина має залишатися людиною."
 
 #. [else]
 #. ХА-ХА-ХА! Нас, гордих естенських шахтарів, сміє повчати якесь пошрамоване дівчисько, що вирішило погратися в чаклунську прінцессу! Ви слихалі, хлопці?
@@ -9171,6 +9206,8 @@ msgid ""
 "HA-HA-HA! Us, proud Esten miners, bein’ lectured by some scar-faced little "
 "lass who fancies herself a magic'o-wesfolk princess! Ya hear this, boys?!"
 msgstr ""
+"ХА-ХА-ХА! Нас, гордих естенських шахтарів, сміє повчати якесь пошрамоване "
+"дівчисько, що вирішило погратися в чаклунську прінцессу! Ви слихалі, хлопці?"
 
 #. [message]
 #. Хех, да, начальнік, ну і ярмарка к нам прієхала — дивний старий з пріколом, його наївна учениця, а ще й дєвка, шо напяліла броню і гадає, що може бути воїном!
@@ -9180,12 +9217,15 @@ msgid ""
 "with his silly tricks, his naive little apprentice, an’ a lass wearin’ armor "
 "thinkin’ she can be a warrior!"
 msgstr ""
+"Хех, да, начальнік, ну і ярмарка к нам прієхала — дивний старий з пріколом, "
+"його наївна учениця, а ще й дєвка, шо напяліла броню і гадає, що може бути "
+"воїном!"
 
 #. [message]
 #. Шче нє забувай про живоє дєрєво!
 #: Chasing_the_Light/scenarios/06_Miscreants.cfg:1181
 msgid "Oh, an’ don’t forget the walkin’ tree!"
-msgstr ""
+msgstr "Шче нє забувай про живоє дєрєво!"
 
 #. [else]
 #. (оголяє меча) Клянуся родом, я не залишу жодного з вас в живих!
@@ -9193,7 +9233,7 @@ msgstr ""
 msgid ""
 "...\n"
 "(draws her sword) I swear by my lineage, I will leave none of you alive!"
-msgstr ""
+msgstr "(оголяє меча) Клянуся родом, я не залишу жодного з вас в живих!"
 
 #. [else]
 #. Хах, ну что ж, гадаю, мені треба тікати, бо сержантКА сильно розозлілась!
@@ -9202,6 +9242,7 @@ msgid ""
 "Hah, well then, guess I better get runnin’ — that 'sergeant'-lass looks "
 "mighty pissed!"
 msgstr ""
+"Хах, ну что ж, гадаю, мені треба тікати, бо сержантКА сильно розозлілась!"
 
 #. [else]
 #. Як тільки Король пустив це посміховисько до війська... Ладно, годі вже, вбийте їх усіх, і прінєсіть мнє голови пошрамованої, сержантКИ та їхнього старого!
@@ -9211,11 +9252,14 @@ msgid ""
 "kill ‘em all! Bring me the heads of the scarred one, the 'sergeant'-lass, "
 "an’ their old man!"
 msgstr ""
+"Як тільки Король пустив це посміховисько до війська... Ладно, годі вже, "
+"вбийте їх усіх, і прінєсіть мнє голови пошрамованої, сержантКИ та їхнього "
+"старого!"
 
 #. [else]
 #: Chasing_the_Light/scenarios/06_Miscreants.cfg:1218
 msgid "...!"
-msgstr ""
+msgstr "...!"
 
 #. [else]
 #. (прикриває обличчя рукою) Я... Сержанте, я краще покличу Вчителя... Він... він скаже, що робити...
@@ -9224,12 +9268,15 @@ msgid ""
 "(covers the face with her hand) I... Sergeant, I'd better call the "
 "Teacher... He... He'll tell us what to do."
 msgstr ""
+"(прикриває обличчя рукою) Я... Сержанте, я краще покличу Вчителя... Він... "
+"він скаже, що робити..."
 
 #. [then]
 #. Спрагу відчуваємо до Сонця ми, під землі не були покровом бо ж ніколи...
 #: Chasing_the_Light/scenarios/06_Miscreants.cfg:1236
 msgid "Thirst for the Sun, we feel, under earth’s cover never we were..."
 msgstr ""
+"Спрагу відчуваємо до Сонця ми, під землі не були покровом бо ж ніколи..."
 
 #. [then]
 #. Тримайтеся, пане лісовику! Якщо Вчитель привів нас сюди, це найкраще, що могло з нами статися. Я вірю, що все буде добре — завдяки йому ми зовсім незабаром побачимо Сяйво!
@@ -9239,6 +9286,9 @@ msgid ""
 "could have happened to us. I believe that everything will be fine — thanks "
 "to him we will see the Light again very soon!"
 msgstr ""
+"Тримайтеся, пане лісовику! Якщо Вчитель привів нас сюди, це найкраще, що "
+"могло з нами статися. Я вірю, що все буде добре — завдяки йому ми зовсім "
+"незабаром побачимо Сяйво!"
 
 #. [message]: speaker=narrator
 #: Chasing_the_Light/scenarios/06_Miscreants.cfg:1274
@@ -9249,6 +9299,11 @@ msgid ""
 "...\n"
 "No, no, this is not the time to think about it! I have to calm down..."
 msgstr ""
+"Фе... Мій шрам, вони знущаються з нього... чому ж тоді не вдалося його "
+"зцілити.. навіть з моїм новим посохом...?\n"
+"...\n"
+"...\n"
+"Ні-ні, не час думати за це! Я маю заспокоїтися..."
 
 #. [event]
 #. Ім'ям Світла, сержанте, доповідай — що відбувається в цій проклятій усіма копальні?
@@ -9256,18 +9311,20 @@ msgstr ""
 msgid ""
 "In the name of Light, sergeant, report — what's going on in this cursed mine?"
 msgstr ""
+"Ім'ям Світла, сержанте, доповідай — що відбувається в цій проклятій усіма "
+"копальні?"
 
 #. [then]
 #. Люди пішли, лишилися черепи та гори костей. Вони свіжі.
 #: Chasing_the_Light/scenarios/06_Miscreants.cfg:1376
 msgid "People are gone. Skulls and bones remain. Fresh ones."
-msgstr ""
+msgstr "Люди пішли, лишилися черепи та гори костей. Вони свіжі."
 
 #. [then]
 #. Вчителю, ви ж можете відчути, що саме тут сталося?
 #: Chasing_the_Light/scenarios/06_Miscreants.cfg:1378
 msgid "Teacher, you can feel what happened here, can't you?"
-msgstr ""
+msgstr "Вчителю, ви ж можете відчути, що саме тут сталося?"
 
 #. [then]
 #. Бачить Світло — зараз це за межами моїх сил... я лиш відчуваю, що ми маємо продовжувати рухатися далі. Далі у печери, поки саме Світло не візьме нас за руку та не проведе до самого Скархейну...
@@ -9277,12 +9334,15 @@ msgid ""
 "keep moving on. Further into the caves, until the Light itself takes us by "
 "the hand and leads to Scarhane itself..."
 msgstr ""
+"Бачить Світло — зараз це за межами моїх сил... я лиш відчуваю, що ми маємо "
+"продовжувати рухатися далі. Далі у печери, поки саме Світло не візьме нас за "
+"руку та не проведе до самого Скархейну..."
 
 #. [then]
 #. Вони людожери.
 #: Chasing_the_Light/scenarios/06_Miscreants.cfg:1393
 msgid "They are cannibals."
-msgstr ""
+msgstr "Вони людожери."
 
 #. [then]
 #. Вчителю, невже ви і справді не помітили цього раніше? Ці нелюди здалися мені дивними ще на болотах...
@@ -9291,6 +9351,8 @@ msgid ""
 "Teacher, did you really not notice this before? I thought these miscreants "
 "were strange even in the swamps..."
 msgstr ""
+"Вчителю, невже ви і справді не помітили цього раніше? Ці нелюди здалися мені "
+"дивними ще на болотах..."
 
 #. [then]
 #. Бачить Світло — наша мета важливіша за це... я відчуваю, що ми маємо продовжувати рухатися далі. Далі у печери, поки саме Світло не візьме нас за руку та не проведе до самого Скархейну...
@@ -9301,12 +9363,16 @@ msgid ""
 "that we have to keep moving on. Further into the caves, until the Light "
 "itself takes us by the hand and leads to Scarhane itself..."
 msgstr ""
+"...\n"
+"Бачить Світло — наша мета важливіша за це... я відчуваю, що ми маємо "
+"продовжувати рухатися далі. Далі у печери, поки саме Світло не візьме нас за "
+"руку та не проведе до самого Скархейну..."
 
 #. [else]
 #. Ще більше людожерів.
 #: Chasing_the_Light/scenarios/06_Miscreants.cfg:1405
 msgid "More cannibals."
-msgstr ""
+msgstr "Ще більше людожерів."
 
 #. [else]
 #. Вчителю, ці огидні нелюди посміли насміхатися з нас. Це... образливо...
@@ -9314,6 +9380,7 @@ msgstr ""
 msgid ""
 "Teacher, these disgusting miscreants dare to mock us. It is... hurtful..."
 msgstr ""
+"Вчителю, ці огидні нелюди посміли насміхатися з нас. Це... образливо..."
 
 #. [else]
 #. Бачить Світло — наша мета важливіша за це... я відчуваю, що ми маємо продовжувати рухатися далі. Далі у печери, поки саме Світло не візьме нас за руку та не проведе до самого Скархейну...
@@ -9324,15 +9391,20 @@ msgid ""
 "that we have to keep moving on. Further into the caves, until the Light "
 "itself takes us by the hand and leads to Scarhane itself..."
 msgstr ""
+"...\n"
+"Бачить Світло — наша мета важливіша за це... я відчуваю, що ми маємо "
+"продовжувати рухатися далі. Далі у печери, поки саме Світло не візьме нас за "
+"руку та не проведе до самого Скархейну..."
 
 #. [event]
 #. Тобто ці дивні речі анітрохи не хвилюють тебе, Гараліне?.. З тобою точно щось не так, я це <i>відчуваю</i>.
 #: Chasing_the_Light/scenarios/06_Miscreants.cfg:1443
-#, fuzzy
 msgid ""
 "quietly^So these strange things don't bother you at all, Haralin? There is "
 "definitely something wrong with you, I can <i>feel</i> it."
-msgstr "quietly^<i></i>"
+msgstr ""
+"quietly^Тобто ці дивні речі анітрохи не хвилюють тебе, Гараліне?.. З тобою "
+"точно щось не так, я це <i>відчуваю</i>."
 
 #. [event]
 #. Мені ніяк не віриться, що ми й справді це робимо, Вчителю! Якщо ваш план спрацює, ми зможемо непомітно дістатися до Скархейну та завдати несподіваного удару!
@@ -9341,12 +9413,15 @@ msgid ""
 "I can't believe we're actually doing this, Teacher! If your plan works, we "
 "can sneak into Scarhane and strike without being noticed!"
 msgstr ""
+"Мені ніяк не віриться, що ми й справді це робимо, Вчителю! Якщо ваш план "
+"спрацює, ми зможемо непомітно дістатися до Скархейну та завдати "
+"несподіваного удару!"
 
 #. [event]
 #. Печерами до Скархейну? Неможливо.
 #: Chasing_the_Light/scenarios/06_Miscreants.cfg:1450
 msgid "Through caves to Scarhane? Impossible."
-msgstr ""
+msgstr "Печерами до Скархейну? Неможливо."
 
 #. [event]
 #. Еге ж, неможливо. Щось, Гараліне, твоя проклята 'магія' зовсім не туди нас завела...
@@ -9355,6 +9430,8 @@ msgid ""
 "Yes, it's impossible. Your damned 'magic' has led us to the wrong place, "
 "Haralin..."
 msgstr ""
+"Еге ж, неможливо. Щось, Гараліне, твоя проклята 'магія' зовсім не туди нас "
+"завела..."
 
 #. [event]
 #. Я не маю жодних сумнівів, що ми крокуємо правильним шляхом. Головне, це дістатися до наступної шахтарської стоянки, звідкіля, я сподіваюся дізнатися, куди нам йти далі.
@@ -9363,6 +9440,9 @@ msgid ""
 "I have no doubt that we are on the right track. The main thing is to get to "
 "the next mining camp, from where I hope to find out where we should go next."
 msgstr ""
+"Я не маю жодних сумнівів, що ми крокуємо правильним шляхом. Головне, це "
+"дістатися до наступної шахтарської стоянки, звідкіля, я сподіваюся "
+"дізнатися, куди нам йти далі."
 
 #. [then]
 #. Да-да...! Пєчєри ета харашо... як вдома чи шо... Вєди нас, Гараліне!
@@ -9370,38 +9450,39 @@ msgstr ""
 msgid ""
 "Aye, aye…! Caves are good... feel like home, or somethin'... Lead the way, "
 "Haralin!"
-msgstr ""
+msgstr "Да-да...! Пєчєри ета харашо... як вдома чи шо... Вєди нас, Гараліне!"
 
 #. [event]
 #. Рушаймо.
 #: Chasing_the_Light/scenarios/06_Miscreants.cfg:1465
 msgid "Let's go."
-msgstr ""
+msgstr "Рушаймо."
 
 #. [event]
 #. Вчителю, з вами щось сталося? Ви були дуже блідим, коли приєдналися до нас...
 #: Chasing_the_Light/scenarios/06_Miscreants.cfg:1477
-#, fuzzy
 msgid ""
 "quietly^Teacher, has something happened to you? You were very pale when you "
 "joined us..."
-msgstr "quietly^<i></i>"
+msgstr ""
+"quietly^Вчителю, з вами щось сталося? Ви були дуже блідим, коли приєдналися "
+"до нас..."
 
 #. [event]
 #. Ім'ям Світла, Даеоло, незважай на це, певне, тобі так здалося в темряві цієї проклятої печери. Просто... тримайся поближче.
 #: Chasing_the_Light/scenarios/06_Miscreants.cfg:1479
-#, fuzzy
 msgid ""
 "quietly^In the name of Light, Daeola, even so, it must have seemed that way "
 "to you in the darkness of this cursed cave. Just... stay close."
-msgstr "quietly^<i></i>"
+msgstr ""
+"quietly^Ім'ям Світла, Даеоло, незважай на це, певне, тобі так здалося в "
+"темряві цієї проклятої печери. Просто... тримайся поближче."
 
 #. [event]
 #. Як скажете, Вчителю.
 #: Chasing_the_Light/scenarios/06_Miscreants.cfg:1481
-#, fuzzy
 msgid "quietly^As you say, Teacher."
-msgstr "quietly^<i></i>"
+msgstr "quietly^Як скажете, Вчителю."
 
 #. [scenario]: id=06_Miscreants
 #. Наліво — Перша стоянка
@@ -9413,6 +9494,9 @@ msgid ""
 "Right — Near Caves\n"
 "Straight — Far Caves"
 msgstr ""
+"Наліво — Перша стоянка\n"
+"Направо — Ближні печери\n"
+"Прямо — Дальні печери"
 
 #. [scenario]: id=06_Miscreants
 #. Направо — Друга Стоянка
@@ -9422,6 +9506,8 @@ msgid ""
 "Right — Second camp\n"
 "Left — First camp"
 msgstr ""
+"Направо — Друга Стоянка\n"
+"Наліво — Перша Стоянка"
 
 #. [scenario]: id=06_Miscreants
 #: Chasing_the_Light/scenarios/06_Miscreants.cfg:1574
@@ -9429,6 +9515,8 @@ msgid ""
 "The signage is not very useful — these camps are separated by a real maze, "
 "how can 'right-left' help?"
 msgstr ""
+"Не надто корисний вказівник — ці стоянки розділяє справжній лабіринт, як тут "
+"'направо-наліво' допоможе??"
 
 #. [then]
 #. Гараліну невідомий жоден з символів на цій табличці, проте, лише подивившись на давнє письмо, він починає відчувати невідомий голос, схожий на далеке відлуння:
@@ -9451,27 +9539,38 @@ msgid ""
 "And when the <b>two</b> in battle stand,\n"
 "Does one still hold Light's guiding hand?</i>"
 msgstr ""
+"Гараліну невідомий жоден з символів на цій табличці, проте, лише подивившись "
+"на давнє письмо, він починає відчувати невідомий голос, схожий на далеке "
+"відлуння:\n"
+"\n"
+"<i>Як <b>островом</b> підуть мерці,\n"
+"Чи лиш добром зупиниш їх?\n"
+"Як мертвих край <b>той</b> пробудѝть\n"
+"Чи сяйва муж його спинить?\n"
+"Як в двóбою зійдуться <b>два</b>,\n"
+"Чи є там світла сторона?</i>"
 
 #. [then]
 #. Як Островом підуть мерці... Ім'ям Світла, невже тут сказано про наш Зелений Острів?...
 #: Chasing_the_Light/scenarios/06_Miscreants.cfg:1624
-#, fuzzy
 msgid ""
 "quietly^When island suffers undead threat... In the name of Light, is it "
 "referring to our Green Isle?"
-msgstr "quietly^<i></i>"
+msgstr ""
+"quietly^Як Островом підуть мерці... Ім'ям Світла, невже тут сказано про наш "
+"Зелений Острів?..."
 
 #. [then]
 #. Вчителю, що там написано? Чи є щось цікаве?
 #: Chasing_the_Light/scenarios/06_Miscreants.cfg:1626
 msgid "Teacher, what does it say? Is there anything interesting?"
-msgstr ""
+msgstr "Вчителю, що там написано? Чи є щось цікаве?"
 
 #. [then]
 #. Даеоло, тут...
 #: Chasing_the_Light/scenarios/06_Miscreants.cfg:1632
 msgid "Daeola, here..."
-msgstr ""
+msgstr "Даеоло, тут..."
 
 #. [then]
 #. Проте незважай, це просто якась дивна маячня, що просто співпала з дійсністю. Клянуся Світлом, передбачень не існує та існувати не може, тим паче наші пращури навряд володіли магією.
@@ -9482,6 +9581,9 @@ msgid ""
 "foresight, and it cannot exist, especially since our ancestors were not "
 "likely to have used magic."
 msgstr ""
+"Проте незважай, це просто якась дивна маячня, що просто співпала з "
+"дійсністю. Клянуся Світлом, передбачень не існує та існувати не може, тим "
+"паче наші пращури навряд володіли магією."
 
 #. [then]
 #. Наші предки не могли знати чаклунства, Гараліне? Це чудова новина, але ж звідки потім оця 'магія' взялася?..
@@ -9490,6 +9592,8 @@ msgid ""
 "Our ancestors could not have known witchcraft, Haralyn? That's great news, "
 "but where did this 'magic' come from?.."
 msgstr ""
+"Наші предки не могли знати чаклунства, Гараліне? Це чудова новина, але ж "
+"звідки потім оця 'магія' взялася?.."
 
 #. [then]
 #. Гараліну невідомий жоден з символів на цій табличці, проте, лише подивившись на давнє письмо, він починає відчувати невідомий голос, схожий на далеке відлуння:
@@ -9508,16 +9612,25 @@ msgid ""
 "But who has judged how they align?\n"
 "And who decreed what's <b>evil</b> sign?</i>"
 msgstr ""
+"Гараліну невідомий жоден з символів на цій табличці, проте, лише подивившись "
+"на давнє письмо, він починає відчувати невідомий голос, схожий на далеке "
+"відлуння:\n"
+"\n"
+"<i>Добро є завжди, є і зло,\n"
+"Проте й завжди <b>єдно</b> воно.\n"
+"Хто ж визначив як воно є?\n"
+"Та хто сказав, що <b>злом</b> то є?</i>"
 
 #. [then]
 #. Ім'ям Світла, я сподівався, що давні люди були хоч трохи мудріші. Як можна не відчувати зло та не повставати усім серцем проти нього?
 #: Chasing_the_Light/scenarios/06_Miscreants.cfg:1730
-#, fuzzy
 msgid ""
 "quietly^<i>In the name of Light, I hoped that ancient people were at least a "
 "little wiser. How can you not feel evil and not rebel against it with all "
 "your heart?</i>"
-msgstr "quietly^<i></i>"
+msgstr ""
+"quietly^<i>Ім'ям Світла, я сподівався, що давні люди були хоч трохи мудріші. "
+"Як можна не відчувати зло та не повставати усім серцем проти нього?</i>"
 
 #. [then]
 #. Гараліну невідомий жоден з символів на цій табличці, проте, лише подивившись на давнє письмо, він починає відчувати невідомий голос, схожий на далеке відлуння:
@@ -9536,6 +9649,14 @@ msgid ""
 "For why you walk, the cause you strive,\n"
 "That's what <b>you</b>'ll reap when you arrive.</i>"
 msgstr ""
+"Гараліну невідомий жоден з символів на цій табличці, проте, лише подивившись "
+"на давнє письмо, він починає відчувати невідомий голос, схожий на далеке "
+"відлуння:\n"
+"\n"
+"<i><b>Немає</b> світлого шляха.\n"
+"Одне лиш є — твоя мета. \n"
+"Для чого путь ти свій пройдеш, \n"
+"Те <b>у висновку</b> й пожнеш.</i>"
 
 #. [then]
 #. Клянуся Світлом, це найнезрозуміліші слова, що мені доводилося чути за все моє життя! Хоча...          Одне лиш є — твоя мета. Чи хотіли <i>вони</i> сказати, якщо маєш добру мету, неважливо якими шляхами її досягнеш?
@@ -9544,15 +9665,18 @@ msgid ""
 "By the Light, these are the most incomprehensible words I have ever heard in "
 "my entire life! Though..."
 msgstr ""
+"Клянуся Світлом, це найнезрозуміліші слова, що мені доводилося чути за все "
+"моє життя! Хоча..."
 
 #. [then]
 #: Chasing_the_Light/scenarios/06_Miscreants.cfg:1810
-#, fuzzy
 msgid ""
 "quietly^There's only <b>goal</b> in your sight. Did <i>they</i> mean to say "
 "that if you have a good goal, it doesn't matter what means you use to "
 "achieve it?"
-msgstr "quietly^<i></i>"
+msgstr ""
+"quietly^Одне лиш є — твоя <b>мета</b>. Чи хотіли <i>вони</i> сказати, якщо "
+"маєш добру мету, неважливо якими шляхами її досягнеш?"
 
 #. [then]
 #. Ті люди давно мертві, чаклуне. Ми маємо спрямувати думки на порятунок Графа.
@@ -9561,6 +9685,7 @@ msgid ""
 "Those people have long been dead, sorcerer. We must focus on saving the "
 "Count."
 msgstr ""
+"Ті люди давно мертві, чаклуне. Ми маємо спрямувати думки на порятунок Графа."
 
 #. [then]
 #. Бачить Світло, я почув багато дивних та страшних слів, але принаймні тепер кам'яні духи задоволені та погодилися підкоритись мені. Я відчуваю, що вони та подібні їм істоти дуже знадобляться в нашій подорожі...
@@ -9570,6 +9695,9 @@ msgid ""
 "least now the stone spirits are satisfied and have agreed to obey me. I feel "
 "that they and other creatures like them will be very useful in our journey..."
 msgstr ""
+"Бачить Світло, я почув багато дивних та страшних слів, але принаймні тепер "
+"кам'яні духи задоволені та погодилися підкоритись мені. Я відчуваю, що вони "
+"та подібні їм істоти дуже знадобляться в нашій подорожі..."
 
 #. [then]
 #. Знову твої чаклунські трюки, Гараліне?.. Мені здається, що в нас є більш важливі речі, ніж розбиратися з живим камінням.
@@ -9578,6 +9706,8 @@ msgid ""
 "You're doing your magic tricks again, Haralin? I think we have more "
 "important things to do than deal with living stones."
 msgstr ""
+"Знову твої чаклунські трюки, Гараліне?.. Мені здається, що в нас є більш "
+"важливі речі, ніж розбиратися з живим камінням."
 
 #. [then]
 #. Не слухайте пана Зегама, Вчителю, це було неймовірно! Навчіть і мене, будь ласка, як це робити!
@@ -9586,12 +9716,14 @@ msgid ""
 "Don't listen to sir Zeham, Teacher, it was incredible! Please teach me how "
 "to do it too!"
 msgstr ""
+"Не слухайте пана Зегама, Вчителю, це було неймовірно! Навчіть і мене, будь "
+"ласка, як це робити!"
 
 #. [else]
 #. Вчителю, це неймовірно! Навчіть і мене, будь ласка, як це робити!
 #: Chasing_the_Light/scenarios/06_Miscreants.cfg:1931
 msgid "Teacher, it is incredible! Please teach me how to do it too!"
-msgstr ""
+msgstr "Вчителю, це неймовірно! Навчіть і мене, будь ласка, як це робити!"
 
 #. [then]
 #. На все свій час, Даеоло. Можливо, колись і ти відчуєш поклик яких-небудь духів, проте зараз ми і справді повинні спрямувати наші думки та дії на пошук правильного шляху крізь ці печери.
@@ -9601,6 +9733,9 @@ msgid ""
 "feel the call of some spirits, but for now we must really direct our "
 "thoughts and actions to finding the right path through these caves."
 msgstr ""
+"На все свій час, Даеоло. Можливо, колись і ти відчуєш поклик яких-небудь "
+"духів, проте зараз ми і справді повинні спрямувати наші думки та дії на "
+"пошук правильного шляху крізь ці печери."
 
 #. [else]
 #. Клянуся Світлом, я відчуваю як зростає незадоволення духів — я, певно, неправильно прочитав їхнє послання.
@@ -9609,6 +9744,8 @@ msgid ""
 "By the Light, I can feel the spirits' dissatisfaction growing — I must have "
 "misread their message."
 msgstr ""
+"Клянуся Світлом, я відчуваю як зростає незадоволення духів — я, певно, "
+"неправильно прочитав їхнє послання."
 
 #. [event]
 #. Гараліне, на північ звідси є місце, що випромінює магію, навідайся туди.
@@ -9616,6 +9753,7 @@ msgstr ""
 msgid ""
 "Haralin, there's a place to the north of here that radiates magic, go there."
 msgstr ""
+"Гараліне, на північ звідси є місце, що випромінює магію, навідайся туди."
 
 #. [event]
 #. Вам не перемогти, прокляті мерці — Естен стоятиме, поки живий хоч один його захисник! До мене, воїни, покажемо цим потворам чого варті люди Зеленого Острову!
@@ -9625,20 +9763,24 @@ msgid ""
 "single defender draws breath! To me, warriors! Let us show these "
 "abominations the worth of the men of the Green Isle!"
 msgstr ""
+"Вам не перемогти, прокляті мерці — Естен стоятиме, поки живий хоч один його "
+"захисник! До мене, воїни, покажемо цим потворам чого варті люди Зеленого "
+"Острову!"
 
 #. [event]
 #. Пане Рурогіне, невже це... це ви... На жаль, і тут я не маю вибору...          Солдати, до бою, ми маємо знищити генерала та його варту!
 #: Chasing_the_Light/scenarios/06_Miscreants.cfg:2227
-#, fuzzy
 msgid ""
 "quietly^<i>Sir Rurohin, is it really... is it you...? ... Unfortunately, I "
 "seems like have no choice here either...</i>"
-msgstr "quietly^<i></i>"
+msgstr ""
+"quietly^<i>Пане Рурогіне, невже це... це ви... На жаль, і тут я не маю "
+"вибору...</i>"
 
 #. [event]
 #: Chasing_the_Light/scenarios/06_Miscreants.cfg:2227
 msgid "Soldiers, to battle! We take down the general and his guard!"
-msgstr ""
+msgstr "Солдати, до бою, ми маємо знищити генерала та його варту!"
 
 #. [event]
 #. Шкода, що цих бідолашних людей вже не можна врятувати. Якби ж я тільки знала таку магію, що могла б зцілити їхні душі та вирвати їх з-під впливу західняцьких чаклунів. Сподіваюся, коли я вивчу її та жоден ліч не посміє робити такого з нашими людьми!
@@ -9649,18 +9791,21 @@ msgid ""
 "Wesfolk sorcerers. I hope that when I learn it, no lich will dare to do this "
 "to our people!"
 msgstr ""
+"Шкода, що цих бідолашних людей вже не можна врятувати. Якби ж я тільки знала "
+"таку магію, що могла б зцілити їхні душі та вирвати їх з-під впливу "
+"західняцьких чаклунів. Сподіваюся, коли я вивчу її та жоден ліч не посміє "
+"робити такого з нашими людьми!"
 
 #. [event]
 #. Це даремна надія, чаклунко...          але сподіваюся, колись це стане дійсністю.
 #: Chasing_the_Light/scenarios/06_Miscreants.cfg:2231
 msgid "It's a vain hope, sorceress..."
-msgstr ""
+msgstr "Це даремна надія, чаклунко..."
 
 #. [event]
 #: Chasing_the_Light/scenarios/06_Miscreants.cfg:2231
-#, fuzzy
 msgid "quietly^but I hope it will become true someday."
-msgstr "quietly^<i></i>"
+msgstr "quietly^але сподіваюся, колись це стане дійсністю."
 
 #. [message]: speaker=$unit.id
 #. Стій на місці! Хто сміє наближатися до твердині останніх захисників Естену?
@@ -9669,6 +9814,7 @@ msgid ""
 "Stop right there! Who dares to approach the stronghold of the last defenders "
 "of Esten?"
 msgstr ""
+"Стій на місці! Хто сміє наближатися до твердині останніх захисників Естену?"
 
 #. [event]
 #: Chasing_the_Light/scenarios/06_Miscreants.cfg:2258
@@ -9676,18 +9822,20 @@ msgid ""
 "In the name of Light, did someone manage to escape that slaughter? Warrior, "
 "I am Haralin — servant of the Light and the King of the Southb-..."
 msgstr ""
+"Ім'ям Світла, невже хтось зміг врятуватися в тій бійні? Воїне, я Гаралін — "
+"слуга Світла та посланець Короля Півде-..."
 
 #. [event]
 #: Chasing_the_Light/scenarios/06_Miscreants.cfg:2260
 msgid ""
 "We are your people, your people, we are the people of the Green Isle! We "
 "have been sent by the King of the South-..."
-msgstr ""
+msgstr "Ми свої, свої, ми люди Зеленого Острову! Нас прислав Король Пів-..."
 
 #. [event]
 #: Chasing_the_Light/scenarios/06_Miscreants.cfg:2262
 msgid "I am a sergeant of the Royal Army of Southbay! Report the situati-..."
-msgstr ""
+msgstr "Я сержант Королівського війська Південної Бухти! Доповідай, яка..."
 
 #. [event]
 #: Chasing_the_Light/scenarios/06_Miscreants.cfg:2264
@@ -9695,23 +9843,26 @@ msgid ""
 "It's a joy to see that the brave warriors of Esten have withstood the damned "
 "sorce-..."
 msgstr ""
+"Радісно бачити, що хоробрі воїни Естену вистояли проти проклятих чаклу-..."
 
 #. [event]
 #: Chasing_the_Light/scenarios/06_Miscreants.cfg:2266
 msgid ""
 "Huh, what about me?! We're here with Haralin on King's orders, ain't we?!"
-msgstr ""
+msgstr "Ґа, а шо я?! Ми тут з Гаралінам па пріказу Кароля нач'бто!"
 
 #. [event]
 #: Chasing_the_Light/scenarios/06_Miscreants.cfg:2268
 msgid "With the two-legged we travel, of your kind some are, not enemi-..."
 msgstr ""
+"Мандруємо з двоногими ми, що з вами роду одного є, не ворогими ми то..."
 
 #. [event]
 #: Chasing_the_Light/scenarios/06_Miscreants.cfg:2270
 msgid ""
 "We have a mission from the King of the Southbay. You have to let us pa-..."
 msgstr ""
+"Ми маємо завдання від Короля Південної Бухти. Ви маєте пропустити на-..."
 
 #. [message]: speaker=$unit.id
 #. Ось воно що, чергова купка проклятих західняків посміла випробувати нашу міць. Не сподівайтеся на перемогу — ми вже знищили багато таких як ви! Солдати, до бою!
@@ -9721,6 +9872,9 @@ msgid ""
 "hope for victory — we've already destroyed many of your kind! Soldiers, to "
 "arms!"
 msgstr ""
+"Ось воно що, чергова купка проклятих західняків посміла випробувати нашу "
+"міць. Не сподівайтеся на перемогу — ми вже знищили багато таких як ви! "
+"Солдати, до бою!"
 
 #. [event]
 #. Почекай-те, ми ж не західня... ...!
@@ -9731,6 +9885,9 @@ msgid ""
 "What's wrong with y-you all..? W-what's wrong with your faces..? Teacher, p-"
 "please look, something terrible has happened to these people!"
 msgstr ""
+"Почекай-те, ми ж не західня... ...!\n"
+"Що з в-вами усіма..? Щ-що з вашими обличчями..? Вчителю, п-погляньте, з цими "
+"людьми трапилося щось д-дуже страшне!"
 
 #. [event]
 #. Хай помилує нас Світло, що це взагалі таке?! Їхні обличчя спотворено фіалковими венами, а їхні очі... Що з їхніми очима?!...
@@ -9740,6 +9897,9 @@ msgid ""
 "May the Light have mercy on us, what is this?! Their faces are distorted "
 "with violet veins, and their eyes... What is wrong with their eyes?"
 msgstr ""
+"...!\n"
+"Хай помилує нас Світло, що це взагалі таке?! Їхні обличчя спотворено "
+"фіалковими венами, а їхні очі... Що з їхніми очима?!..."
 
 #. [event]
 #. Ег-ге ж, Гараліне, лячне видовище, н-надто лячне... Я гадаю, у цьому винне якесь чаклунство, бо ці люди не мертві, вони не мерці — я це добре бачу.
@@ -9749,6 +9909,8 @@ msgid ""
 "some kind of witchcraft is to blame, because these people are not dead, they "
 "are not undead — I can see it clearly."
 msgstr ""
+"Ег-ге ж, Гараліне, лячне видовище, н-надто лячне... Я гадаю, у цьому винне "
+"якесь чаклунство, бо ці люди не мертві, вони не мерці — я це добре бачу."
 
 #. [event]
 #. Чаклуне! Зроби щось з ними своєю магією! Ти ж можеш їх зцілити чи хоча б знешкодити!?
@@ -9757,6 +9919,8 @@ msgid ""
 "Sorcerer! Do something with your magic! Can you heal them, or at least "
 "neutralize them!?"
 msgstr ""
+"Чаклуне! Зроби щось з ними своєю магією! Ти ж можеш їх зцілити чи хоча б "
+"знешкодити!?"
 
 #. [event]
 #. Гараліне, ти ж відчуваєш — це страх, твій страх та твоїх супутників. У цій нерозважливій подорожі тобі зустрілося вже багато жахіть та потвор, проте це зовсім інше, чи не так?
@@ -9766,6 +9930,9 @@ msgid ""
 "companions. You've seen many horrors and monstrosities on this reckless "
 "journey, but this is different, isn't it?"
 msgstr ""
+"Гараліне, ти ж відчуваєш — це страх, твій страх та твоїх супутників. У цій "
+"нерозважливій подорожі тобі зустрілося вже багато жахіть та потвор, проте це "
+"зовсім інше, чи не так?"
 
 #. [then]
 #. Ти маєш рацію, це вперше... Вперше, коли проти нас виступають не безликі потвори, а наші живі люди, яких, як я бачу та відчуваю, було спотворено та підкорено якимось жахливим прокляттям.
@@ -9775,6 +9942,9 @@ msgid ""
 "faceless monsters who are against us, but our living people, who, as I see "
 "and feel, have been corrupted and enslaved by some terrible curse.</i>"
 msgstr ""
+"<i>Ти маєш рацію, це вперше... Вперше, коли проти нас виступають не безликі "
+"потвори, а наші живі люди, яких, як я бачу та відчуваю, було спотворено та "
+"підкорено якимось жахливим прокляттям.</i>"
 
 #. [else]
 #. Ти маєш рацію, хоч і не вперше... Не вперше, коли проти нас виступають не безликі потвори, а наші живі люди, проте тепер я бачу та відчуваю, що цих бідолах було спотворено та підкорено якимось жахливим прокляттям.
@@ -9785,6 +9955,9 @@ msgid ""
 "living people, but this time, as I see and feel, they have been corrupted "
 "and enslaved by some terrible curse.</i>"
 msgstr ""
+"<i>Ти маєш рацію, хоч і не вперше... Не вперше, коли проти нас виступають не "
+"безликі потвори, а наші живі люди, проте тепер я бачу та відчуваю, що цих "
+"бідолах було спотворено та підкорено якимось жахливим прокляттям.</i>"
 
 #. [event]
 #. (тяжко зітхає) Я не знаю, не знаю як мені бути — чи можу я врятувати їх, чи мені доведеться проливати кров свого ж народу? Принеси ж користь бодай зараз, порадь, що я маю обрати!
@@ -9794,6 +9967,9 @@ msgid ""
 "or will I have to shed the blood of my own people? Do me a favor at least "
 "now, advise me what I should choose!</i>"
 msgstr ""
+"<i>(тяжко зітхає) Я не знаю, не знаю як мені бути — чи можу я врятувати їх, "
+"чи мені доведеться проливати кров свого ж народу? Принеси ж користь бодай "
+"зараз, порадь, що я маю обрати!</i>"
 
 #. [event]
 #. Гараліне, повертайся додому, до святилища — це все, що тобі можна порадити. Цих людей вже не врятувати, і продовжуючи цю 'пригоду' ти лише наражаєшся на все більшу небезпеку, бо ж далі будуть ще більші жахіття та сильніші вороги...
@@ -9804,17 +9980,21 @@ msgid ""
 "yourself to greater danger, because there will be even greater horrors and "
 "stronger enemies..."
 msgstr ""
+"Гараліне, повертайся додому, до святилища — це все, що тобі можна порадити. "
+"Цих людей вже не врятувати, і продовжуючи цю 'пригоду' ти лише наражаєшся на "
+"все більшу небезпеку, бо ж далі будуть ще більші жахіття та сильніші "
+"вороги..."
 
 #. [event]
 #: Chasing_the_Light/scenarios/06_Miscreants.cfg:2399
 msgid "<i>...</i>"
-msgstr ""
+msgstr "<i>...</i>"
 
 #. [event]
 #. Ні.
 #: Chasing_the_Light/scenarios/06_Miscreants.cfg:2404
 msgid "<i>No.</i>"
-msgstr ""
+msgstr "<i>Ні.</i>"
 
 #. [event]
 #. Мій дім там, де й був — в моєму селі, що було спалено проклятими західняками багато років тому. І бачить Світло, я не збираюся сидіти в безпечному лісі, якщо я маю силу, силу змінити хід цієї жорстокої війни та врятувати майбутнє наших людей.
@@ -9825,6 +10005,10 @@ msgid ""
 "forest if I have the power, the power to change the tide of this cruel war "
 "and save the future of our people.</i>"
 msgstr ""
+"<i>Мій дім там, де й був — в моєму селі, що було спалено проклятими "
+"західняками багато років тому. І бачить Світло, я не збираюся сидіти в "
+"безпечному лісі, якщо я маю силу, силу змінити хід цієї жорстокої війни та "
+"врятувати майбутнє наших людей.</i>"
 
 #. [event]
 #. Так, я злякався, мене, як і усіх, злякало те, що <b>Прокляття</b> зробило з цими бідолашними захисниками Естену, проте я подолаю свій страх та обов'язково знайду рішення!
@@ -9834,18 +10018,21 @@ msgid ""
 "<b>Curse</b> has done to these poor Esten defenders, but I will overcome my "
 "fear and I will find a solution!</i>"
 msgstr ""
+"<i>Так, я злякався, мене, як і усіх, злякало те, що <b>Прокляття</b> зробило "
+"з цими бідолашними захисниками Естену, проте я подолаю свій страх та "
+"обов'язково знайду рішення!</i>"
 
 #. [event]
 #. Гаралȵƪɮ, ȵƪ ʨƪʨȣƢȣ Ɣȡǂƛ ƢƛƔȡʨƪ!
 #: Chasing_the_Light/scenarios/06_Miscreants.cfg:2417
 msgid "Haralƪɮ, ȵƪʨ ȡǂƛ ʨƪȣȣʨƢȣ Ɣȡǂƛ ƢƛƔȡʨ!"
-msgstr ""
+msgstr "Гаралȵƪɮ, ȵƪ ʨƪʨȣƢȣ Ɣȡǂƛ ƢƛƔȡʨƪ!"
 
 #. [event]
 #. Вчителю!
 #: Chasing_the_Light/scenarios/06_Miscreants.cfg:2432
 msgid "Teacher!"
-msgstr ""
+msgstr "Вчителю!"
 
 #. [event]
 #. Мені здається, цих бідолах ще можна врятувати! Я спробую вилікувати одного з них своїм закляттям, може, в нього проясниться в голові та він зможе переконати інших?
@@ -9855,12 +10042,15 @@ msgid ""
 "with my spell, maybe he'll get clearer in his head and be able to convince "
 "the others?"
 msgstr ""
+"Мені здається, цих бідолах ще можна врятувати! Я спробую вилікувати одного з "
+"них своїм закляттям, може, в нього проясниться в голові та він зможе "
+"переконати інших?"
 
 #. [event]
 #. Підтримую, нам знадобляться солдати.
 #: Chasing_the_Light/scenarios/06_Miscreants.cfg:2442
 msgid "Agreed. We'll need soldiers."
-msgstr ""
+msgstr "Підтримую, нам знадобляться солдати."
 
 #. [event]
 #. Клянуся Світлом, я маю великі сумніви, що це спрацює, тому що я бачу, що вражено було не лише їхнє тіло, а й саму душу було викривлено до невпізнанності. На жаль, ми нічого не зможемо тут зробити... Проте хоч ми й маємо просто прийняти умови гри, яку нам нав'язав один з цих 'Владик-Лічів', бийтеся з естенцями лише за необхідності, не варто зайвий раз проливати людську кров.
@@ -9873,6 +10063,12 @@ msgid ""
 "of these 'Lich-Lords', fight Estenians only if necessary, we shouldn't spill "
 "our people's blood."
 msgstr ""
+"Клянуся Світлом, я маю великі сумніви, що це спрацює, тому що я бачу, що "
+"вражено було не лише їхнє тіло, а й саму душу було викривлено до "
+"невпізнанності. На жаль, ми нічого не зможемо тут зробити... Проте хоч ми й "
+"маємо просто прийняти умови гри, яку нам нав'язав один з цих 'Владик-Лічів', "
+"бийтеся з естенцями лише за необхідності, не варто зайвий раз проливати "
+"людську кров."
 
 #. [event]
 #. Вчителю, невже ж...? ... О ні, тепер і я це відчуваю — навіть всередині, вони вже не є людьми... Пробачте, естенці, мені шкода, що я дала марну надію...
@@ -9882,6 +10078,9 @@ msgid ""
 "they are no longer human... Forgive me, Estenians, I am sorry for giving you "
 "false hope..."
 msgstr ""
+"Вчителю, невже ж...? ... О ні, тепер і я це відчуваю — навіть всередині, "
+"вони вже не є людьми... Пробачте, естенці, мені шкода, що я дала марну "
+"надію..."
 
 #. [event]
 #: Chasing_the_Light/scenarios/06_Miscreants.cfg:2528
@@ -16430,7 +16629,7 @@ msgstr "Дитина"
 #: Chasing_the_Light/units/Daeola/Daeola_L0.cfg:18
 #: Chasing_the_Light/units/Others/Child.cfg:14
 msgid "An ordinary human child, what else did you expect to read here?"
-msgstr ""
+msgstr "Звичайна людська дитина, що ще ви очікували тут прочитати?"
 
 #. [unit_type]: id=Daeola_L0_Apprentice, race=human, gender=female
 #. [unit_type]: id=Daeola_L0_Apprentice_Unarmed, race=human, gender=female
@@ -16445,6 +16644,10 @@ msgid ""
 "essence of magic and learn its basics, unless the beginner has an incredible "
 "talent or is guided by a higher power."
 msgstr ""
+"Будь-який маг починав свій шлях як ученик, бо ж самому без допомоги більш "
+"досвідченого чаклуна практично неможливо зрозуміти сутність магії та "
+"навчитися її основ, хіба що новачок має неймовірний талант або його веде "
+"вища сила."
 
 #. [unit_type]: id=Daeola_L1_Mage, race=human, gender=female
 #: Chasing_the_Light/units/Daeola/Daeola_L1_Mage.cfg:8
@@ -16462,6 +16665,12 @@ msgid ""
 "and for this they easily earn the respect of most of the people of the Green "
 "Isle."
 msgstr ""
+"Ті, хто кличуться Магами Світла знаходяться на набагато більшому рівні "
+"розуміння цілительства та самого Світла, ніж Mage Healers і навіть White "
+"Mages. Вони, хоч і поки що можуть бути недостатньо мудрими, наївними чи мати "
+"мало досвіду, повністю посвятили своє життя та розум добру та допомозі "
+"нужденним, за що вони легко заслуговують повагу більшості людей Зеленого "
+"Острову."
 
 #. [attack]: type=impact
 #: Chasing_the_Light/units/Daeola/Daeola_L1_Mage.cfg:36
@@ -16469,12 +16678,12 @@ msgstr ""
 #: Chasing_the_Light/units/Mages/Apprentice.cfg:24
 #: Chasing_the_Light/units/Mages/Mage_Healer.cfg:23
 msgid "staff"
-msgstr ""
+msgstr "посох"
 
 #. [unit_type]: id=Daeola_L2, race=human, gender=female, description=
 #: Chasing_the_Light/units/Daeola/Daeola_L2.cfg:8
 msgid "Harbinger of Light"
-msgstr ""
+msgstr "Пророчиця Світла"
 
 #. [unit_type]: id=Haralin_L0, race=human
 #: Chasing_the_Light/units/Haralin/Haralin_L0.cfg:8
@@ -16493,6 +16702,11 @@ msgid ""
 "occasionally gather for village games, wrestling, and to help the village "
 "guards repel invaders."
 msgstr ""
+"Селянська молодь Зеленого Острову з ранніх літ залучена до тяжкої праці на "
+"полі, випасу худоби чи навчанню професії своїх батьків. Проте, хоч і "
+"більшість свого дня вони не мають часу навіть спочити, час від часу вони "
+"збираються на сільські забави, боротьбу, а також щоб допомогти стражам села "
+"відбити напад загарбників."
 
 #. [attack]: type=impact
 #: Chasing_the_Light/units/Haralin/Haralin_L0.cfg:26
@@ -16520,13 +16734,18 @@ msgid ""
 "everything on their own, but were helped by some unknown higher power, but "
 "it's still impressive anyway, isn't it?"
 msgstr ""
+"Це справді неймовірна рідкість, щоб звичайна людина могла самостійно "
+"осягнути суть магії та зрозуміти її основи без допомоги більш досвідченого "
+"наставника, якою б вона талановитою не була та які б ресурси не мала. Деякі "
+"кажуть, що насправді маги-самоучки не досягли всього самі, а їм допомогала "
+"якась невідома вища сила, проте це все одно вражає, чи не так?"
 
 #. [attack]: type=blade
 #: Chasing_the_Light/units/Haralin/Haralin_L1.cfg:31
 #: Chasing_the_Light/units/Mages/Rogue_Mage.cfg:26
 #: Chasing_the_Light/units/Mages/Shadow_Mage.cfg:33
 msgid "short sword"
-msgstr ""
+msgstr "короткий меч"
 
 #. [unit_type]: id=Haralin_L2, race=human, gender=male
 #: Chasing_the_Light/units/Haralin/Haralin_L2.cfg:8
@@ -16544,6 +16763,12 @@ msgid ""
 "abilities of most necromancers, and there is no point in even mentioning the "
 "immortal Lich-Lords, they are beyond any competition."
 msgstr ""
+"Після багатьох років старанного вивчення магії, розробки заклинань та "
+"медитацій, маг іноді може досягнути рівня, коли він вважатиметься "
+"наймогутнішим серед своїх колег з Зеленого Острову, та й навіть деякі з "
+"західняків почнуть зважати на його силу. Хоча порівняно зі здібністю "
+"більшості некромантів це досі ніщо, а про безсмертних Ліч-Лордів взагалі й "
+"згадувати нема сенсу, вони поза будь-якою конкуренцією."
 
 #. [attack]: type=fire
 #. [object]
@@ -16608,6 +16833,11 @@ msgid ""
 "to be called mage healers, but they have much to accomplish to become true "
 "servants of the Light"
 msgstr ""
+"Деякі маги вирішують присвятити своє життя служінню іншим і тому основним "
+"фокусом своїх досліджень ставлять зцілення нуждених та боротьбу з істотами "
+"Темряви. Ті, що лише нещодавно стали на цей шлях, вже заслуговують "
+"називатися магами цілителями, проте їм предстоїть досягти їм ще багато, щоб "
+"стати справжніми служителями Світла"
 
 #. [attack]: type=impact
 #: Chasing_the_Light/units/Mages/Mage_Healer.cfg:32
@@ -16866,11 +17096,15 @@ msgid ""
 "material, so it is capable of both inflicting harm on its enemies and "
 "receiving it in return."
 msgstr ""
+"Цей магічний світильник, що осяює все навколо себе утіленням самого Світла, "
+"було на якийсь час закликано до цього світу буквально з нічого потужною "
+"магією Даеоли. Хоч це й магічна істота, вона є повністю матеріальною, тому "
+"вона здатна як і завдавати шкоди ворогам, так і отримувати її у відповідь."
 
 #. [scorch]: id=scorch
 #: Chasing_the_Light/units/Others/Brazier.cfg:21
 msgid "scorch"
-msgstr ""
+msgstr "випалює"
 
 #. [scorch]: id=scorch
 #: Chasing_the_Light/units/Others/Brazier.cfg:22
@@ -16928,6 +17162,8 @@ msgid ""
 "This is just another rusty gate made of roughly worked iron, created by a "
 "village or city blacksmith, depending on where you found it."
 msgstr ""
+"Це просто чергові іржаві ворота з грубо обробленого заліза, що були створені "
+"сільським чи міським ковалем, в залежності від того де вони вам зустрілися."
 
 #. [unit_type]: id=Old Soldier, race=human
 #: Chasing_the_Light/units/Others/Old_Soldier.cfg:4
@@ -16943,6 +17179,10 @@ msgid ""
 "kingdoms, sooner or later seniority will overtake him or her, turning past "
 "power and greatness into extreme weakness and helplessness."
 msgstr ""
+"Будь-який воїн, яким би сильним і вмілим він не був, не захищений від "
+"старості — якщо він не загинув у безлічі битв проти бандитів та солдатів "
+"ворожих королівств, рано чи пізно поважний вік наздожене його, перетворивши "
+"минулу міць та велич у крайню неміч та безпорадність."
 
 #. [unit_type]: id=Statue Unit, race=mechanical
 #: Chasing_the_Light/units/Others/Statue.cfg:4
@@ -17098,6 +17338,9 @@ msgid ""
 "wilderness homes. They can bullseye ferocious swamp rats and track anything "
 "that moves in their territory."
 msgstr ""
+"Мисливці проводять своє життя в темних лісах та болотах, що оточують їхні "
+"дикі поселення. Вони можуть полювати на жахливих болотних щурів та "
+"відстежувати все, що пересувається їхньою територією."
 
 #. [unit_type]: id=Web Unit
 #: Chasing_the_Light/units/Others/Web.cfg:4
@@ -17112,6 +17355,9 @@ msgid ""
 "where no sane person would venture. One wonders how huge the beast must be "
 "to have created it."
 msgstr ""
+"Скупчення павутиння небувалих розмірів, які зустрічаються глибоко під "
+"землею, куди не полізне жодна розумна людина. Цікаво, наскільки величезною є "
+"тварюка, що його створила?"
 
 #. [unit_type]: id=Elemental Air, race=monster, description=
 #: Chasing_the_Light/units/Spirits/Elemental_Air.cfg:4
@@ -17159,11 +17405,17 @@ msgid ""
 "stones have strange symbols on their bodies that clearly hint at their "
 "artificial origin, but no one will ever know the truth..."
 msgstr ""
+"Зазвичай місця, що випромінують магію, є домівкою для різноманітних духів "
+"природи, що з невідомих причин виявляють себе фізичною формою, захищаючи "
+"своє улюблене місце від тих, хто посміє потурбувати їхній спокій. Проте в "
+"випадку з цими духами не все так однозначно — ці кам'яні ісполини мають на "
+"собі дивні намальовані знаки, що явно натякають на їхнє штучне походження, "
+"проте правди ніхто ніколи вже не дізнається..."
 
 #. [attack]: type=impact
 #: Chasing_the_Light/units/Spirits/Elemental_Rock.cfg:70
 msgid "hit"
-msgstr ""
+msgstr "удар"
 
 #. [unit_type]: id=Elemental Water, race=monster, description=
 #: Chasing_the_Light/units/Spirits/Elemental_Water.cfg:4
@@ -17229,6 +17481,10 @@ msgid ""
 "spirits are quite different from the Wesfolk ghosts and the cursed undead, "
 "for they are woven from the light itself and carry its will."
 msgstr ""
+"Душі тих нещасних людей, що хоробро загинули в бою з силами Темряви, іноді "
+"можуть повернутися, щоб продовжити свою боротьбу, почувши щирий поклик "
+"вірного слуги Світла. Ці духи значно відрізняються від західняцьких привидів "
+"та проклятих мерців, бо зіткані з самого світла та несуть його волю."
 
 #. [attack]: type=arcane
 #: Chasing_the_Light/units/Spirits/Spirit_Light.cfg:31
@@ -17322,7 +17578,7 @@ msgstr ""
 #. [unit_type]: id=Wesfolk Fighter, race=human
 #: Chasing_the_Light/units/Wesfolk/Fighter.cfg:4
 msgid "Wesfolk Fighter"
-msgstr ""
+msgstr "Боєць"
 
 #. [unit_type]: id=Wesfolk Fighter, race=human
 #. Ці бійці є невід'ємними представниками нечисельної людської частини армії західняків. Хоч і усі загарбники в ранньому віці присягають Темряві на вічну службу та проводять огидний ритуал, велика частина з них все ж не має природнього дару до магії, тому в бою їм доводиться покладатися лише на спритність та вірну mace-spiked
@@ -17334,6 +17590,11 @@ msgid ""
 "still have no natural gift for magic, so in battle they have to rely only on "
 "agility and a trusty mace with spikes."
 msgstr ""
+"Ці бійці є невід'ємними представниками нечисельної людської частини армії "
+"західняків. Хоч і усі загарбники в ранньому віці присягають Темряві на вічну "
+"службу та проводять огидний ритуал, велика частина з них все ж не має "
+"природнього дару до магії, тому в бою їм доводиться покладатися лише на "
+"спритність та вірну mace-spiked"
 
 #. [attack]: type=impact
 #: Chasing_the_Light/units/Wesfolk/Fighter.cfg:22
@@ -17363,7 +17624,7 @@ msgstr "рубін вогню"
 #. [unit_type]: id=Wesfolk Marauder, race=human, gender=male,female
 #: Chasing_the_Light/units/Wesfolk/Marauder.cfg:4
 msgid "Wesfolk Marauder"
-msgstr ""
+msgstr "Мародер"
 
 #. [unit_type]: id=Wesfolk Marauder, race=human, gender=male,female
 #. Взяти до рук велику сіть було достатньо логічним рішенням для деяких з Footpads — все ж західнякам постійно потрібні живі жертвоприношення, для здійснення своїх темних ритуалів. Хоч і за важких умов можна використати когось зі своїх, все ж краще захопити чужинця, чиї жахливі крики звучатимуть гарною музикою для всіх присутніх поклонників темряви.
@@ -17375,6 +17636,11 @@ msgid ""
 "to capture a stranger whose horrific screams will sound like good music to "
 "all the worshippers of Darkness present."
 msgstr ""
+"Взяти до рук велику сіть було достатньо логічним рішенням для деяких з "
+"Footpads — все ж західнякам постійно потрібні живі жертвоприношення, для "
+"здійснення своїх темних ритуалів. Хоч і за важких умов можна використати "
+"когось зі своїх, все ж краще захопити чужинця, чиї жахливі крики звучатимуть "
+"гарною музикою для всіх присутніх поклонників темряви."
 
 #. [attack]: type=impact
 #: Chasing_the_Light/units/Wesfolk/Marauder.cfg:25
@@ -17389,7 +17655,7 @@ msgstr "сітка"
 #. [female]: gender=female
 #: Chasing_the_Light/units/Wesfolk/Marauder.cfg:70
 msgid "female^Marauder"
-msgstr ""
+msgstr "Мародерка"
 
 #. [unit_type]: id=Wesfolk Princess, race=human, gender=female
 #: Chasing_the_Light/units/Wesfolk/Princess.cfg:18
@@ -17410,6 +17676,15 @@ msgid ""
 "elevate an ordinary woman it likes to this rank, though this is an extremely "
 "rare event that only the slightly more human Lich-Lords are capable of."
 msgstr ""
+"Хоч насправді й не королівської крові, Західняцькі Принцеси грають важливу "
+"роль у своєму wicked суспільстві як вірні прислужниці Ліч-Лордів, керуючи "
+"їхніми арміями та задовольняючи будь-які їхні прохання.\n"
+"Принцесами не народжуються, а стають після багатьох років виснажливих "
+"тренувань, темних ритуалів і важких випробувань, за що їх дуже поважають "
+"інші Західняки та навіть деякі з могутніх мерців.\n"
+"Проте іноді достатньо лише наказу безсмертного Господаря, щоб звичайну "
+"дівчину, яка йому сподобалась, возвели до цього рангу, хоча це й надзвичайно "
+"рідкісна подія, на яку здатні лише трохи людяні Ліч-Лорди."
 
 #. [unit_type]: id=pseudoghoul, race=undead
 #: Chasing_the_Light/units/Wesfolk/Pseudoghoul.cfg:4
@@ -17429,6 +17704,14 @@ msgid ""
 "acid, which they can spit to poison enemies of their necromancer who "
 "committed such a heinous crime against nature."
 msgstr ""
+"Чи то через нестачу знань, чи то спеціально, темні адепти часту зупиняють "
+"процес перетворення людини на гуля на проміжному етапі, коли людина ще є "
+"живою, відчуває все, що з нею відбувається, проте вже припиняє бути собою, "
+"хоч і не сильно нагадує роздуте огидне чудовисько. Таких істот називають "
+"псевдогулями — вони виглядають як щось схоже до ходячого трупа, проте з "
+"їхнього мутованого рота невеликими потоками струїться зелена кислота, якою "
+"вони можуть плюватися, щоб отруїти ворогів некроманта, який пішов на такий "
+"огидний злочин проти природи."
 
 #. [attack]: type=impact
 #: Chasing_the_Light/units/Wesfolk/Pseudoghoul.cfg:22
@@ -17455,6 +17738,10 @@ msgid ""
 "scythe as their weapon, with which they mercilessly shed blood in the name "
 "of Darkness."
 msgstr ""
+"Деякі з тих, хто мали б стати чудовими західняцькими воїнами, натомість "
+"йдуть схожим проте іншим шляхом — отримавши обладунки з запасів свого Ліч-"
+"Лорда, замість бойового топора вони обирають своєю зброєю велику та "
+"неймовірно гостру косу, якою вони нещадно проливають кров в ім'я Темряви."
 
 #. [attack]: type=blade
 #: Chasing_the_Light/units/Wesfolk/Reaper.cfg:22
@@ -17475,6 +17762,10 @@ msgid ""
 "a large two-handed battle axe, which is much easier to cut the flesh of "
 "still living creatures for the glory of Darkness."
 msgstr ""
+"Отримавши багато бойового досвіду, найкращі з західняцьких бійців отримують "
+"від свого Владики кращі обладунки та змінюють свою булаву з шипами на "
+"великий дворучний бойовий топор, який набагато легше рубати плоть поки що "
+"живих істот во славу Темряви."
 
 #. [attack]: type=blade
 #: Chasing_the_Light/units/Wesfolk/Warrior.cfg:23
