@@ -29,6 +29,7 @@ Peaceful life of the Green Isle's inhabitants turned into a nightmare in an inst
 - Mechanical
 - IftU
 - Archaic_Resources
+- War of Legends
 - [WesTactics](https://github.com/wtactics)
 
 
