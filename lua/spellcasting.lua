@@ -405,7 +405,6 @@ function display_skills_dialog(selecting)
                         raise = wml.variables["caster_" .. wml.variables["current_caster"] .. ".spell_to_cast"]
                     }
                 })
-				wml.variables["caster_" .. wml.variables["current_caster"] .. ".spell_to_cast"] = nil
 			end
 		end)
 	end
