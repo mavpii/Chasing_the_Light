@@ -312,6 +312,25 @@ local skill_set = {
 		description = _"<span color='#6ca364'><i><b>Spell:</b></i></span> Spend <span color='#00bbe6'><i>10xp</i></span> to place <i>Ward</i> on the map for a few turns.\n           Each turn, it will deal <b>20</b> arcane damage to the surrounding undead. \n<span color='#ad6a61'><i><b>Radius:</b></i></span> <i>2 hexes.</i>",
 		xp_cost=10,
 	},
+	-------------------------
+	-- RELOCATE
+	-------------------------
+	[31] = {
+		id          = "skill_relocate",
+		label       = label(_"Relocate"),
+		image       = "icons/relocate.png",
+		description = _"<span color='#6ca364'><i><b>Spell:</b></i></span> Spend <span color='#00bbe6'><i>??xp</i></span> to instantly teleport any friendly unit. \n<span color='#ad6a61'><i><b>Radius:</b></i></span> <i>3 hexes.</i>",
+		xp_cost=0,
+	},
+	-------------------------
+	-- ILLUMINATE
+	-------------------------
+	[32] = {
+		id          = "skill_illuminate",
+		label       = label(_"Illuminate"),
+		image       = "icons/illuminate.png.png",
+		description = _"<span color='#a9a150'><i><b>Passive:</b></i></span> Spend <span color='#00bbe6'><i>??xp</i></span> to instantly teleport any friendly unit.",
+	},
 }
 
 --###############################
