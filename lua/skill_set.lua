@@ -328,8 +328,8 @@ local skill_set = {
 	[32] = {
 		id          = "skill_illuminate",
 		label       = label(_"Illuminate"),
-		image       = "icons/illuminate.png.png",
-		description = _"<span color='#a9a150'><i><b>Passive:</b></i></span> Spend <span color='#00bbe6'><i>??xp</i></span> to instantly teleport any friendly unit.",
+		image       = "icons/illuminate.png",
+		description = _"<span color='#a9a150'><i><b>Passive:</b></i></span> Gain the <i>illuminate</i> ability.",
 	},
 }
 
