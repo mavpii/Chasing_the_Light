@@ -331,6 +331,15 @@ local skill_set = {
 		image       = "icons/illuminate.png",
 		description = _"<span color='#a9a150'><i><b>Passive:</b></i></span> Gain the <i>illuminate</i> ability.",
 	},
+	-------------------------
+	-- LIGHTBEAM
+	-------------------------
+	[33] = {
+		id          = "skill_lightbeam",
+		label       = label(_"Ray of Light"),
+		image       = "attacks/beam-eye.png",
+		description = _"<span color='#ad6a61'><i><b>Attack:</b></i></span> Ranged 7x3 arcane, <i>magical</i>.",
+	},
 }
 
 --###############################
