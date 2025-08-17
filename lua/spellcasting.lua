@@ -400,12 +400,14 @@ function display_skills_dialog(selecting)
 		dialog_result = wesnoth.sync.evaluate_single(function()
 			gui.show_dialog( dialog, preshow )
 			if (wml.variables["caster_" .. wml.variables["current_caster"] .. ".spell_to_cast"]) then
+			    wml.variables['is_badly_timed'] = true
 			    wml.fire.do_command({
                     wml.tag.fire_event {
                         raise = wml.variables["caster_" .. wml.variables["current_caster"] .. ".spell_to_cast"]
                     }
                 })
 				wml.variables["caster_" .. wml.variables["current_caster"] .. ".spell_to_cast"] = nil
+				wml.variables['is_badly_timed'] = nil
 			end
 		end)
 	end
