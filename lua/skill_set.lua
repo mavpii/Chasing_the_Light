@@ -14,7 +14,7 @@ local skill_set = {
 		id          = "skill_magic_blast",
 		label       = label(_"Magic Blast"),
 		image       = "attacks/mud-missile.png",
-		description = _"<span color='#ad6a61'><i><b>Attack:</b></i></span> Ranged 9x2 impact, <i>magical</i>.",
+		description = _"<span color='#ad6a61'><i><b>Attack:</b></i></span> Ranged 9x2(<span color='#00bbe6'><i>lvl1</i></span>) or 12x3(<span color='#00bbe6'><i>lvl2</i></span>) impact, <i>magical</i>.",
 	},
 	-------------------------
 	-- SUMMON
