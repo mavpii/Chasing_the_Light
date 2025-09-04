@@ -9,11 +9,15 @@ Peaceful life of the Green Isle's inhabitants turned into a nightmare in an inst
 ## Developer
 - [amakri](https://github.com/amakriLexa04)
 
+## S9 Mapmaker
+- RKT
+
 ## Playtesters
 - [ForestDragon](https://github.com/ForestDragon-wesnoth)
 - [Refumee](https://github.com/Refumee)
 - Mechanical
 - lhybrideur
+- AncientGeneral
 
 ## With the help of
 - [ForestDragon](https://github.com/ForestDragon-wesnoth)
