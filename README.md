@@ -32,6 +32,7 @@ Peaceful life of the Green Isle's inhabitants turned into a nightmare in an inst
 - Maksiu
 - Mechanical
 - IftU
+- Trader
 - Archaic_Resources
 - War of Legends
 - [WesTactics](https://github.com/wtactics)
