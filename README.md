@@ -9,6 +9,9 @@ Peaceful life of the Green Isle's inhabitants turned into a nightmare in an inst
 ## Developer
 - [amakri](https://github.com/amakriLexa04)
 
+## Sprite Designer
+- [Refumee](https://github.com/Refumee)
+
 ## S9 Mapmaker
 - RKT
 
