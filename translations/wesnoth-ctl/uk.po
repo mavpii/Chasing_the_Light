@@ -17174,7 +17174,7 @@ msgstr ""
 #. Даеоло, твоя магія вирвала мене з-під впливу Голосу, тому прошу, допоможи ж і у цій битві!
 #: Chasing_the_Light/scenarios/08_Quiescence.cfg:1733
 msgid ""
-"Daeolo, your magic broke me free from the Voice's influence, so please help "
+"Daeola, your magic broke me free from the Voice's influence, so please help "
 "me in this battle too!"
 msgstr ""
 "Даеоло, твоя магія вирвала мене з-під впливу Голосу, тому прошу, допоможи ж "
@@ -17543,17 +17543,17 @@ msgstr ""
 "безсмертний, чим довше тягнутимеш з відповіддю, тим менше в нас залишиться "
 "часу, щоб перемогти владик-лічів."
 
-#. [scenario]: id=09_New_Journey
+#. [scenario]: id=09_Apprehension
 #. Нова подорож
-#: Chasing_the_Light/scenarios/09_New_Journey.cfg:5
-msgid "New Journey"
-msgstr "Нова мандрівка"
+#: Chasing_the_Light/scenarios/09_Apprehension.cfg:5
+msgid "Apprehension"
+msgstr "Побоювання"
 
 #. [part]
 #. newlines at the beginning help to (depending on the screne size) center this vertically. The space at the end stops the last letter from getting cut off
 #. В гонитві за Світлом | Женучись за Світлом
 #. Частина Перша
-#: Chasing_the_Light/scenarios/09_New_Journey.cfg:24
+#: Chasing_the_Light/scenarios/09_Apprehension.cfg:24
 msgid ""
 "<span font_family='Oldania ADF Std' size='90000'>\n"
 "\n"
@@ -17565,7 +17565,7 @@ msgid ""
 msgstr ""
 
 #. [side]
-#: Chasing_the_Light/scenarios/09_New_Journey.cfg:43
+#: Chasing_the_Light/scenarios/09_Apprehension.cfg:43
 msgid "Daeola's Wanderers"
 msgstr ""
 
