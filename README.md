@@ -57,16 +57,18 @@ Peaceful life of the Green Isle's inhabitants turned into a nightmare in an inst
 - 09_Apprehension🔁️                                                                                                                             
 - 10_Treason                                                                                                                                 
 - 11_Sincerity - reference to S9
-- 11x_Necessity
-- 12h_Southbay_Outskirts
-- 13h_Caror
+- 11x_Burden
+- 12_Southbay_Outskirts
+- 13_Caror
 ### Chapter 4: TBD
-- Chapter 4 scenario
-- Chapter 4 scenario
-- Chapter 4 scenario
-- Chapter 4 scenario
-- Lenvan
-- Temple_in_the_Deep
+- 14_Necessity
+- 15_Frontline
+- 16_Seekers
+- 17_Gloom
+- 18_Trickery
+- 18x_Parley
+- 19_Lenvan
+- 20_Temple_in_the_Deep
 
 ### Daeola's branches
 - 13d_Triumph
