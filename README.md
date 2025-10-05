@@ -60,7 +60,7 @@ Peaceful life of the Green Isle's inhabitants turned into a nightmare in an inst
 - 11x_Burden
 - 12_Southbay_Outskirts
 - 13_Caror
-### Chapter 4: TBD
+### Chapter 4: Against the World
 - 14_Necessity
 - 15_Frontline
 - 16_Seekers
