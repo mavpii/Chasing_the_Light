@@ -58,8 +58,6 @@ Peaceful life of the Green Isle's inhabitants turned into a nightmare in an inst
 - 10_Duty
 - 11_Treason                                                                                                                                 
 - 12_Sincerity - reference to S9
-
-#### Haralin's branches
 - 13h_Failure
 - 13hxa_Farewell
 ### Chapter 4: TBD
@@ -71,7 +69,7 @@ Peaceful life of the Green Isle's inhabitants turned into a nightmare in an inst
 - Lenvan
 - Temple_in_the_Deep
 
-#### Daeola's branches
+### Daeola's branches
 - 13d_Triumph
 - 13dx_Farewell
 - 14d_Southbay_Outskirts | Branch B scenario
