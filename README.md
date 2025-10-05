@@ -55,17 +55,16 @@ Peaceful life of the Green Isle's inhabitants turned into a nightmare in an inst
 - 08_Quiescence✔
 ### Chapter 3: Tough Choices                                                                                                                                 
 - 09_Apprehension🔁️                                                                                                                             
-- 10_Duty
-- 11_Treason                                                                                                                                 
-- 12_Sincerity - reference to S9
-- 13h_Errant
-- 13hxa_Farewell
+- 10_Treason                                                                                                                                 
+- 11_Sincerity - reference to S9
+- 11x_Necessity
+- 12h_Southbay_Outskirts
+- 13h_Caror
 ### Chapter 4: TBD
-- 15h_Southbay_Outskirts — Change name
-- 16h_Caror
-- Branch A scenario | Branch B scenario
-- Branch A scenario | Branch B scenario
-- Branch A scenario | Branch B scenario
+- Chapter 4 scenario
+- Chapter 4 scenario
+- Chapter 4 scenario
+- Chapter 4 scenario
 - Lenvan
 - Temple_in_the_Deep
 
