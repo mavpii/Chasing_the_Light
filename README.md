@@ -64,9 +64,7 @@ Peaceful life of the Green Isle's inhabitants turned into a nightmare in an inst
 - 14_Necessity
 - 15_Frontline
 - 16_Seekers
-- 17_Gloom
 - 18_Trickery
-- 18x_Parley
 - 19_Lenvan
 - 20_Temple_in_the_Deep
 
