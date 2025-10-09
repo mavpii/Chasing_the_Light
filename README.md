@@ -11,6 +11,7 @@ Peaceful life of the Green Isle's inhabitants turned into a nightmare in an inst
 
 ## Sprite Designer
 - [Refumee](https://github.com/Refumee)
+- Maksiu
 
 ## S9 Mapmaker
 - RKT
