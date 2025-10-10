@@ -4346,7 +4346,7 @@ msgstr "Ти безсумнівно заслуговуєш на це, у теб�
 #. Так-так, спочатку ми беремо це, змішуємо з оцим... А потім... О, Даеоло, ти дуже вчасно. Можеш, будь ласка, принести трохи слизу борщовика?
 #: Chasing_the_Light/scenarios/04_Daeola.cfg:1330
 msgid ""
-"Yes-yes, first we take this, mix it with this... And then... Oh, Daoela, "
+"Yes-yes, first we take this, mix it with this... And then... Oh, Daeola, "
 "you're just in time. Could you please bring some borschovyk's mucus?"
 msgstr ""
 "Так-так, спочатку ми беремо це, змішуємо з оцим... А потім... О, Даеоло, ти "
@@ -5296,7 +5296,7 @@ msgstr "Ґа?.. А як я..?"
 #. [then]
 #. ДАЕОЛО, ЦЕ ТВОЯ РОБОТА?! АГОВ, ВИПУСТІТЬ МЕНЕ ЗВІДСИ НЕГАЙНО!
 #: Chasing_the_Light/scenarios/04_Daeola.cfg:2466
-msgid "DAOELA, IS THIS YOUR WORK?! HEY, LET ME OUT OF HERE RIGHT NOW!"
+msgid "DAEOLA, IS THIS YOUR WORK?! HEY, LET ME OUT OF HERE RIGHT NOW!"
 msgstr "ДАЕОЛО, ЦЕ ТВОЯ РОБОТА?! АГОВ, ВИПУСТІТЬ МЕНЕ ЗВІДСИ НЕГАЙНО!"
 
 #. [then]
@@ -5670,7 +5670,7 @@ msgstr ""
 #. Як тільки Даеола підійшла до крислатого дерева, осяяного сонячним світлом згори, позаду почувся страшний гуркіт і земляний прохід зник глибоко під водою. Після того дерево наче ожило, заворушилося і на дівчину тепер дивилося для спокійних помаранчевих ока, це був лісовик.
 #: Chasing_the_Light/scenarios/04_Daeola.cfg:3179
 msgid ""
-"As soon as Daoela approached the leafy tree, illuminated by the sunlight "
+"As soon as Daeola approached the leafy tree, illuminated by the sunlight "
 "from above, she heard a terrible rumble behind her and the earthen passage "
 "disappeared deep under the water. After that, the tree seemed to come to "
 "life, stirred, and now looked at the girl with calm orange eyes, it was one "
