@@ -11507,7 +11507,7 @@ msgstr ""
 #. [scenario]: id=08_Quiescence
 #. Даеоло, твоя магія вирвала мене з-під впливу Голосу, тому прошу, допоможи ж і у цій битві!
 #: Chasing_the_Light/scenarios/08_Quiescence.cfg:1733
-msgid "Daeolo, your magic broke me free from the Voice's influence, so please help me in this battle too!"
+msgid "Daeola, your magic broke me free from the Voice's influence, so please help me in this battle too!"
 msgstr ""
 
 #. [scenario]: id=08_Quiescence
