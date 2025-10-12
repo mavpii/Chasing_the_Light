@@ -10,3 +10,11 @@ function wesnoth.interface.game_display.stormvale_quests()
 	} } }
 
 end
+
+function wesnoth.interface.game_display.stormvale_gold()
+
+	return { { 'element', {
+		text = wml.variables["stormvale_gold"] or 0
+	} } }
+
+end
