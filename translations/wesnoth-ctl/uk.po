@@ -9589,7 +9589,7 @@ msgstr ""
 #. Наші предки не могли знати чаклунства, Гараліне? Це чудова новина, але ж звідки потім оця 'магія' взялася?..
 #: Chasing_the_Light/scenarios/06_Miscreants.cfg:1640
 msgid ""
-"Our ancestors could not have known witchcraft, Haralyn? That's great news, "
+"Our ancestors could not have known witchcraft, Haralin? That's great news, "
 "but where did this 'magic' come from?.."
 msgstr ""
 "Наші предки не могли знати чаклунства, Гараліне? Це чудова новина, але ж "
