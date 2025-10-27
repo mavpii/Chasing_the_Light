@@ -622,6 +622,12 @@ wml_actions["modify_caster"] = function(cfg)
 	    	wml.variables["caster_" .. u.id .. ".utils_spellcasting_allowed"] = cfg.spellcasting_allowed or wml.variables["caster_" .. u.id .. ".utils_spellcasting_allowed"]
 	    	
 	        wml.fire("refresh_skills", ({id = u.id}))
+			
+			wml.fire.do_command({
+                wml.tag.fire_event {
+                    raise = "magic_system_add_animations"
+                }
+            })
 	    else
 	        wml.fire("assign_caster", cfg)
 	    end

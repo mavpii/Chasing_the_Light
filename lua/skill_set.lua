@@ -266,7 +266,7 @@ local skill_set = {
 		id          = "skill_magic_missile",
 		label       = label(_"Magic Missile"),
 		image       = "attacks/magic-missile.png",
-		description = _"<span color='#ad6a61'><i><b>Attack:</b></i></span> Ranged 7x3 fire, <i>magical</i>.",
+		description = _"<span color='#ad6a61'><i><b>Attack:</b></i></span> Ranged 7x3(<span color='#00bbe6'><i>lvl1</i></span>) or 10x3(<span color='#00bbe6'><i>lvl2</i></span>) fire, <i>magical</i>.",
 	},
 	-------------------------
 	-- DISTANT ATTACK
@@ -319,8 +319,8 @@ local skill_set = {
 		id          = "skill_relocate",
 		label       = label(_"Relocate"),
 		image       = "icons/relocate.png",
-		description = _"<span color='#6ca364'><i><b>Spell:</b></i></span> Spend <span color='#00bbe6'><i>??xp</i></span> to instantly teleport any friendly unit. \n<span color='#ad6a61'><i><b>Radius:</b></i></span> <i>3 hexes.</i>",
-		xp_cost=0,
+		description = _"<span color='#6ca364'><i><b>Spell:</b></i></span> Spend <span color='#00bbe6'><i>10xp</i></span> to instantly teleport any friendly unit. \n<span color='#ad6a61'><i><b>Radius:</b></i></span> <i>3 hexes.</i>",
+		xp_cost=10,
 	},
 	-------------------------
 	-- ILLUMINATE
@@ -338,7 +338,37 @@ local skill_set = {
 		id          = "skill_lightbeam",
 		label       = label(_"Ray of Light"),
 		image       = "attacks/beam-eye.png",
-		description = _"<span color='#ad6a61'><i><b>Attack:</b></i></span> Ranged 7x3 arcane, <i>magical</i>.",
+		description = _"<span color='#ad6a61'><i><b>Attack:</b></i></span> Ranged 15x2 arcane, <i>magical</i>.",
+	},
+	-------------------------
+	-- FLIGHT
+	-------------------------
+	[34] = {
+		id          = "skill_flight",
+		label       = label(_"Flight"),
+		image       = "icons/sandals.png",
+		description = _"<span color='#6ca364'><i><b>Spell:</b></i></span> Spend <span color='#00bbe6'><i>12xp</i></span> to gain <i>flight</i>, the <i>skirmisher</i> ability and <i>+2 MP</i> until the start of your next turn or until cancelled.",
+		xp_cost=12,
+	},
+	-------------------------
+	-- MASSHEAL
+	-------------------------
+	[35] = {
+		id          = "skill_massheal",
+		label       = label(_"Massive Heal"),
+		image       = "icons/massheal.png",
+		description = _"<span color='#6ca364'><i><b>Spell:</b></i></span> Spend <span color='#00bbe6'><i>12xp</i></span> to heal every adjacent friendly unit for +10 HP. \n<span color='#ad6a61'><i><b>Radius:</b></i></span> <i>7 hexes.</i>",
+		xp_cost=12,
+	},
+	-------------------------
+	-- SMITE
+	-------------------------
+	[36] = {
+		id          = "skill_smite",
+		label       = label(_"Smite"),
+		image       = "attacks/banishment.png",
+		description = _"<span color='#6ca364'><i><b>Spell:</b></i></span> Spend <span color='#00bbe6'><i>12xp</i></span> to gain <i>flight</i>, the <i>skirmisher</i> ability and <i>+2 MP</i> until the start of your next turn or until cancelled.",
+		xp_cost=16,
 	},
 }
 
