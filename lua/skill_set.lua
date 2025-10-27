@@ -357,7 +357,7 @@ local skill_set = {
 		id          = "skill_massheal",
 		label       = label(_"Massive Heal"),
 		image       = "icons/massheal.png",
-		description = _"<span color='#6ca364'><i><b>Spell:</b></i></span> Spend <span color='#00bbe6'><i>12xp</i></span> to heal every adjacent friendly unit for +10 HP. \n<span color='#ad6a61'><i><b>Radius:</b></i></span> <i>7 hexes.</i>",
+		description = _"<span color='#6ca364'><i><b>Spell:</b></i></span> Spend <span color='#00bbe6'><i>12xp</i></span> to heal every adjacent friendly unit for +10 HP.",
 		xp_cost=12,
 	},
 	-------------------------
@@ -367,7 +367,7 @@ local skill_set = {
 		id          = "skill_smite",
 		label       = label(_"Smite"),
 		image       = "attacks/banishment.png",
-		description = _"<span color='#6ca364'><i><b>Spell:</b></i></span> Spend <span color='#00bbe6'><i>12xp</i></span> to gain <i>flight</i>, the <i>skirmisher</i> ability and <i>+2 MP</i> until the start of your next turn or until cancelled.",
+		description = _"<span color='#6ca364'><i><b>Spell:</b></i></span> Spend <span color='#00bbe6'><i>16xp</i></span> to deal 30 arcane damage to every adjacent enemy unit.",
 		xp_cost=16,
 	},
 }
