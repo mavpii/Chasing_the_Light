@@ -1,0 +1,32 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
+"POT-Creation-Date: 2025-10-28 11:05 UTC\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. [menu]: id=menu-main
+#: Chasing_the_Light/themes/stormvale.cfg:40
+msgid "Menu"
+msgstr ""
+
+#. [action]: id=button-objectives
+#: Chasing_the_Light/themes/stormvale.cfg:51
+msgid "Objectives"
+msgstr ""
+
+#. [action]: id=button-endturn
+#: Chasing_the_Light/themes/stormvale.cfg:108
+msgid "End Turn"
+msgstr ""
+
+#. [action]: id=button-endturn
+#: Chasing_the_Light/themes/stormvale.cfg:109
+msgid "End Scenario"
+msgstr ""
+
