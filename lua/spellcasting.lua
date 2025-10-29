@@ -914,6 +914,815 @@ wesnoth.game_events.on_mouse_action = function(x,y)
 	end
 end
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+----------------------------------------------------------------
+-------------------CHESS----------------------------------------
+----------------------------------------------------------------
+local ctl_chess_all_moves
+
+
+
+function ctl_chess_get_all_moves(side, unit_to_compare) 
+    local all_chess_units = wesnoth.units.find_on_map{ side = side }
+	local chess_image_move = "misc/blank-hex.png"
+	local chess_image_attack = "misc/blank-hex.png"
+	
+
+    --модифікувати кожну функцію під режим аналізу, де всі можливі ходи будуть повертатися в масив ctl_chess_all_moves
+	
+	--треба робити дві перевірки на шах - під час вибору фігури та після ходу. 
+	-- алгоритм під час вибору:
+    -- юніт, який буде ходити, ігнорується(приймається за пусте місце)
+	-- збирається масив усіх можливих ходів ворога
+	-- перевіряється чи зможе хтось в такому разі поставити шах дружньому королю
+    -- якщо так, юніту заборонено ходити
+	
+	-- алгоритм після ходу:
+	-- збирається масив усіх можливих ходів сторони юніта
+	-- якщо координати ворожого короля потрапляють в масив, значить шах
+	-- перевіряються можливі ходи короля
+	-- якщо нема, збираються усі можливі ходи ворога
+	-- перевіряється чи є серед них такі, що можуть призвести до скасування шаха.
+	-- якщо ні, мат
+	
+	-- потрібні функції:
+	-- 1) усі можливі ходи сторони
+	-- 2) усі можливі ходи короля
+	-- 3) надання/скасування шаха/мата
+	
+	for _, chess_unit in ipairs(all_chess_units) do
+	    if chess_unit.id:sub(1, 5) == "Chess" then
+	        if chess_unit.type == "Peasant" or chess_unit.type == "Walking Corpse" then
+    	        ctl_chess_pawn(chess_unit.id, chess_image_move, chess_image_attack)
+		    	wesnoth.interface.add_chat_message("Info", ("Pawn!" .. chess_unit.x .. " " .. chess_unit.y))
+		    elseif chess_unit.type == "Daeola_L2" or chess_unit.type == "Wesfolk Princess" then
+		        ctl_chess_queen(chess_unit.id, chess_image_move, chess_image_attack)
+		    	wesnoth.interface.add_chat_message("Info", ("Queen!" .. chess_unit.x .. " " .. chess_unit.y))
+            elseif chess_unit.type == "Haralin_L3" or chess_unit.type == "Lenvan" then
+		        ctl_chess_king(chess_unit.id, chess_image_move)
+		    	wesnoth.interface.add_chat_message("Info", ("King!" .. chess_unit.x .. " " .. chess_unit.y))
+            elseif chess_unit.type == "Highwayman_Peasant" or chess_unit.type == "Bone Skeleton" then
+		        ctl_chess_rook(chess_unit.id, chess_image_move, chess_image_attack)
+                wesnoth.interface.add_chat_message("Info", ("Rook!" .. chess_unit.x .. " " .. chess_unit.y))				
+            elseif chess_unit.type == "Knight" or chess_unit.type == "Wesfolk Chariot" then
+		        ctl_chess_knight(chess_unit.id, chess_image_move, chess_image_attack)
+		    	wesnoth.interface.add_chat_message("Info", ("Knight!" .. chess_unit.x .. " " .. chess_unit.y))
+            elseif chess_unit.type == "Crossbowman" or chess_unit.type == "Death Squire" then
+		        ctl_chess_bishop(chess_unit.id, chess_image_move, chess_image_attack)
+                wesnoth.interface.add_chat_message("Info", ("Bishop!" .. chess_unit.x .. " " .. chess_unit.y))				
+            end
+	    end
+	end
+	
+	return ctl_chess_all_moves
+end
+
+function ctl_chess_advance(chess_type, chess_x, chess_y)
+    --верхні та нижні границі карти. Вони не є прямими, тому доводиться робити набори координат
+	    if chess_y == 4 or chess_y == 9 or (chess_x == 11 and chess_y == 5) or (chess_x == 9 and chess_y == 10) or (chess_x == 13 and chess_y == 10) then
+	    	wml.fire("modify_unit", {
+                experience = 30,
+                wml.tag.filter {
+                    x = chess_x,
+                    y = chess_y
+                }
+            })
+	    	
+	    	wml.fire("modify_unit", {
+                experience = 0,
+                wml.tag.filter {
+                    x = chess_x,
+                    y = chess_y
+                }
+            })
+	end
+end
+
+function ctl_chess_move(chess_id, chess_type, chess_x, chess_y)
+    wml.fire.kill({
+        x = chess_x,
+		y = chess_y,
+		force_scroll = false
+    })
+	
+    wml.fire.move_unit({
+        id = chess_id,
+		to_x = chess_x,
+		to_y = chess_y,
+		force_scroll = false
+    })
+	
+	wesnoth.interface.end_turn()
+	
+	wml.variables["ctl_chess_active"] = true
+end
+
+function ctl_chess_cancel(image)
+    spell_remove_image(image)
+	spell_remove_image("misc/attack.png")
+    wml.fire("redraw")
+    wesnoth.game_events.on_mouse_button = nil
+
+    wesnoth.interface.allow_end_turn(true)
+
+    wesnoth.units.select()
+	
+	wml.variables["ctl_chess_active"] = true
+end
+
+function spell_place_image(x, y, image)
+    wesnoth.wml_actions.item({
+        x = x,
+        y = y,
+        image = image
+    })
+end
+
+function spell_remove_image(image)
+    wesnoth.wml_actions.remove_item({
+        image = image
+    })
+end
+
+function ctl_chess_calculate_next_coors(x, y, direction)
+    local new_x, new_y = x, y
+
+    if direction == "ne" then
+        if y % 2 == 1 and x % 2 == 0 then
+            -- y непарний, x парний
+            new_y = y
+    		new_x = x + 1
+        elseif y % 2 == 1 and x % 2 == 1 then
+            -- y непарний, x непарний
+            new_y = y - 1
+            new_x = x + 1
+        elseif y % 2 == 0 and x % 2 == 0 then
+            -- y парний, x парний
+            new_y = y
+            new_x = x + 1
+        elseif y % 2 == 0 and x % 2 == 1 then
+            -- y парний, x непарний
+            new_y = y - 1
+    		new_x = x + 1
+        end
+    elseif direction == "nw" then
+        if y % 2 == 1 and x % 2 == 0 then
+            -- y непарний, x парний
+            new_y = y
+    		new_x = x - 1
+        elseif y % 2 == 1 and x % 2 == 1 then
+            -- y непарний, x непарний
+            new_y = y - 1
+            new_x = x - 1
+        elseif y % 2 == 0 and x % 2 == 0 then
+            -- y парний, x парний
+            new_y = y
+            new_x = x - 1
+        elseif y % 2 == 0 and x % 2 == 1 then
+            -- y парний, x непарний
+            new_y = y - 1
+    		new_x = x - 1
+        end
+    elseif direction == "n" then
+            new_y = y - 1
+    		new_x = x
+    elseif direction == "s" then
+            new_y = y + 1
+    		new_x = x
+    elseif direction == "sw" then
+        if y % 2 == 1 and x % 2 == 0 then
+            -- y непарний, x парний
+            new_y = y + 1
+    		new_x = x - 1
+        elseif y % 2 == 1 and x % 2 == 1 then
+            -- y непарний, x непарний
+            new_y = y
+            new_x = x - 1
+        elseif y % 2 == 0 and x % 2 == 0 then
+            -- y парний, x парний
+            new_y = y + 1
+            new_x = x - 1
+        elseif y % 2 == 0 and x % 2 == 1 then
+            -- y парний, x непарний
+            new_y = y
+    		new_x = x - 1
+        end
+    elseif direction == "se" then
+        if y % 2 == 1 and x % 2 == 0 then
+            -- y непарний, x парний
+            new_y = y + 1
+    		new_x = x + 1
+        elseif y % 2 == 1 and x % 2 == 1 then
+            -- y непарний, x непарний
+            new_y = y
+            new_x = x + 1
+        elseif y % 2 == 0 and x % 2 == 0 then
+            -- y парний, x парний
+            new_y = y + 1
+            new_x = x + 1
+        elseif y % 2 == 0 and x % 2 == 1 then
+            -- y парний, x непарний
+            new_y = y
+    		new_x = x + 1
+        end
+    end
+    
+        return new_x, new_y
+end
+	
+	
+	--king moves
+    function ctl_chess_king(caster_id, image_move, image_attack)
+    local unit_id = caster_id
+    local selected_target_hexes = {}
+
+    wesnoth.interface.allow_end_turn(false)
+
+    local unit_to_modify = (wesnoth.units.find_on_map({id = unit_id})) [1]
+
+    --пізніше додати перевірку на шах
+    for xx = unit_to_modify.x - 1, unit_to_modify.x + 1 do
+        for yy = unit_to_modify.y - 1, unit_to_modify.y + 1 do
+            if wesnoth.map.distance_between(unit_to_modify.x, unit_to_modify.y, xx, yy) <= 1 then
+                local target_units = (wesnoth.units.find_on_map({ x = xx, y = yy }))
+                local has_unit = #target_units > 0
+                local void_terrain = wesnoth.map.find({x = xx, y= yy, terrain = "_off^_usr"})
+                local has_void_terrain = #void_terrain > 0
+
+                if (not has_void_terrain and not has_unit) and (xx ~= unit_to_modify.x or yy ~= unit_to_modify.y) then
+                    spell_place_image(xx, yy, image_move)
+                    table.insert(selected_target_hexes, { x = xx, y = yy })
+				elseif (not has_void_terrain and has_unit and wesnoth.sides[unit_to_modify.side].side ~= wesnoth.sides[target_units[1].side].side) then
+				    spell_place_image(xx, yy, image_attack)
+                    table.insert(selected_target_hexes, { x = xx, y = yy })
+				end
+            end
+        end
+    end
+	
+	function on_click_spell_event_king(Table)
+        for _, target_hex in ipairs(selected_target_hexes) do
+            if Table.x == target_hex.x and Table.y == target_hex.y then
+                spell_remove_image(image_move)
+				spell_remove_image(image_attack)
+                wml.fire("redraw")
+                wesnoth.game_events.on_mouse_button = nil
+
+                ctl_chess_move(unit_to_modify.id, unit_to_modify.type, Table.x, Table.y)
+
+                wesnoth.interface.allow_end_turn(true)
+
+                wesnoth.units.select()
+                return
+            end
+        end
+        ctl_chess_cancel(image_move)
+    end
+
+    wesnoth.game_events.on_mouse_button = function(screen_x, screen_y, button, pressed)
+        if pressed and button == "left" then
+			wesnoth.sync.invoke_command("on_click_spell_event", {type="_king", x=screen_x, y=screen_y})
+        end
+    end
+end
+
+
+
+
+    --queen moves
+    function ctl_chess_queen(caster_id, image_move, image_attack)
+        local unit_id = caster_id
+        local selected_target_hexes = {}
+		local selected_target_hexes_n = {}
+		local selected_target_hexes_ne = {}
+		local selected_target_hexes_nw = {}
+		local selected_target_hexes_s = {}
+		local selected_target_hexes_se = {}
+		local selected_target_hexes_sw = {}
+		local affected_array = {}
+
+        wesnoth.interface.allow_end_turn(false)
+
+        local unit_to_modify = wesnoth.units.find_on_map({id = unit_id})[1]
+
+        local directions = {"n","s","ne","nw","sw","se"}
+
+        for _, dir in ipairs(directions) do
+            local target_x = unit_to_modify.x
+            local target_y = unit_to_modify.y
+
+            for step = 1, 10 do
+                target_x, target_y = ctl_chess_calculate_next_coors(target_x, target_y, dir)
+
+                local target_units = wesnoth.units.find_on_map({x = target_x, y = target_y})
+                local has_unit = #target_units > 0
+                local void_terrain = wesnoth.map.find({x = target_x, y= target_y, terrain = "_off^_usr"})
+                local has_void_terrain = #void_terrain > 0
+
+                if (not has_void_terrain and not has_unit) then
+                    spell_place_image(target_x, target_y, image_move)
+					if dir == "ne" then
+					    table.insert(selected_target_hexes_ne, {x = target_x, y = target_y})
+		            elseif dir == "nw" then
+					    table.insert(selected_target_hexes_nw, {x = target_x, y = target_y})
+	                elseif dir == "n" then
+					    table.insert(selected_target_hexes_n, {x = target_x, y = target_y})
+		            elseif dir == "s" then
+				        table.insert(selected_target_hexes_s, {x = target_x, y = target_y})
+		            elseif dir == "sw" then
+					    table.insert(selected_target_hexes_sw, {x = target_x, y = target_y})
+	                elseif dir == "se" then
+					    table.insert(selected_target_hexes_se, {x = target_x, y = target_y})
+		            end
+                    table.insert(selected_target_hexes, {x = target_x, y = target_y, id = step, direction = dir})
+				elseif (not has_void_terrain and has_unit and wesnoth.sides[unit_to_modify.side].side ~= wesnoth.sides[target_units[1].side].side) then
+				    spell_place_image(target_x, target_y, image_attack)
+					if dir == "ne" then
+					    table.insert(selected_target_hexes_ne, {x = target_x, y = target_y})
+		            elseif dir == "nw" then
+					    table.insert(selected_target_hexes_nw, {x = target_x, y = target_y})
+	                elseif dir == "n" then
+					    table.insert(selected_target_hexes_n, {x = target_x, y = target_y})
+		            elseif dir == "s" then
+				        table.insert(selected_target_hexes_s, {x = target_x, y = target_y})
+		            elseif dir == "sw" then
+					    table.insert(selected_target_hexes_sw, {x = target_x, y = target_y})
+	                elseif dir == "se" then
+					    table.insert(selected_target_hexes_se, {x = target_x, y = target_y})
+		            end
+                    table.insert(selected_target_hexes, {x = target_x, y = target_y, id = step, direction = dir})
+					break
+                else break end
+            end
+        end
+
+        function on_click_spell_event_queen(Table)
+            for _, target_hex in ipairs(selected_target_hexes) do
+                if Table.x == target_hex.x and Table.y == target_hex.y then
+                    spell_remove_image(image_move)
+					spell_remove_image(image_attack)
+                    wml.fire("redraw")
+                    wesnoth.game_events.on_mouse_button = nil
+				    
+                    ctl_chess_move(unit_to_modify.id, unit_to_modify.type, Table.x, Table.y)
+				    
+                    wesnoth.interface.allow_end_turn(true)
+				    
+                    wesnoth.units.select()
+                    return
+                end
+            end
+            ctl_chess_cancel(image_move)
+        end
+
+        wesnoth.game_events.on_mouse_button = function(screen_x, screen_y, button, pressed)
+            if pressed and button == "left" then
+				wesnoth.sync.invoke_command("on_click_spell_event", {type="_queen", x=screen_x, y=screen_y})
+            end
+        end
+    end
+
+
+
+
+    --bishop moves
+    function ctl_chess_bishop(caster_id, image_move, image_attack)
+        local unit_id = caster_id
+        local selected_target_hexes = {}
+		local selected_target_hexes_ne = {}
+		local selected_target_hexes_nw = {}
+		local selected_target_hexes_se = {}
+		local selected_target_hexes_sw = {}
+		local affected_array = {}
+
+        wesnoth.interface.allow_end_turn(false)
+
+        local unit_to_modify = wesnoth.units.find_on_map({id = unit_id})[1]
+
+        local directions = {"ne","nw","sw","se"}
+
+        for _, dir in ipairs(directions) do
+            local target_x = unit_to_modify.x
+            local target_y = unit_to_modify.y
+
+            for step = 1, 10 do
+                target_x, target_y = ctl_chess_calculate_next_coors(target_x, target_y, dir)
+
+                local target_units = wesnoth.units.find_on_map({x = target_x, y = target_y})
+                local has_unit = #target_units > 0
+                local void_terrain = wesnoth.map.find({x = target_x, y= target_y, terrain = "_off^_usr"})
+                local has_void_terrain = #void_terrain > 0
+
+                if (not has_void_terrain and not has_unit) then
+                    spell_place_image(target_x, target_y, image_move)
+					if dir == "ne" then
+					    table.insert(selected_target_hexes_ne, {x = target_x, y = target_y})
+		            elseif dir == "nw" then
+					    table.insert(selected_target_hexes_nw, {x = target_x, y = target_y})
+		            elseif dir == "sw" then
+					    table.insert(selected_target_hexes_sw, {x = target_x, y = target_y})
+	                elseif dir == "se" then
+					    table.insert(selected_target_hexes_se, {x = target_x, y = target_y})
+		            end
+                    table.insert(selected_target_hexes, {x = target_x, y = target_y, id = step, direction = dir})
+                elseif (not has_void_terrain and has_unit and wesnoth.sides[unit_to_modify.side].side ~= wesnoth.sides[target_units[1].side].side) then
+				    spell_place_image(target_x, target_y, image_attack)
+					if dir == "ne" then
+					    table.insert(selected_target_hexes_ne, {x = target_x, y = target_y})
+		            elseif dir == "nw" then
+					    table.insert(selected_target_hexes_nw, {x = target_x, y = target_y})
+		            elseif dir == "sw" then
+					    table.insert(selected_target_hexes_sw, {x = target_x, y = target_y})
+	                elseif dir == "se" then
+					    table.insert(selected_target_hexes_se, {x = target_x, y = target_y})
+		            end
+                    table.insert(selected_target_hexes, {x = target_x, y = target_y, id = step, direction = dir})
+					break
+				else break end
+            end
+        end
+
+        function on_click_spell_event_bishop(Table)
+            for _, target_hex in ipairs(selected_target_hexes) do
+                if Table.x == target_hex.x and Table.y == target_hex.y then
+                    spell_remove_image(image_move)
+					spell_remove_image(image_attack)
+                    wml.fire("redraw")
+                    wesnoth.game_events.on_mouse_button = nil
+				    
+                    ctl_chess_move(unit_to_modify.id, unit_to_modify.type, Table.x, Table.y)
+				    
+                    wesnoth.interface.allow_end_turn(true)
+				    
+                    wesnoth.units.select()
+					
+					wml.variables["ctl_chess_active"] = true
+                    return
+                end
+            end
+            ctl_chess_cancel(image_move)
+        end
+
+        wesnoth.game_events.on_mouse_button = function(screen_x, screen_y, button, pressed)
+            if pressed and button == "left" then
+				wesnoth.sync.invoke_command("on_click_spell_event", {type="_bishop", x=screen_x, y=screen_y})
+            end
+        end
+    end
+
+
+    --rook moves
+    function ctl_chess_rook(caster_id, image_move, image_attack)
+        local unit_id = caster_id
+        local selected_target_hexes = {}
+		local selected_target_hexes_n = {}
+		local selected_target_hexes_s = {}
+		local affected_array = {}
+
+        wesnoth.interface.allow_end_turn(false)
+
+        local unit_to_modify = wesnoth.units.find_on_map({id = unit_id})[1]
+
+        local directions = {"n","s"}
+
+        for _, dir in ipairs(directions) do
+            local target_x = unit_to_modify.x
+            local target_y = unit_to_modify.y
+
+            for step = 1, 10 do
+                target_x, target_y = ctl_chess_calculate_next_coors(target_x, target_y, dir)
+
+                local target_units = wesnoth.units.find_on_map({x = target_x, y = target_y})
+                local has_unit = #target_units > 0
+				local void_terrain = wesnoth.map.find({x = target_x, y= target_y, terrain = "_off^_usr"})
+                local has_void_terrain = #void_terrain > 0
+
+                if (not has_void_terrain and not has_unit) then
+                    spell_place_image(target_x, target_y, image_move)
+					if dir == "n" then
+					    table.insert(selected_target_hexes_n, {x = target_x, y = target_y})
+		            elseif dir == "s" then
+				        table.insert(selected_target_hexes_s, {x = target_x, y = target_y})
+		            end
+                    table.insert(selected_target_hexes, {x = target_x, y = target_y, id = step, direction = dir})
+                elseif (not has_void_terrain and has_unit and wesnoth.sides[unit_to_modify.side].side ~= wesnoth.sides[target_units[1].side].side) then
+                    spell_place_image(target_x, target_y, image_attack)
+					if dir == "n" then
+					    table.insert(selected_target_hexes_n, {x = target_x, y = target_y})
+		            elseif dir == "s" then
+				        table.insert(selected_target_hexes_s, {x = target_x, y = target_y})
+		            end
+                    table.insert(selected_target_hexes, {x = target_x, y = target_y, id = step, direction = dir})
+					break
+                else break end
+            end
+        end
+
+        function on_click_spell_event_rook(Table)
+            for _, target_hex in ipairs(selected_target_hexes) do
+                if Table.x == target_hex.x and Table.y == target_hex.y then
+                    spell_remove_image(image_move)
+					spell_remove_image(image_attack)
+                    wml.fire("redraw")
+                    wesnoth.game_events.on_mouse_button = nil
+					
+					ctl_chess_move(unit_to_modify.id, unit_to_modify.type, Table.x, Table.y)
+				    
+                    wesnoth.interface.allow_end_turn(true)
+				    
+                    wesnoth.units.select()
+                    return
+                end
+            end
+            ctl_chess_cancel(image_move)
+        end
+
+        wesnoth.game_events.on_mouse_button = function(screen_x, screen_y, button, pressed)
+            if pressed and button == "left" then
+				wesnoth.sync.invoke_command("on_click_spell_event", {type="_rook", x=screen_x, y=screen_y})
+            end
+        end
+    end
+	
+	
+	--knight moves
+    function ctl_chess_knight(caster_id, image_move, image_attack)
+    local unit_id = caster_id
+    local selected_target_hexes = {}
+
+    wesnoth.interface.allow_end_turn(false)
+
+    local unit_to_modify = (wesnoth.units.find_on_map({id = unit_id})) [1]
+
+    for xx = unit_to_modify.x - 3, unit_to_modify.x + 3 do
+        for yy = unit_to_modify.y - 3, unit_to_modify.y + 3 do
+            if wesnoth.map.distance_between(unit_to_modify.x, unit_to_modify.y, xx, yy) <= 3 then
+                local target_units = (wesnoth.units.find_on_map({ x = xx, y = yy }))
+                local has_unit = #target_units > 0
+                local void_terrain = wesnoth.map.find({x = xx, y= yy, terrain = "_off^_usr"})
+                local has_void_terrain = #void_terrain > 0
+				local castle_terrain = wesnoth.map.find({x = xx, y= yy, terrain = "Kha"})
+                local has_castle_terrain = #castle_terrain > 0
+				
+				if wesnoth.map.distance_between(unit_to_modify.x, unit_to_modify.y, xx, yy) == 3 then
+
+                if (not has_void_terrain and not has_unit and not has_castle_terrain) and (xx ~= unit_to_modify.x or yy ~= unit_to_modify.y) then
+                    spell_place_image(xx, yy, image_move)
+                    table.insert(selected_target_hexes, { x = xx, y = yy })
+				elseif (not has_castle_terrain and not has_void_terrain and has_unit and wesnoth.sides[unit_to_modify.side].side ~= wesnoth.sides[target_units[1].side].side) then
+				    spell_place_image(xx, yy, image_attack)
+                    table.insert(selected_target_hexes, { x = xx, y = yy })
+				end
+				
+				end
+            end
+        end
+    end
+		
+		local directions = {"n","s","ne","nw","sw","se"}
+
+        for _, dir in ipairs(directions) do
+            local target_x = unit_to_modify.x
+            local target_y = unit_to_modify.y
+
+            for step = 1, 3 do
+                target_x, target_y = ctl_chess_calculate_next_coors(target_x, target_y, dir)
+				if step == 3 then
+					wesnoth.wml_actions.remove_item({
+                        image = image_move,
+						x = target_x,
+						y = target_y
+                    })
+					wesnoth.wml_actions.remove_item({
+                        image = image_attack,
+						x = target_x,
+						y = target_y
+                    })
+				    for i, hex in ipairs(selected_target_hexes) do
+                        if hex.x == target_x and hex.y == target_y then
+                            table.remove(selected_target_hexes, i)
+                            break
+                        end
+                    end
+				end
+            end
+        end
+	
+	function on_click_spell_event_knight(Table)
+        for _, target_hex in ipairs(selected_target_hexes) do
+            if Table.x == target_hex.x and Table.y == target_hex.y then
+                spell_remove_image(image_move)
+				spell_remove_image(image_attack)
+                wml.fire("redraw")
+                wesnoth.game_events.on_mouse_button = nil
+
+                ctl_chess_move(unit_to_modify.id, unit_to_modify.type, Table.x, Table.y)
+
+                wesnoth.interface.allow_end_turn(true)
+
+                wesnoth.units.select()
+                return
+            end
+        end
+        ctl_chess_cancel(image_move)
+    end
+
+    wesnoth.game_events.on_mouse_button = function(screen_x, screen_y, button, pressed)
+        if pressed and button == "left" then
+			wesnoth.sync.invoke_command("on_click_spell_event", {type="_knight", x=screen_x, y=screen_y})
+        end
+    end
+end
+	
+
+	
+	
+	
+	
+	
+	
+	--pawn moves
+    function ctl_chess_pawn(caster_id, image_move, image_attack)
+        local unit_id = caster_id
+        local selected_target_hexes = {}
+		local selected_target_hexes_n = {}
+		local selected_target_hexes_ne = {}
+		local selected_target_hexes_nw = {}
+		local selected_target_hexes_s = {}
+		local selected_target_hexes_se = {}
+		local selected_target_hexes_sw = {}
+		local affected_array = {}
+
+        wesnoth.interface.allow_end_turn(false)
+
+        local unit_to_modify = wesnoth.units.find_on_map({id = unit_id})[1]
+		local directions
+
+        if unit_to_modify.side == 1 then
+            directions = {"n","ne","nw"}
+		else 
+		    directions = {"s","se","sw"}
+		end
+
+        for _, dir in ipairs(directions) do
+            local target_x = unit_to_modify.x
+            local target_y = unit_to_modify.y
+			local radius
+			
+			if ((target_x == 9 and target_y == 9) or (target_x == 10 and target_y == 8)
+            or (target_x == 11 and target_y == 8) or (target_x == 12 and target_y == 8)
+            or (target_x == 13 and target_y == 9)) and unit_to_modify.side == 1 then
+                radius = 2
+            elseif ((target_x == 9 and target_y == 5) or (target_x == 10 and target_y == 5)
+                or (target_x == 11 and target_y == 6) or (target_x == 12 and target_y == 5)
+                or (target_x == 13 and target_y == 5)) and unit_to_modify.side ~= 1 then
+                radius = 2
+            else
+                radius = 1
+            end
+
+            for step = 1, radius do
+                target_x, target_y = ctl_chess_calculate_next_coors(target_x, target_y, dir)
+
+                local target_units = wesnoth.units.find_on_map({x = target_x, y = target_y})
+                local has_unit = #target_units > 0
+                local void_terrain = wesnoth.map.find({x = target_x, y= target_y, terrain = "_off^_usr"})
+                local has_void_terrain = #void_terrain > 0
+
+                if (not has_void_terrain and not has_unit) then
+					if dir == "n" then
+					    table.insert(selected_target_hexes_n, {x = target_x, y = target_y})
+		            elseif dir == "s" then
+				        table.insert(selected_target_hexes_s, {x = target_x, y = target_y})
+		            end
+					if dir == "n" or dir == "s" then
+					    spell_place_image(target_x, target_y, image_move)
+                        table.insert(selected_target_hexes, {x = target_x, y = target_y, id = step, direction = dir})
+					end
+				elseif (not has_void_terrain and has_unit and wesnoth.sides[unit_to_modify.side].side ~= wesnoth.sides[target_units[1].side].side) then
+				    if step == 1 then
+					    if dir == "ne" then
+					        table.insert(selected_target_hexes_ne, {x = target_x, y = target_y})
+		                elseif dir == "nw" then
+					        table.insert(selected_target_hexes_nw, {x = target_x, y = target_y})
+		                elseif dir == "sw" then
+					        table.insert(selected_target_hexes_sw, {x = target_x, y = target_y})
+	                    elseif dir == "se" then
+					        table.insert(selected_target_hexes_se, {x = target_x, y = target_y})
+		                end
+					    if dir ~= "n" and dir ~= "s" then
+					        spell_place_image(target_x, target_y, image_attack)
+                            table.insert(selected_target_hexes, {x = target_x, y = target_y, id = step, direction = dir})
+					    end
+					    break
+					end
+                else break end
+            end
+        end
+
+        function on_click_spell_event_pawn(Table)
+            for _, target_hex in ipairs(selected_target_hexes) do
+                if Table.x == target_hex.x and Table.y == target_hex.y then
+                    spell_remove_image(image_move)
+					spell_remove_image(image_attack)
+                    wml.fire("redraw")
+                    wesnoth.game_events.on_mouse_button = nil
+				    
+                    ctl_chess_move(unit_to_modify.id, unit_to_modify.type, Table.x, Table.y)
+					ctl_chess_advance(unit_to_modify.type, Table.x, Table.y)
+				    
+                    wesnoth.interface.allow_end_turn(true)
+				    
+                    wesnoth.units.select()
+                    return
+                end
+            end
+            ctl_chess_cancel(image_move)
+        end
+
+        wesnoth.game_events.on_mouse_button = function(screen_x, screen_y, button, pressed)
+            if pressed and button == "left" then
+				wesnoth.sync.invoke_command("on_click_spell_event", {type="_pawn", x=screen_x, y=screen_y})
+            end
+        end
+    end
+
+
+wesnoth.game_events.on_mouse_action = function(x,y) 	
+	if wml.variables["ctl_chess_active"] ~= true then return end
+	
+	local selected_unit = wesnoth.units.find_on_map{ x=x, y=y }
+	
+    if (not selected_unit[1]) then return end
+	if (wml.variables['is_badly_timed']) then return end
+	
+	ctl_chess_get_all_moves(2)
+	
+    if selected_unit[1].id:sub(1, 5) == "Chess" then
+    	
+		if wesnoth.current.user_is_replaying then return end -- якщо це реплей, то не спавнити діалог. схоже, не працює
+	    local chess_side = wesnoth.get_sides({ side = selected_unit[1].side })
+        if not (chess_side[1].controller == "human" and chess_side[1].is_local and wml.variables["side_number"] == chess_side[1].side) then return end
+		
+		wml.variables["ctl_chess_active"] = false
+		
+    	wml.variables['current_caster'] = selected_unit[1].id
+    	
+    	wesnoth.audio.play("miss-2.ogg")
+		
+		local chess_image_move = "misc/buff.png"
+		local chess_image_attack = "misc/attack.png"
+    	
+		if selected_unit[1].type == "Peasant" or selected_unit[1].type == "Walking Corpse" then
+    	    ctl_chess_pawn(wml.variables['current_caster'], chess_image_move, chess_image_attack)
+			wesnoth.interface.add_chat_message("Info", "Pawn!")
+		elseif selected_unit[1].type == "Daeola_L2" or selected_unit[1].type == "Wesfolk Princess" then
+		    ctl_chess_queen(wml.variables['current_caster'], chess_image_move, chess_image_attack)
+			wesnoth.interface.add_chat_message("Info", "Queen!")
+        elseif selected_unit[1].type == "Haralin_L3" or selected_unit[1].type == "Lenvan" then
+		    ctl_chess_king(wml.variables['current_caster'], chess_image_move, chess_image_attack)
+			wesnoth.interface.add_chat_message("Info", "King!")
+        elseif selected_unit[1].type == "Highwayman_Peasant" or selected_unit[1].type == "Bone Skeleton" then
+		    ctl_chess_rook(wml.variables['current_caster'], chess_image_move, chess_image_attack)
+            wesnoth.interface.add_chat_message("Info", "Rook!")				
+        elseif selected_unit[1].type == "Knight" or selected_unit[1].type == "Wesfolk Chariot" then
+		    ctl_chess_knight(wml.variables['current_caster'], chess_image_move, chess_image_attack)
+			wesnoth.interface.add_chat_message("Info", "Knight!")
+        elseif selected_unit[1].type == "Crossbowman" or selected_unit[1].type == "Death Squire" then
+		    ctl_chess_bishop(wml.variables['current_caster'], chess_image_move, chess_image_attack)
+            wesnoth.interface.add_chat_message("Info", "Bishop!")				
+        end				
+    
+        wesnoth.interface.delay(300)
+        wesnoth.units.select()
+    	wesnoth.interface.deselect_hex()
+        wml.fire("redraw")
+    end
+end
+
 -------------------------
 -- DETECT MOUSEMOVES
 -------------------------
