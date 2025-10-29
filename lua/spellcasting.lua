@@ -1028,6 +1028,8 @@ function ctl_chess_move(chess_id, chess_type, chess_x, chess_y)
 		force_scroll = false
     })
 	
+	spell_remove_image("misc/highlight-hex.png")
+	
     wml.fire.move_unit({
         id = chess_id,
 		to_x = chess_x,
@@ -1043,6 +1045,7 @@ end
 function ctl_chess_cancel(image)
     spell_remove_image(image)
 	spell_remove_image("misc/attack.png")
+	spell_remove_image("misc/highlight-hex.png")
     wml.fire("redraw")
     wesnoth.game_events.on_mouse_button = nil
 
@@ -1679,13 +1682,15 @@ wesnoth.game_events.on_mouse_action = function(x,y)
     if (not selected_unit[1]) then return end
 	if (wml.variables['is_badly_timed']) then return end
 	
-	ctl_chess_get_all_moves(2)
+	--ctl_chess_get_all_moves(2)
 	
     if selected_unit[1].id:sub(1, 5) == "Chess" then
     	
 		if wesnoth.current.user_is_replaying then return end -- якщо це реплей, то не спавнити діалог. схоже, не працює
 	    local chess_side = wesnoth.get_sides({ side = selected_unit[1].side })
         if not (chess_side[1].controller == "human" and chess_side[1].is_local and wml.variables["side_number"] == chess_side[1].side) then return end
+		
+		spell_place_image(x, y, "misc/highlight-hex.png")
 		
 		wml.variables["ctl_chess_active"] = false
 		
