@@ -973,31 +973,58 @@ function ctl_chess_get_all_moves(side, unit_to_compare)
 	-- 2) усі можливі ходи короля
 	-- 3) надання/скасування шаха/мата
 	
-	for _, chess_unit in ipairs(all_chess_units) do
-	    if chess_unit.id:sub(1, 5) == "Chess" then
-	        if chess_unit.type == "Peasant" or chess_unit.type == "Walking Corpse" then
-    	        ctl_chess_pawn(chess_unit.id, chess_image_move, chess_image_attack)
-		    	wesnoth.interface.add_chat_message("Info", ("Pawn!" .. chess_unit.x .. " " .. chess_unit.y))
-		    elseif chess_unit.type == "Daeola_L2" or chess_unit.type == "Wesfolk Princess" then
-		        ctl_chess_queen(chess_unit.id, chess_image_move, chess_image_attack)
-		    	wesnoth.interface.add_chat_message("Info", ("Queen!" .. chess_unit.x .. " " .. chess_unit.y))
-            elseif chess_unit.type == "Haralin_L3" or chess_unit.type == "Lenvan" then
-		        ctl_chess_king(chess_unit.id, chess_image_move)
-		    	wesnoth.interface.add_chat_message("Info", ("King!" .. chess_unit.x .. " " .. chess_unit.y))
-            elseif chess_unit.type == "Highwayman_Peasant" or chess_unit.type == "Bone Skeleton" then
-		        ctl_chess_rook(chess_unit.id, chess_image_move, chess_image_attack)
-                wesnoth.interface.add_chat_message("Info", ("Rook!" .. chess_unit.x .. " " .. chess_unit.y))				
-            elseif chess_unit.type == "Knight" or chess_unit.type == "Wesfolk Chariot" then
-		        ctl_chess_knight(chess_unit.id, chess_image_move, chess_image_attack)
-		    	wesnoth.interface.add_chat_message("Info", ("Knight!" .. chess_unit.x .. " " .. chess_unit.y))
-            elseif chess_unit.type == "Crossbowman" or chess_unit.type == "Death Squire" then
-		        ctl_chess_bishop(chess_unit.id, chess_image_move, chess_image_attack)
-                wesnoth.interface.add_chat_message("Info", ("Bishop!" .. chess_unit.x .. " " .. chess_unit.y))				
+	local ctl_chess_all_moves = {}
+
+    for _, chess_unit in ipairs(all_chess_units) do
+        if chess_unit.id:sub(1, 5) == "Chess" then
+            local moves = nil
+            if chess_unit.type == "Peasant" or chess_unit.type == "Walking Corpse"                  then
+                moves = ctl_chess_pawn(  chess_unit.id, chess_image_move, chess_image_attack, true)
+            elseif chess_unit.type == "Daeola_L1_Mage" or chess_unit.type == "Wesfolk Princess"     then
+                moves = ctl_chess_queen( chess_unit.id, chess_image_move, chess_image_attack, true)
+            elseif chess_unit.type == "Haralin_L2" or chess_unit.type == "Lenvan"                   then
+                moves = ctl_chess_king(  chess_unit.id, chess_image_move, chess_image_attack, true)
+            elseif chess_unit.type == "Highwayman_Peasant" or chess_unit.type == "Bone Skeleton"    then
+                moves = ctl_chess_rook(  chess_unit.id, chess_image_move, chess_image_attack, true)
+            elseif chess_unit.type == "Knight" or chess_unit.type == "Wesfolk Chariot"              then
+                moves = ctl_chess_knight(chess_unit.id, chess_image_move, chess_image_attack, true)
+            elseif chess_unit.type == "Lieutenant" or chess_unit.type == "Death Squire"             then
+                moves = ctl_chess_bishop(chess_unit.id, chess_image_move, chess_image_attack, true)
             end
-	    end
-	end
+    
+            table.insert(ctl_chess_all_moves, {
+                id = chess_unit.id,
+                moves = moves
+            })
+        end
+    end
+
+    return ctl_chess_all_moves
+end
+
+function ctl_chess_pre_move_check(side_king, side_all_moves, unit_to_compare)
+    local king = wesnoth.units.find_on_map{
+        side = side_king,
+        type = {"Haralin_L2", "Lenvan"}
+    }
+	wesnoth.interface.add_chat_message("Info", ( "King at " .. king[1].x .. "," .. king[1].y))
 	
-	return ctl_chess_all_moves
+	
+	local all_enemy_moves =  ctl_chess_get_all_moves(side_all_moves, unit_to_compare)
+	
+	for _, enemy_data in ipairs(all_enemy_moves) do
+        local enemy_id = enemy_data.id
+        local moves = enemy_data.moves
+
+        if moves and #moves > 0 then
+            for _, move in ipairs(moves) do
+                -- перевірка, чи координати ходу збігаються з позицією короля
+                if move.x == king[1].x and move.y == king[1].y then
+				    wesnoth.interface.add_chat_message("Info", (enemy_id .. " can attack King at " .. move.x .. "," .. move.y))
+                end
+            end
+        end
+    end
 end
 
 function ctl_chess_advance(chess_type, chess_x, chess_y)
@@ -1158,7 +1185,7 @@ end
 	
 	
 	--king moves
-    function ctl_chess_king(caster_id, image_move, image_attack)
+    function ctl_chess_king(caster_id, image_move, image_attack, chess_debug)
     local unit_id = caster_id
     local selected_target_hexes = {}
 
@@ -1184,6 +1211,11 @@ end
 				end
             end
         end
+    end
+	
+	if chess_debug then
+	    ctl_chess_cancel(image_move)
+	    return selected_target_hexes
     end
 	
 	function on_click_spell_event_king(Table)
@@ -1216,7 +1248,7 @@ end
 
 
     --queen moves
-    function ctl_chess_queen(caster_id, image_move, image_attack)
+    function ctl_chess_queen(caster_id, image_move, image_attack, chess_debug)
         local unit_id = caster_id
         local selected_target_hexes = {}
 		local selected_target_hexes_n = {}
@@ -1281,6 +1313,11 @@ end
                 else break end
             end
         end
+		
+		if chess_debug then
+		    ctl_chess_cancel(image_move)
+	        return selected_target_hexes
+        end
 
         function on_click_spell_event_queen(Table)
             for _, target_hex in ipairs(selected_target_hexes) do
@@ -1312,7 +1349,7 @@ end
 
 
     --bishop moves
-    function ctl_chess_bishop(caster_id, image_move, image_attack)
+    function ctl_chess_bishop(caster_id, image_move, image_attack, chess_debug)
         local unit_id = caster_id
         local selected_target_hexes = {}
 		local selected_target_hexes_ne = {}
@@ -1367,6 +1404,11 @@ end
 				else break end
             end
         end
+		
+		if chess_debug then
+		    ctl_chess_cancel(image_move)
+	        return selected_target_hexes
+        end
 
         function on_click_spell_event_bishop(Table)
             for _, target_hex in ipairs(selected_target_hexes) do
@@ -1398,7 +1440,7 @@ end
 
 
     --rook moves
-    function ctl_chess_rook(caster_id, image_move, image_attack)
+    function ctl_chess_rook(caster_id, image_move, image_attack, chess_debug)
         local unit_id = caster_id
         local selected_target_hexes = {}
 		local selected_target_hexes_n = {}
@@ -1443,6 +1485,11 @@ end
                 else break end
             end
         end
+		
+		if chess_debug then
+		    ctl_chess_cancel(image_move)
+	        return selected_target_hexes
+        end
 
         function on_click_spell_event_rook(Table)
             for _, target_hex in ipairs(selected_target_hexes) do
@@ -1472,7 +1519,7 @@ end
 	
 	
 	--knight moves
-    function ctl_chess_knight(caster_id, image_move, image_attack)
+    function ctl_chess_knight(caster_id, image_move, image_attack, chess_debug)
     local unit_id = caster_id
     local selected_target_hexes = {}
 
@@ -1533,6 +1580,11 @@ end
 				end
             end
         end
+		
+		if chess_debug then
+		    ctl_chess_cancel(image_move)
+	        return selected_target_hexes
+        end
 	
 	function on_click_spell_event_knight(Table)
         for _, target_hex in ipairs(selected_target_hexes) do
@@ -1568,7 +1620,7 @@ end
 	
 	
 	--pawn moves
-    function ctl_chess_pawn(caster_id, image_move, image_attack)
+    function ctl_chess_pawn(caster_id, image_move, image_attack, chess_debug)
         local unit_id = caster_id
         local selected_target_hexes = {}
 		local selected_target_hexes_n = {}
@@ -1645,6 +1697,11 @@ end
                 else break end
             end
         end
+		
+		if chess_debug then
+		    ctl_chess_cancel(image_move)
+	        return selected_target_hexes
+        end
 
         function on_click_spell_event_pawn(Table)
             for _, target_hex in ipairs(selected_target_hexes) do
@@ -1700,24 +1757,26 @@ wesnoth.game_events.on_mouse_action = function(x,y)
 		
 		local chess_image_move = "misc/buff.png"
 		local chess_image_attack = "misc/attack.png"
+		
+		ctl_chess_pre_move_check(2, 1, selected_unit[1].id)
     	
 		if selected_unit[1].type == "Peasant" or selected_unit[1].type == "Walking Corpse" then
-    	    ctl_chess_pawn(wml.variables['current_caster'], chess_image_move, chess_image_attack)
+    	    ctl_chess_pawn(wml.variables['current_caster'], chess_image_move, chess_image_attack, false)
 			wesnoth.interface.add_chat_message("Info", "Pawn!")
-		elseif selected_unit[1].type == "Daeola_L2" or selected_unit[1].type == "Wesfolk Princess" then
-		    ctl_chess_queen(wml.variables['current_caster'], chess_image_move, chess_image_attack)
+		elseif selected_unit[1].type == "Daeola_L1_Mage" or selected_unit[1].type == "Wesfolk Princess" then
+		    ctl_chess_queen(wml.variables['current_caster'], chess_image_move, chess_image_attack, false)
 			wesnoth.interface.add_chat_message("Info", "Queen!")
-        elseif selected_unit[1].type == "Haralin_L3" or selected_unit[1].type == "Lenvan" then
-		    ctl_chess_king(wml.variables['current_caster'], chess_image_move, chess_image_attack)
+        elseif selected_unit[1].type == "Haralin_L2" or selected_unit[1].type == "Lenvan" then
+		    ctl_chess_king(wml.variables['current_caster'], chess_image_move, chess_image_attack, false)
 			wesnoth.interface.add_chat_message("Info", "King!")
         elseif selected_unit[1].type == "Highwayman_Peasant" or selected_unit[1].type == "Bone Skeleton" then
-		    ctl_chess_rook(wml.variables['current_caster'], chess_image_move, chess_image_attack)
+		    ctl_chess_rook(wml.variables['current_caster'], chess_image_move, chess_image_attack, false)
             wesnoth.interface.add_chat_message("Info", "Rook!")				
         elseif selected_unit[1].type == "Knight" or selected_unit[1].type == "Wesfolk Chariot" then
-		    ctl_chess_knight(wml.variables['current_caster'], chess_image_move, chess_image_attack)
+		    ctl_chess_knight(wml.variables['current_caster'], chess_image_move, chess_image_attack, false)
 			wesnoth.interface.add_chat_message("Info", "Knight!")
-        elseif selected_unit[1].type == "Crossbowman" or selected_unit[1].type == "Death Squire" then
-		    ctl_chess_bishop(wml.variables['current_caster'], chess_image_move, chess_image_attack)
+        elseif selected_unit[1].type == "Lieutenant" or selected_unit[1].type == "Death Squire" then
+		    ctl_chess_bishop(wml.variables['current_caster'], chess_image_move, chess_image_attack, false)
             wesnoth.interface.add_chat_message("Info", "Bishop!")				
         end				
     
