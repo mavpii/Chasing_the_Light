@@ -997,11 +997,16 @@ end
 
 function ctl_chess_move_check(unit_id, pre_move)
     local unit_to_move = wesnoth.units.find_on_map{ id = unit_id} [1]
-    local king_side, all_enemy_moves
+    local king_side, all_moves_side, all_enemy_moves
     if pre_move then
 	    king_side = unit_to_move.side
+		if unit_to_move.side == 1 then
+		    all_moves_side = 2
+		else
+		    all_moves_side = 1
+		end
 	else 
-	    if unit_to_move[1].side == 1 then
+	    if unit_to_move.side == 1 then
 		    king_side = 2
 		else
 		    king_side = 1
@@ -1014,10 +1019,8 @@ function ctl_chess_move_check(unit_id, pre_move)
     } [1]
 	
 	if king then
-	    wesnoth.interface.add_chat_message("Info", ( "King(" .. king.id .. ") at " .. king.x .. "," .. king.y))
-	    
-	    if pre_move then
-	        all_enemy_moves =  ctl_chess_get_all_moves(unit_to_move.side, unit_to_move)
+        if pre_move then
+	        all_enemy_moves =  ctl_chess_get_all_moves(all_moves_side, unit_to_move)
 		else
 		    all_enemy_moves =  ctl_chess_get_all_moves(unit_to_move.side, false)
 		end
