@@ -995,8 +995,8 @@ function ctl_chess_get_all_moves(side, unit_to_move)
     return ctl_chess_all_moves
 end
 
-function ctl_chess_move_check(unit_id, pre_move)
-    local unit_to_move = wesnoth.units.find_on_map{ id = unit_id} [1]
+function ctl_chess_move_check(chess_id, pre_move)
+    local unit_to_move = wesnoth.units.find_on_map{ id = chess_id} [1]
     local king_side, all_moves_side, all_enemy_moves
     if pre_move then
 	    king_side = unit_to_move.side
@@ -1200,25 +1200,26 @@ function ctl_chess_calculate_next_coors(x, y, direction)
         return new_x, new_y
 end
 
+--chess_debug. у звичайному режимі false, для дебагу id юніта, якого ігнорувати
 function ctl_chess_moveset_king(chess_id, image_move, image_attack, chess_debug)
     local selected_target_hexes = {}
 
     wesnoth.interface.allow_end_turn(false)
 
-    local unit_to_modify = (wesnoth.units.find_on_map({id = chess_id})) [1]
+    local chess_piece = (wesnoth.units.find_on_map({id = chess_id})) [1]
 
-    for xx = unit_to_modify.x - 1, unit_to_modify.x + 1 do
-        for yy = unit_to_modify.y - 1, unit_to_modify.y + 1 do
-            if wesnoth.map.distance_between(unit_to_modify.x, unit_to_modify.y, xx, yy) <= 1 then
+    for xx = chess_piece.x - 1, chess_piece.x + 1 do
+        for yy = chess_piece.y - 1, chess_piece.y + 1 do
+            if wesnoth.map.distance_between(chess_piece.x, chess_piece.y, xx, yy) <= 1 then
                 local target_units = (wesnoth.units.find_on_map({ x = xx, y = yy }))
                 local has_unit = #target_units > 0
                 local void_terrain = wesnoth.map.find({x = xx, y= yy, terrain = "_off^_usr"})
                 local has_void_terrain = #void_terrain > 0
 
-                if (not has_void_terrain and not has_unit) and (xx ~= unit_to_modify.x or yy ~= unit_to_modify.y) then
+                if (not has_void_terrain and not has_unit) and (xx ~= chess_piece.x or yy ~= chess_piece.y) then
                     if not chess_debug then ctl_chess_place_image(xx, yy, image_move) end
                     table.insert(selected_target_hexes, { x = xx, y = yy })
-				elseif (not has_void_terrain and has_unit and wesnoth.sides[unit_to_modify.side].side ~= wesnoth.sides[target_units[1].side].side) then
+				elseif (not has_void_terrain and has_unit and wesnoth.sides[chess_piece.side].side ~= wesnoth.sides[target_units[1].side].side) then
 				    if not chess_debug then ctl_chess_place_image(xx, yy, image_attack) end
                     table.insert(selected_target_hexes, { x = xx, y = yy })
 				end
@@ -1233,19 +1234,19 @@ function ctl_chess_moveset_king(chess_id, image_move, image_attack, chess_debug)
 	return selected_target_hexes
 end
 
-
+--chess_debug. у звичайному режимі false, для дебагу id юніта, якого ігнорувати
 function ctl_chess_moveset_queen(chess_id, image_move, image_attack, chess_debug)
     local selected_target_hexes = {}
 
     wesnoth.interface.allow_end_turn(false)
 
-    local unit_to_modify = wesnoth.units.find_on_map({id = chess_id})[1]
+    local chess_piece = wesnoth.units.find_on_map({id = chess_id})[1]
 
     local directions = {"n","s","ne","nw","sw","se"}
 
     for _, dir in ipairs(directions) do
-        local target_x = unit_to_modify.x
-        local target_y = unit_to_modify.y
+        local target_x = chess_piece.x
+        local target_y = chess_piece.y
 
         for step = 1, 10 do
             target_x, target_y = ctl_chess_calculate_next_coors(target_x, target_y, dir)
@@ -1258,7 +1259,7 @@ function ctl_chess_moveset_queen(chess_id, image_move, image_attack, chess_debug
             if (not has_void_terrain and not has_unit) then
                 if not chess_debug then ctl_chess_place_image(target_x, target_y, image_move) end
                 table.insert(selected_target_hexes, {x = target_x, y = target_y, id = step, direction = dir})
-			elseif (not has_void_terrain and has_unit and wesnoth.sides[unit_to_modify.side].side ~= wesnoth.sides[target_units[1].side].side) then
+			elseif (not has_void_terrain and has_unit and wesnoth.sides[chess_piece.side].side ~= wesnoth.sides[target_units[1].side].side) then
 			    if not chess_debug then ctl_chess_place_image(target_x, target_y, image_attack) end
                 table.insert(selected_target_hexes, {x = target_x, y = target_y, id = step, direction = dir})
 				break
@@ -1273,34 +1274,34 @@ function ctl_chess_moveset_queen(chess_id, image_move, image_attack, chess_debug
 	return selected_target_hexes
 end
 
-
+--chess_debug. у звичайному режимі false, для дебагу id юніта, якого ігнорувати
 function ctl_chess_moveset_pawn(chess_id, image_move, image_attack, chess_debug)
     local selected_target_hexes = {}
 
     wesnoth.interface.allow_end_turn(false)
 
-    local unit_to_modify = wesnoth.units.find_on_map({id = chess_id})[1]
+    local chess_piece = wesnoth.units.find_on_map({id = chess_id})[1]
 	local directions
 
-    if unit_to_modify.side == 1 then
+    if chess_piece.side == 1 then
         directions = {"n","ne","nw"}
 	else 
 	    directions = {"s","se","sw"}
 	end
 
     for _, dir in ipairs(directions) do
-        local target_x = unit_to_modify.x
-        local target_y = unit_to_modify.y
+        local target_x = chess_piece.x
+        local target_y = chess_piece.y
 		local radius
 		
 		--starting coords of pawns
 		if ((target_x == 9 and target_y == 9) or (target_x == 10 and target_y == 8)
         or (target_x == 11 and target_y == 8) or (target_x == 12 and target_y == 8)
-        or (target_x == 13 and target_y == 9)) and unit_to_modify.side == 1 then
+        or (target_x == 13 and target_y == 9)) and chess_piece.side == 1 then
             radius = 2
         elseif ((target_x == 9 and target_y == 5) or (target_x == 10 and target_y == 5)
             or (target_x == 11 and target_y == 6) or (target_x == 12 and target_y == 5)
-            or (target_x == 13 and target_y == 5)) and unit_to_modify.side ~= 1 then
+            or (target_x == 13 and target_y == 5)) and chess_piece.side ~= 1 then
             radius = 2
         else
             radius = 1
@@ -1319,7 +1320,7 @@ function ctl_chess_moveset_pawn(chess_id, image_move, image_attack, chess_debug)
 				    if not chess_debug then ctl_chess_place_image(target_x, target_y, image_move) end
                     table.insert(selected_target_hexes, {x = target_x, y = target_y, id = step, direction = dir})
 				end
-			elseif (not has_void_terrain and has_unit and wesnoth.sides[unit_to_modify.side].side ~= wesnoth.sides[target_units[1].side].side) then
+			elseif (not has_void_terrain and has_unit and wesnoth.sides[chess_piece.side].side ~= wesnoth.sides[target_units[1].side].side) then
 			    if step == 1 then
 				    if dir ~= "n" and dir ~= "s" then
 				        if not chess_debug then ctl_chess_place_image(target_x, target_y, image_attack) end
@@ -1338,19 +1339,19 @@ function ctl_chess_moveset_pawn(chess_id, image_move, image_attack, chess_debug)
 	return selected_target_hexes
 end
  
- 
+ --chess_debug. у звичайному режимі false, для дебагу id юніта, якого ігнорувати
  function ctl_chess_moveset_rook(chess_id, image_move, image_attack, chess_debug)
     local selected_target_hexes = {}
 
     wesnoth.interface.allow_end_turn(false)
 
-    local unit_to_modify = wesnoth.units.find_on_map({id = chess_id})[1]
+    local chess_piece = wesnoth.units.find_on_map({id = chess_id})[1]
 
     local directions = {"n","s"}
 
     for _, dir in ipairs(directions) do
-        local target_x = unit_to_modify.x
-        local target_y = unit_to_modify.y
+        local target_x = chess_piece.x
+        local target_y = chess_piece.y
 
         for step = 1, 10 do
             target_x, target_y = ctl_chess_calculate_next_coors(target_x, target_y, dir)
@@ -1363,7 +1364,7 @@ end
             if (not has_void_terrain and not has_unit) then
                 if not chess_debug then ctl_chess_place_image(target_x, target_y, image_move) end
                 table.insert(selected_target_hexes, {x = target_x, y = target_y, id = step, direction = dir})
-            elseif (not has_void_terrain and has_unit and wesnoth.sides[unit_to_modify.side].side ~= wesnoth.sides[target_units[1].side].side) then
+            elseif (not has_void_terrain and has_unit and wesnoth.sides[chess_piece.side].side ~= wesnoth.sides[target_units[1].side].side) then
                 if not chess_debug then ctl_chess_place_image(target_x, target_y, image_attack) end
                 table.insert(selected_target_hexes, {x = target_x, y = target_y, id = step, direction = dir})
 				break
@@ -1378,19 +1379,19 @@ end
 	return selected_target_hexes
  end
 
-
+--chess_debug. у звичайному режимі false, для дебагу id юніта, якого ігнорувати
 function ctl_chess_moveset_bishop(chess_id, image_move, image_attack, chess_debug)
     local selected_target_hexes = {}
 
     wesnoth.interface.allow_end_turn(false)
 
-    local unit_to_modify = wesnoth.units.find_on_map({id = chess_id})[1]
+    local chess_piece = wesnoth.units.find_on_map({id = chess_id})[1]
 
     local directions = {"ne","nw","sw","se"}
 
     for _, dir in ipairs(directions) do
-        local target_x = unit_to_modify.x
-        local target_y = unit_to_modify.y
+        local target_x = chess_piece.x
+        local target_y = chess_piece.y
 
         for step = 1, 10 do
             target_x, target_y = ctl_chess_calculate_next_coors(target_x, target_y, dir)
@@ -1403,7 +1404,7 @@ function ctl_chess_moveset_bishop(chess_id, image_move, image_attack, chess_debu
             if (not has_void_terrain and not has_unit) then
                 if not chess_debug then ctl_chess_place_image(target_x, target_y, image_move) end
                 table.insert(selected_target_hexes, {x = target_x, y = target_y, id = step, direction = dir})
-            elseif (not has_void_terrain and has_unit and wesnoth.sides[unit_to_modify.side].side ~= wesnoth.sides[target_units[1].side].side) then
+            elseif (not has_void_terrain and has_unit and wesnoth.sides[chess_piece.side].side ~= wesnoth.sides[target_units[1].side].side) then
 			    if not chess_debug then ctl_chess_place_image(target_x, target_y, image_attack) end
                 table.insert(selected_target_hexes, {x = target_x, y = target_y, id = step, direction = dir})
 				break
@@ -1418,17 +1419,17 @@ function ctl_chess_moveset_bishop(chess_id, image_move, image_attack, chess_debu
 	return selected_target_hexes
 end
 
-
+--chess_debug. у звичайному режимі false, для дебагу id юніта, якого ігнорувати
 function ctl_chess_moveset_knight(chess_id, image_move, image_attack, chess_debug)
     local selected_target_hexes = {}
 
     wesnoth.interface.allow_end_turn(false)
 
-    local unit_to_modify = (wesnoth.units.find_on_map({id = chess_id})) [1]
+    local chess_piece = (wesnoth.units.find_on_map({id = chess_id})) [1]
 
-    for xx = unit_to_modify.x - 3, unit_to_modify.x + 3 do
-        for yy = unit_to_modify.y - 3, unit_to_modify.y + 3 do
-            if wesnoth.map.distance_between(unit_to_modify.x, unit_to_modify.y, xx, yy) <= 3 then
+    for xx = chess_piece.x - 3, chess_piece.x + 3 do
+        for yy = chess_piece.y - 3, chess_piece.y + 3 do
+            if wesnoth.map.distance_between(chess_piece.x, chess_piece.y, xx, yy) <= 3 then
                 local target_units = (wesnoth.units.find_on_map({ x = xx, y = yy }))
                 local has_unit = #target_units > 0
                 local void_terrain = wesnoth.map.find({x = xx, y= yy, terrain = "_off^_usr"})
@@ -1436,12 +1437,12 @@ function ctl_chess_moveset_knight(chess_id, image_move, image_attack, chess_debu
 				local castle_terrain = wesnoth.map.find({x = xx, y= yy, terrain = "Kha"})
                 local has_castle_terrain = #castle_terrain > 0
 				
-				if wesnoth.map.distance_between(unit_to_modify.x, unit_to_modify.y, xx, yy) == 3 then
+				if wesnoth.map.distance_between(chess_piece.x, chess_piece.y, xx, yy) == 3 then
 
-                if (not has_void_terrain and not has_unit and not has_castle_terrain) and (xx ~= unit_to_modify.x or yy ~= unit_to_modify.y) then
+                if (not has_void_terrain and not has_unit and not has_castle_terrain) and (xx ~= chess_piece.x or yy ~= chess_piece.y) then
                     if not chess_debug then ctl_chess_place_image(xx, yy, image_move) end
                     table.insert(selected_target_hexes, { x = xx, y = yy })
-				elseif (not has_castle_terrain and not has_void_terrain and has_unit and wesnoth.sides[unit_to_modify.side].side ~= wesnoth.sides[target_units[1].side].side) then
+				elseif (not has_castle_terrain and not has_void_terrain and has_unit and wesnoth.sides[chess_piece.side].side ~= wesnoth.sides[target_units[1].side].side) then
 				    if not chess_debug then ctl_chess_place_image(xx, yy, image_attack) end
                     table.insert(selected_target_hexes, { x = xx, y = yy })
 				end
@@ -1454,8 +1455,8 @@ function ctl_chess_moveset_knight(chess_id, image_move, image_attack, chess_debu
 	local directions = {"n","s","ne","nw","sw","se"}
 
     for _, dir in ipairs(directions) do
-        local target_x = unit_to_modify.x
-        local target_y = unit_to_modify.y
+        local target_x = chess_piece.x
+        local target_y = chess_piece.y
 
         for step = 1, 3 do
             target_x, target_y = ctl_chess_calculate_next_coors(target_x, target_y, dir)
@@ -1491,7 +1492,7 @@ end
 function ctl_chess_select(chess_type, chess_id, image_move, image_attack)
     
 	local selected_target_hexes = chess_type(chess_id, image_move, image_attack, false)
-	local unit_to_modify = (wesnoth.units.find_on_map({id = chess_id})) [1]
+	local chess_piece = (wesnoth.units.find_on_map({id = chess_id})) [1]
 
     function on_click_spell_event_pawn(Table)
         for _, target_hex in ipairs(selected_target_hexes) do
@@ -1501,8 +1502,8 @@ function ctl_chess_select(chess_type, chess_id, image_move, image_attack)
                 wml.fire("redraw")
                 wesnoth.game_events.on_mouse_button = nil
 			    
-                ctl_chess_move(unit_to_modify.id, unit_to_modify.type, Table.x, Table.y)
-				ctl_chess_advance(unit_to_modify.type, Table.x, Table.y)
+                ctl_chess_move(chess_piece.id, chess_piece.type, Table.x, Table.y)
+				ctl_chess_advance(chess_piece.type, Table.x, Table.y)
 			    
                 wesnoth.interface.allow_end_turn(true)
 			    
