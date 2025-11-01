@@ -941,10 +941,41 @@ end
 ----------------------------------------------------------------
 -------------------CHESS----------------------------------------
 ----------------------------------------------------------------
-function ctl_chess_get_all_moves(side, unit_to_move) 
-    local all_chess_units = wesnoth.units.find_on_map{ side = side }
-	local chess_image_move = "misc/blank-hex.png"
-	local chess_image_attack = "misc/blank-hex.png"
+
+--сторона короля
+local ctl_chess_checked
+
+function ctl_chess_get_piece_moves(chess_id)
+    local chess_piece = wesnoth.units.find_on_map{ id = chess_id }[1]
+	local ctl_chess_all_moves = {}
+        if chess_piece.id:sub(1, 5) == "Chess" then
+            local moves = nil
+            if chess_piece.type == "Peasant" or chess_piece.type == "Walking Corpse"                  then
+                moves = ctl_chess_moveset_pawn(  chess_piece.id, false, false, true, chess_id)
+            elseif chess_piece.type == "Daeola_L1_Mage" or chess_piece.type == "Wesfolk Princess"     then
+                moves = ctl_chess_moveset_queen( chess_piece.id, false, false, true, chess_id)
+            elseif chess_piece.type == "Haralin_L2" or chess_piece.type == "Lenvan"                   then
+                moves = ctl_chess_moveset_king(  chess_piece.id, false, false, true, chess_id)
+            elseif chess_piece.type == "Highwayman_Peasant" or chess_piece.type == "Bone Skeleton"    then
+                moves = ctl_chess_moveset_rook(  chess_piece.id, false, false, true, chess_id)
+            elseif chess_piece.type == "Knight" or chess_piece.type == "Wesfolk Chariot"              then
+                moves = ctl_chess_moveset_knight(chess_piece.id, false, false, true, chess_id)
+            elseif chess_piece.type == "Lieutenant" or chess_piece.type == "Death Squire"             then
+                moves = ctl_chess_moveset_bishop(chess_piece.id, false, false, true, chess_id)
+            end
+
+            table.insert(ctl_chess_all_moves, {
+                id = chess_piece.id,
+                moves = moves
+            })
+        end
+
+    return ctl_chess_all_moves
+end
+
+
+function ctl_chess_get_all_moves(chess_side) 
+    local all_chess_pieces = wesnoth.units.find_on_map{ side = chess_side }
 	
 	--треба робити дві перевірки на шах - під час вибору фігури та після ходу. 
 	-- алгоритм під час вибору:
@@ -968,25 +999,25 @@ function ctl_chess_get_all_moves(side, unit_to_move)
 	
 	local ctl_chess_all_moves = {}
 
-    for _, chess_unit in ipairs(all_chess_units) do
-        if chess_unit.id:sub(1, 5) == "Chess" then
+    for _, chess_piece in ipairs(all_chess_pieces) do
+        if chess_piece.id:sub(1, 5) == "Chess" then
             local moves = nil
-            if chess_unit.type == "Peasant" or chess_unit.type == "Walking Corpse"                  then
-                moves = ctl_chess_moveset_pawn(  chess_unit.id, chess_image_move, chess_image_attack, true)
-            elseif chess_unit.type == "Daeola_L1_Mage" or chess_unit.type == "Wesfolk Princess"     then
-                moves = ctl_chess_moveset_queen( chess_unit.id, chess_image_move, chess_image_attack, true)
-            elseif chess_unit.type == "Haralin_L2" or chess_unit.type == "Lenvan"                   then
-                moves = ctl_chess_moveset_king(  chess_unit.id, chess_image_move, chess_image_attack, true)
-            elseif chess_unit.type == "Highwayman_Peasant" or chess_unit.type == "Bone Skeleton"    then
-                moves = ctl_chess_moveset_rook(  chess_unit.id, chess_image_move, chess_image_attack, true)
-            elseif chess_unit.type == "Knight" or chess_unit.type == "Wesfolk Chariot"              then
-                moves = ctl_chess_moveset_knight(chess_unit.id, chess_image_move, chess_image_attack, true)
-            elseif chess_unit.type == "Lieutenant" or chess_unit.type == "Death Squire"             then
-                moves = ctl_chess_moveset_bishop(chess_unit.id, chess_image_move, chess_image_attack, true)
+            if chess_piece.type == "Peasant" or chess_piece.type == "Walking Corpse"                  then
+                moves = ctl_chess_moveset_pawn(  chess_piece.id, false, false, true)
+            elseif chess_piece.type == "Daeola_L1_Mage" or chess_piece.type == "Wesfolk Princess"     then
+                moves = ctl_chess_moveset_queen( chess_piece.id, false, false, true)
+            elseif chess_piece.type == "Haralin_L2" or chess_piece.type == "Lenvan"                   then
+                moves = ctl_chess_moveset_king(  chess_piece.id, false, false, true)
+            elseif chess_piece.type == "Highwayman_Peasant" or chess_piece.type == "Bone Skeleton"    then
+                moves = ctl_chess_moveset_rook(  chess_piece.id, false, false, true)
+            elseif chess_piece.type == "Knight" or chess_piece.type == "Wesfolk Chariot"              then
+                moves = ctl_chess_moveset_knight(chess_piece.id, false, false, true)
+            elseif chess_piece.type == "Lieutenant" or chess_piece.type == "Death Squire"             then
+                moves = ctl_chess_moveset_bishop(chess_piece.id, false, false, true)
             end
     
             table.insert(ctl_chess_all_moves, {
-                id = chess_unit.id,
+                id = chess_piece.id,
                 moves = moves
             })
         end
@@ -995,22 +1026,14 @@ function ctl_chess_get_all_moves(side, unit_to_move)
     return ctl_chess_all_moves
 end
 
-function ctl_chess_move_check(chess_id, pre_move)
-    local unit_to_move = wesnoth.units.find_on_map{ id = chess_id} [1]
-    local king_side, all_moves_side, all_enemy_moves
-    if pre_move then
-	    king_side = unit_to_move.side
-		if unit_to_move.side == 1 then
-		    all_moves_side = 2
-		else
-		    all_moves_side = 1
-		end
-	else 
-	    if unit_to_move.side == 1 then
-		    king_side = 2
-		else
-		    king_side = 1
-		end
+function ctl_chess_move_check(chess_id, pre_move, selected_target_hexes)
+    local chess_piece = wesnoth.units.find_on_map{ id = chess_id} [1]
+    local all_moves_side
+	local king_side = chess_piece.side
+	if chess_piece.side == 1 then
+	    all_moves_side = 2
+	else
+	    all_moves_side = 1
 	end
 	 
     local king = wesnoth.units.find_on_map{
@@ -1019,25 +1042,70 @@ function ctl_chess_move_check(chess_id, pre_move)
     } [1]
 	
 	if king then
-        if pre_move then
-	        all_enemy_moves =  ctl_chess_get_all_moves(all_moves_side, unit_to_move)
-		else
-		    all_enemy_moves =  ctl_chess_get_all_moves(unit_to_move.side, false)
-		end
-	    
-	    for _, enemy_data in ipairs(all_enemy_moves) do
-            local enemy_id = enemy_data.id
-            local moves = enemy_data.moves
-	    
-            if moves and #moves > 0 then
-                for _, move in ipairs(moves) do
-                    -- перевірка, чи координати ходу збігаються з позицією короля
-                    if move.x == king.x and move.y == king.y then
-	    			    wesnoth.interface.add_chat_message("Info", (enemy_id .. " can attack King at " .. move.x .. "," .. move.y))
+		
+		--перевірка усіх ходів чи викликають вони шах
+		--отримуємо всі можливі кроки фігури
+		local chess_piece_moves = ctl_chess_get_piece_moves(chess_id)
+		
+		local initial_chess_piece_x = chess_piece.x
+		local initial_chess_piece_y = chess_piece.y
+		
+		for _, friendly_data in ipairs(chess_piece_moves) do
+		    local friendly_moves = friendly_data.moves
+			
+			if friendly_moves and #friendly_moves > 0 then
+			    for _, friendly_move in ipairs(friendly_moves) do
+				
+				    local has_unit = wesnoth.units.find_on_map({x = friendly_move.x, y = friendly_move.y}) [1]
+					
+					local initial_enemy_x, initial_enemy_y
+					
+					if has_unit then
+					    initial_enemy_x = has_unit.x
+					    initial_enemy_y = has_unit.y
+						has_unit.x = 1
+						has_unit.y = 1
+					end
+					
+					wesnoth.interface.delay(1000)
+
+                    chess_piece.x = friendly_move.x
+					chess_piece.y = friendly_move.y
+					
+					wesnoth.interface.delay(1000)
+
+		            local all_enemy_moves =  ctl_chess_get_all_moves(all_moves_side)
+	                
+	                for _, enemy_data in ipairs(all_enemy_moves) do
+                        local enemy_id = enemy_data.id
+                        local enemy_moves = enemy_data.moves
+	                
+                        if enemy_moves and #enemy_moves > 0 then
+                            for _, enemy_move in ipairs(enemy_moves) do
+                                -- перевірка, чи координати ходу збігаються з позицією короля
+		            			-- якщо так, потрібна додаткова перевірка
+                                if enemy_move.x == king.x and enemy_move.y == king.y then
+	                			    wesnoth.interface.add_chat_message("Info", (enemy_id .. " Шах при " .. friendly_move.x .. "," .. friendly_move.y))
+                                end
+                            end
+                        end
                     end
-                end
-            end
-        end
+					
+					chess_piece.x = initial_chess_piece_x
+		            chess_piece.y = initial_chess_piece_y
+					
+					wesnoth.interface.delay(1000)
+					
+					if has_unit and has_unit.x == 1 and has_unit.y == 1 then
+					    has_unit.x = initial_enemy_x
+					    has_unit.y = initial_enemy_y
+					end
+					
+					wesnoth.interface.delay(1000)
+					
+				end
+		    end
+		end
 	end
 end
 
@@ -1200,7 +1268,7 @@ function ctl_chess_calculate_next_coors(x, y, direction)
         return new_x, new_y
 end
 
---chess_debug. у звичайному режимі false, для дебагу id юніта, якого ігнорувати
+--king
 function ctl_chess_moveset_king(chess_id, image_move, image_attack, chess_debug)
     local selected_target_hexes = {}
 
@@ -1234,7 +1302,7 @@ function ctl_chess_moveset_king(chess_id, image_move, image_attack, chess_debug)
 	return selected_target_hexes
 end
 
---chess_debug. у звичайному режимі false, для дебагу id юніта, якого ігнорувати
+--queen
 function ctl_chess_moveset_queen(chess_id, image_move, image_attack, chess_debug)
     local selected_target_hexes = {}
 
@@ -1274,13 +1342,14 @@ function ctl_chess_moveset_queen(chess_id, image_move, image_attack, chess_debug
 	return selected_target_hexes
 end
 
---chess_debug. у звичайному режимі false, для дебагу id юніта, якого ігнорувати
+--pawn
 function ctl_chess_moveset_pawn(chess_id, image_move, image_attack, chess_debug)
     local selected_target_hexes = {}
 
     wesnoth.interface.allow_end_turn(false)
 
     local chess_piece = wesnoth.units.find_on_map({id = chess_id})[1]
+	
 	local directions
 
     if chess_piece.side == 1 then
@@ -1339,7 +1408,7 @@ function ctl_chess_moveset_pawn(chess_id, image_move, image_attack, chess_debug)
 	return selected_target_hexes
 end
  
- --chess_debug. у звичайному режимі false, для дебагу id юніта, якого ігнорувати
+--rook
  function ctl_chess_moveset_rook(chess_id, image_move, image_attack, chess_debug)
     local selected_target_hexes = {}
 
@@ -1379,7 +1448,7 @@ end
 	return selected_target_hexes
  end
 
---chess_debug. у звичайному режимі false, для дебагу id юніта, якого ігнорувати
+--bishop
 function ctl_chess_moveset_bishop(chess_id, image_move, image_attack, chess_debug)
     local selected_target_hexes = {}
 
@@ -1419,7 +1488,7 @@ function ctl_chess_moveset_bishop(chess_id, image_move, image_attack, chess_debu
 	return selected_target_hexes
 end
 
---chess_debug. у звичайному режимі false, для дебагу id юніта, якого ігнорувати
+--knight
 function ctl_chess_moveset_knight(chess_id, image_move, image_attack, chess_debug)
     local selected_target_hexes = {}
 
