@@ -722,7 +722,7 @@ function ctl_chess_select(chess_type, chess_id, image_move, image_attack)
 	
 	local chess_piece = (wesnoth.units.find_on_map({id = chess_id})) [1]
 
-    function on_click_spell_event_chess(Table)
+    function on_click_chess_move(Table)
         for _, target_hex in ipairs(selected_target_hexes) do
             if Table.x == target_hex.x and Table.y == target_hex.y then
                 ctl_chess_remove_image(image_move)
@@ -761,7 +761,7 @@ function ctl_chess_select(chess_type, chess_id, image_move, image_attack)
 
     wesnoth.game_events.on_mouse_button = function(screen_x, screen_y, button, pressed)
         if pressed and button == "left" then
-			wesnoth.sync.invoke_command("on_click_spell_event", {type="_chess", x=screen_x, y=screen_y})
+			wesnoth.sync.invoke_command("on_click_chess_move", {x=screen_x, y=screen_y})
         end
     end
 end
