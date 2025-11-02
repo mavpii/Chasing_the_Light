@@ -1,7 +1,6 @@
 ----------------------------------------------------------------
 -------------------CHESS----------------------------------------
 ----------------------------------------------------------------
-local _ = wesnoth.textdomain "wesnoth-ctl"
 local utils = wesnoth.require "wml-utils"
 
 function ctl_chess_get_piece_type(chess_id)
@@ -699,6 +698,81 @@ function ctl_chess_moveset_knight(chess_id, image_move, image_attack, chess_debu
 	return selected_target_hexes
 end
 
+--AI
+function ctl_chess_piece_value(unit_type)
+    if unit_type == "Peasant" or unit_type == "Walking Corpse" then return 1 end
+    if unit_type == "Knight" or unit_type == "Wesfolk Chariot" then return 3 end
+    if unit_type == "Lieutenant" or unit_type == "Death Squire" then return 3 end
+    if unit_type == "Highwayman_Peasant" or unit_type == "Bone Skeleton" then return 5 end
+    if unit_type == "Daeola_L1_Mage" or unit_type == "Wesfolk Princess" then return 9 end
+    if unit_type == "Haralin_L2" or unit_type == "Lenvan" then return 100 end
+    return 1
+end
+
+function ctl_chess_ai_make_move(ai_side)
+    local candidates = {}
+    local all_ai_pieces = wesnoth.units.find_on_map{ side = ai_side }
+	
+    for _, u in ipairs(all_ai_pieces) do
+        if u.id:sub(1,5) == "Chess" then
+            local moveset = ctl_chess_get_piece_type(u.id)
+            if not moveset then goto continue end
+			
+            local moves = moveset(u.id, false, false, true) or {}
+            -- remove moves that expose king to check
+            local excluded = ctl_chess_get_excluded_moves(u.id) or {}
+            local filtered = {}
+			
+            for _, m in ipairs(moves) do
+                local bad = false
+                for _, e in ipairs(excluded) do
+                    if m.x == e.moves.x and m.y == e.moves.y then bad = true; break end
+                end
+                if not bad then table.insert(filtered, m) end
+            end
+			
+            -- evaluate moves
+            for _, m in ipairs(filtered) do
+                local target = wesnoth.units.find_on_map{ x = m.x, y = m.y }[1]
+                local score = 0
+                if target and target.id ~= u.id then
+                    score = ctl_chess_piece_value(target.type)
+                end
+                table.insert(candidates, {unit = u, move = m, score = score})
+            end
+        end
+        ::continue::
+    end
+			
+			
+    if #candidates == 0 then return end
+    -- choose highest score; if multiple, random among them
+    local best = -999
+    for _, c in ipairs(candidates) do if c.score > best then best = c.score end end
+    local best_list = {}
+    for _, c in ipairs(candidates) do if c.score == best then table.insert(best_list, c) end end
+    local choice = best_list[math.random(1, #best_list)]
+    -- make move
+    if choice then
+	ctl_chess_remove_image("misc/summon.png")
+    ctl_chess_move(choice.unit.id, choice.unit.type, choice.move.x, choice.move.y)
+    ctl_chess_advance(choice.unit.type, choice.move.x, choice.move.y)
+    -- check for checkmate
+    local cm = ctl_chess_check(choice.unit.id)
+    if cm then
+	    --так як комп'ютерною стороною є лише ельдарік, нема потреби визначати сторону
+		wml.variables["ctl_chess_active"] = false
+		wml.variables["s9_chess_win_daeola"] = false
+		wesnoth.interface.clear_chat_messages()
+		wml.fire.do_command({
+            wml.tag.fire_event {
+                raise = "exit_chess_board"
+            }
+        })
+    end
+    end
+end
+
 --select chess piece
 function ctl_chess_select(chess_type, chess_id, image_move, image_attack)
     
@@ -737,20 +811,29 @@ function ctl_chess_click(Table)
 			
 			ctl_chess_checkmate = ctl_chess_check(chess_piece.id)
 			if ctl_chess_checkmate then
-			    wml.variables["ctl_chess_active"] = false
-			    if chess_piece.side == 1 then
-				    wml.fire.endlevel({
-                        result = "victory",
-                    	side = 1
-                    })
-				else
-				    wml.fire.endlevel({
-                        result = "victory",
-                    	side = 2
-                    }) 
+				--так як людською стороною є лише гравець, нема потреби визначати сторону
+				wml.variables["ctl_chess_active"] = false
+				wml.variables["s9_chess_win_daeola"] = true
+				wesnoth.interface.clear_chat_messages()
+				wml.fire.do_command({
+                    wml.tag.fire_event {
+                        raise = "exit_chess_board"
+                    }
+                })
+			end
+			
+            --запуск ШІ для протилежної сторони
+			if wml.variables["ctl_chess_active"] then 
+			    local ai_side
+                if chess_piece.side == 1 then ai_side = 2 else ai_side = 1 end
+			    local chess_side = wesnoth.get_sides({ side = ai_side }) [1]
+			    if chess_side.controller == "null" then 
+			        wesnoth.interface.delay(300)
+                    math.randomseed(os.time())
+                    ctl_chess_ai_make_move(ai_side)
 				end
 			end
-		    
+
             wesnoth.units.select()
             return
         end
