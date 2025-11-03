@@ -71,7 +71,7 @@ Peaceful life of the Green Isle's inhabitants turned into a nightmare in an inst
 - 18_Lenvan
 - 19_Temple_in_the_Deep
 
-### Daeola's branches
+### Daeola's branch
 - 13d_Triumph
 - 13dx_Farewell
 - 14d_Southbay_Outskirts
