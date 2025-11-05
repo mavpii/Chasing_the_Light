@@ -57,17 +57,16 @@ Peaceful life of the Green Isle's inhabitants turned into a nightmare in an inst
 ### Chapter 3: Tough Choices                                                                                                                                 
 - 09_Stormvale🔁️                                                                                                                             
 - 10_Treason                                                                                                                                 
-- 11_Sincerity - reference to S9
+- 11_Sincerity(Duty)
 - 11x_Burden
 - 12_Southbay_Outskirts
 - 13_Caror
 ### Chapter 4: Against the World
 - 14_Necessity
 - 15_Frontline | 15_Fording
-- ?? TBD Wesfolk village, similar to S4/S9
-- 16_Seekers | 16_Assassins
-- ?? TBD Caves, deep saurians as enemies
-- 17_Trickery | 17_Gambit
+- 15x_Asylum
+- 16_Deceivers
+- 17_Gambit
 - 18_Lenvan
 - 19_Temple_in_the_Deep
 
