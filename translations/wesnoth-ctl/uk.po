@@ -17543,9 +17543,9 @@ msgstr ""
 "безсмертний, чим довше тягнутимеш з відповіддю, тим менше в нас залишиться "
 "часу, щоб перемогти владик-лічів."
 
-#. [scenario]: id=09_Apprehension
+#. [scenario]: id=09_Stormvale
 #. Нова подорож
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:5
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:5
 msgid "Apprehension"
 msgstr "Побоювання"
 
@@ -17553,7 +17553,7 @@ msgstr "Побоювання"
 #. newlines at the beginning help to (depending on the screne size) center this vertically. The space at the end stops the last letter from getting cut off
 #. В гонитві за Світлом | Женучись за Світлом
 #. Частина Перша
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:24
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:24
 msgid ""
 "<span font_family='Oldania ADF Std' size='90000'>\n"
 "\n"
@@ -17565,7 +17565,7 @@ msgid ""
 msgstr ""
 
 #. [side]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:43
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:43
 msgid "Daeola's Wanderers"
 msgstr ""
 

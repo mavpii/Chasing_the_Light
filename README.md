@@ -55,7 +55,7 @@ Peaceful life of the Green Isle's inhabitants turned into a nightmare in an inst
 - 07_Scarhane✔                                                                                                                                        
 - 08_Quiescence✔
 ### Chapter 3: Tough Choices                                                                                                                                 
-- 09_Apprehension🔁️                                                                                                                             
+- 09_Stormvale🔁️                                                                                                                             
 - 10_Treason                                                                                                                                 
 - 11_Sincerity - reference to S9
 - 11x_Burden

@@ -926,8 +926,8 @@ msgstr ""
 #: Chasing_the_Light/scenarios/02_Invasion.cfg:32
 #: Chasing_the_Light/scenarios/08_Quiescence.cfg:341
 #: Chasing_the_Light/scenarios/08_Quiescence.cfg:467
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2161
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:3336
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2161
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:3336
 #: Chasing_the_Light/utils/macros.cfg:1143
 msgid "???"
 msgstr ""
@@ -1156,11 +1156,11 @@ msgstr ""
 #: Chasing_the_Light/scenarios/07_Scarhane.cfg:3269
 #: Chasing_the_Light/scenarios/08_Quiescence.cfg:389
 #: Chasing_the_Light/scenarios/08_Quiescence.cfg:1195
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2496
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2733
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2734
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2735
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2725
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2496
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2733
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2734
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2735
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2725
 #: Chasing_the_Light/utils/macros.cfg:454
 #: Chasing_the_Light/utils/spellcasting.cfg:1208
 #: Chasing_the_Light/utils/spellcasting.cfg:1249
@@ -1181,7 +1181,7 @@ msgstr ""
 #. [else]
 #. [message]: speaker=$unit.id
 #. [scenario]: id=06_Miscreants
-#. [scenario]: id=09_Apprehension
+#. [scenario]: id=09_Stormvale
 #: Chasing_the_Light/scenarios/01_The_Book.cfg:444
 #: Chasing_the_Light/scenarios/01_The_Book.cfg:658
 #: Chasing_the_Light/scenarios/01_The_Book.cfg:662
@@ -1237,14 +1237,14 @@ msgstr ""
 #: Chasing_the_Light/scenarios/08_Quiescence.cfg:582
 #: Chasing_the_Light/scenarios/08_Quiescence.cfg:1029
 #: Chasing_the_Light/scenarios/08_Quiescence.cfg:2198
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1491
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1938
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1998
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2023
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:981
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:982
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1258
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2314
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1491
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1938
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1998
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2023
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:981
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:982
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1258
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2314
 msgid "..."
 msgstr ""
 
@@ -1295,7 +1295,7 @@ msgstr ""
 #. [else]
 #. [scenario]: id=07_Scarhane
 #. [command]
-#. [scenario]: id=09_Apprehension
+#. [scenario]: id=09_Stormvale
 #: Chasing_the_Light/scenarios/01_The_Book.cfg:493
 #: Chasing_the_Light/scenarios/01_The_Book.cfg:541
 #: Chasing_the_Light/scenarios/02_Invasion.cfg:1052
@@ -1382,51 +1382,51 @@ msgstr ""
 #: Chasing_the_Light/scenarios/08_Quiescence.cfg:1695
 #: Chasing_the_Light/scenarios/08_Quiescence.cfg:1901
 #: Chasing_the_Light/scenarios/08_Quiescence.cfg:1947
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:227
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:235
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:429
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:430
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:442
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:500
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:523
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:546
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:626
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:679
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:914
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:941
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1100
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1177
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1232
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1275
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1289
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1496
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1528
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1557
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1572
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1706
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1710
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1740
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1944
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2002
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2027
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2097
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2209
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2228
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2483
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2497
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2567
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2568
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2654
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2799
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2834
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2879
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2924
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:3015
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:3065
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:3066
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:3365
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2326
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2327
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:227
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:235
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:429
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:430
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:442
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:500
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:523
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:546
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:626
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:679
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:914
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:941
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1100
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1177
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1232
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1275
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1289
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1496
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1528
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1557
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1572
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1706
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1710
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1740
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1944
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2002
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2027
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2097
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2209
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2228
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2483
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2497
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2567
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2568
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2654
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2799
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2834
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2879
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2924
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:3015
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:3065
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:3066
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:3365
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2326
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2327
 #: Chasing_the_Light/utils/macros.cfg:620
 #: Chasing_the_Light/utils/macros.cfg:907
 #: Chasing_the_Light/utils/macros.cfg:924
@@ -1944,7 +1944,7 @@ msgstr ""
 #: Chasing_the_Light/scenarios/06_Miscreants.cfg:1292
 #: Chasing_the_Light/scenarios/06_Miscreants.cfg:1305
 #: Chasing_the_Light/scenarios/07_Scarhane.cfg:734
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:154
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:154
 #: Chasing_the_Light/scenarios/99_Playground.cfg:16
 #: Chasing_the_Light/utils/characters.cfg:60
 msgid "Daeola"
@@ -9210,7 +9210,7 @@ msgstr ""
 #. [message]: speaker=faisim
 #: Chasing_the_Light/scenarios/07_Scarhane.cfg:159
 #: Chasing_the_Light/scenarios/08_Quiescence.cfg:2175
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2272
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2272
 #: Chasing_the_Light/utils/macros.cfg:1135
 msgid "Faisim"
 msgstr ""
@@ -11920,20 +11920,20 @@ msgstr ""
 
 #. [side]
 #: Chasing_the_Light/scenarios/08x_temp.cfg:23
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:113
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:113
 msgid "Daeola's Wanderers"
 msgstr ""
 
-#. [scenario]: id=09_Apprehension
+#. [scenario]: id=09_Stormvale
 #. Побоювання
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:5
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:5
 msgid "Apprehension"
 msgstr ""
 
 #. [part]
 #. newlines at the beginning help to (depending on the screne size) center this vertically. The space at the end stops the last letter from getting cut off
 #. В гонитві за Світлом | Женучись за Світлом  Частина Третя
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:21
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:21
 msgid ""
 "<span font_family='Oldania ADF Std' size='90000'>\n"
 "\n"
@@ -11946,7 +11946,7 @@ msgstr ""
 #. [part]
 #. newlines at the beginning help to (depending on the screne size) center this vertically. The space at the end stops the last letter from getting cut off
 #. Частина Третя    Складні рішення
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:32
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:32
 msgid ""
 "<span font_family='Oldania ADF Std' size='90000'>\n"
 "\n"
@@ -11958,205 +11958,205 @@ msgstr ""
 
 #. [part]
 #. Витяг з щоденника Даеоли, Першої Пророчиці Світла. Прямо кидаємо гравцю потужний натяк
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:42
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:42
 msgid "210 BW"
 msgstr ""
 
 #. [part]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:43
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:48
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:54
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:60
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:66
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:72
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:78
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:84
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:90
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:96
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:43
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:48
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:54
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:60
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:66
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:72
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:78
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:84
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:90
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:96
 msgid "Excerpts from the journal of Daeola, The First Prophetess of Light"
 msgstr ""
 
 #. [part]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:43
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:43
 msgid "Люди кажуть, що колись давно, ще до мого народження, на Зеленому Острові не було ні магії, ні мерців, а лише безліч багатих королівст, родючі землі та нестійкий, проте тривалий мир. Хоч і не все з цього правда, час від часу я гадаю, що було б, якби одного дня з-за океану не прийшли ці чудовиська?"
 msgstr ""
 
 #. [part]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:47
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:47
 msgid "201 BW"
 msgstr ""
 
 #. [part]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:48
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:48
 msgid "Коли західняки висадилися на півночі, вони поширювалися в усі сторони, наче якась хвороба. Їм пощастило натрапити на напівдикі, малозаселені землі, тому спочатку вони не зустріли великого спротиву, а в інших землях їхні мерці та чаклунство вважались ледь не чутками."
 msgstr ""
 
 #. [part]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:53
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:53
 msgid "188 BW"
 msgstr ""
 
 #. [part]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:54
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:54
 msgid "А потім почався великий наступ, під час якого загинула моя сім'я, було знищено моє рідне село і, коли всім вже здалося, що клятих мерців неможливо зупинити, вони просто відступили. Лише згодом, через багато років, нам вдалося дізнатися, що тоді серед західняків почалася міжусобиця — двоє Владик-Лічів не змогли поділити могутній артефакт, який вони називають Рубіном Вогню."
 msgstr ""
 
 #. [part]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:59
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:59
 msgid "169 BW"
 msgstr ""
 
 #. [part]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:60
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:60
 msgid "Через дев'ятнацять років, незадовго до того як я стала Магом Світла, західняки відновили свої спроби захопити весь Зелений Острів, швидко підкоривши майже все Чорнотопське Графство, землі Вудлендору та проклявши Естен, а стародавнє місто Скархейн було взято в тривалу облогу. За наказом Короля, <b>ми</b> разом з кількома служителями Світла та загоном воїнів вирушили на допомогу скархейнцям таємними шляхами."
 msgstr ""
 
 #. [part]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:65
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:65
 msgid "168 BW"
 msgstr ""
 
 #. [part]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:66
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:66
 msgid "І хоча місто було втрачено, ми змогли врятувати частину його жителів, а також Графа Чорнотопу. Це була невелика, проте все ж дуже важлива перемога: ми довели всьому Зеленому Острову, що саме магія стане ключем для перемоги над ворогами."
 msgstr ""
 
 #. [part]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:71
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:71
 msgid "163 BW"
 msgstr ""
 
 #. [part]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:72
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:72
 msgid "Протягом наступних кількох років, на полі болі стало з'являтися все більше магів, а міста й поселення наповнюватися цілителями, котрі лікували та зцілювали всіх постраждалих від цієї війни, тож з часом нам вдалося значно сповільнити просування мерців, а потім й взагалі майже зупинити їх."
 msgstr ""
 
 #. [part]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:77
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:77
 msgid "162 BW"
 msgstr ""
 
 #. [part]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:78
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:78
 msgid "Ось так і настало затишшя, під час якого на лінії зіткнення майже кожного дня гинули воїни, а в тилу не відбувалося майже нічого, окрім рідкісних появ Владики-Ліча Карора, подібних до тої, що він вчинив у Естені. У нас просто не було достатньо сил прогнати західняків, а в них — захопити щось більше, ніж кілька клаптиків землі на місяць."
 msgstr ""
 
 #. [part]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:83
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:89
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:95
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:83
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:89
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:95
 msgid "157 BW"
 msgstr ""
 
 #. [part]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:84
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:84
 msgid "Це могло продовжуватися століттями, проте одного дня жителі Чистих Вод з жахом побачили як з моря до них почали підійматися легіони мерців на чолі з Владикою Карором, а потім причалили кораблі з могутніми некромантами. Як вони опинилися там? Деякі кажуть, що вони обійшли весь Зелений Острів під водою, а інші, що їх привезли на кораблях, однак одне було зрозуміло точно — нас застали зненацька."
 msgstr ""
 
 #. [part]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:90
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:90
 msgid "Більшість наших військ перебувала поблизу Долини Штормів, готуючись до великого наступу на ворожу столицю, тому в містах був лише невеликий гарнізон з місцевого ополчення, яке ніколи не воювало проти мерців. Завершилося все передбачувано — не зустрівши майже ніякого спротиву, західнякам вдалося швидко оточити Чисті Води та взяти їх в облогу."
 msgstr ""
 
 #. [part]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:96
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:96
 msgid "Король Південної Бухти послав туди найсильнішого зі своїх магів разом з великою армією, щоб розгромити західняків. Щодо мене, то я змушена мандрувати до півночі Королівства Долини Штормів, щоб зустрітися з тамтешнім військом та підтримати їх в бою. У мене є певні <i>побоювання</i>, що ця кампанія неодмінно завершиться поразкою, однак я вірю, що моя магія та Світло допоможуть нам нарешті завершити цю криваву війну... принаймні це те, що я кажу людям...."
 msgstr ""
 
 #. [event]
 #. [variable]
 #. [then]
-#. [scenario]: id=09_Apprehension
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:234
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:742
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2635
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:3275
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:398
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:400
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:447
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:452
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:459
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:603
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:691
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:694
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:696
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:700
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:710
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:721
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:765
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:776
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:787
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:798
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:810
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:821
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:3130
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:3141
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:3152
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:3163
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:3174
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:3185
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:3196
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:3207
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:3251
+#. [scenario]: id=09_Stormvale
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:234
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:742
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2635
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:3275
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:398
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:400
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:447
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:452
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:459
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:603
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:691
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:694
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:696
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:700
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:710
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:721
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:765
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:776
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:787
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:798
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:810
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:821
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:3130
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:3141
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:3152
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:3163
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:3174
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:3185
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:3196
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:3207
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:3251
 msgid "Outskirts of Stormvale"
 msgstr ""
 
 #. [event]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:237
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:237
 msgid "TEST"
 msgstr ""
 
 #. [event]
-#. [scenario]: id=09_Apprehension
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:239
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2328
+#. [scenario]: id=09_Stormvale
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:239
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2328
 msgid "Покиньте Долину Штормів північним шляхом"
 msgstr ""
 
 #. [event]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:241
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:241
 msgid "Найміть арбалетчиків з табору на півдні"
 msgstr ""
 
 #. [event]
 #. [variable]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:242
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:243
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:244
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:245
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:246
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:247
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:248
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:249
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:250
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1920
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:242
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:243
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:244
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:245
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:246
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:247
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:248
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:249
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:250
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1920
 msgid "Unknown quest"
 msgstr ""
 
 #. [event]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:251
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:252
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:253
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:254
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:251
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:252
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:253
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:254
 msgid "Unknown item"
 msgstr ""
 
 #. [then]
 #. [event]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:359
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1033
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:359
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1033
 msgid "Synyr"
 msgstr ""
 
-#. [scenario]: id=09_Apprehension
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:398
+#. [scenario]: id=09_Stormvale
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:398
 msgid ""
 "Північ — дикі та знищені війною землі. Будьте обережні, рушаючи далі!\n"
 "Південь — Королівство Долини Штормів, яке радо прийме біженців зі спустошених земель."
 msgstr ""
 
-#. [scenario]: id=09_Apprehension
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:400
+#. [scenario]: id=09_Stormvale
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:400
 msgid ""
 "Північ — застава, за якою лежать дикі та знищені війною землі.\n"
 "Схід — головне місто Долини Штормів та замок Його Величності.\n"
@@ -12164,233 +12164,233 @@ msgid ""
 msgstr ""
 
 #. [then]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:427
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:427
 msgid "Тільки-но дай сигнал, пані, й ми підемо з тобою хоч на край світу, хех."
 msgstr ""
 
 #. [then]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:440
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:440
 msgid "Гей ти, чаклунко, побалакай з нашим ватажком: може захочєш скористатся нашими послугами."
 msgstr ""
 
 #. [then]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:483
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:483
 msgid "Доброго дня, чоловіче, ти тут головний серед найманців?"
 msgstr ""
 
 #. [then]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:484
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:484
 msgid "Так, а ви, певно, пані Даеола? Чутки про за ваші подвиги та добрі справи дійшли навіть сюди. Чим можу прислужитися?"
 msgstr ""
 
 #. [then]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:485
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:485
 msgid "Король Долини Штормів порадив, що було б добре, якби твої люди доєдналися до мого походу на північ. Скільки коштує вас найняти?"
 msgstr ""
 
 #. [then]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:486
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:486
 msgid "Зазвичай, ми б не ставали на службу до чаклунів, проте лише заради вас ми допоможемо усього за 100 золотих."
 msgstr ""
 
 #. [then]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:487
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:487
 msgid "За ці гроші я можу найняти з десяток сильних воїнів, а ви лише гарні в дальньому бою. Не хочеш скинути ціну, заради мене?"
 msgstr ""
 
 #. [then]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:488
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:488
 msgid "Хай, але якщо ви спочатку знайдете одну важливу річ. Мій товариш Алин загубив свій арбалет десь на північ від нашого табору, якщо принесете його — поступлюся на половину плати."
 msgstr ""
 
 #. [then]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:497
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:497
 msgid "(показує арбалет) Невже ось цей?"
 msgstr ""
 
 #. [then]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:498
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:498
 msgid "Ви вже його знайшли?! Я вражений, недарма про вас ходить така слава."
 msgstr ""
 
-#. [message]: speaker=09_Apprehension_Global_Crossbowman_1
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:504
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:550
+#. [message]: speaker=09_Stormvale_Global_Crossbowman_1
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:504
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:550
 msgid "Хай так як, я знижу ціню за наші послуги — 4 досвідчених арбалетчиків усього за 50 золотих."
 msgstr ""
 
 #. [option]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:506
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:552
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:580
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:506
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:552
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:580
 msgid "Ім'ям Світла, сподіваюся, що це будуть недарма витрачені кошти."
 msgstr ""
 
 #. [option]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:512
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:558
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:586
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:512
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:558
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:586
 msgid "Я досі не впевнена, що це найкраща витрата золота..."
 msgstr ""
 
 #. [command]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:514
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:560
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:588
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:514
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:560
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:588
 msgid "Якщо все ж передумаєте, я чекатиму тут."
 msgstr ""
 
 #. [else]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:521
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:521
 msgid "Домовилися, я негайно вирушу на пошуки."
 msgstr ""
 
 #. [else]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:524
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:524
 msgid "Знайдіть арбалет найманця на болоті"
 msgstr ""
 
 #. [then]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:543
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:543
 msgid "Чудово, ви якимось дивом вдалося знайти арбалет мого товариша. Це було нелегко, чи не так?"
 msgstr ""
 
 #. [then]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:544
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:544
 msgid "<i>Майже</i> ніщо не є перешкодою для магії Світла, тому знайти загублену річ аж ніяк не було випробуванням."
 msgstr ""
 
 #. [else]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:568
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:568
 msgid "Алин казав, що загубив арбалет десь на півночі від табору, тому гадаю, вам потрібно пошукати десь там."
 msgstr ""
 
-#. [message]: speaker=09_Apprehension_Global_Crossbowman_1
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:578
+#. [message]: speaker=09_Stormvale_Global_Crossbowman_1
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:578
 msgid "Ви досі можете найняти 4 досвідчених арбалетчиків усього за 50 золотих."
 msgstr ""
 
 #. [else]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:597
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:597
 msgid "Наші мечі та арбалети готові служити вам, пані Даеоло — тільки-но подайте сигнал, й ми рушимо з вами хоч на край світу."
 msgstr ""
 
 #. [then]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:620
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:620
 msgid "Пані Пророчице, ета ж ви? Будь ласка, не проходьте мімо!"
 msgstr ""
 
 #. [then]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:621
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:621
 msgid "Схоже, що тобі потрібна допомога, хлопче?"
 msgstr ""
 
 #. [then]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:622
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:622
 msgid "Так, дуже потрібна! Вранці моя сестра пойшла шукать арбалет, який потіряв найомнік і досі не повернулася! "
 msgstr ""
 
 #. [then]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:623
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:623
 msgid "Ім'ям Світла, я знайду її, однак спершу скажи, куди саме вона пішла?"
 msgstr ""
 
 #. [then]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:624
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:624
 msgid "На болото поряд з іхнім табором. Там нема жодних тварюк, але дуже многа трясовини, тому будьте обережні!"
 msgstr ""
 
 #. [then]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:628
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:628
 msgid "Знайдіть сестру хлопця на болоті"
 msgstr ""
 
 #. [then]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:640
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:640
 msgid "Моя сестра досі находітса десь на болоті поряд з табором найомніков. Будь ласка, знайдіть її!"
 msgstr ""
 
 #. [then]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:649
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:649
 msgid "Дяка, що повернули мою сестру, пані!"
 msgstr ""
 
 #. [then]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:650
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:650
 msgid "Так, ми очінь вам вдячні!"
 msgstr ""
 
 #. [else]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:654
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:654
 msgid "Пані, пані! А тсе правда, що ви найсильніша чаклунка Острову?!"
 msgstr ""
 
 #. [else]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:655
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:655
 msgid "У цих землях ніхто поки не зрівнявся зі мною, проте десь далеко є той, кого Світло нагородило набагато більшим магічним даром."
 msgstr ""
 
 #. [else]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:656
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:656
 msgid "А шо такоє оце ваше 'Світло'?"
 msgstr ""
 
 #. [else]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:657
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:657
 msgid "Я рада, що ти спитав. Бути вірним Світлу це завжди чинити добро, допомагати іншим, не порушувати закони, слухатися батьків, а також повставати проти всього нечистого, як-от злих західняків та їхньої магії."
 msgstr ""
 
 #. [else]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:658
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:658
 msgid "Оце звучить як шото, що має чинити кожна людина Острову!"
 msgstr ""
 
 #. [else]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:659
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:659
 msgid "Насправді Світло є всередині кожного з нас, всього лиш варто частіше прислухатися до свого серця та чинити так, як буде найкраще для всіх."
 msgstr ""
 
 #. [else]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:660
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:660
 msgid "А як ви сталі Пророчицею, і как навчилися магії?"
 msgstr ""
 
 #. [else]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:662
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:662
 msgid "Це надто довга історія, тому я розповім її вам колись потім. А зараз, гадаю, що годі з вас, дітлахи: ваша мати кличе вас додому, тому йдіть вже."
 msgstr ""
 
 #. [else]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:663
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:663
 msgid "Ух, ну добре..."
 msgstr ""
 
 #. [else]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:672
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:672
 msgid "До зустрічі, пані!..."
 msgstr ""
 
 #. [else]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:681
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:681
 msgid "Поговоріть з Аеотіль"
 msgstr ""
 
-#. [scenario]: id=09_Apprehension
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:692
+#. [scenario]: id=09_Stormvale
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:692
 msgid "Пані Даеоло, для мєня це буде велика честь, якщо ви завітаєте до моєй оселі."
 msgstr ""
 
-#. [scenario]: id=09_Apprehension
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:695
+#. [scenario]: id=09_Stormvale
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:695
 msgid "Подумати тільки, невже ти... Пророчиця Світла? У цій глушині?..."
 msgstr ""
 
-#. [scenario]: id=09_Apprehension
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:697
+#. [scenario]: id=09_Stormvale
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:697
 msgid "Лише одна твоя присутність вселяє надію."
 msgstr ""
 
-#. [scenario]: id=09_Apprehension
+#. [scenario]: id=09_Stormvale
 #. [unit_type]: id=Haralin_L3, race=human, gender=male
 #. [unit_type]: id=Fisherman, race=human
 #. [unit_type]: id=Jeweler, race=human
@@ -12399,14 +12399,14 @@ msgstr ""
 #. TODO
 #. TODO
 #. TODO
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:701
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1392
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1396
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1400
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1404
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1408
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1412
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1416
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:701
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1392
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1396
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1400
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1404
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1408
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1412
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1416
 #: Chasing_the_Light/units/Haralin/Haralin_L3.cfg:21
 #: Chasing_the_Light/units/Others/Fisherman.cfg:13
 #: Chasing_the_Light/units/Others/Jeweler.cfg:13
@@ -12415,13 +12415,13 @@ msgstr ""
 msgid "TODO"
 msgstr ""
 
-#. [scenario]: id=09_Apprehension
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:710
+#. [scenario]: id=09_Stormvale
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:710
 msgid "The city of Stormvale"
 msgstr ""
 
-#. [scenario]: id=09_Apprehension
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:710
+#. [scenario]: id=09_Stormvale
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:710
 msgid ""
 "Daeola sees a large wooden palisade in front of her, behind\n"
 "which stone houses and a large royal castle can be found.\n"
@@ -12435,27 +12435,27 @@ msgid ""
 msgstr ""
 
 #. [change_location]
-#. [scenario]: id=09_Apprehension
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:750
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:721
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1452
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1453
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1454
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1457
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1540
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1541
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1542
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1543
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1577
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:3141
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:3218
+#. [scenario]: id=09_Stormvale
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:750
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:721
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1452
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1453
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1454
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1457
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1540
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1541
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1542
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1543
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1577
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:3141
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:3218
 #: Chasing_the_Light/utils/macros.cfg:2795
 msgid "Village hut"
 msgstr ""
 
-#. [scenario]: id=09_Apprehension
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:721
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:3218
+#. [scenario]: id=09_Stormvale
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:721
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:3218
 msgid ""
 "Неподалік від міста Даеолі зустрічається звичайна хатина,\n"
 "яка скоріше за все належить якомусь селянину та його сім'ї.\n"
@@ -12469,7 +12469,7 @@ msgid ""
 msgstr ""
 
 #. [change_location]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:752
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:752
 msgid ""
 "На південь від міста Даеола знаходить чергову хатину,\n"
 "яка скоріше за все належить якомусь селянину та його сім'ї.\n"
@@ -12482,20 +12482,20 @@ msgid ""
 "But its door seems to be locked."
 msgstr ""
 
-#. [scenario]: id=09_Apprehension
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:765
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1642
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1660
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1664
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1668
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1755
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1757
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:3152
+#. [scenario]: id=09_Stormvale
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:765
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1642
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1660
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1664
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1668
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1755
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1757
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:3152
 msgid "Rural house"
 msgstr ""
 
-#. [scenario]: id=09_Apprehension
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:765
+#. [scenario]: id=09_Stormvale
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:765
 msgid ""
 "На березі озера Даеола знаходить звичайну хатину,\n"
 "яка скоріше за все належить якомусь селянину та його сім'ї.\n"
@@ -12509,28 +12509,28 @@ msgid ""
 msgstr ""
 
 #. [variable]
-#. [scenario]: id=09_Apprehension
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1887
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:776
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1903
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1904
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1905
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1906
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1909
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1974
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1985
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2010
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2036
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2038
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2040
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2042
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2054
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:3163
+#. [scenario]: id=09_Stormvale
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1887
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:776
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1903
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1904
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1905
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1906
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1909
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1974
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1985
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2010
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2036
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2038
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2040
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2042
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2054
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:3163
 msgid "Farmhouse"
 msgstr ""
 
-#. [scenario]: id=09_Apprehension
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:776
+#. [scenario]: id=09_Stormvale
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:776
 msgid ""
 "На сході від міста, вже поблизу високих гір, Даеола\n"
 "знаходить розкішні поля, а також будинок фермера біля них.\n"
@@ -12543,17 +12543,17 @@ msgid ""
 "Would you like to go inside?"
 msgstr ""
 
-#. [scenario]: id=09_Apprehension
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:787
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2126
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2127
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2130
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:3174
+#. [scenario]: id=09_Stormvale
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:787
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2126
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2127
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2130
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:3174
 msgid "Fisherman's cabin"
 msgstr ""
 
-#. [scenario]: id=09_Apprehension
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:787
+#. [scenario]: id=09_Stormvale
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:787
 msgid ""
 "На березі озера Даеола знаходить невелику самотню хатину,\n"
 "що скоріше за все належить якомусь рибалці чи відлюднику.\n"
@@ -12567,20 +12567,20 @@ msgid ""
 msgstr ""
 
 #. [variable]
-#. [scenario]: id=09_Apprehension
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2187
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:798
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2171
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2172
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2173
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2174
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2260
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:3185
+#. [scenario]: id=09_Stormvale
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2187
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:798
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2171
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2172
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2173
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2174
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2260
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:3185
 msgid "Suspicious house"
 msgstr ""
 
-#. [scenario]: id=09_Apprehension
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:798
+#. [scenario]: id=09_Stormvale
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:798
 msgid ""
 "Даеола підходить до сільського дому, який, незважаючи на\n"
 "охайне подвір'я та розкішне поле пшениці поза ним, виглядає\n"
@@ -12594,14 +12594,14 @@ msgid ""
 "Would you like to go inside?"
 msgstr ""
 
-#. [scenario]: id=09_Apprehension
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:810
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:3196
+#. [scenario]: id=09_Stormvale
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:810
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:3196
 msgid "The Cursed Meadow"
 msgstr ""
 
-#. [scenario]: id=09_Apprehension
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:810
+#. [scenario]: id=09_Stormvale
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:810
 msgid ""
 "Блукаючи лісом, чуття привело Даеолу до місця сили, що\n"
 "випромінювало доволі потужну магію Темряви.\n"
@@ -12615,15 +12615,15 @@ msgid ""
 msgstr ""
 
 #. [variable]
-#. [scenario]: id=09_Apprehension
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2514
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:821
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:3207
+#. [scenario]: id=09_Stormvale
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2514
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:821
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:3207
 msgid "Swamp"
 msgstr ""
 
-#. [scenario]: id=09_Apprehension
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:821
+#. [scenario]: id=09_Stormvale
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:821
 msgid ""
 "Неподалік від табору найманців, Даеола опиняється на порозі\n"
 "великої барвистої трясовини.\n"
@@ -12637,165 +12637,165 @@ msgid ""
 msgstr ""
 
 #. [event]
-#. [scenario]: id=09_Apprehension
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:845
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:877
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:878
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:881
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:887
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:890
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:917
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:945
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:948
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:967
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:972
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:977
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:980
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:986
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:995
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1312
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1321
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:3130
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:3229
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:3240
+#. [scenario]: id=09_Stormvale
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:845
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:877
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:878
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:881
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:887
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:890
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:917
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:945
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:948
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:967
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:972
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:977
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:980
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:986
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:995
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1312
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1321
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:3130
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:3229
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:3240
 msgid "Throneroom of Stormvale"
 msgstr ""
 
-#. [scenario]: id=09_Apprehension
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:882
+#. [scenario]: id=09_Stormvale
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:882
 msgid "Мій брат кілька років тому відправився навчатися магічній майстерності, і з того часу я не чув від нього не слова. Як гадаєш, з ним все добре?"
 msgstr ""
 
-#. [scenario]: id=09_Apprehension
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:883
+#. [scenario]: id=09_Stormvale
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:883
 msgid "Мабуть, твій брат досі навчається: магам Світла заборонено надсилати листи зі святилища, щоб не викрити його розташування ворогові. Скажи як його звати, і я попитаю наступного разу як буду там."
 msgstr ""
 
-#. [scenario]: id=09_Apprehension
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:885
+#. [scenario]: id=09_Stormvale
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:885
 msgid "Дякую тобі, Пророчице. Міріон, Міріон зі Снігового Піку."
 msgstr ""
 
-#. [scenario]: id=09_Apprehension
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:888
+#. [scenario]: id=09_Stormvale
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:888
 msgid "Мене вкрай турбують новини про висадку безлічі західняків поблизу Чистих Вод. Якщо переважна більшість Королівських військ і <b>ти</b> зараз тут, то хто зупинятиме мерців на Півдні?"
 msgstr ""
 
 #. [then]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:901
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:928
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:901
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:928
 msgid "...Я аж ніяк незгоден з вашою думкою, мій пане. Якщо Долині Штормів і справді потрібне в рази більше військо, нам доведеться впровадити величезні податки для селян, яких також стане менше, тому що частині з них доведеться взяти до рук зброю."
 msgstr ""
 
 #. [then]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:902
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:929
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:902
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:929
 msgid "Хмммм, слушно кажеш, до того ж це також знищить одну з речей, якою Король приваблює переселенців, а саме низькі податки..."
 msgstr ""
 
 #. [then]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:909
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:936
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:909
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:936
 msgid "Пані Даеоло, пробачте, ми й не помітили як ви підішли. Ви, безперечно, чули принаймні частину нашої розмови; що можете сказати з цього приводу?"
 msgstr ""
 
 #. [then]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:911
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:938
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:911
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:938
 msgid "Ох, я... я не можу сказати напевне, однак єдиним правильним рішенням буде спрямувати всі наші думки і дії на те, що допоможе нам перемогти Темряву."
 msgstr ""
 
 #. [then]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:912
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:939
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:912
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:939
 msgid "Гарна відповідь та й гідна Пророчиці Світла, проте без жодної думки про звичайних бідних селян."
 msgstr ""
 
-#. [scenario]: id=09_Apprehension
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:946
+#. [scenario]: id=09_Stormvale
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:946
 msgid "Я простий охоронець цього замку, пані, не варто мене турбувати."
 msgstr ""
 
-#. [scenario]: id=09_Apprehension
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:949
+#. [scenario]: id=09_Stormvale
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:949
 msgid "Даеоло, зачекай-но й послухай: сім'я мого дядька зараз тяжко хворіє. Я не вірю в твоє оце 'Світло', але їм вже нічого не допомагає, тому прошу тебе — спробуй зцілити їм своїми магічними трюками!"
 msgstr ""
 
 #. [then]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:956
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:956
 msgid "Я не пройшла повз цієї Долини лише для того, щоб допомогти її нужденним та показати їм вірний шлях. Тож лиш скажи де вони, і я прийду до них."
 msgstr ""
 
 #. [then]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:957
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:957
 msgid "Покладаюся на тебе, пані: вони живуть на фермі на схід від міста."
 msgstr ""
 
 #. [then]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:959
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:959
 msgid "Зціліть хвору сім'ю на фермі"
 msgstr ""
 
 #. [else]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:963
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:963
 msgid "Маєш на увазі жінку та її сина з ферми на схід звідси? Якщо так — магія Світла вже вилікувала їх."
 msgstr ""
 
 #. [else]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:964
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:964
 msgid "Що, невже тепер з ними все добре?!... Дякую тобі, Пророчице!"
 msgstr ""
 
-#. [scenario]: id=09_Apprehension
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:968
+#. [scenario]: id=09_Stormvale
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:968
 msgid "Я чув, що ти родом з земель Чорнотопу. Певно, важко жити й знати, що ніколи не повернешся до рідного дому?"
 msgstr ""
 
-#. [scenario]: id=09_Apprehension
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:969
+#. [scenario]: id=09_Stormvale
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:969
 msgid "Я маю віру, що колись Світло осяє навіть найтемніші та найзліші місця Зеленого Острову й ми переможемо у цій війні. До того ж часу, мені залишається тільки продовжувати свою боротьбу з силами Темряви."
 msgstr ""
 
-#. [scenario]: id=09_Apprehension
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:973
+#. [scenario]: id=09_Stormvale
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:973
 msgid "Я мав трьох молодших братів, але всі вони загинули від сокир мерців поблизу Естену з десяток років тому."
 msgstr ""
 
-#. [scenario]: id=09_Apprehension
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:978
+#. [scenario]: id=09_Stormvale
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:978
 msgid "Мерці це дуже страшні потвори, пані. Я не уявляю як тобі та іншим магам вдається боротися з ними та не мати страху..."
 msgstr ""
 
-#. [scenario]: id=09_Apprehension
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:983
+#. [scenario]: id=09_Stormvale
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:983
 msgid "Я на варті, просто йди далі."
 msgstr ""
 
-#. [scenario]: id=09_Apprehension
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:986
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:995
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1078
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1109
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1131
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1247
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1250
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1253
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1256
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1261
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1264
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1278
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1292
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1295
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1298
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1302
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1307
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:3229
+#. [scenario]: id=09_Stormvale
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:986
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:995
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1078
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1109
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1131
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1247
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1250
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1253
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1256
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1261
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1264
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1278
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1292
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1295
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1298
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1302
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1307
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:3229
 msgid "Prison"
 msgstr ""
 
-#. [scenario]: id=09_Apprehension
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:986
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:995
+#. [scenario]: id=09_Stormvale
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:986
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:995
 msgid ""
 "Довгий коридор, що простягався праворуч від тронної зали,\n"
 "привів Даеолу до вкрай похмурої частини замку.\n"
@@ -12808,148 +12808,148 @@ msgid ""
 "Would you like to go inside?"
 msgstr ""
 
-#. [scenario]: id=09_Apprehension
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1079
+#. [scenario]: id=09_Stormvale
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1079
 msgid "Тест"
 msgstr ""
 
 #. [then]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1169
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1169
 msgid "Ти західняк"
 msgstr ""
 
 #. [else]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1172
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1172
 msgid "Ти НЕ західняк"
 msgstr ""
 
 #. [then]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1175
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1175
 msgid "квест прийнято"
 msgstr ""
 
 #. [then]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1179
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1179
 msgid "Врятуйте життя воїна-гірянина"
 msgstr ""
 
 #. [then]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1191
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1191
 msgid "СХОДИ ДО КОРОЛЯ"
 msgstr ""
 
 #. [then]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1203
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1203
 msgid "Ти вільний"
 msgstr ""
 
 #. [then]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1214
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1214
 msgid "ДЯКУЮ"
 msgstr ""
 
 #. [then]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1235
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1235
 msgid "<span strikethrough='true'>Врятуйте життя воїна-гірянина</span>"
 msgstr ""
 
-#. [scenario]: id=09_Apprehension
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1248
+#. [scenario]: id=09_Stormvale
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1248
 msgid "Гей, я ж нічо не здєлав! Подумаєш, побив кількох селюків та й все на цьому..."
 msgstr ""
 
-#. [scenario]: id=09_Apprehension
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1251
+#. [scenario]: id=09_Stormvale
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1251
 msgid "Тут дуж' холодно, пані. Треб' було мнє думать перед тим як красти т' кобилу..."
 msgstr ""
 
-#. [scenario]: id=09_Apprehension
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1254
+#. [scenario]: id=09_Stormvale
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1254
 msgid "Шо це ти дивішся на мене, Пророчице? Он іди крашче з заходняком побалакай, ця потвора тож' тут сиде!"
 msgstr ""
 
-#. [scenario]: id=09_Apprehension
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1257
+#. [scenario]: id=09_Stormvale
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1257
 msgid "Не очікувала побачити мене в тюрмі, Пророчице? Я, звісно, вдячний тобі за порятунок, проте не всі такі сміливі, як ти. Я краще побуду тут, ніж на полі бою з мерцями: я просто хочу прожити якнайдовше..."
 msgstr ""
 
-#. [scenario]: id=09_Apprehension
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1262
+#. [scenario]: id=09_Stormvale
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1262
 msgid "Моєю зброєю мерця не вб'єш, а от порушника — легко!"
 msgstr ""
 
 #. [then]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1271
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1285
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1271
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1285
 msgid "Ходять чутки, що неподалік від нас у горах було помічено західняцьких розвідників. Це, звісно, лише чутки, але ми не маємо втрачати нашої пильності."
 msgstr ""
 
 #. [then]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1272
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1286
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1272
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1286
 msgid "Я бачу до чого ви хилите, пане. Потрібно підсилити охорону поблизу тих місць?"
 msgstr ""
 
 #. [then]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1273
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1287
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1273
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1287
 msgid "Саме так, тому відзавтра ти нестимеш варту не тут, а на Північному Перевалі. І пам'ятай, воїне, на нас розраховує не лише Король, а й усі жителі Долини Штормів!"
 msgstr ""
 
-#. [scenario]: id=09_Apprehension
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1293
+#. [scenario]: id=09_Stormvale
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1293
 msgid "Ти вже чула, що ми взяли в полон одну з тих західняцьких потвор? <i>Воно</i> знаходиться в одній з наших камер, можеш піти побалакати."
 msgstr ""
 
-#. [scenario]: id=09_Apprehension
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1296
+#. [scenario]: id=09_Stormvale
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1296
 msgid "Пророчице, краще не розмовляйте з цими волоцюгами: з них жодної користі..."
 msgstr ""
 
-#. [scenario]: id=09_Apprehension
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1299
+#. [scenario]: id=09_Stormvale
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1299
 msgid "Я несу варту, щоб жоден з цих злочинців не втік і не наробив лиха. Не заважай мені, жінко."
 msgstr ""
 
-#. [scenario]: id=09_Apprehension
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1303
+#. [scenario]: id=09_Stormvale
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1303
 msgid "Нам би вдалося перемогти західняків без оцієї твоєї 'магії', якби Королівста Півночі не були такими слабкими. Мій батько розповідав, що Північну Гавань навіть не обороняли — тамтешні люди просто склали зброю на милість загарбників."
 msgstr ""
 
-#. [scenario]: id=09_Apprehension
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1305
+#. [scenario]: id=09_Stormvale
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1305
 msgid "Точніше вони спробували..."
 msgstr ""
 
-#. [scenario]: id=09_Apprehension
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1308
+#. [scenario]: id=09_Stormvale
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1308
 msgid "Якби ж тільки в нас було більше магів..."
 msgstr ""
 
-#. [scenario]: id=09_Apprehension
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1312
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1321
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1382
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1383
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1384
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1385
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1386
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1387
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1388
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1391
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1395
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1399
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1403
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1407
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1411
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1415
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:3240
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:3251
+#. [scenario]: id=09_Stormvale
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1312
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1321
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1382
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1383
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1384
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1385
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1386
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1387
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1388
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1391
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1395
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1399
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1403
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1407
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1411
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1415
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:3240
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:3251
 msgid "Living quaters"
 msgstr ""
 
-#. [scenario]: id=09_Apprehension
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1312
+#. [scenario]: id=09_Stormvale
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1312
 msgid ""
 "Прямий освітленний коридор приводить Даеолу до жилої\n"
 "частини замку Долини Штормів.\n"
@@ -12962,8 +12962,8 @@ msgid ""
 "Would you like to go inside?"
 msgstr ""
 
-#. [scenario]: id=09_Apprehension
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1321
+#. [scenario]: id=09_Stormvale
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1321
 msgid ""
 "Прямий освітленний коридор приводить Даеолу до жилої\n"
 "частини замку Долини Штормів.\n"
@@ -12977,121 +12977,121 @@ msgid ""
 msgstr ""
 
 #. [unit]: id=Doulas, type=White Mage, gender=male
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1354
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1354
 msgid "Doulas"
 msgstr ""
 
 #. [event]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1375
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1375
 msgid "Eldaric I"
 msgstr ""
 
 #. [then]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1476
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1476
 msgid "Пророчице Світла, як добре, шо ти тута! Мнє потрібна помощь, на мой підвал наклалі страшнеє прокляття!"
 msgstr ""
 
 #. [then]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1483
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1483
 msgid "Вітаю, чоловіче. Це вже не перше прокляття, що зустрілося мені в цих землях, тож розповідай, що сталося."
 msgstr ""
 
 #. [else]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1486
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1486
 msgid "Вітаю, чоловіче, розкажи мені, що сталося, й я допоможу своєю магією."
 msgstr ""
 
 #. [then]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1488
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1488
 msgid "Я копав у подвалє диру, шоб було де збирігати врожай, як от я пробив стіну та натрапіл на какую-то печеру. Оттудова я одразу почув якісь дуже страшні звуки й там, наче, хто-та бігаєт."
 msgstr ""
 
 #. [then]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1489
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1489
 msgid "І що це виявилося, невже страшні злі духи?"
 msgstr ""
 
 #. [then]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1490
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1490
 msgid "Саме так, пані, я тоже подумав, що це всьо злиє духі! Я зразу ж замкнув двері до погрєбу, але вночі я чую як вони там шкребуться та пищать вночі."
 msgstr ""
 
 #. [then]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1492
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1492
 msgid "Добре, я розберуся з цим твоїм 'прокляттям', але, ім'ям Світла — наступного разу позбуватимешся від пацюків сам."
 msgstr ""
 
 #. [then]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1493
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1493
 msgid "Дякую, пані, вєліке дякую! Осьо, тримайте ключи от мого погребу! (передає ключ від закритих дверей)"
 msgstr ""
 
 #. [then]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1498
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1498
 msgid "Дослідіть підвал переляканого селянина"
 msgstr ""
 
 #. [then]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1509
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1509
 msgid "Моїй дитині страшно спать в хатє, поки в підвалі бродять ті жахливіє потвори. Я сподіваюсь, шо ти покінчиш з німі!"
 msgstr ""
 
 #. [then]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1524
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1524
 msgid "На диво, це твоє прокляття виявилося цілком справжнім, проте хай там як — пацюки тебе більше не потурбують."
 msgstr ""
 
 #. [then]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1525
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1525
 msgid "А я ж і к'зав, пані, що то страшнєє прокляття там! Осьо, тримайте 10 золотих за п'мощь."
 msgstr ""
 
 #. [then]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1531
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1531
 msgid "<span strikethrough='true'>Дослідіть підвал переляканого селянина</span>"
 msgstr ""
 
-#. [scenario]: id=09_Apprehension
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1540
+#. [scenario]: id=09_Stormvale
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1540
 msgid "Я вой'вав на півночє, пані, й бачив твою могутню магію. Оце твойо 'Світло' точно змож' перемогти західняков!"
 msgstr ""
 
-#. [scenario]: id=09_Apprehension
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1541
+#. [scenario]: id=09_Stormvale
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1541
 msgid "Люде кажуть, що ми всі ще ж'ві лише завдяк' магії. Як' це справді так, то дяка, пані."
 msgstr ""
 
-#. [scenario]: id=09_Apprehension
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1542
+#. [scenario]: id=09_Stormvale
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1542
 msgid "Залиш міня аднаго, хіба не бач'ш, що я дуже зайнятий?"
 msgstr ""
 
 #. [then]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1556
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1556
 msgid "Тато каже, що в подвалє завеліся страшниє чудовиська. Мож', твоя 'магія' допоможет?"
 msgstr ""
 
 #. [then]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1571
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1571
 msgid "Дяка т'бі, пані!"
 msgstr ""
 
 #. [variable]
-#. [scenario]: id=09_Apprehension
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2782
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2817
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2852
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2975
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:3043
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1577
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2886
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2887
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:3218
+#. [scenario]: id=09_Stormvale
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2782
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2817
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2852
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2975
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:3043
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1577
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2886
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2887
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:3218
 msgid "Basement"
 msgstr ""
 
-#. [scenario]: id=09_Apprehension
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1577
+#. [scenario]: id=09_Stormvale
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1577
 msgid ""
 "Даеола бачить перед собою невеликі кам'яні сходи, які\n"
 "ведуть кудись вниз, у темряву сільського підвалу.\n"
@@ -13106,722 +13106,722 @@ msgid ""
 msgstr ""
 
 #. [event]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1606
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1606
 msgid "Aeothyll"
 msgstr ""
 
 #. [event]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1619
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1619
 msgid "Emperor"
 msgstr ""
 
 #. [then]
 #. [else]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1654
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2255
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2488
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2941
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1654
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2255
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2488
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2941
 msgid "Я не відчуваю в цьому місці нічого, що було б варто моєї уваги..."
 msgstr ""
 
-#. [scenario]: id=09_Apprehension
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1661
+#. [scenario]: id=09_Stormvale
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1661
 msgid "Мой батя загинув на війні проти західняків. Тож тепер я живу з сусідами та ловлю їм рибу..."
 msgstr ""
 
-#. [scenario]: id=09_Apprehension
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1665
+#. [scenario]: id=09_Stormvale
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1665
 msgid "Мяу!"
 msgstr ""
 
 #. [then]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1683
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1683
 msgid "Вітаю, пані. Я блукаю Долиною у пошуках тих, хто потребує допомоги Світла. Чи тобі щось потрібно?"
 msgstr ""
 
 #. [then]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1685
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1685
 msgid "Даеоло?... Невже це і справді ти, у моїй хаті?"
 msgstr ""
 
 #. [then]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1687
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1687
 msgid "Зажди-но... Ім'ям Світла, я маю відчуття, наче знаю тебе..."
 msgstr ""
 
 #. [then]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1688
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1688
 msgid "Ти ніколи нє вирізнялася гарною памят'ю, Даеоло, але ж забути свою найкращу подругу?..."
 msgstr ""
 
 #. [then]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1690
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1690
 msgid "Аеотіль!"
 msgstr ""
 
 #. [then]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1691
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1691
 msgid "Я не бачила тебе хтозна-скільки часу! Ти ж тоді була з сім'єю у Чорнотопі, коли напали мерці, так?"
 msgstr ""
 
 #. [then]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1692
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1692
 msgid "Моя сім'я втекла звідти до Південної Бухти, де ми багато років жили у бідному таборі неподалік від міста. А потім ми з чоловіком та його двома братами перебралися до Долини Штормів, бо тутешній Король обіцяв багато гарної землі переселенцям."
 msgstr ""
 
 #. [then]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1693
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1693
 msgid "Ми живемо тут вже більше двадцяти років і, хоч я час від часу згадую про рідне село, я повністю щаслива тут: маю велику сім'ю, гарний будинок та поле, а Королівські війська надійно охороняють усі входи в Долину, тому тут ніколи не було жодного західняка."
 msgstr ""
 
 #. [then]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1694
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1694
 msgid "Я рада, що хоч когось з нашого села все склалося добре. Інші або загинули на війні, або ще продовжують боротися..."
 msgstr ""
 
 #. [then]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1695
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1695
 msgid "Я гадала, шо ви всі й загинули тієї ночі, поки кілька років тому нє почула розповіді про магію, 'Світло' та якусь Пророчицю на ім'я Даеола, що творить чудеса та рятує людей. Я не знала чи це ти, проте знайоме ім'я дало мнє надію, і ось ти тут."
 msgstr ""
 
 #. [then]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1697
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1697
 msgid "А як щодо тебе, Даеоло? У тєбє теж, певно, вже є сім'я?"
 msgstr ""
 
 #. [then]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1698
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1698
 msgid "Я слуга Світла, Аеотіль — весь свій час я витрачаю на війну з Темрявою, тому не маю ні спокою, ні дому, ні сім'ї, ні коханої людини..."
 msgstr ""
 
 #. [then]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1700
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1700
 msgid "Ох, тобі не позаздриш..."
 msgstr ""
 
 #. [then]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1701
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1701
 msgid "Так... Це страшний тягар, проте я змушена продовжувати боротьбу, щоб інші могли мати спокійні життя, далеко від мерців та темних чаклунів..."
 msgstr ""
 
 #. [then]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1702
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1702
 msgid "І за це ми всі навіки вдячні тєбє, Даеоло. Ви, маги, врятували багато життів і зараз успєшно звільнюєте Зелений Острів."
 msgstr ""
 
 #. [then]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1703
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1703
 msgid "Аеотіль... Я-... Хоча хай, тобі зараз потрібна хоч якась допомога?"
 msgstr ""
 
 #. [then]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1704
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1704
 msgid "Насправді нє, у мене все чудово. Але якщо ти прям дуже хочеш щось зробити, можеш покликати моїх дітей додому, вони мають бути десь у долині."
 msgstr ""
 
 #. [then]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1708
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1708
 msgid "Поверніть дітей Аеотіль додому"
 msgstr ""
 
 #. [then]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1722
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1722
 msgid "Пам'ятаєш, як ми колись грали в хованки на Чорнильних Болотах, Даеоло? Певно, мої дочка та син теж зараз десь поблизу трясовини."
 msgstr ""
 
 #. [then]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1737
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1737
 msgid "Дякую, що повернула моїх дітей додому, Даеоло. Дочка розповіла, що ти врятувала її з трясовини, тому возьми, будь ласка, оці 10 золотих у знак моєї вдячності."
 msgstr ""
 
 #. [then]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1743
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1743
 msgid "<span strikethrough='true'>Поверніть дітей Аеотіль додому</span>"
 msgstr ""
 
 #. [else]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1747
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1747
 msgid "Ти виглядаєш дуже втомлено, Даеоло, не хочеш залишитьця в мене на кілька днів та перепочити?"
 msgstr ""
 
 #. [else]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1748
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1748
 msgid "Аеотіль, я б дуже хотіла залишитись в Долині Штормів подовше, однак люди Острову розраховують на мене."
 msgstr ""
 
-#. [scenario]: id=09_Apprehension
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1756
+#. [scenario]: id=09_Stormvale
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1756
 msgid "Мій брат кажет, що лише твоєю магією ми зможем пєрємогти мертв'яков."
 msgstr ""
 
-#. [scenario]: id=09_Apprehension
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1758
+#. [scenario]: id=09_Stormvale
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1758
 msgid "Пророчице Світла! Великеє дякую за твою бородьбу!"
 msgstr ""
 
 #. [message]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1893
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1893
 msgid "Даеола знаходить 15 золотих монет."
 msgstr ""
 
 #. [then]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1923
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1923
 msgid "Вітаю, добрий чоловіче. Твій племінник з замку повідомив, що твоя сім'я вже тривалий час страждає від невиліковної хвороби, чи це так?"
 msgstr ""
 
 #. [then]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1924
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1924
 msgid "Дивлячись, хто питає. Зачекай-но... твій одяг, шрам та літаюча каменюка..."
 msgstr ""
 
 #. [else]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1927
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1927
 msgid "Вітаю, добрий чоловіче. Я блукаю Долиною у пошуках тих, хто потребує допомоги Світла. Чи тобі щось потрібно?"
 msgstr ""
 
 #. [else]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1928
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1928
 msgid "'Світло'?... Зачекай-но... твій одяг, шрам та літаюча каменюка..."
 msgstr ""
 
 #. [then]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1932
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1932
 msgid "Невже ти ота чаклунка!? Як ти смієш приходити до горюючої людини та пропонувати свої оманливі трюки?!"
 msgstr ""
 
 #. [then]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1933
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1933
 msgid "quietly^<i>Ох, я гадала, що вже не зустріну подібних впертих людей... Хай там як, йому несумнівно потрібна моя допомога...</i>"
 msgstr ""
 
 #. [then]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1933
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1933
 msgid ""
 "\n"
 "Не будеш ласкавим пояснити, що звичайний селянин може мати проти магії Світла?"
 msgstr ""
 
 #. [then]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1935
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1935
 msgid "Деякі люди кажуть, що західня-..."
 msgstr ""
 
 #. [then]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1936
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1936
 msgid "Окрім того, що ти від когось колись чув, що прокляті західняцькі темні чаклуни користуються чимось трохи схожим."
 msgstr ""
 
 #. [then]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1937
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1937
 msgid "Я-... Ну, а як щодо-..."
 msgstr ""
 
 #. [then]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1939
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1939
 msgid "Просто прислухайся до свого серця, невже це лиш звичайний страх перед невідомим, що відлякує тебе? Не варто цуратися моєї магії, бо ж вона здатна допомогти тобі та <b>була схвалена навіть твоїм Королем.</b>"
 msgstr ""
 
 #. [then]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1941
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1941
 msgid "Хай... в такому разі, можеш спробувати зцілити моїх дружину та сина, проте знай — почнеш творити щось дивне своєю оцією 'магією', й мої вила швидко покладуть цьому кінець!"
 msgstr ""
 
 #. [then]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1942
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1942
 msgid "Ім'ям Світла, тобі не доведеться хвилюватися щодо цього: мені вистачить лиш одного закляття <b>Massive Heal</b>, щоб за раз вилікувати їх обох."
 msgstr ""
 
 #. [then]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1966
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1966
 msgid "Ну диви мені, чаклунко. Якщо тобі вдасться врятувати їх, я ніколи не проганятиму інших чаклунів, і дам тобі ще золота в додачу."
 msgstr ""
 
 #. [else]
 #. [then]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1971
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:1981
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1971
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:1981
 msgid "Ще сотню раз дякую тобі, чаклунко, та оцьому 'Світлу'! Наша родина ніколи не забуде твоєї чаклунской допомоги."
 msgstr ""
 
 #. [then]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2000
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2025
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2000
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2025
 msgid "Від хвороби вони навіть говорити вже не можуть. Невже твоя 'магія' здатна це виправити?"
 msgstr ""
 
 #. [else]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2006
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2006
 msgid "Дякуйу т'бі, пані чаклунка!"
 msgstr ""
 
 #. [else]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2032
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2032
 msgid "Мене врятувала магія, хто б міг таке уявить?..."
 msgstr ""
 
-#. [scenario]: id=09_Apprehension
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2037
+#. [scenario]: id=09_Stormvale
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2037
 msgid "М'ня не хвилює нічого: ні заходняки, ні магія. Войська Короля захіщають нас, а ми працюватимем на цьом полі до кінця наших днів."
 msgstr ""
 
-#. [scenario]: id=09_Apprehension
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2039
+#. [scenario]: id=09_Stormvale
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2039
 msgid "Тв'я магія й справді такая сильна, як люди говорять?"
 msgstr ""
 
-#. [scenario]: id=09_Apprehension
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2041
+#. [scenario]: id=09_Stormvale
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2041
 msgid "Долина Штормів дуж' поряд до західняков, але тут мирно. З'вдяки Королям та т'бі."
 msgstr ""
 
-#. [scenario]: id=09_Apprehension
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2043
+#. [scenario]: id=09_Stormvale
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2043
 msgid "А тв'я магія може мені допомогти? Моя спина дуже болить і заважаєт працювать на полє..."
 msgstr ""
 
-#. [scenario]: id=09_Apprehension
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2053
+#. [scenario]: id=09_Stormvale
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2053
 msgid "Дяк, Пророчице, тепер мнє набагато крашче..."
 msgstr ""
 
-#. [scenario]: id=09_Apprehension
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2055
+#. [scenario]: id=09_Stormvale
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2055
 msgid "Ходять чутки, що наш' військо збирається йти в контрнаступ. Невж' нам вдастся відвойвати півноч Острова?"
 msgstr ""
 
 #. [event]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2068
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2068
 msgid "CIRCUM OMNES, STATIM VIRES TUAS COLLIGE!"
 msgstr ""
 
 #. [event]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2084
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2084
 msgid "Кх-кх... я відчуваю себ' набагато краще..."
 msgstr ""
 
 #. [event]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2085
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2085
 msgid "Ух... я тєж..."
 msgstr ""
 
 #. [event]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2089
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2089
 msgid "Невже?... ... Після стількох місяців ви просто... заговорили?..."
 msgstr ""
 
 #. [event]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2093
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2093
 msgid "ЦЕ СПРАВЖНЄ ДИВО!"
 msgstr ""
 
 #. [event]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2094
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2094
 msgid "Диво, створене силами Світла та твоїй бажанням повірити в нього."
 msgstr ""
 
 #. [event]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2095
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2095
 msgid "САМЕ ТАК, ПАНІ! Хай славиться оце твоє 'Світло' навіки! Ти можеш взяти все моє золото з комори в знак моєї вічної вдячності!"
 msgstr ""
 
 #. [event]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2100
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2100
 msgid "<span strikethrough='true'>Зціліть хвору сім'ю на фермі</span>"
 msgstr ""
 
 #. [message]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2206
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2206
 msgid "У віддаленій кімнаті зруйнованої хатини Даеола знаходить простий золотистий обруч, від якого відчувається якась ледь вловима, але вкрай підозріла магія. Це може бути як і якесь корисне закляття, так і страшне прокляття."
 msgstr ""
 
 #. [message]: speaker=Daeola
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2214
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2214
 msgid "Напевне цю річ тут для мене залишила Файсім... Майстер завжди казав, що треба обережно досліджувати будь-яку магію, щоб не пропустити корисних заклятть, проте чи варто зараз взагалі ризикувати?"
 msgstr ""
 
 #. [option]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2216
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2216
 msgid "Я візьму цю діадему з собою, щоб розгадати та використати її чари."
 msgstr ""
 
 #. [object]
 #. [event]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2223
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2239
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2223
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2239
 msgid "Suspicious tiara"
 msgstr ""
 
 #. [object]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2225
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2225
 msgid "It might have some effects in the future, but right now it's just a suspicious piece of jewelry."
 msgstr ""
 
 #. [option]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2233
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2233
 msgid "Брати з собою підозрілу річ, що належить ворогу Острову, надто необачно."
 msgstr ""
 
-#. [scenario]: id=09_Apprehension
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2262
+#. [scenario]: id=09_Stormvale
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2262
 msgid "Вітаю, пані, я-... (відсахується)"
 msgstr ""
 
-#. [scenario]: id=09_Apprehension
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2277
+#. [scenario]: id=09_Stormvale
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2277
 msgid "quietly^<i>Вона знову тут, а її поява завжди означає небезпеку...</i>"
 msgstr ""
 
-#. [scenario]: id=09_Apprehension
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2277
+#. [scenario]: id=09_Stormvale
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2277
 msgid ""
 "\n"
 "Ти з'являєшся все частійше й частіше, це... дратує..."
 msgstr ""
 
-#. [scenario]: id=09_Apprehension
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2279
+#. [scenario]: id=09_Stormvale
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2279
 msgid "наближається час великих змін, 'пророчице', але чи усвідомлюєш це ти? невже знову просто стоятимеш і дивитимешся на мене, не нападатимеш...?"
 msgstr ""
 
-#. [scenario]: id=09_Apprehension
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2280
+#. [scenario]: id=09_Stormvale
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2280
 msgid "(зітхає) Скажи, який у цьому сенс, Файсім? Який сенс нападати, якщо я не можу вбити тебе — щоб я не робила, ти чомусь завжди повертаєшся..."
 msgstr ""
 
-#. [scenario]: id=09_Apprehension
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2282
+#. [scenario]: id=09_Stormvale
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2282
 msgid "багато років я сподіваюся почути це питання й від Гараліна, але він лише прагне знищити 'темряву' та усіх західняків, ні миті не думаючи як цього найкраще досягти..."
 msgstr ""
 
-#. [scenario]: id=09_Apprehension
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2283
+#. [scenario]: id=09_Stormvale
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2283
 msgid "Якби ж тільки моя магія була здатна знищити тебе... Однак я розумію, що це марно, тому..."
 msgstr ""
 
-#. [scenario]: id=09_Apprehension
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2285
+#. [scenario]: id=09_Stormvale
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2285
 msgid "... поки ти не чиниш зла у цій Долині, я можу знову побалакати з тобою... У тебе є нова інформація про місця перебування Владик-Лічів?"
 msgstr ""
 
-#. [scenario]: id=09_Apprehension
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2286
+#. [scenario]: id=09_Stormvale
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2286
 msgid "щоб ще краще уникати їх чи нарешті вступити в бій?"
 msgstr ""
 
-#. [scenario]: id=09_Apprehension
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2288
+#. [scenario]: id=09_Stormvale
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2288
 msgid "Ти знаєш відповідь..."
 msgstr ""
 
-#. [scenario]: id=09_Apprehension
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2289
+#. [scenario]: id=09_Stormvale
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2289
 msgid "один у чистих водах, ще один у зламаних горах, всі інші в столиці. ти і справді збираєшся все життя уникати їх, Даеоло? що ти плануєш робити далі?"
 msgstr ""
 
-#. [scenario]: id=09_Apprehension
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2291
+#. [scenario]: id=09_Stormvale
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2291
 msgid "Певно, просто продовжувати боротьбу, сподіваючись, що колись <b>щось</b> зміниться і нарешті настане мир..."
 msgstr ""
 
-#. [scenario]: id=09_Apprehension
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2292
+#. [scenario]: id=09_Stormvale
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2292
 msgid "під час нашої першої зустрічі ти говорила зовсім по-іншому — <b>ти</b> збиралася щось змінити. хіба це не було твоєю метою?"
 msgstr ""
 
-#. [scenario]: id=09_Apprehension
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2294
+#. [scenario]: id=09_Stormvale
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2294
 msgid "Я... значно переоцінила свої сили: недостатньо лише надії та бажання, щоб перемогти. Всі ці роки я творила добро, рятувала життя та знищувала мерців, однак... я не відчуваю, що це хоч трохи допомогло..."
 msgstr ""
 
-#. [scenario]: id=09_Apprehension
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2295
+#. [scenario]: id=09_Stormvale
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2295
 msgid "Іноді здається, що проклятих західняків просто неможливо зупинити... Мерці вже знищили кілька великих королівств і навіть взяли в облогу Чисті Води, а я... просто мандрую на північ, щоб..."
 msgstr ""
 
-#. [scenario]: id=09_Apprehension
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2297
+#. [scenario]: id=09_Stormvale
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2297
 msgid "...підтримати нерозумну спробу атакувати столицю владик-лічів. мені та їм вже відомо про це..."
 msgstr ""
 
-#. [scenario]: id=09_Apprehension
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2298
+#. [scenario]: id=09_Stormvale
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2298
 msgid "проте, як ти гадаєш, Даеоло... невже цього разу ви переможете, однієї твоєї магії 'світла' вистачить для перемоги?"
 msgstr ""
 
-#. [scenario]: id=09_Apprehension
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2300
+#. [scenario]: id=09_Stormvale
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2300
 msgid "Ти знаєш відповідь: моя магія Світла нерівня потворам, що керують вами. Навіть один Владика-Ліч здатен повністю змінити хід битви, а скільки їх у столиці?"
 msgstr ""
 
-#. [scenario]: id=09_Apprehension
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2301
+#. [scenario]: id=09_Stormvale
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2301
 msgid "достатньо, щоб знищити все ваше військо."
 msgstr ""
 
-#. [scenario]: id=09_Apprehension
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2302
+#. [scenario]: id=09_Stormvale
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2302
 msgid "Саме так. Найсильніший маг Острову навряд чи зможе знищити найслабшого Владику-Ліча, а про мене й годі казати... Я братиму участь у битві лише, щоб підтримати людей, які поки самі не здогадуються, що за кілька днів помруть та перетворяться на бездушних мерців..."
 msgstr ""
 
-#. [scenario]: id=09_Apprehension
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2304
+#. [scenario]: id=09_Stormvale
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2304
 msgid "Я просто не вірю в наш успіх... і не розумію, чому добро та Світло не панує над злом та Темрявою...!"
 msgstr ""
 
-#. [scenario]: id=09_Apprehension
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2305
+#. [scenario]: id=09_Stormvale
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2305
 msgid "ти жалюгідна, Даеоло."
 msgstr ""
 
-#. [scenario]: id=09_Apprehension
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2306
+#. [scenario]: id=09_Stormvale
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2306
 msgid "Знаю..."
 msgstr ""
 
-#. [scenario]: id=09_Apprehension
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2307
+#. [scenario]: id=09_Stormvale
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2307
 msgid "твій відчай ніяк не допоможе нашій справі, тому припини це. невже ти досі не зрозуміла, що якби західняки справді могли перемогти, вони б це вже зробили?"
 msgstr ""
 
-#. [scenario]: id=09_Apprehension
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2308
+#. [scenario]: id=09_Stormvale
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2308
 msgid "владики-лічі не всесильні, їх можливо знешкодити й навіть вбити, хоча й дуже важко. а зі знищенням бодай одного з них з'явиться справжня надія на перемогу."
 msgstr ""
 
-#. [scenario]: id=09_Apprehension
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2310
+#. [scenario]: id=09_Stormvale
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2310
 msgid "У прямому бою ні я, ні Майстер, не зможемо перемогти цих огидних мерців. Якби ж в нас з'явилася можливість заманити когось з них у пастку..."
 msgstr ""
 
-#. [scenario]: id=09_Apprehension
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2311
+#. [scenario]: id=09_Stormvale
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2311
 msgid "пастку?"
 msgstr ""
 
-#. [scenario]: id=09_Apprehension
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2313
+#. [scenario]: id=09_Stormvale
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2313
 msgid "що ти віддаси задля можливості це зробити, Даеоло, чим пожертвуєш?..."
 msgstr ""
 
-#. [scenario]: id=09_Apprehension
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2317
+#. [scenario]: id=09_Stormvale
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2317
 msgid "Моє життя..."
 msgstr ""
 
-#. [scenario]: id=09_Apprehension
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2319
+#. [scenario]: id=09_Stormvale
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2319
 msgid "смілива відповідь, проте нещира."
 msgstr ""
 
-#. [scenario]: id=09_Apprehension
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2320
+#. [scenario]: id=09_Stormvale
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2320
 msgid "хай там як — мені час йти. я відчуваю, що нам судилося побачитися знову, тож коли це станеться, будь готова, що я не стану вести дружні розмови."
 msgstr ""
 
 #. [then]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2412
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2412
 msgid "Чому я взагалі займаюся пошуками дурного арбалету, хіба це хоч якось допомо-...?"
 msgstr ""
 
 #. [then]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2427
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2427
 msgid "Десь тут загубилася дитина. Клянуся Світлом, я не покину це місце, поки не знай-..."
 msgstr ""
 
 #. [then]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2442
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2442
 msgid "Пошуки дитини набагато важливіше за якийсь дурний арбалет, тому я поки не відволіка-..."
 msgstr ""
 
 #. [else]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2446
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2446
 msgid "Що я взагалі роблю на цьому болоті, чому я втрачаю час, не допомо-...?"
 msgstr ""
 
 #. [then]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2458
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2458
 msgid "ГЕЙ, МЕНЕ ХТОСЬ ТУТ ЧУЄТ? ПОМОЖІТЬ!"
 msgstr ""
 
 #. [then]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2465
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2465
 msgid "ІМ'ЯМ СВІТЛА, Я ЧУЮ ТЕБЕ, ЩО З ТОБОЮ СТАЛОСЯ?!"
 msgstr ""
 
 #. [then]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2466
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2466
 msgid "ПРОРОЧИЦЕ, НЕВЖЕ ЕТО ВИ! Я ШУКАЛА АРБАЛЄТ НАЙОМНІКОВ І Я НАШЛА ЙОГО, АЛЕ ТЕПЕР НЕ МОГУ ВИБРАТИСЯ: ТУТ СКРІЗЬ ТРЯСОВИНА!"
 msgstr ""
 
 #. [then]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2467
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2467
 msgid "ЗАЛИШАЙСЯ НА МІСЦІ, Я ПІДІЙДУ БЛИЖЧЕ ТА ВРЯТУЮ ТЕБЕ МАГІЄЮ СВІТЛА!"
 msgstr ""
 
 #. [then]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2478
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2478
 msgid "quietly^<i>На цьому болоті дуже багато глибокої води — як вона взагалі змогла дістатися так далеко? Мені точно знадобиться закляття Польоту.</i>"
 msgstr ""
 
 #. [event]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2535
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2535
 msgid "Пані, я вже віжу вас!"
 msgstr ""
 
 #. [event]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2536
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2536
 msgid "Гадаю, звідси я зможу скористатися закляттям Переміщення, щоб безпечно витягнути тебе з пастки."
 msgstr ""
 
 #. [event]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2537
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2537
 msgid "Я щас забєру з собою арбалет і можете чаклувати свою магію!"
 msgstr ""
 
 #. [then]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2600
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2600
 msgid "Дяка, пані, ваша магія і справді дуже сильна, як люди і кажуть! Ходім, я віведу вас звідси."
 msgstr ""
 
 #. [then]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2676
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2676
 msgid "Дякую за порятунок моєй сестри, пані!"
 msgstr ""
 
 #. [then]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2677
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2677
 msgid "Так, я б нєколи нє вибралась без вашой магії! Тримайте ось цей арбалет як награду!"
 msgstr ""
 
 #. [object]
 #. [then]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2686
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2692
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2686
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2692
 msgid "Mercenary's crossbow"
 msgstr ""
 
 #. [object]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2688
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2688
 msgid "Даеола отримує практично новий арбалет, яким користується багато хто на півночі Зеленого Острову. Його можна віднести до табору найманців на півдні."
 msgstr ""
 
 #. [then]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2693
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2693
 msgid "Віднесіть арбалет ватажку найманців"
 msgstr ""
 
 #. [then]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2694
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2694
 msgid "<span strikethrough='true'>Знайдіть сестру хлопця на болоті</span>"
 msgstr ""
 
 #. [else]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2700
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2700
 msgid "Я досі нє можу вибратись звідси!"
 msgstr ""
 
 #. [then]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2905
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2905
 msgid "Як не дивно, однак я й справді відчуваю потужну магію в цьому місці. Може той селянин не вигадав історію про 'прокляття'?"
 msgstr ""
 
 #. [message]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2917
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2917
 msgid "Сссскріііііі!"
 msgstr ""
 
 #. [then]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2920
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2920
 msgid "Мене не налякати цими криками, тварино. Однак це все ж найбільші пацюки, які мені коли-небудь зустрічалися; з ними щось зовсім не так..."
 msgstr ""
 
 #. [then]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2922
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2922
 msgid "Гадаю, мені доведеться скористатися закляттям <b>Smite</b>, однак я сподіваюся, що їх вдасться навернути на мій бік <b>дотиком Світла</b>: вони можуть стати в нагоді для війни."
 msgstr ""
 
 #. [then]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2925
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2925
 msgid "Зачістіть підземелля від тварин"
 msgstr ""
 
 #. [event]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2962
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2962
 msgid "Ім'ям Світла, а це вже зовсім не схоже на звичайну тварину: я бачила щось подібне лише в печерах проклятого Естену. Можливо, і цю землю колись осквернив якийсь темний чаклун?"
 msgstr ""
 
 #. [event]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2986
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2986
 msgid "(роздивляється) Ох, невже це... магічний кристал? Певно, він і є причиною всіх цих химерних тварин, однак хто залишив його тут, і коли?"
 msgstr ""
 
 #. [event]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2988
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2988
 msgid "Хоча хай, це зовсім не те, про над чим я маю замислюватися... Все ж це просто шматок магічного каміння, який тепер треба якось використати..."
 msgstr ""
 
 #. [then]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2996
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2996
 msgid "Я можу завітати до того золотаря в замку — якщо він зробить з нього намисто, а я накладу якесь закляття, вийде непоганий оберіг для Майстра Гараліна..."
 msgstr ""
 
 #. [then]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:2998
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:2998
 msgid "Віднести магічний кристал золотарю"
 msgstr ""
 
 #. [else]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:3001
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:3001
 msgid "Якщо я знайду в Долині Штормів вправного золотаря, можна зробити з кристалу намисто та накласти якесь закляття; тоді вийде непоганий оберіг для Майстра Гараліна..."
 msgstr ""
 
 #. [else]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:3003
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:3003
 msgid "Знайти вправного майстра-золотаря"
 msgstr ""
 
 #. [object]
 #. [event]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:3010
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:3016
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:3010
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:3016
 msgid "Magic crystal"
 msgstr ""
 
 #. [object]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:3012
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:3012
 msgid "Незвичайний кристал, від якого відчувається сильна магічна енергія. Можливо, якщо віднести його майстру-золотарю, він зможе виготовити з нього щось корисне?"
 msgstr ""
 
 #. [then]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:3061
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:3061
 msgid "Це було останнє печерне чудовисько, яке становила хоч якусь загрозу для селян. Всі інші потвори прив'язані до землі й не нападатимуть, якщо їх не чіпати."
 msgstr ""
 
 #. [then]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:3084
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:3084
 msgid "Я вже знайшла у цій печері магічний кристал, тому тут вже не лишилося нічого цікавого, й мені час йти звідси..."
 msgstr ""
 
 #. [else]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:3089
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:3089
 msgid "Проте, ім'ям Світла, я все ще відчуваю щось магічне в цій печері. Звісно, я можу просто піти звідси, проте все ж краще буде ще трохи дослідити це місце."
 msgstr ""
 
 #. [then]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:3093
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:3093
 msgid "Повернутись до переляканого селянина"
 msgstr ""
 
-#. [scenario]: id=09_Apprehension
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:3130
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:3141
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:3152
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:3163
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:3174
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:3185
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:3196
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:3207
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:3251
+#. [scenario]: id=09_Stormvale
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:3130
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:3141
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:3152
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:3163
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:3174
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:3185
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:3196
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:3207
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:3251
 msgid ""
 "\n"
 "Посеред високих верших Зламаних Гір сховалася велика\n"
@@ -13834,8 +13834,8 @@ msgid ""
 "Would you like to go there?"
 msgstr ""
 
-#. [scenario]: id=09_Apprehension
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:3229
+#. [scenario]: id=09_Stormvale
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:3229
 msgid ""
 "Довгий коридор в'язниці приводить Даеолу назад до\n"
 "основної частини замку, а саме — тронної кімнати.\n"
@@ -13848,8 +13848,8 @@ msgid ""
 "Would you like to go inside?"
 msgstr ""
 
-#. [scenario]: id=09_Apprehension
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:3240
+#. [scenario]: id=09_Stormvale
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:3240
 msgid ""
 "Довгий коридор приводить Даеолу назад до основної\n"
 "частини замку, а саме — тронної кімнати.\n"
@@ -13863,62 +13863,62 @@ msgid ""
 msgstr ""
 
 #. [then]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:3293
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:3293
 msgid "Я не можу покинути Долину Штормів, поки не поговорю з тією жінкою. Я відчула в ній щось... дуже дивне..."
 msgstr ""
 
 #. [then]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:3308
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:3308
 msgid "Даеола наблизилася до кордону королівства Долини Штормів, за яким знаходилися лише спустошені війною землі, а також примарна надія на перемогу. Схоже, всі можливі завдання вже було виконано, тож чаклунці ніщо не заважає покинути це місце та відправитися до табору об'єднаних військ Зеленого Острову."
 msgstr ""
 
 #. [then]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:3309
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:3309
 msgid "Мені шкода покидати це місце, однак я <i>мушу</i> продовжувати боротьбу."
 msgstr ""
 
 #. [then]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:3310
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:3310
 msgid "Я хочу ще хоч трохи відпочити, на півночі мене чекає лише війна."
 msgstr ""
 
 #. [else]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:3314
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:3314
 msgid "Даеола наблизилася до кордону королівства Долини Штормів, за яким знаходилися лише спустошені війною землі, а також примарна надія на перемогу. Хоч і не всі завдання було виконано, чаклунці ніщо не заважає покинути це місце та відправитися до табору об'єднаних військ Зеленого Острову."
 msgstr ""
 
 #. [else]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:3315
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:3315
 msgid "Я хотіла б зробити щось ще, однак мені справді вже час йти."
 msgstr ""
 
 #. [else]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:3316
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:3316
 msgid "Кільком людям Долини Штормів ще потрібна моя магія, я не можу піти."
 msgstr ""
 
 #. [then]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:3347
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:3347
 msgid "Пророчице Світла, невже ти просто оминеш мою хатину та підеш далі?"
 msgstr ""
 
 #. [then]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:3351
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:3351
 msgid "Мені дуже потрібна чаклунська допомога, пані... і тобі теж..."
 msgstr ""
 
 #. [then]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:3363
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:3363
 msgid "quietly^<i>Я відчуваю, що щось з цією жінкою не так, але що саме?... Я маю піти до її будинку та поговорити з нею.</i>"
 msgstr ""
 
 #. [then]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:3367
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:3367
 msgid "Поговоріть з дивною жінкою у її хаті"
 msgstr ""
 
 #. [event]
-#: Chasing_the_Light/scenarios/09_Apprehension.cfg:3409
+#: Chasing_the_Light/scenarios/09_Stormvale.cfg:3409
 msgid "Уркгх... Я не можу загинути ось так..."
 msgstr ""
 
