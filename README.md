@@ -56,7 +56,7 @@ Peaceful life of the Green Isle's inhabitants turned into a nightmare in an inst
 - 08_Quiescence✔
 ### Chapter 3: Tough Choices                                                                                                                                 
 - 09_Stormvale🔁️                                                                                                                             
-- 10_Treason                                                                                                                                 
+- 10_Dilemma🔁️                                                                                                                                 
 - 11_Sincerity(Duty)
 - 11x_Burden
 - 12_Southbay_Outskirts
@@ -69,12 +69,3 @@ Peaceful life of the Green Isle's inhabitants turned into a nightmare in an inst
 - 17_Gambit
 - 18_Lenvan
 - 19_Temple_in_the_Deep
-
-### Daeola's branch
-- 13d_Triumph
-- 13dx_Farewell
-- 14d_Southbay_Outskirts
-- 15d_Scarhane_Revisited
-- 16d_Gloom             
-- 17d_Jevyans_Haven 
-- 18d_Epilogue?
