@@ -394,6 +394,7 @@ function display_skills_dialog(selecting)
 		end
 		
 		wml.variables["caster_" .. caster.id .. ".spell_equipped"] = table.concat(skills_equipped, ",")
+		wml.fire("refresh_skills", ({id =  caster.id}))
 	
 	-- cast spells, synced
 	else
@@ -446,7 +447,6 @@ wml_actions["select_caster_skills"] = function(cfg)
 		
 		if not wml.variables["caster_" .. u.id .. ".utils_spellcasting_allowed"] then
             display_skills_dialog(true)
-		    wml.fire("refresh_skills", ({id = u.id}))
 		    
 	        wml.variables["caster_" .. u.id .. ".spellcasted_this_turn"] = nil
 		end
@@ -468,7 +468,6 @@ wml_actions["show_caster_skills"] = function(cfg)
         if not wml.variables["caster_" .. u.id .. ".utils_spellcasting_allowed"] then
 	        if (wml.variables["caster_" .. u.id .. ".wait_to_select_spells"]) then
                 display_skills_dialog(true)
-	    		wml.fire("refresh_skills", ({id = u.id}))
 	    		wml.variables["caster_" .. u.id .. ".spellcasted_this_turn"] = nil
             else
                 display_skills_dialog()
