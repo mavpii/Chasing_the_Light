@@ -57,7 +57,7 @@ Peaceful life of the Green Isle's inhabitants turned into a nightmare in an inst
 ### Chapter 3: Tough Choices                                                                                                                                 
 - 09_Stormvale🔁️                                                                                                                             
 - 10_Dilemma🔁️                                                                                                                                 
-- 11_Sincerity(Duty)
+- 11_Duty/Bias🔁️ 
 - 11x_Burden
 - 12_Southbay_Outskirts
 - 13_Caror
