@@ -370,6 +370,16 @@ local skill_set = {
 		description = _"<span color='#6ca364'><i><b>Spell:</b></i></span> Spend <span color='#00bbe6'><i>16xp</i></span> to deal 30 arcane damage to every adjacent enemy unit.",
 		xp_cost=16,
 	},
+	-------------------------
+	-- NATURE'S REVENGE
+	-------------------------
+	[37] = {
+		id          = "skill_nature_revenge",
+		label       = label(_"Nature's Revenge"),
+		image       = "attacks/entangle.png",
+		description = _"<span color='#6ca364'><i><b>Spell:</b></i></span> Spend <span color='#00bbe6'><i>16xp</i></span> to deal 30 impact damage to every adjacent enemy unit.",
+		xp_cost=16,
+	},
 }
 
 --###############################
