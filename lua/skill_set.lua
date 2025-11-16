@@ -49,7 +49,7 @@ local skill_set = {
  		id          = "skill_stasis",
  		label       = label("Stasis"),
  		image       = "icons/stasis.png",
- 		description = _"<span color='#6ca364'><i><b>Spell:</b></i></span> Spend <span color='#00bbe6'><i>8xp</i></span> and <span color='#c06a61'><i>your attack</i></span> to <i>petrify</i> yourself and adjacent units until the start of your next turn.",
+ 		description = _"<span color='#6ca364'><i><b>Spell:</b></i></span> Spend <span color='#00bbe6'><i>12xp</i></span> and <span color='#c06a61'><i>your attack</i></span> to <i>petrify</i> yourself and adjacent units until the start of your next turn.",
  		xp_cost=12, 
  	},
 	-------------------------
@@ -59,8 +59,8 @@ local skill_set = {
 		id          = "skill_panacea",
 		label       = label(_"Panacea"),
 		image       = "icons/potion_green_small.png",
-		description = _"<span color='#6ca364'><i><b>Spell:</b></i></span> Spend <span color='#00bbe6'><i>8xp</i></span><span color='#00bbe6'><i>8xp</i></span> to fully heal the lowest-health adjacent ally, and increase\n           its attacks, strikes, and damage by its level. <span color='#bb0000'><b>Next turn, it dies.</b></span>",
-		xp_cost=8,
+		description = _"<span color='#6ca364'><i><b>Spell:</b></i></span> Spend <span color='#00bbe6'><i>12xp</i></span> to fully heal the lowest-health adjacent ally, and increase\n           its attacks, strikes, and damage by its level. <span color='#bb0000'><b>Next turn, it dies.</b></span>",
+		xp_cost=12,
 	},
 	-------------------------
 	-- CHILL TOUCH
