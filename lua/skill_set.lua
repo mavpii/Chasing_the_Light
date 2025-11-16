@@ -14,7 +14,7 @@ local skill_set = {
 		id          = "skill_magic_blast",
 		label       = label(_"Magic Blast"),
 		image       = "attacks/mud-missile.png",
-		description = _"<span color='#ad6a61'><i><b>Attack:</b></i></span> Ranged 9x2(<span color='#00bbe6'><i>lvl1</i></span>) or 12x3(<span color='#00bbe6'><i>lvl2</i></span>) impact, <i>magical</i>.",
+		description = _"<span color='#ad6a61'><i><b>Attack:</b></i></span> Ranged 9x2(<span color='#00bbe6'><i>lvl1</i></span>) or 12x3(<span color='#00bbe6'><i>lvl2+</i></span>) impact, <i>magical</i>.",
 	},
 	-------------------------
 	-- SUMMON
@@ -78,7 +78,7 @@ local skill_set = {
 		id          = "skill_levitate",
 		label       = label(_"Levitate"),
 		image       = "icons/levitate.png",
-		description = _"<span color='#6ca364'><i><b>Spell:</b></i></span> Spend <span color='#00bbe6'><i>8xp</i></span> to gain <i>flight</i> and the <i>skirmisher</i> ability until the start of your next turn or until cancelled.",
+		description = _"<span color='#6ca364'><i><b>Spell:</b></i></span> Spend <span color='#00bbe6'><i>8xp</i></span> to gain the <i>skirmisher</i> ability until the start of your next turn or until cancelled.",
 		xp_cost=8,
 	},
 	-------------------------
@@ -119,9 +119,9 @@ local skill_set = {
 	-------------------------
 	[11] = {
 		id          = "skill_fireball2",
-		label       = label(_"Lesser Fireball"),
+		label       = label(_"Fireball"),
 		image       = "attacks/fireball.png",
-		description = _"<span color='#ad6a61'><i><b>Attack:</b></i></span> Ranged 8x4 fire, <i>magical</i>.",
+		description = _"<span color='#ad6a61'><i><b>Attack:</b></i></span> Ranged 8x4(<span color='#00bbe6'><i>lvl2</i></span>) or 12x4(<span color='#00bbe6'><i>lvl3+</i></span>) fire, <i>magical</i>.",
 	},
 	-------------------------
 	-- GLAMOUR
@@ -176,18 +176,9 @@ local skill_set = {
 			[4]={ id="skill_polymorph_orc",    xp_cost=32, label="   <span><span color='#a308b8'>Orcish Warlord</span> (<span   color='#00bbe6'><i>32xp</i></span>)</span>   " }, },	
 	},
 	-------------------------
-	-- FIREBALL3
-	-------------------------
-	[17] = {
-		id          = "skill_fireball3",
-		label       = label(_"Fireball"),
-		image       = "attacks/fireball.png",
-		description = _"<span color='#ad6a61'><i><b>Attack:</b></i></span> Ranged 12x4 fire, <i>magical</i>.",
-	},
-	-------------------------
 	-- DANCING DAGGERS
 	-------------------------
-	[18] = {
+	[17] = {
 		id          = "skill_dancing_daggers",
 		label       = label(_"Dancing Daggers"),
 		image       = "icons/dancing-daggers.png",
@@ -196,7 +187,7 @@ local skill_set = {
 	-------------------------
 	-- ILLUSION
 	-------------------------
-	[19] = {
+	[18] = {
 		id          = "skill_illusion",
 		label       = label(_"Enthrall"),
 		image       = "icons/illusion.png",
@@ -206,7 +197,7 @@ local skill_set = {
 	-------------------------
 	-- ANIMATE FIRE
 	-------------------------
-	[20] = {
+	[19] = {
 		id          = "skill_animate_fire",
 		label       = label(_"Animate Fire"),
 		image       = "icons/animate-fire.png", 
@@ -215,34 +206,25 @@ local skill_set = {
 	-------------------------
 	-- CONTINGENCY
 	-------------------------
-	[21] = {
+	[20] = {
 		id          = "skill_contingency",
 		label       = label(_"Contingency"),
 		image       = "icons/contingency.png",
 		description = _"<span color='#a9a150'><i><b>Passive:</b></i></span> Whenever one of your soldiers dies, they are instead safely returned to your recall list.",
 	},
 	-------------------------
-	-- FIREBALL4
-	-------------------------
-	[22] = {
-		id          = "skill_fireball4",
-		label       = label(_"Fireball"),
-		image       = "attacks/fireball.png",
-		description = _"<span color='#ad6a61'><i><b>Attack:</b></i></span> Ranged 17x4 fire, <i>magical</i>.",
-	},
-	-------------------------
 	-- LIGHTNING
 	-------------------------
-	[23] = {
+	[21] = {
 		id          = "skill_lightning",
 		label       = label(_"Chain Lightning"),
 		image       = "attacks/lightning.png",
-		description = _"<span color='#ad6a61'><i><b>Attack:</b></i></span> Ranged 14x4 fire, <i>magical</i>. If this attack kills an enemy, you may attack again.",
+		description = _"<span color='#ad6a61'><i><b>Attack:</b></i></span> Ranged 9x4(<span color='#00bbe6'><i>lvl3</i></span>) or 14x4(<span color='#00bbe6'><i>lvl4</i></span>) fire, <i>magical</i>. If this attack kills an enemy, you may attack again.",
 	},
 	-------------------------
 	-- TIME DILATION
 	-------------------------
-	[24] = {
+	[22] = {
 		id          = "skill_time_dilation",
 		label       = label(_"Time Dilation"),
 		image       = "icons/time-dilation.png",
@@ -252,7 +234,7 @@ local skill_set = {
 	-------------------------
 	-- CATACLYSM
 	-------------------------
-	[25] = {
+	[23] = {
 		id          = "skill_cataclysm",
 		label       = label(_"Cataclysm"),
 		image       = "icons/cataclysm.png",
@@ -262,16 +244,16 @@ local skill_set = {
 	-------------------------
 	-- MAGIC MISSILE
 	-------------------------
-	[26] = {
+	[24] = {
 		id          = "skill_magic_missile",
 		label       = label(_"Magic Missile"),
 		image       = "attacks/magic-missile.png",
-		description = _"<span color='#ad6a61'><i><b>Attack:</b></i></span> Ranged 7x3(<span color='#00bbe6'><i>lvl1</i></span>) or 10x3(<span color='#00bbe6'><i>lvl2</i></span>) fire, <i>magical</i>.",
+		description = _"<span color='#ad6a61'><i><b>Attack:</b></i></span> Ranged 7x3(<span color='#00bbe6'><i>lvl1</i></span>) or 10x3(<span color='#00bbe6'><i>lvl2+</i></span>) fire, <i>magical</i>.",
 	},
 	-------------------------
 	-- DISTANT ATTACK
 	-------------------------
-	[27] = {
+	[25] = {
 		id          = "skill_disattack",
 		label       = label(_"Lightbeam"),
 		image       = "attacks/lightbeam.png",
@@ -282,7 +264,7 @@ local skill_set = {
 	-------------------------
 	-- SWAP
 	-------------------------
-	[28] = {
+	[26] = {
 		id          = "skill_swap",
 		label       = label(_"Swap"),
 		image       = "icons/swap.png",
@@ -293,7 +275,7 @@ local skill_set = {
 	-------------------------
 	-- DISTANT HEAL
 	-------------------------
-	[29] = {
+	[27] = {
 		id          = "skill_disheal",
 		label       = label(_"Distant Heal"),
 		image       = "icons/disheal.png",
@@ -304,7 +286,7 @@ local skill_set = {
 	-------------------------
 	-- WARD
 	-------------------------
-	[30] = {
+	[28] = {
 		id          = "skill_ward",
 		label       = label(_"Holy Ward"),
 		image       = "icons/ward.png",
@@ -315,7 +297,7 @@ local skill_set = {
 	-------------------------
 	-- RELOCATE
 	-------------------------
-	[31] = {
+	[29] = {
 		id          = "skill_relocate",
 		label       = label(_"Relocate"),
 		image       = "icons/relocate.png",
@@ -325,7 +307,7 @@ local skill_set = {
 	-------------------------
 	-- ILLUMINATE
 	-------------------------
-	[32] = {
+	[30] = {
 		id          = "skill_illuminate",
 		label       = label(_"Illuminate"),
 		image       = "icons/illuminate.png",
@@ -334,7 +316,7 @@ local skill_set = {
 	-------------------------
 	-- LIGHTBEAM
 	-------------------------
-	[33] = {
+	[31] = {
 		id          = "skill_lightbeam",
 		label       = label(_"Ray of Light"),
 		image       = "attacks/beam-eye.png",
@@ -343,17 +325,17 @@ local skill_set = {
 	-------------------------
 	-- FLIGHT
 	-------------------------
-	[34] = {
+	[32] = {
 		id          = "skill_flight",
 		label       = label(_"Flight"),
 		image       = "icons/sandals.png",
-		description = _"<span color='#6ca364'><i><b>Spell:</b></i></span> Spend <span color='#00bbe6'><i>12xp</i></span> to gain <i>flight</i>, the <i>skirmisher</i> ability and <i>+2 MP</i> until the start of your next turn or until cancelled.",
+		description = _"<span color='#6ca364'><i><b>Spell:</b></i></span> Spend <span color='#00bbe6'><i>12xp</i></span> to gain the <i>skirmisher</i> ability and <i>+2 MP</i> until the start of your next turn or until cancelled.",
 		xp_cost=12,
 	},
 	-------------------------
 	-- MASSHEAL
 	-------------------------
-	[35] = {
+	[33] = {
 		id          = "skill_massheal",
 		label       = label(_"Massive Heal"),
 		image       = "icons/massheal.png",
@@ -363,7 +345,7 @@ local skill_set = {
 	-------------------------
 	-- SMITE
 	-------------------------
-	[36] = {
+	[34] = {
 		id          = "skill_smite",
 		label       = label(_"Smite"),
 		image       = "attacks/banishment.png",
@@ -373,12 +355,21 @@ local skill_set = {
 	-------------------------
 	-- NATURE'S REVENGE
 	-------------------------
-	[37] = {
+	[35] = {
 		id          = "skill_nature_revenge",
 		label       = label(_"Nature's Revenge"),
 		image       = "attacks/entangle.png",
 		description = _"<span color='#6ca364'><i><b>Spell:</b></i></span> Spend <span color='#00bbe6'><i>16xp</i></span> to deal 30 impact damage to every adjacent enemy unit.",
 		xp_cost=16,
+	},
+	-------------------------
+	-- RAGE
+	-------------------------
+	[36] = {
+		id          = "skill_rage",
+		label       = label(_"Rage"),
+		image       = "attacks/frenzy.png",
+		description = _"<span color='#ad6a61'><i><b>Attack:</b></i></span> Melee 9x3(<span color='#00bbe6'><i>lvl3</i></span>) or 12x3(<span color='#00bbe6'><i>lvl4</i></span>) blade, <i>berserk</i>, <i>drains</i>.",
 	},
 }
 
