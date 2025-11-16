@@ -367,9 +367,9 @@ local skill_set = {
 	-------------------------
 	[36] = {
 		id          = "skill_rage",
-		label       = label(_"Rage"),
+		label       = label(_"Magic Rage"),
 		image       = "attacks/frenzy.png",
-		description = _"<span color='#ad6a61'><i><b>Attack:</b></i></span> Melee 9x3(<span color='#00bbe6'><i>lvl3</i></span>) or 12x3(<span color='#00bbe6'><i>lvl4</i></span>) blade, <i>berserk</i>, <i>drains</i>.",
+		description = _"<span color='#ad6a61'><i><b>Attack:</b></i></span> Melee 10x3(<span color='#00bbe6'><i>lvl3</i></span>) or 13x3(<span color='#00bbe6'><i>lvl4</i></span>) blade, <i>berserk</i>, <i>drains</i>, <i>magical</i>.",
 	},
 }
 
