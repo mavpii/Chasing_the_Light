@@ -7,7 +7,7 @@ Peaceful life of the Green Isle's inhabitants turned into a nightmare in an inst
 
 
 ## Developer
-- [Lexa04](https://github.com/amakriLexa04)
+- [Lexa04](https://github.com/mavpii)
 
 ## Sprite Designer
 - [Refumee](https://github.com/Refumee)
