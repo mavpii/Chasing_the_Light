@@ -176,6 +176,80 @@ function change_location_fake(cfg)
 	end)
 end
 
+--###########################################################################################################################################################
+--                                                                 UNIT MOVES
+--###########################################################################################################################################################
+function show_chess_moves(cfg)
+	local tutor_title = cfg.title
+	local tutor_image = cfg.image
+
+	--###############################
+	-- DEFINE GRID
+	--###############################
+	local grid = T.grid{ T.row{
+		T.column{ T.label{  use_markup=true,  label="<span size='40000'> </span>"  }},
+		T.column{ border="right,left,bottom", border_size=18, T.grid{
+			-------------------------
+			-- TITLE
+			-------------------------
+			T.row{ T.column{ T.image{  label="icons/banner3_popup.png"  }}},
+			T.row{ T.column{ T.label{  use_markup=true,  label="<span size='8000'> </span>"  }}},
+			T.row{ T.column{
+				horizontal_alignment="center",
+				T.label{  definition="title",  label=tutor_title,  }
+			}},
+			T.row{ T.column{ T.label{  use_markup=true,  label="<span size='15000'> </span>"  }}},
+			-------------------------
+			-- INFO
+			-------------------------
+			T.row{ T.column{ T.grid{ T.row{
+			    T.column{
+					horizontal_alignment="left",
+					T.label{
+						use_markup=true,
+						--label=tutor_message,
+					}
+				},
+				T.column{ T.image{  label=tutor_image  } },
+				T.column{
+					horizontal_alignment="left",
+					T.label{
+						use_markup=true,
+						--label=tutor_message,
+					}
+				},
+				
+			}}}},
+			T.row{ T.column{ T.label{  use_markup=true,  label="<span size='15000'> </span>"  }}},
+			T.row{ T.column {T.image{  label="icons/banner2_popup.png"  }}},
+			T.row{ T.column{ T.label{  use_markup=true,  label="<span size='15000'> </span>"  }}},
+			-------------------------
+			-- BUTTONS
+			-------------------------
+			T.row{T.column{ T.grid{ T.row{
+				T.column{ T.button{
+					return_value=2, use_markup=true,
+					label=_"Close",
+				}},
+			}}}},
+		}},
+		T.column{ T.label{  use_markup=true,  label="<span size='40000'> </span>"  }},
+	}}
+
+	--###############################
+	-- CREATE DIALOG
+	--###############################
+	local result = wesnoth.sync.evaluate_single(function()
+		local button = gui.show_dialog({
+			definition="menu",
+			T.helptip{ id="tooltip_large" }, -- mandatory field
+			T.tooltip{ id="tooltip_large" }, -- mandatory field
+			grid
+		})
+		return { button=button }
+	end)
+end
+
 
 
 
@@ -205,6 +279,10 @@ function wesnoth.wml_actions.change_location(cfg)
 	else 
 	    change_location_fake(cfg)
 	end
+end
+
+function wesnoth.wml_actions.show_chess_moves(cfg)
+	show_chess_moves(cfg)
 end
 
 
