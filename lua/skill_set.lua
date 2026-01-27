@@ -78,7 +78,7 @@ local skill_set = {
 		id          = "skill_levitate",
 		label       = label(_"Levitate"),
 		image       = "icons/levitate.png",
-		description = _"<span color='#6ca364'><i><b>Spell:</b></i></span> Spend <span color='#00bbe6'><i>8xp</i></span> to gain the <i>skirmisher</i> ability until the start of your next turn or until cancelled.",
+		description = _"<span color='#6ca364'><i><b>Spell:</b></i></span> Spend <span color='#00bbe6'><i>8xp</i></span> to gain the <i>skirmisher</i> ability and <i>50%</i> defense on all terrain.\n           Lasts until the start of your next turn or until cancelled.",
 		xp_cost=8,
 	},
 	-------------------------
@@ -329,7 +329,7 @@ local skill_set = {
 		id          = "skill_flight",
 		label       = label(_"Flight"),
 		image       = "icons/sandals.png",
-		description = _"<span color='#6ca364'><i><b>Spell:</b></i></span> Spend <span color='#00bbe6'><i>12xp</i></span> to gain the <i>skirmisher</i> ability and <i>+2 MP</i> until the start of your next turn or until cancelled.",
+		description = _"<span color='#6ca364'><i><b>Spell:</b></i></span> Spend <span color='#00bbe6'><i>12xp</i></span> to gain the <i>skirmisher</i> ability, <i>50%</i> defense on all terrain and <i>+2 MP</i>.\n           Lasts until the start of your next turn or until cancelled.",
 		xp_cost=12,
 	},
 	-------------------------
