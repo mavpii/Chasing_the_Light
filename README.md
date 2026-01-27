@@ -9,12 +9,13 @@ Peaceful life of the Green Isle's inhabitants turned into a nightmare in an inst
 ## Developer
 - [Lexa04](https://github.com/mavpii)
 
-## Sprite Designer
+## Sprite Designers
 - [Refumee](https://github.com/Refumee)
 - Maksiu
 
-## S9 Mapmaker
+## Mapmakers
 - RKT
+- [Lexa04](https://github.com/mavpii)
 
 ## Playtesters
 - [ForestDragon](https://github.com/ForestDragon-wesnoth)
