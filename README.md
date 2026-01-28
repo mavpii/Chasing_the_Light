@@ -13,7 +13,7 @@ Peaceful life of the Green Isle's inhabitants turned into a nightmare in an inst
 - [Refumee](https://github.com/Refumee)
 - Maksiu
 
-## Mapmakers
+## Map Design
 - RKT
 - [Lexa04](https://github.com/mavpii)
 
