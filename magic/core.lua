@@ -1,7 +1,7 @@
 -- Magic System Rework 2.0 by amakri, original Magic System by Dalas
 local _ = wesnoth.textdomain "wesnoth-ctl"
 local utils = wesnoth.require "wml-utils"
-local spell_data = wesnoth.dofile('~add-ons/Chasing_the_Light/lua/skill_set.lua')
+local spell_data = wesnoth.require "table.lua"
 
 -- to make code shorter
 local wml_actions = wesnoth.wml_actions
