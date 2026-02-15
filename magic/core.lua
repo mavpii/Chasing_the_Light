@@ -50,8 +50,8 @@ function display_skills_dialog(selecting)
 	--###############################
 	local dialog = {
 	    definition="menu",
-		T.helptip{ id="tooltip_large" }, -- mandatory field
-		T.tooltip{ id="tooltip_large" }, -- mandatory field
+		T.helptip{ id="helptip" }, -- mandatory field
+		T.tooltip{ id="tooltip" }, -- mandatory field
 		T.grid{} }
 	local grid = dialog[3]
 
@@ -219,10 +219,55 @@ function display_skills_dialog(selecting)
             T.button{  id="wait_button",    use_markup=true, return_value=2, label=_"Choose Later"  }
         }}}}})
     else
-        table.insert( grid[2], T.row{ T.column{
-            border="top", border_size=10,
-            T.button{  id="confirm_button", use_markup=true, return_value=1, label="Cancel"  }
-        }})
+	    
+		
+		
+        table.insert(grid[2], T.row{
+    T.column{
+        border="top", border_size=10,
+        horizontal_grow=true,
+        T.grid{
+            T.row{
+
+                -- advance
+                T.column{
+                    border="left", border_size=15,
+                    grow_factor=0,
+                    horizontal_alignment="left",
+                    T.button {
+                        id="advance_button",
+                        use_markup=true,
+                        return_value=3,
+                        tooltip=_"Spend " .. math.floor(0.9*caster.max_experience) .. " XP to fully heal caster and increase its maximum HP by 15% and maximum XP by 20%.",
+                        definition="up_arrow",
+                        T.image{ label="icons/arrows_up_25.png" }
+                    }
+                },
+
+                -- cancel
+                T.column{
+                    grow_factor=0,
+                    horizontal_alignment="center",
+                    T.button{
+                        id="confirm_button",
+                        use_markup=true,
+                        return_value=1,
+                        label="Cancel"
+                    }
+                },
+
+                -- spacer
+                T.column{
+                    border="right", border_size=15,
+                    grow_factor=0,
+                    horizontal_alignment="right",
+                    T.spacer{ width=25, height=1 }
+                },
+            }
+        }
+    }
+})
+
     end
 	
 	table.insert( grid[2], T.row{ T.column{ border="top", border_size=15,  T.image{  label="icons/banner4.png"  }}} )
@@ -365,7 +410,18 @@ function display_skills_dialog(selecting)
 				end
 			end
 		end
-    end
+    
+        if dialog["advance_button"] then
+            dialog["advance_button"].enabled = (caster.experience >= math.floor(0.9 * caster.max_experience))
+			
+			dialog["advance_button"].on_button_click = function()
+			
+			    wesnoth.sync.invoke_command("spellcasting_cost", {id=caster.id, xp_cost = math.floor(0.9 * caster.max_experience)})
+			    wml.variables["caster_" .. caster.id .. ".spell_to_cast"] = "advance_caster"
+            end
+        end
+	
+	end
 	
 	
 	-------------------------
