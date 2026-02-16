@@ -221,7 +221,7 @@ function display_skills_dialog(selecting)
     else
 	    
 		
-		
+	if not wml.variables["caster_" .. caster.id .. ".utils_advancement_allowed"] then	
         table.insert(grid[2], T.row{
     T.column{
         border="top", border_size=10,
@@ -267,6 +267,30 @@ function display_skills_dialog(selecting)
         }
     }
 })
+    else
+	    table.insert(grid[2], T.row{
+    T.column{
+        border="top", border_size=10,
+        horizontal_grow=true,
+        T.grid{
+            T.row{
+                -- cancel
+                T.column{
+                    grow_factor=0,
+                    horizontal_alignment="center",
+                    T.button{
+                        id="confirm_button",
+                        use_markup=true,
+                        return_value=1,
+                        label="Cancel"
+                    }
+                },
+            }
+        }
+    }
+})
+	
+	end
 
     end
 	
@@ -281,8 +305,18 @@ function display_skills_dialog(selecting)
 	-- PRESHOW
 	-------------------------
 	local function preshow(dialog)
+	    if not selecting and not wml.variables["caster_" .. caster.id .. ".utils_advancement_allowed"] then
+            dialog["advance_button"].enabled =
+                (caster.experience >= math.floor(0.9 * caster.max_experience))
+        
+            dialog["advance_button"].on_button_click = function()
+                wesnoth.sync.invoke_command("spellcasting_cost",
+                    { id=caster.id, xp_cost = math.floor(0.9 * caster.max_experience) })
+                wml.variables["caster_" .. caster.id .. ".spell_to_cast"] = "advance_caster"
+            end
+        end
+	
 		-- for the button corresponding to each skill group
-		
 		for i,group in pairs(skills_copy) do
 			button = dialog["button"..i]
 			
@@ -410,17 +444,6 @@ function display_skills_dialog(selecting)
 				end
 			end
 		end
-    
-        if dialog["advance_button"] then
-            dialog["advance_button"].enabled = (caster.experience >= math.floor(0.9 * caster.max_experience))
-			
-			dialog["advance_button"].on_button_click = function()
-			
-			    wesnoth.sync.invoke_command("spellcasting_cost", {id=caster.id, xp_cost = math.floor(0.9 * caster.max_experience)})
-			    wml.variables["caster_" .. caster.id .. ".spell_to_cast"] = "advance_caster"
-            end
-        end
-	
 	end
 	
 	
@@ -775,6 +798,24 @@ wml_actions["caster_status"] = function(cfg)
 	units = nil
 	
 	wml.fire("caster_set_menu")
+end
+
+wml_actions["caster_advance"] = function(cfg)
+	local filter = wml.get_child(cfg, "filter") or
+    wml.error "[caster_advance] missing required [filter] tag"
+	local units = wesnoth.units.find(filter)
+
+    for i,u in ipairs(units) do
+	    if wml.variables["caster_" .. u.id] then
+		    if cfg.advancement_allowed == true then
+			    wml.variables["caster_" .. u.id .. ".utils_advancement_allowed"] = nil
+			else
+			    wml.variables["caster_" .. u.id .. ".utils_advancement_allowed"] = "disabled"
+			end 
+        end
+	end
+	
+	units = nil
 end
 
 wml_actions["equip_spell"] = function(cfg)
