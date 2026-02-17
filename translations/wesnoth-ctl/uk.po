@@ -11728,7 +11728,7 @@ msgstr ""
 #. Нас оберігає саме Світло, Даеоло, тому ми впораємося і з цим випробуванням. Що ж щодо вас, нелюди — моя магія зітре вас у прах!
 #: Chasing_the_Light/scenarios/06_Miscreants.cfg:4009
 msgid ""
-"We are protected by the Light itself, Daela, so we will cope with this trial "
+"We are protected by the Light itself, Daeola, so we will cope with this trial "
 "too. As for you, you miscreants, my magic will reduce you to dust!"
 msgstr ""
 "Нас оберігає саме Світло, Даеоло, тому ми впораємося і з цим випробуванням. "
@@ -13213,7 +13213,7 @@ msgstr ""
 #. Проте загалом все було добре — під час привалів Даеола практикувала нове закляття і спілкувалася з іншими учнями Гараліна. А сержант Аса завжди знаходилася насторожі, уважно спостерігаючи за будь-якими рухами в темряві.
 #: Chasing_the_Light/scenarios/07_Scarhane.cfg:66
 msgid ""
-"But overall, everything was fine - during the halts, Daela practiced a new "
+"But overall, everything was fine - during the halts, Daeola practiced a new "
 "spell and talked to Haralin's other students. And Sergeant Asa was always on "
 "the alert, watching closely for any movements in the darkness. As for Zeham, "
 "he traveled in silence, trying to stay as far away from the mages as "
@@ -13230,7 +13230,7 @@ msgstr ""
 #. [else]
 #: Chasing_the_Light/scenarios/07_Scarhane.cfg:68
 msgid ""
-"But overall, everything was fine - during the halts, Daela practiced a new "
+"But overall, everything was fine - during the halts, Daeola practiced a new "
 "spell and talked to Haralin's other students. And Sergeant Asa was always on "
 "the alert, watching closely for any movements in the darkness. But for sir "
 "wose, it was quite bad to be in the dark caves — without any access to the "
@@ -13250,7 +13250,7 @@ msgstr ""
 #. [else]
 #: Chasing_the_Light/scenarios/07_Scarhane.cfg:70
 msgid ""
-"But overall, everything was fine - during the halts, Daela practiced a new "
+"But overall, everything was fine - during the halts, Daeola practiced a new "
 "spell and talked to Haralin's other students. And Sergeant Asa was always on "
 "the alert, watching closely for any movements in the darkness. Juangh, as "
 "always, didn't care about anything: he was ready to go anywhere and "
@@ -13265,7 +13265,7 @@ msgstr ""
 #. [else]
 #: Chasing_the_Light/scenarios/07_Scarhane.cfg:72
 msgid ""
-"But overall, everything was fine - during the halts, Daela practiced a new "
+"But overall, everything was fine - during the halts, Daeola practiced a new "
 "spell and talked to Haralin's other students. And Sergeant Asa was always on "
 "the alert, watching closely for any movements in the darkness. As for Zeham, "
 "he traveled in silence, trying to stay as far away from the mages as "
@@ -13294,7 +13294,7 @@ msgstr ""
 #. [else]
 #: Chasing_the_Light/scenarios/07_Scarhane.cfg:74
 msgid ""
-"But overall, everything was fine - during the halts, Daela practiced a new "
+"But overall, everything was fine - during the halts, Daeola practiced a new "
 "spell and talked to Haralin's other students. And Sergeant Asa was always on "
 "the alert, watching closely for any movements in the darkness. As for Zeham, "
 "he traveled in silence, trying to stay as far away from the mages as "
@@ -13319,7 +13319,7 @@ msgstr ""
 #. [else]
 #: Chasing_the_Light/scenarios/07_Scarhane.cfg:76
 msgid ""
-"But overall, everything was fine - during the halts, Daela practiced a new "
+"But overall, everything was fine - during the halts, Daeola practiced a new "
 "spell and talked to Haralin's other students. And Sergeant Asa was always on "
 "the alert, watching closely for any movements in the darkness. As for Zeham, "
 "he traveled in silence, trying to stay as far away from the mages as "
@@ -13340,7 +13340,7 @@ msgstr ""
 #. [else]
 #: Chasing_the_Light/scenarios/07_Scarhane.cfg:78
 msgid ""
-"But overall, everything was fine - during the halts, Daela practiced a new "
+"But overall, everything was fine - during the halts, Daeola practiced a new "
 "spell and talked to Haralin's other students. And Sergeant Asa was always on "
 "the alert, watching closely for any movements in the darkness. Juangh, as "
 "always, didn't care about anything: he was ready to go anywhere and "
@@ -13364,7 +13364,7 @@ msgstr ""
 #. [else]
 #: Chasing_the_Light/scenarios/07_Scarhane.cfg:80
 msgid ""
-"But overall, everything was fine - during the halts, Daela practiced a new "
+"But overall, everything was fine - during the halts, Daeola practiced a new "
 "spell and talked to Haralin's other students. And Sergeant Asa was always on "
 "the alert, watching closely for any movements in the darkness."
 msgstr ""
@@ -16132,7 +16132,7 @@ msgstr ""
 #. Бачить Світло, Даеола має рацію. Мені теж невідомі причини та й чуття моє мовчить, проте можу припустити, що ці нечестиві діяння є справою рук одного з наймогутніших 'Владик-Лічів', хоча й не можу здогадатися якого саме...
 #: Chasing_the_Light/scenarios/07_Scarhane.cfg:3977
 msgid ""
-"By the Light, Daela is right. I also don't know the reasons and my senses "
+"By the Light, Daeola is right. I also don't know the reasons and my senses "
 "are silent, but I can assume that these unholy acts are the work of one of "
 "the most powerful 'Lich-Lords', although I cannot guess which one..."
 msgstr ""

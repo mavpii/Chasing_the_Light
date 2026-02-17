@@ -8318,7 +8318,7 @@ msgstr ""
 #. [then]
 #. Нас оберігає саме Світло, Даеоло, тому ми впораємося і з цим випробуванням. Що ж щодо вас, нелюди — моя магія зітре вас у прах!
 #: Chasing_the_Light/scenarios/06_Miscreants.cfg:3863
-msgid "We are protected by the Light itself, Daela, so we will cope with this trial too. As for you, you miscreants, my magic will reduce you to dust!"
+msgid "We are protected by the Light itself, Daeola, so we will cope with this trial too. As for you, you miscreants, my magic will reduce you to dust!"
 msgstr ""
 
 #. [then]
@@ -9258,42 +9258,42 @@ msgstr ""
 #. [else]
 #. Проте загалом все було добре — під час привалів Даеола практикувала нове закляття і спілкувалася з іншими учнями Гараліна. А сержант Аса завжди знаходилася насторожі, уважно спостерігаючи за будь-якими рухами в темряві.
 #: Chasing_the_Light/scenarios/07_Scarhane.cfg:65
-msgid "But overall, everything was fine - during the halts, Daela practiced a new spell and talked to Haralin's other students. And Sergeant Asa was always on the alert, watching closely for any movements in the darkness. As for Zeham, he traveled in silence, trying to stay as far away from the mages as possible and closer to the sergeant's soldiers, although he occasionally exchanged a few words with Daeola."
+msgid "But overall, everything was fine - during the halts, Daeola practiced a new spell and talked to Haralin's other students. And Sergeant Asa was always on the alert, watching closely for any movements in the darkness. As for Zeham, he traveled in silence, trying to stay as far away from the mages as possible and closer to the sergeant's soldiers, although he occasionally exchanged a few words with Daeola."
 msgstr ""
 
 #. [else]
 #: Chasing_the_Light/scenarios/07_Scarhane.cfg:67
-msgid "But overall, everything was fine - during the halts, Daela practiced a new spell and talked to Haralin's other students. And Sergeant Asa was always on the alert, watching closely for any movements in the darkness. But for sir wose, it was quite bad to be in the dark caves — without any access to the sun's warmth, he suffered greatly, but still continued to move forward. The mages were sorry to see him in such a state, but they could do nothing about it except cast healing spells when necessary."
+msgid "But overall, everything was fine - during the halts, Daeola practiced a new spell and talked to Haralin's other students. And Sergeant Asa was always on the alert, watching closely for any movements in the darkness. But for sir wose, it was quite bad to be in the dark caves — without any access to the sun's warmth, he suffered greatly, but still continued to move forward. The mages were sorry to see him in such a state, but they could do nothing about it except cast healing spells when necessary."
 msgstr ""
 
 #. [else]
 #: Chasing_the_Light/scenarios/07_Scarhane.cfg:69
-msgid "But overall, everything was fine - during the halts, Daela practiced a new spell and talked to Haralin's other students. And Sergeant Asa was always on the alert, watching closely for any movements in the darkness. Juangh, as always, didn't care about anything: he was ready to go anywhere and everywhere if offered the chance to fight the undead or Wesfolk."
+msgid "But overall, everything was fine - during the halts, Daeola practiced a new spell and talked to Haralin's other students. And Sergeant Asa was always on the alert, watching closely for any movements in the darkness. Juangh, as always, didn't care about anything: he was ready to go anywhere and everywhere if offered the chance to fight the undead or Wesfolk."
 msgstr ""
 
 #. [else]
 #: Chasing_the_Light/scenarios/07_Scarhane.cfg:71
-msgid "But overall, everything was fine - during the halts, Daela practiced a new spell and talked to Haralin's other students. And Sergeant Asa was always on the alert, watching closely for any movements in the darkness. As for Zeham, he traveled in silence, trying to stay as far away from the mages as possible and closer to the sergeant's soldiers, although he occasionally exchanged a few words with Daeola. Juangh, as always, didn't care about anything: he was ready to go anywhere and everywhere if offered the chance to fight the undead or Wesfolk. But for sir wose, it was quite bad to be in the dark caves — without any access to the sun's warmth, he suffered greatly, but still continued to move forward. The mages were sorry to see him in such a state, but they could do nothing about it except cast healing spells when necessary."
+msgid "But overall, everything was fine - during the halts, Daeola practiced a new spell and talked to Haralin's other students. And Sergeant Asa was always on the alert, watching closely for any movements in the darkness. As for Zeham, he traveled in silence, trying to stay as far away from the mages as possible and closer to the sergeant's soldiers, although he occasionally exchanged a few words with Daeola. Juangh, as always, didn't care about anything: he was ready to go anywhere and everywhere if offered the chance to fight the undead or Wesfolk. But for sir wose, it was quite bad to be in the dark caves — without any access to the sun's warmth, he suffered greatly, but still continued to move forward. The mages were sorry to see him in such a state, but they could do nothing about it except cast healing spells when necessary."
 msgstr ""
 
 #. [else]
 #: Chasing_the_Light/scenarios/07_Scarhane.cfg:73
-msgid "But overall, everything was fine - during the halts, Daela practiced a new spell and talked to Haralin's other students. And Sergeant Asa was always on the alert, watching closely for any movements in the darkness. As for Zeham, he traveled in silence, trying to stay as far away from the mages as possible and closer to the sergeant's soldiers, although he occasionally exchanged a few words with Daeola. But for sir wose, it was quite bad to be in the dark caves — without any access to the sun's warmth, he suffered greatly, but still continued to move forward. The mages were sorry to see him in such a state, but they could do nothing about it except cast healing spells when necessary."
+msgid "But overall, everything was fine - during the halts, Daeola practiced a new spell and talked to Haralin's other students. And Sergeant Asa was always on the alert, watching closely for any movements in the darkness. As for Zeham, he traveled in silence, trying to stay as far away from the mages as possible and closer to the sergeant's soldiers, although he occasionally exchanged a few words with Daeola. But for sir wose, it was quite bad to be in the dark caves — without any access to the sun's warmth, he suffered greatly, but still continued to move forward. The mages were sorry to see him in such a state, but they could do nothing about it except cast healing spells when necessary."
 msgstr ""
 
 #. [else]
 #: Chasing_the_Light/scenarios/07_Scarhane.cfg:75
-msgid "But overall, everything was fine - during the halts, Daela practiced a new spell and talked to Haralin's other students. And Sergeant Asa was always on the alert, watching closely for any movements in the darkness. As for Zeham, he traveled in silence, trying to stay as far away from the mages as possible and closer to the sergeant's soldiers, although he occasionally exchanged a few words with Daeola. Juangh, as always, didn't care about anything: he was ready to go anywhere and everywhere if offered the chance to fight the undead or Wesfolk."
+msgid "But overall, everything was fine - during the halts, Daeola practiced a new spell and talked to Haralin's other students. And Sergeant Asa was always on the alert, watching closely for any movements in the darkness. As for Zeham, he traveled in silence, trying to stay as far away from the mages as possible and closer to the sergeant's soldiers, although he occasionally exchanged a few words with Daeola. Juangh, as always, didn't care about anything: he was ready to go anywhere and everywhere if offered the chance to fight the undead or Wesfolk."
 msgstr ""
 
 #. [else]
 #: Chasing_the_Light/scenarios/07_Scarhane.cfg:77
-msgid "But overall, everything was fine - during the halts, Daela practiced a new spell and talked to Haralin's other students. And Sergeant Asa was always on the alert, watching closely for any movements in the darkness. Juangh, as always, didn't care about anything: he was ready to go anywhere and everywhere if offered the chance to fight the undead or Wesfolk. But for sir wose, it was quite bad to be in the dark caves — without any access to the sun's warmth, he suffered greatly, but still continued to move forward. The mages were sorry to see him in such a state, but they could do nothing about it except cast healing spells when necessary."
+msgid "But overall, everything was fine - during the halts, Daeola practiced a new spell and talked to Haralin's other students. And Sergeant Asa was always on the alert, watching closely for any movements in the darkness. Juangh, as always, didn't care about anything: he was ready to go anywhere and everywhere if offered the chance to fight the undead or Wesfolk. But for sir wose, it was quite bad to be in the dark caves — without any access to the sun's warmth, he suffered greatly, but still continued to move forward. The mages were sorry to see him in such a state, but they could do nothing about it except cast healing spells when necessary."
 msgstr ""
 
 #. [else]
 #: Chasing_the_Light/scenarios/07_Scarhane.cfg:79
-msgid "But overall, everything was fine - during the halts, Daela practiced a new spell and talked to Haralin's other students. And Sergeant Asa was always on the alert, watching closely for any movements in the darkness."
+msgid "But overall, everything was fine - during the halts, Daeola practiced a new spell and talked to Haralin's other students. And Sergeant Asa was always on the alert, watching closely for any movements in the darkness."
 msgstr ""
 
 #. [part]
@@ -11161,7 +11161,7 @@ msgstr ""
 #. [then]
 #. Бачить Світло, Даеола має рацію. Мені теж невідомі причини та й чуття моє мовчить, проте можу припустити, що ці нечестиві діяння є справою рук одного з наймогутніших 'Владик-Лічів', хоча й не можу здогадатися якого саме...
 #: Chasing_the_Light/scenarios/07_Scarhane.cfg:4008
-msgid "By the Light, Daela is right. I also don't know the reasons and my senses are silent, but I can assume that these unholy acts are the work of one of the most powerful 'Lich-Lords', although I cannot guess which one..."
+msgid "By the Light, Daeola is right. I also don't know the reasons and my senses are silent, but I can assume that these unholy acts are the work of one of the most powerful 'Lich-Lords', although I cannot guess which one..."
 msgstr ""
 
 #. [then]
