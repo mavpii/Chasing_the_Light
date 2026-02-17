@@ -222,51 +222,76 @@ function display_skills_dialog(selecting)
 	    
 		
 	if not wml.variables["caster_" .. caster.id .. ".utils_advancement_allowed"] then	
-        table.insert(grid[2], T.row{
+	
+	
+	
+       table.insert(grid[2], T.row{
     T.column{
-        border="top", border_size=10,
+        border="top", border_size=7,
         horizontal_grow=true,
-        T.grid{
+
+        T.grid{T.row{T.column{
+                    horizontal_grow=true,
+                    T.grid{
+                        T.row{
+                            T.column{
+                                border="left", border_size=15,
+                                grow_factor=0,
+                                horizontal_alignment="left",
+                                T.button{
+                                    id="advance_button",
+                                    use_markup=true,
+									return_value=3,
+									tooltip = _"Spend <span color='#00bbe6'><i>" .. math.floor(0.9*caster.max_experience) .. " XP</i></span> to fully heal " .. caster.name .. " and increase max HP by 15% and max XP by 20%.",
+                                    definition="up_arrow"
+                                }
+                            },
+
+                            T.column{
+                                border="left", border_size=15,
+                                grow_factor=0,
+                                horizontal_alignment="left",
+                                T.label{
+                                    use_markup=true,
+                                    tooltip = _"Spend <span color='#00bbe6'><i>" .. math.floor(0.9*caster.max_experience) .. " XP</i></span> to fully heal " .. caster.name .. " and increase max HP by 15% and max XP by 20%.",
+                                    label = "<span color='#00bbe6'><i>" .. caster.experience .. "/" .. math.floor(0.9*caster.max_experience) .. " XP</i></span>",
+                                }
+                            },
+
+                            T.column{
+                                border="right", border_size=15,
+                                grow_factor=1,
+                                T.spacer{ width=1, height=1 }
+                            }
+                        }
+                    }
+                }
+            },
+
+            T.row{T.column{T.spacer{ width=1, height=6 }}},
+
             T.row{
-
-                -- advance
                 T.column{
-                    border="left", border_size=15,
-                    grow_factor=0,
-                    horizontal_alignment="left",
-                    T.button {
-                        id="advance_button",
-                        use_markup=true,
-                        return_value=3,
-                        tooltip=_"Spend " .. math.floor(0.9*caster.max_experience) .. " XP to fully heal caster and increase its maximum HP by 15% and maximum XP by 20%.",
-                        definition="up_arrow",
-                        T.image{ label="icons/arrows_up_25.png" }
+                    horizontal_grow=true,
+                    T.grid{T.row{T.column{
+                                grow_factor=0,
+                                horizontal_alignment="center",
+                                T.button{
+                                    id="confirm_button",
+                                    use_markup=true,
+                                    return_value=1,
+                                    label="Cancel"
+                                }
+                            },
+
+                        }
                     }
-                },
-
-                -- cancel
-                T.column{
-                    grow_factor=0,
-                    horizontal_alignment="center",
-                    T.button{
-                        id="confirm_button",
-                        use_markup=true,
-                        return_value=1,
-                        label="Cancel"
-                    }
-                },
-
-                -- spacer
-                T.column{
-                    border="right", border_size=15,
-                    grow_factor=0,
-                    horizontal_alignment="right",
-                    T.spacer{ width=25, height=1 }
-                },
+                }
             }
         }
     }
 })
+
     else
 	    table.insert(grid[2], T.row{
     T.column{
