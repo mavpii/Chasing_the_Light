@@ -27,7 +27,7 @@ end
 function spellcasting_cost(Table)
     local caster_temp = ( wesnoth.units.find_on_map({ id=Table.id }) )[1]
     if (Table.xp_cost)  then caster_temp.experience  =caster_temp.experience  -Table.xp_cost  end
-    if (Table.hp_cost)  then caster_temp.experience  =caster_temp.hitpoints  -Table.hp_cost  end
+    if (Table.hp_cost)  then caster_temp.hitpoints  =caster_temp.hitpoints  -Table.hp_cost  end
     if (Table.gold_cost)  then wesnoth.sides[caster_temp.side].gold =wesnoth.sides[caster_temp.side].gold  -Table.gold_cost  end
     if (Table.atk_cost) then caster_temp.attacks_left=caster_temp.attacks_left-Table.atk_cost end
 end
