@@ -242,7 +242,7 @@ function display_skills_dialog(selecting)
                                     id="advance_button",
                                     use_markup=true,
 									return_value=3,
-									tooltip = _"Spend <span color='#00bbe6'><i>" .. math.floor(0.9*caster.max_experience) .. " XP</i></span> to:\n• fully heal " .. caster.name .. ".\n• get <span color='red'><i>+8 max HP</i></span>.\n• increase <span color='#00bbe6'><i>max XP by 20%</i></span>.",
+									tooltip = _"Spend <span color='#00bbe6'><i>" .. math.floor(0.9*caster.max_experience) .. " XP</i></span> to:\n• fully heal " .. caster.name .. ".\n• get <span color='red'><i>+6 max HP</i></span>.\n• increase <span color='#00bbe6'><i>max XP by 20%</i></span>.",
                                     definition="up_arrow"
                                 }
                             },
@@ -253,7 +253,7 @@ function display_skills_dialog(selecting)
                                 horizontal_alignment="left",
                                 T.label{
                                     use_markup=true,
-                                    tooltip = _"Spend <span color='#00bbe6'><i>" .. math.floor(0.9*caster.max_experience) .. " XP</i></span> to:\n• fully heal " .. caster.name .. ".\n• get <span color='red'><i>+8 max HP</i></span>.\n• increase <span color='#00bbe6'><i>max XP by 20%</i></span>.",
+                                    tooltip = _"Spend <span color='#00bbe6'><i>" .. math.floor(0.9*caster.max_experience) .. " XP</i></span> to:\n• fully heal " .. caster.name .. ".\n• get <span color='red'><i>+6 max HP</i></span>.\n• increase <span color='#00bbe6'><i>max XP by 20%</i></span>.",
                                     label = "<span color='#00bbe6'><i>" .. caster.experience .. "/" .. math.floor(0.9*caster.max_experience) .. " XP</i></span>",
                                 }
                             },
