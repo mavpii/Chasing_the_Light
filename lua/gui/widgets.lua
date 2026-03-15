@@ -681,73 +681,6 @@ G_widget("panel", "naia_journeylog_panel", {
 	}
 })
 
-G_widget("button", "image_marker", {
-
-    min_width  = 24,
-    min_height = 24,
-
-    T.state_enabled {
-        T.draw {
-            T.image {
-                x = 0,
-                y = 0,
-                w = "(width)",
-                h = "(height)",
-                name = "(label)"
-            }
-        }
-    },
-
-    T.state_disabled {
-        T.draw {
-            T.image {
-                x = 0,
-                y = 0,
-                w = "(width)",
-                h = "(height)",
-                name = "(label)"
-            }
-        }
-    },
-
-    T.state_focused {
-        T.draw {
-            T.image {
-                x = 0,
-                y = 0,
-                w = "(width)",
-                h = "(height)",
-                name = "(label)"
-            }
-        }
-    },
-
-    T.state_pressed {
-        T.draw {
-            T.image {
-                x = 0,
-                y = 0,
-                w = "(width)",
-                h = "(height)",
-                name = "(label_hover|label)"
-            }
-        }
-    },
-
-    T.state_hover {
-        T.draw {
-            T.image {
-                x = 0,
-                y = 0,
-                w = "(width)",
-                h = "(height)",
-                name = "(label_hover|label)"
-            }
-        }
-    }
-
-})
-
 G_widget("panel", "naia_journeylog_panel_map", {
 	left_border   = JOURNEYLOG_PANEL_PADDING,
 	right_border  = JOURNEYLOG_PANEL_PADDING,
@@ -756,11 +689,20 @@ G_widget("panel", "naia_journeylog_panel_map", {
 
 	T.background {
 		C_vcanvas(
-			T.image {
+		    T.rectangle {
 				x = 1,
 				y = 1,
 				w = "(width - 2)",
 				h = "(height - 2)",
+				border_thickness = 1,
+				border_color = "0, 0, 0, 255",
+				fill_color = "0, 0, 0, 127" -- GUI__BACKGROUND_COLOR_ENABLED
+			},
+			T.image {
+				x = 4,
+				y = 4,
+				w = "(width - 8)",
+				h = "(height - 8)",
 				border_thickness = 1,
 				resize_mode="stretch",
 				border_color = "0, 0, 0, 255",

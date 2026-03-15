@@ -592,6 +592,7 @@ wml_actions["caster_set_menu"] = function(cfg)
 			if wml.variables["side_number"] == u.side then
                 wml.fire("set_menu_item", {
                     id = "spellcasting_object_" .. u.id,
+					image = "misc/staff-magic-wand.png",
                     description = _"Cast Spells",
                     synced = false,
                     wml.tag.filter_location {
