@@ -706,13 +706,26 @@ G_widget("panel", "naia_journeylog_panel_map", {
 				border_thickness = 1,
 				resize_mode="stretch",
 				border_color = "0, 0, 0, 255",
-				name = "Screenshot_437.png",
+				name = "maps/background.webp",
 			},
+            T.image {
+	x = "((width - max(640, min(width - 8, (height - 8) * 4 / 3))) / 2)",
+	y = "((height - max(480, min(height - 8, (width - 8) * 3 / 4))) / 2)",
+
+	w = "(max(640, min(width - 8, (height - 8) * 4 / 3)))",
+	h = "(max(480, min(height - 8, (width - 8) * 3 / 4)))",
+
+	border_thickness = 1,
+	resize_mode = "stretch",
+	border_color = "0, 0, 0, 255",
+
+	name = "story/map/green_isle_old_esten.webp",
+},
 			C_round_frame({ color = JOURNEYLOG_PANEL_BORDER_COLOR })
 		)
 	},
     T.foreground {
-		T.draw {}
+		C_vcanvas {}
 	}
 })
 

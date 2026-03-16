@@ -55,6 +55,7 @@ local chara_override_attributes = {
 	"additional_titles",
 	"affiliation",
 	"race",
+	"age",
 	"status",
 	"gender",
 	"portrait",

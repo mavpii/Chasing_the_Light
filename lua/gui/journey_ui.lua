@@ -30,6 +30,7 @@ local JOURNEYLOG_UI_RACE_PLACEHOLDER       = _ "race^?"
 local JOURNEYLOG_UI_STATUS_PLACEHOLDER     = _ "chara_status^Living"
 local JOURNEYLOG_UI_GROUPS_PLACEHOLDER     = _ "affiliation^None"
 local JOURNEYLOG_UI_TITLES_PLACEHOLDER     = _ "additional_titles^None"
+local JOURNEYLOG_UI_AGE_PLACEHOLDER     = _ "age^None"
 
 local ACH_ALL        = 1
 local ACH_COMPLETE   = 2
@@ -595,6 +596,7 @@ local journeylog_chara_info_panel = {
 				T.row(chara_info_panel_field("affiliation",       _ "Affiliation")),
 				T.row(chara_info_panel_field("status",            _ "Status")),
 				T.row(chara_info_panel_field("race",              _ "Race")),
+				T.row(chara_info_panel_field("age",       _ "Age")),
 			}
 		},
 		T.column {
@@ -1932,6 +1934,7 @@ function journeylog_ui()
 		page.race.marked_up_text = bio_race_name_helper(profile.race, profile.gender)
 		page.status.marked_up_text = bio_status_helper(profile.status)
 		page.affiliation.marked_up_text = profile.affiliation or JOURNEYLOG_UI_GROUPS_PLACEHOLDER
+		page.age.marked_up_text = profile.age or JOURNEYLOG_UI_AGE_PLACEHOLDER
 		page.additional_titles.marked_up_text = profile.additional_titles or JOURNEYLOG_UI_TITLES_PLACEHOLDER
 
 		-- FIXME: Wesnoth 1.18 does not appear to support setting .visible on grids
@@ -1945,6 +1948,11 @@ function journeylog_ui()
 		if not profile.additional_titles then
 			page.additional_titles.visible = false
 			page.additional_titles_heading.visible = false
+		end
+		
+		if not profile.age then
+			page.age.visible = false
+			page.age_heading.visible = false
 		end
 
 		if not profile.portrait then
