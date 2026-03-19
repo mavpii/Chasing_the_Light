@@ -865,9 +865,9 @@ msgstr ""
 msgid "Cast Spells"
 msgstr ""
 
-#. [scenario]: id=01_The_Book
+#. [scenario]: id=01_Overture
 #. Книга
-#: Chasing_the_Light/scenarios/01_The_Book.cfg:5
+#: Chasing_the_Light/scenarios/01_Overture.cfg:5
 msgid "The Book"
 msgstr ""
 
@@ -875,7 +875,7 @@ msgstr ""
 #. newlines at the beginning help to (depending on the screne size) center this vertically. The space at the end stops the last letter from getting cut off
 #. В гонитві за Світлом | Женучись за Світлом
 #. Частина Перша
-#: Chasing_the_Light/scenarios/01_The_Book.cfg:25
+#: Chasing_the_Light/scenarios/01_Overture.cfg:25
 msgid ""
 "<span font_family='Oldania ADF Std' size='90000'>\n"
 "\n"
@@ -889,7 +889,7 @@ msgstr ""
 #. newlines at the beginning help to (depending on the screne size) center this vertically. The space at the end stops the last letter from getting cut off
 #. Частина Перша
 #. Дарунок Людей Заходу
-#: Chasing_the_Light/scenarios/01_The_Book.cfg:37
+#: Chasing_the_Light/scenarios/01_Overture.cfg:37
 msgid ""
 "<span font_family='Oldania ADF Std' size='90000'>\n"
 "\n"
@@ -900,37 +900,37 @@ msgstr ""
 
 #. [part]
 #. З давніх-давен наші люди населяють самотній Зелений Острів, що, наче, загубився десь в самому серці Великого Океану, бо це єдині землі, про які нам взагалі відомо, поза якими ніхто ніколи не був. Проте у казках минувщини, правда, згадується якась таємнича Стара Земля, яку населяють усі можливі чудернацькі істоти, проте це все ж лише історії, котрі розповідають малим дітям...
-#: Chasing_the_Light/scenarios/01_The_Book.cfg:46
+#: Chasing_the_Light/scenarios/01_Overture.cfg:46
 msgid "Since immemorial times, our people have inhabited the lonely Green Isle, which seems to be lost somewhere in the heart of the Great Ocean, because it is the only land we know of which no one has ever been outside. However, in the tales of the past, some mysterious Old World is mentioned, inhabited by all kinds of strange creatures, but these are still just stories told to small children..."
 msgstr ""
 
 #. [part]
 #. Тож ми процвітали, ми були сильні і численні — жили у багатих землях, мали безліч королів та держав, тож єдиним клопотом були лише рідкісні війни за територію. Однак все змінилося, коли з-за Океану, з далекого Заходу, прийшли <i>вони</i>, 'Люди Заходу'. Вони були злісні, жорстокі і брудні, з ними неможливо було домовитися.
-#: Chasing_the_Light/scenarios/01_The_Book.cfg:51
+#: Chasing_the_Light/scenarios/01_Overture.cfg:51
 msgid "So we were prosperous, we were strong and numerous — we lived in rich lands, we had many kings and nations, so the only trouble was the occasional wars over territories. But that all changed when, from across the ocean, from the far West, <i>they</i> came, the 'People of the West'. They were wicked, violent and dirty, and impossible to negotiate with."
 msgstr ""
 
 #. [part]
 #. Прибувши на десятках великих кораблів, вони висадилися на півночі, стрімко розкидаючи свої сили по всьому Острову та захоплюючи нові землі. Західняки були нечисленні, але вони володіли таємничою руйнівною силою, що вони називали 'магією', а також, за чутками, керували мстивими духами і легіонами живих мерців.
-#: Chasing_the_Light/scenarios/01_The_Book.cfg:56
+#: Chasing_the_Light/scenarios/01_Overture.cfg:56
 msgid "After arriving in dozens of large vessels, they landed in the north, rapidly spreading their forces across the Green Isle and conquering new lands. The Wesfolk were few in number, but they possessed a mysterious destructive power they called 'magic', and were also rumoured to command vengeful spirits and legions of living dead."
 msgstr ""
 
 #. [part]
 #. Гаралін був одним з багатьох жителів Зеленого Острову, звичайним хлопчиною з невеликого прикордонного селища на півночі Чорнотопу. До його села ще не докотилися новини про висадку західняків, тому всі жили своїм звичним життям.
-#: Chasing_the_Light/scenarios/01_The_Book.cfg:62
+#: Chasing_the_Light/scenarios/01_Overture.cfg:62
 msgid "Haralin was one of the many inhabitants of the Green Isle, an ordinary youth from a small border village north of Blackmore. The news of the Wesfolk landing had not yet reached his village, so everyone went about their normal lives."
 msgstr ""
 
 #. [part]
 #. Але приблизно з того часу, як 'західняки' вторгнулись на наші землі, хлопця почав турбувати загадковий безвучний голос, що іноді лунав в його голові, розповідаючи про шляхи Світла. Гаралін спочатку намагався ігнорувати його, але зрештою почав потроху прислухатися до нього, бо той часто давав корисні поради, хоча так і не розумів, чи то справді з ним хтось розмовляє, чи то просто його відчуття озвучувалися в думках.
-#: Chasing_the_Light/scenarios/01_The_Book.cfg:68
+#: Chasing_the_Light/scenarios/01_Overture.cfg:68
 msgid "But from about the time the 'People of the West' invaded our lands, he began to be disturbed by a mysterious, soundless voice that sometimes echoed in his head, telling him about the ways of the Light. At first, Haralin tried to ignore it, but eventually he began to listen to it a little bit, because it often gave him useful advice, although he did not understand whether someone was really talking to him or if it were just his feelings voiced in thoughts."
 msgstr ""
 
 #. [part]
 #. І ось одного разу він знову почув той самий голос, що кликав його на північ села.
-#: Chasing_the_Light/scenarios/01_The_Book.cfg:74
+#: Chasing_the_Light/scenarios/01_Overture.cfg:74
 msgid "And then one day he once again heard the same voice calling him to the north of the village."
 msgstr ""
 
@@ -945,7 +945,7 @@ msgstr ""
 #. Хай направить тебе Світло.
 #. Гараліне, сьогодні ти отримав можливість здобути неймовірну силу та змінити весь світ. Але не дай їй підкорити та спотворити тебе, завжди йди шляхом Світла і воно направить тебе.
 #. Ти відчуєш та почуєш Світло, коли потребуватимеш його. До того ж, вивчай цю книгу, оберни її силу на світло та пізнай магію, вона тобі знадобиться...
-#: Chasing_the_Light/scenarios/01_The_Book.cfg:82
+#: Chasing_the_Light/scenarios/01_Overture.cfg:82
 #: Chasing_the_Light/scenarios/02_Invasion.cfg:24
 #: Chasing_the_Light/scenarios/02_Invasion.cfg:32
 #: Chasing_the_Light/scenarios/08_Quiescence.cfg:341
@@ -958,7 +958,7 @@ msgid "???"
 msgstr ""
 
 #. [part]
-#: Chasing_the_Light/scenarios/01_The_Book.cfg:82
+#: Chasing_the_Light/scenarios/01_Overture.cfg:82
 msgid ""
 "The time has almost come, Haralin. You'll understand when you see it for yourself.\n"
 "...\n"
@@ -967,7 +967,7 @@ msgstr ""
 
 #. [side]
 #. Амакрі
-#: Chasing_the_Light/scenarios/01_The_Book.cfg:140
+#: Chasing_the_Light/scenarios/01_Overture.cfg:140
 msgid "Amakri"
 msgstr ""
 
@@ -975,7 +975,7 @@ msgstr ""
 #. Селяни
 #. Селяни
 #. Селяни
-#: Chasing_the_Light/scenarios/01_The_Book.cfg:151
+#: Chasing_the_Light/scenarios/01_Overture.cfg:151
 #: Chasing_the_Light/scenarios/02_Invasion.cfg:90
 #: Chasing_the_Light/scenarios/03_Despair.cfg:59
 msgid "Villagers"
@@ -983,19 +983,19 @@ msgstr ""
 
 #. [side]: id=Book_Master
 #. Бандити
-#: Chasing_the_Light/scenarios/01_The_Book.cfg:165
+#: Chasing_the_Light/scenarios/01_Overture.cfg:165
 msgid "Bandits"
 msgstr ""
 
 #. [objective]: condition=win
 #. Проженіть бандитів
-#: Chasing_the_Light/scenarios/01_The_Book.cfg:176
+#: Chasing_the_Light/scenarios/01_Overture.cfg:176
 msgid "Drive out the bandits"
 msgstr ""
 
 #. [objective]: condition=lose
 #. Загибель Андріна
-#: Chasing_the_Light/scenarios/01_The_Book.cfg:181
+#: Chasing_the_Light/scenarios/01_Overture.cfg:181
 msgid "Death of Andrin"
 msgstr ""
 
@@ -1008,7 +1008,7 @@ msgstr ""
 #. Загибель Гараліна
 #. Загибель Гараліна
 #. Загибель Гараліна
-#: Chasing_the_Light/scenarios/01_The_Book.cfg:186
+#: Chasing_the_Light/scenarios/01_Overture.cfg:186
 #: Chasing_the_Light/scenarios/02_Invasion.cfg:124
 #: Chasing_the_Light/scenarios/02_Invasion.cfg:1124
 #: Chasing_the_Light/scenarios/02_Invasion.cfg:1144
@@ -1046,7 +1046,7 @@ msgid "Death of Haralin"
 msgstr ""
 
 #. [unit]: type=Spearman
-#: Chasing_the_Light/scenarios/01_The_Book.cfg:201
+#: Chasing_the_Light/scenarios/01_Overture.cfg:201
 msgid "Andrin"
 msgstr ""
 
@@ -1060,8 +1060,8 @@ msgstr ""
 #. Гаралін
 #. Скажи мені нарешті, хто ти, чому на нас напали та що мені робити далі?
 #. Гаралін
-#: Chasing_the_Light/scenarios/01_The_Book.cfg:230
-#: Chasing_the_Light/scenarios/01_The_Book.cfg:240
+#: Chasing_the_Light/scenarios/01_Overture.cfg:230
+#: Chasing_the_Light/scenarios/01_Overture.cfg:240
 #: Chasing_the_Light/scenarios/02_Invasion.cfg:28
 #: Chasing_the_Light/scenarios/02_Invasion.cfg:163
 #: Chasing_the_Light/scenarios/04_Daeola.cfg:149
@@ -1077,71 +1077,71 @@ msgstr ""
 
 #. [event]
 #. Старійшино! Бачу групу неопізнаних людей на північному сході від села! І вони схожі на бандюків!
-#: Chasing_the_Light/scenarios/01_The_Book.cfg:280
+#: Chasing_the_Light/scenarios/01_Overture.cfg:280
 msgid "Elder! I see a group of strangers northeast of the village! And they look like bandits!"
 msgstr ""
 
 #. [trait]
-#: Chasing_the_Light/scenarios/01_The_Book.cfg:304
+#: Chasing_the_Light/scenarios/01_Overture.cfg:304
 msgid "overconfident"
 msgstr ""
 
 #. [trait]
-#: Chasing_the_Light/scenarios/01_The_Book.cfg:304
+#: Chasing_the_Light/scenarios/01_Overture.cfg:304
 msgid "This unit doesn't see the point in using some of their abilities, including nightstalk, because they are too confident in their victory."
 msgstr ""
 
 #. [event]
 #. Складіть зброю, жалюгідні селюки, і може, ми залишимо вас в живих!
-#: Chasing_the_Light/scenarios/01_The_Book.cfg:391
+#: Chasing_the_Light/scenarios/01_Overture.cfg:391
 msgid "Give up your weapons, miserable peasants, and maybe we'll let you live!"
 msgstr ""
 
 #. [event]
 #. Та й, що це ти торочиш? Поглянь на себе, одягнений, наче місцевий дурень з ярмарку. Забирайся з нашої землі негайно!
-#: Chasing_the_Light/scenarios/01_The_Book.cfg:393
+#: Chasing_the_Light/scenarios/01_Overture.cfg:393
 msgid "Well-well, what are you babbling about? Look at you, dressed like a local carnival buffoon. Get off our land at once!"
 msgstr ""
 
 #. [event]
 #. Так, забирайся звідси! Інакше помреш!
-#: Chasing_the_Light/scenarios/01_The_Book.cfg:395
+#: Chasing_the_Light/scenarios/01_Overture.cfg:395
 msgid "Yeah, get out of here! Or you'll die!"
 msgstr ""
 
 #. [event]
 #. Пф, які неосвідчені йолопи. Що ж, ви самі накликали на себе смерть.
-#: Chasing_the_Light/scenarios/01_The_Book.cfg:397
+#: Chasing_the_Light/scenarios/01_Overture.cfg:397
 msgid "Pfft, what ignorant fools. Well, you brought death on yourselves."
 msgstr ""
 
 #. [event]
 #. Ми ще подивимося, хто тут йолоп, коли скидатимемо твій труп у помийну яму!
-#: Chasing_the_Light/scenarios/01_The_Book.cfg:399
+#: Chasing_the_Light/scenarios/01_Overture.cfg:399
 msgid "We'll see who's the fool when we dump your corpse in a gutter!"
 msgstr ""
 
 #. [event]
 #. Батьку, що тут відбувається?!
-#: Chasing_the_Light/scenarios/01_The_Book.cfg:416
+#: Chasing_the_Light/scenarios/01_Overture.cfg:416
 msgid "Dad, what's going on here?!"
 msgstr ""
 
 #. [event]
 #. Та й, просто купка бандитів з ватажком у шутовській одежі.
-#: Chasing_the_Light/scenarios/01_The_Book.cfg:421
+#: Chasing_the_Light/scenarios/01_Overture.cfg:421
 msgid "Well-well, just a bunch of bandits with a chief in jester's clothes."
 msgstr ""
 
 #. [event]
 #. Що ж, тоді проженемо їх! Нарешті я використаю мою палицю!
-#: Chasing_the_Light/scenarios/01_The_Book.cfg:423
+#: Chasing_the_Light/scenarios/01_Overture.cfg:423
 msgid "Well, then, let's chase them away! I'm finally going to use my club!"
 msgstr ""
 
 #. [event]
 #. Еге, тільки не заходь далеко та не роби необачних вчинків.
-#: Chasing_the_Light/scenarios/01_The_Book.cfg:425
+#: Chasing_the_Light/scenarios/01_Overture.cfg:425
 msgid "Aye, just don't go too far from me and do anything rash."
 msgstr ""
 
@@ -1149,7 +1149,7 @@ msgstr ""
 #. [set_variable]
 #. [variable]
 #. [then]
-#: Chasing_the_Light/scenarios/01_The_Book.cfg:429
+#: Chasing_the_Light/scenarios/01_Overture.cfg:429
 #: Chasing_the_Light/scenarios/02_Invasion.cfg:1406
 #: Chasing_the_Light/scenarios/02_Invasion.cfg:1413
 #: Chasing_the_Light/scenarios/03_Despair.cfg:342
@@ -1206,7 +1206,7 @@ msgstr ""
 
 #. [event]
 #. Смакуй мою палицю, бандюго!
-#: Chasing_the_Light/scenarios/01_The_Book.cfg:443
+#: Chasing_the_Light/scenarios/01_Overture.cfg:443
 msgid "Taste my club, you scumbag!"
 msgstr ""
 
@@ -1217,10 +1217,10 @@ msgstr ""
 #. [message]: speaker=$unit.id
 #. [scenario]: id=06_Miscreants
 #. [scenario]: id=09_Stormvale
-#: Chasing_the_Light/scenarios/01_The_Book.cfg:444
-#: Chasing_the_Light/scenarios/01_The_Book.cfg:658
-#: Chasing_the_Light/scenarios/01_The_Book.cfg:662
-#: Chasing_the_Light/scenarios/01_The_Book.cfg:703
+#: Chasing_the_Light/scenarios/01_Overture.cfg:444
+#: Chasing_the_Light/scenarios/01_Overture.cfg:658
+#: Chasing_the_Light/scenarios/01_Overture.cfg:662
+#: Chasing_the_Light/scenarios/01_Overture.cfg:703
 #: Chasing_the_Light/scenarios/02_Invasion.cfg:581
 #: Chasing_the_Light/scenarios/02_Invasion.cfg:907
 #: Chasing_the_Light/scenarios/02_Invasion.cfg:908
@@ -1308,40 +1308,40 @@ msgstr ""
 #. [then]
 #. Ім'ям Темряви, помри!
 #. Ім'ям Темряви, помри!
-#: Chasing_the_Light/scenarios/01_The_Book.cfg:464
-#: Chasing_the_Light/scenarios/01_The_Book.cfg:512
+#: Chasing_the_Light/scenarios/01_Overture.cfg:464
+#: Chasing_the_Light/scenarios/01_Overture.cfg:512
 msgid "In the name of Darkness, die!"
 msgstr ""
 
 #. [then]
 #. Аааа, що, що це було таке? Схоже на 'чаклунство' про яке розповідають в казках!
 #. Аааа, що, що це було таке? Схоже на 'чаклунство' про яке розповідають в казках!
-#: Chasing_the_Light/scenarios/01_The_Book.cfg:478
-#: Chasing_the_Light/scenarios/01_The_Book.cfg:526
+#: Chasing_the_Light/scenarios/01_Overture.cfg:478
+#: Chasing_the_Light/scenarios/01_Overture.cfg:526
 msgid "Ahhh, what, what was that? It looks like the kind of 'witchcraft' you hear about in fairy tales!"
 msgstr ""
 
 #. [else]
 #. Аааа, що, що це було?
 #. Аааа, що, що це було?
-#: Chasing_the_Light/scenarios/01_The_Book.cfg:483
-#: Chasing_the_Light/scenarios/01_The_Book.cfg:531
+#: Chasing_the_Light/scenarios/01_Overture.cfg:483
+#: Chasing_the_Light/scenarios/01_Overture.cfg:531
 msgid "Ahhh, what, what was that?"
 msgstr ""
 
 #. [else]
 #. Батьку, що це? Схоже на 'чаклунство' з казок, які мені розповідали в дитинстві.
 #. Батьку, що це? Схоже на 'чаклунство' з казок, які мені розповідали в дитинстві.
-#: Chasing_the_Light/scenarios/01_The_Book.cfg:485
-#: Chasing_the_Light/scenarios/01_The_Book.cfg:533
+#: Chasing_the_Light/scenarios/01_Overture.cfg:485
+#: Chasing_the_Light/scenarios/01_Overture.cfg:533
 msgid "Dad, what is this? It looks like 'witchcraft' from the fairy tales I was told as a child!"
 msgstr ""
 
 #. [then]
 #. Та й, щоб це не було, ми маємо з цим покінчити.
 #. Та й, щоб це не було, ми маємо з цим покінчити.
-#: Chasing_the_Light/scenarios/01_The_Book.cfg:491
-#: Chasing_the_Light/scenarios/01_The_Book.cfg:539
+#: Chasing_the_Light/scenarios/01_Overture.cfg:491
+#: Chasing_the_Light/scenarios/01_Overture.cfg:539
 msgid "Aye, whatever it is, we have to put an end to it."
 msgstr ""
 
@@ -1353,8 +1353,8 @@ msgstr ""
 #. [scenario]: id=07_Scarhane
 #. [command]
 #. [scenario]: id=09_Stormvale
-#: Chasing_the_Light/scenarios/01_The_Book.cfg:493
-#: Chasing_the_Light/scenarios/01_The_Book.cfg:541
+#: Chasing_the_Light/scenarios/01_Overture.cfg:493
+#: Chasing_the_Light/scenarios/01_Overture.cfg:541
 #: Chasing_the_Light/scenarios/02_Invasion.cfg:1052
 #: Chasing_the_Light/scenarios/02_Invasion.cfg:1113
 #: Chasing_the_Light/scenarios/02_Invasion.cfg:1167
@@ -1551,109 +1551,109 @@ msgstr ""
 
 #. [event]
 #. Я підвів свого Владику...
-#: Chasing_the_Light/scenarios/01_The_Book.cfg:553
+#: Chasing_the_Light/scenarios/01_Overture.cfg:553
 msgid "I have failed my Lord..."
 msgstr ""
 
 #. [event]
 #. <i>(удар)</i> Помри вже нарешті!
-#: Chasing_the_Light/scenarios/01_The_Book.cfg:555
+#: Chasing_the_Light/scenarios/01_Overture.cfg:555
 msgid "<i>(hit)</i> Die already!"
 msgstr ""
 
 #. [message]
 #. Нашого Майстра перемогли, відступаймо!
-#: Chasing_the_Light/scenarios/01_The_Book.cfg:589
+#: Chasing_the_Light/scenarios/01_Overture.cfg:589
 msgid "Our Master has been slain, retreat!"
 msgstr ""
 
 #. [event]
 #. Батьку, як гадаєш, що це за Владика? Та ще й цей розбійник використовував дивну силу.
-#: Chasing_the_Light/scenarios/01_The_Book.cfg:634
+#: Chasing_the_Light/scenarios/01_Overture.cfg:634
 msgid "Dad, who do you think this Lord is? And this outlaw also used strange powers..."
 msgstr ""
 
 #. [event]
 #. Та й... Не мороч цим ні мені, ні собі голову. Гайда в село.
-#: Chasing_the_Light/scenarios/01_The_Book.cfg:636
+#: Chasing_the_Light/scenarios/01_Overture.cfg:636
 msgid "Aye... Don't bother me or yourself with this. Let's go to the village."
 msgstr ""
 
 #. [event]
 #. Ти маєш подивитися.
-#: Chasing_the_Light/scenarios/01_The_Book.cfg:667
+#: Chasing_the_Light/scenarios/01_Overture.cfg:667
 msgid "<i>You have to see it.</i>"
 msgstr ""
 
 #. [event]
 #. Що? Знову цей голос...
-#: Chasing_the_Light/scenarios/01_The_Book.cfg:674
+#: Chasing_the_Light/scenarios/01_Overture.cfg:674
 msgid "What? That voice again..."
 msgstr ""
 
 #. [event]
 #. Ім'ям Світла, ти маєш подивитися. Негайно!
-#: Chasing_the_Light/scenarios/01_The_Book.cfg:679
+#: Chasing_the_Light/scenarios/01_Overture.cfg:679
 msgid "<i>In the name of Light, you have to see it. Now!</i>"
 msgstr ""
 
 #. [event]
 #. У таборі цього розбійника є якась книга. Я якраз нещодавно навчився читати, а книги коштують багато грошей, тож...
-#: Chasing_the_Light/scenarios/01_The_Book.cfg:690
+#: Chasing_the_Light/scenarios/01_Overture.cfg:690
 msgid "There is a book in this bandit's camp. I have just recently learnt to read, and books cost a lot of money, so..."
 msgstr ""
 
 #. [event]
 #. <i>(роздивляється книгу)</i> Я вперше бачу такі літери, в нас так не пишуть, але я відчуваю, що від цієї книги віє силою. Може, в ній я дізнаюся про ту дивну силу?
-#: Chasing_the_Light/scenarios/01_The_Book.cfg:700
+#: Chasing_the_Light/scenarios/01_Overture.cfg:700
 msgid "<i>(looking at the book)</i> It's the first time I've seen such letters, we don't write like that here, but I also feel that this book radiates power. Maybe in it I will learn about that strange power?"
 msgstr ""
 
 #. [event]
 #. О! Тут ще є сувої якісь. Написано 'с-ло-в-ни-к' і поряд ота дивна мова. Мені це знадобиться!
-#: Chasing_the_Light/scenarios/01_The_Book.cfg:702
+#: Chasing_the_Light/scenarios/01_Overture.cfg:702
 msgid "Оh! There are also some scrolls here. It's written 'd-i-c-t-i-o-n-a-r-y' and there's this odd language next to it. Think I'm going to need this!"
 msgstr ""
 
 #. [event]
 #. Нікому не варто про це знати чи бачити, я не хочу проблем.
-#: Chasing_the_Light/scenarios/01_The_Book.cfg:709
+#: Chasing_the_Light/scenarios/01_Overture.cfg:709
 msgid "No one needs to know or see this, I don't want any problems."
 msgstr ""
 
 #. [event]
 #. Прокляття, схоже, ці селюки виявилися сильнішими, ніж ми гадали. Забираймося звідси!
-#: Chasing_the_Light/scenarios/01_The_Book.cfg:722
+#: Chasing_the_Light/scenarios/01_Overture.cfg:722
 msgid "Damn, it seems these peasants are stronger than we thought. Let's get out of here!"
 msgstr ""
 
 #. [event]
 #. Перемога, ура! Так, так, забирайтеся звідси!
-#: Chasing_the_Light/scenarios/01_The_Book.cfg:756
+#: Chasing_the_Light/scenarios/01_Overture.cfg:756
 msgid "Victory, yay! Yes, yes, get out of here!"
 msgstr ""
 
 #. [event]
 #. Та й, та не галасуй ти так... Гайда в село.
-#: Chasing_the_Light/scenarios/01_The_Book.cfg:758
+#: Chasing_the_Light/scenarios/01_Overture.cfg:758
 msgid "Aye, stop making so much noise... Let's go to the village."
 msgstr ""
 
 #. [message]
 #. Хоч селяни й перемогли цього разу, але зовсім незабаром вони зіткнулися з силою, котру не змогли подолати, ніхто не зміг.
-#: Chasing_the_Light/scenarios/01_The_Book.cfg:763
+#: Chasing_the_Light/scenarios/01_Overture.cfg:763
 msgid "Although the peasants won this time, they soon faced a force that they could not overcome, no one could."
 msgstr ""
 
 #. [event]
 #. О ні, батьку, ці розбійники захопили нашу хату!
-#: Chasing_the_Light/scenarios/01_The_Book.cfg:796
+#: Chasing_the_Light/scenarios/01_Overture.cfg:796
 msgid "Oh no, Dad, these bandits have taken over our house!"
 msgstr ""
 
 #. [event]
 #. Та й, та не галасуй ти так... Як проженемо їх, то й хату повернемо.
-#: Chasing_the_Light/scenarios/01_The_Book.cfg:798
+#: Chasing_the_Light/scenarios/01_Overture.cfg:798
 msgid "Aye, stop making so much noise. When we drive them away, we'll get the house back."
 msgstr ""
 
