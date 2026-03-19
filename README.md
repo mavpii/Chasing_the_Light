@@ -45,7 +45,7 @@ Peaceful life of the Green Isle's inhabitants turned into a nightmare in an inst
 
 ## Scenario structure
 ### Chapter 1: Gift from Wesfolk
-- 01_The_Book✔                                                                                                                                      
+- 01_Overture✔                                                                                                                                      
 - 02_Invasion✔                                                                                                                                      
 - 03_Despair✔ 
 ### Chapter 2: Inner Doubts                                                                                                                                     
