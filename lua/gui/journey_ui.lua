@@ -1548,7 +1548,7 @@ end
 -- Helper to clear treeviews
 -- Wesnoth 1.18 and 1.20 require different, mutually incompatible approaches
 local function clear_treeview(target)
-	target:remove_items_at(1, 0)
+	target:clear_items()
 end
 
 local function clean_campaign_name(text)
