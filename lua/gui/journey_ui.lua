@@ -1583,9 +1583,7 @@ local journeylog_ui_dream_size        = "default"
 
 function journeylog_ui_in_dream_sequence()
 	if wesnoth.scenario.type == "scenario" and
-	   wesnoth.scenario.campaign.id == "After_the_Storm_III" and
-	   wesnoth.scenario.id == "09_Dark_Depths" and
-	   wml.variables.finale_b_part == 3
+	   wesnoth.scenario.id == "09_Stormvale"
 	then
 		return true
 	end
@@ -2229,7 +2227,7 @@ function journeylog_ui()
 	local function show_tab(self, tab_num)
 		if journeylog_ui_in_dream_sequence() then
 			journeylog_ui_dream_hook(self)
-			self.tabs_container.selected_index = 4
+			self.tabs_container.selected_index = 3
 			self.compact_view.enabled = false
 			self.search_box.enabled = false
 			self.log_section_selector.visible = "invisible"
@@ -2255,10 +2253,6 @@ function journeylog_ui()
 			self.compact_view.visible = false
 			self.search_box.visible = false
 		elseif tab_num == 4 then
-        	self.hidden_achievements.visible = false
-        	self.compact_view.visible = false
-        	self.search_box.visible = false
-        elseif tab_num == 5 then
         	self.hidden_achievements.visible = false
         	self.compact_view.visible = false
         	self.search_box.visible = false

@@ -2,7 +2,7 @@
 
 local T = wml.tag
 local wml_actions = wesnoth.wml_actions
-local _ = wesnoth.textdomain "Chasing_the_Light"
+local _ = wesnoth.textdomain "wesnoth-ctl"
 local utils = wesnoth.require "wml-utils"
 
 local function get_pango_color(color)
