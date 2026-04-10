@@ -10,8 +10,8 @@
 local journeylog_milestones = {}
 local journeylog_fragments = {}
 
--- #textdomain wesnoth-Naia
-local _ = wesnoth.textdomain "wesnoth-Naia"
+-- #textdomain wesnoth-ctl
+local _ = wesnoth.textdomain "wesnoth-ctl"
 
 local JOURNEYLOG_WML_STORE = "__naia_journeylog_progression"
 local JOURNEYLOG_UI_HOTKEY = "j"

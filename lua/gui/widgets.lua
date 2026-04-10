@@ -9,8 +9,8 @@
 
 local T = wml.tag
 
--- #textdomain wesnoth-Naia
-local _ = wesnoth.textdomain "wesnoth-Naia"
+-- #textdomain wesnoth-ctl
+local _ = wesnoth.textdomain "wesnoth-ctl"
 
 -- Constants and helpers
 

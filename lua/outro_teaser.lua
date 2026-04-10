@@ -4,7 +4,7 @@
 
 local T = wml.tag
 
--- #textdomain wesnoth-Invasion_from_the_Unknown
+-- #textdomain wesnoth-ctl
 local _ = wesnoth.textdomain "wesnoth-ctl"
 
 local center_grid = {
