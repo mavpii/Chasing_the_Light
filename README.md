@@ -44,7 +44,7 @@ Peaceful life of the Green Isle's inhabitants turned into a nightmare in an inst
 
 
 ## Scenario structure
-### Chapter 1: Gift from Wesfolk
+### Chapter 1: First Omen
 - 01_Overture✔                                                                                                                                      
 - 02_Invasion✔                                                                                                                                      
 - 03_Despair✔ 
