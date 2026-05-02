@@ -3,7 +3,7 @@
 ## Campaign Description
 Peaceful life of the Green Isle's inhabitants turned into a nightmare in an instant when legions of living dead invaded their land from the far West. Play as Haralin, a young peasant from a small village near Blackmore who one day began to hear a mysterious voice calling itself messenger of the Light. Can you discover previously unknown powers, turn the tide of war and save your homeland from the hideous Wesfolk?
 
-(Hard level, 19 scenarios)
+(Hard level, 20 scenarios)
 
 
 ## Developer
@@ -59,14 +59,15 @@ Peaceful life of the Green Isle's inhabitants turned into a nightmare in an inst
 - 09_Stormvale✔                                                                                                                             
 - 10_Priorities✔                                                                                                                                 
 - 11_Duty🔁️
-- 11x_Burden
-- 12_Southbay_Outskirts
-- 13_Caror
+- 12_Dissonance
+- 12x_Accord
+- 13_Southbay_Outskirts
+- 14_Caror
 ### Chapter 4: Against the World
-- 14_Necessity
-- 15_Frontline | 15_Fording
-- 15x_Asylum
-- 16_Deceivers
-- 17_Gambit
-- 18_Lenvan
-- 19_Temple_in_the_Deep
+- 15_Necessity (TBD)
+- 16_Frontline | 15_Fording (TBD)
+- 16x_Asylum (TBD)
+- 17_Deceivers
+- 18_Gambit
+- 19_Lenvan
+- 20_Temple_in_the_Deep
