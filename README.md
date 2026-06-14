@@ -13,6 +13,9 @@ Peaceful life of the Green Isle's inhabitants turned into a nightmare in an inst
 - [Refumee](https://github.com/Refumee)
 - Maksiu
 
+## Character Portraits
+- number-seventeen
+
 ## Map Design
 - RKT
 - [Lexa04](https://github.com/mavpii)
