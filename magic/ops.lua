@@ -7,6 +7,18 @@
 
 local CasterOps = {}
 
+-- Splits a comma-separated WML list into trimmed, non-empty ids.
+-- Trimming is essential: scenario configs write lists with spaces after
+-- commas ("a, b, c"), and untrimmed ids never match the clean catalogue ids.
+local function parse_list(str)
+    local t = {}
+    for item in (str or ""):gmatch("[^,]+") do
+        item = item:match("^%s*(.-)%s*$")
+        if item ~= "" then table.insert(t, item) end
+    end
+    return t
+end
+
 ---------------------------------------------------------------------------
 -- Spell group queries
 ---------------------------------------------------------------------------
@@ -141,29 +153,23 @@ function CasterOps.apply_config(data, cfg)
     if cfg.description  then data.description  = cfg.description  end
 
     if cfg.unlocked_spells then
-        local list = {}
-        for s in cfg.unlocked_spells:gmatch("[^,]+") do table.insert(list, s) end
+        local list = parse_list(cfg.unlocked_spells)
         data.unlocked     = list
         data.unlocked_set = {}
         for _, s in ipairs(list) do data.unlocked_set[s] = true end
     end
 
     if cfg.equipped_spells then
-        local list = {}
-        for s in cfg.equipped_spells:gmatch("[^,]+") do table.insert(list, s) end
+        local list = parse_list(cfg.equipped_spells)
         data.equipped     = list
         data.equipped_set = {}
         for _, s in ipairs(list) do data.equipped_set[s] = true end
     end
 
-    for i = 1, 10 do
-        if cfg["spell_group_" .. i] then
-            local group = {}
-            for s in cfg["spell_group_" .. i]:gmatch("[^,]+") do
-                table.insert(group, s)
-            end
-            data.groups[i] = group
-        end
+    local gi = 1
+    while cfg["spell_group_" .. gi] do
+        data.groups[gi] = parse_list(cfg["spell_group_" .. gi])
+        gi = gi + 1
     end
 
     if cfg.spellcasting_allowed ~= nil then

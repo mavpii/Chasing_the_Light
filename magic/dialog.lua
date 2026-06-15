@@ -10,6 +10,20 @@ local T = wml.tag
 
 local spell_data -- set by init(), avoids circular require at load time
 
+-- Formats a spell's costs into a short colored string, or nil when free.
+-- Colors match the rest of the UI: XP cyan, HP red, gold yellow.
+-- Built with `..` (not table.concat): the translatable _"..." pieces are
+-- t_string userdata, which table.concat cannot handle.
+local function format_cost(spell)
+    local s
+    local function add(part) s = s and (s .. ", " .. part) or part end
+    if spell.xp_cost   then add("<span color='#00bbe6'>" .. spell.xp_cost   .. " " .. _"XP"   .. "</span>") end
+    if spell.hp_cost   then add("<span color='#cc3333'>" .. spell.hp_cost   .. " " .. _"HP"   .. "</span>") end
+    if spell.gold_cost then add("<span color='#FFD700'>" .. spell.gold_cost .. " " .. _"gold" .. "</span>") end
+    if spell.atk_cost  then add(spell.atk_cost .. " " .. _"attack") end
+    return s
+end
+
 ---------------------------------------------------------------------------
 -- Private: skill preprocessing
 -- Converts raw group data into display-ready tables, marking locked spells.
@@ -18,7 +32,12 @@ local spell_data -- set by init(), avoids circular require at load time
 -- Build a fast lookup map: spell_id → spell_def
 local function build_spell_index()
     local idx = {}
-    for _, s in ipairs(spell_data.skill_set) do idx[s.id] = s end
+    -- Use pairs (not ipairs): the catalogue is keyed by number but may have
+    -- gaps or be edited out of order; ipairs would silently drop every spell
+    -- after the first missing index.
+    for _, s in pairs(spell_data.skill_set) do
+        if type(s) == "table" and s.id then idx[s.id] = s end
+    end
     return idx
 end
 
@@ -106,8 +125,12 @@ local function build_skill_rows(groups, selecting, equipped_list)
             if equipped_spell then
                 local has_cost = equipped_spell.xp_cost or equipped_spell.gold_cost
                     or equipped_spell.hp_cost or equipped_spell.atk_cost
-                if has_cost then
-                    button = T.button{ id="button"..i, use_markup=true, label=equipped_spell.label }
+                -- Castable if it has a cost OR is explicitly flagged castable,
+                -- so a zero-cost spell can still be cast via a clickable button.
+                if has_cost or equipped_spell.castable then
+                    local cost = format_cost(equipped_spell)
+                    button = T.button{ id="button"..i, use_markup=true, label=equipped_spell.label,
+                        tooltip = cost and (_"Cost: " .. cost) or nil }
                 else
                     button = T.label{ id="button"..i, use_markup=true, label=equipped_spell.label }
                 end
@@ -162,6 +185,7 @@ local function build_footer(caster, caster_data, selecting)
         return T.row{ T.column{ T.grid{ T.row{
             T.column{ border="top,right", border_size=10,
                 T.button{ id="confirm_button", use_markup=true,
+                    tooltip=_"You must choose an unlocked spell in every group.",
                     label=_"Confirm Spells <small><i>(can be changed every scenario)</i></small>" }},
             T.column{ border="top,left",  border_size=10,
                 T.button{ id="wait_button", use_markup=true,
@@ -226,7 +250,7 @@ local function build_footer(caster, caster_data, selecting)
     end
 
     table.insert(rows, T.row{ T.column{ horizontal_alignment="center",
-        T.button{ id="confirm_button", use_markup=true, return_value=1, label="Cancel" }}})
+        T.button{ id="confirm_button", use_markup=true, return_value=1, label=_"Cancel" }}})
 
     local inner = T.grid{}
     for _, r in ipairs(rows) do table.insert(inner[2], r) end
@@ -288,7 +312,7 @@ local function make_preshow(caster, caster_data, groups, selecting)
 
         -- Active toggle: show Cancel if the object is already applied.
         if has_object(spell.id) then
-            btn.label = small_label("Cancel")
+            btn.label = small_label(_"Cancel")
             btn.on_button_click = function()
                 -- Set current_caster on ALL clients before the cancel event fires.
                 wesnoth.sync.invoke_command("magic_set_caster", { id = caster.id })
@@ -352,10 +376,20 @@ local function make_preshow(caster, caster_data, groups, selecting)
         end
     end
 
-    -- result_table: used only in select mode to track menu selections.
-    local result_table = {}
-
     return function(dlg)
+        -- Selection mode: keep Confirm disabled while any group still has a
+        -- "Locked" option selected — every pick must be a valid unlocked spell.
+        local function update_confirm_enabled()
+            local cb = dlg["confirm_button"]
+            if not cb then return end
+            for gi, g in ipairs(groups) do
+                local mb  = dlg["button" .. gi]
+                local sel = mb and g[mb.selected_index]
+                if sel and sel.id == "skill_locked" then cb.enabled = false; return end
+            end
+            cb.enabled = true
+        end
+
         for i, group in ipairs(groups) do
             local btn = dlg["button"..i]
 
@@ -368,17 +402,15 @@ local function make_preshow(caster, caster_data, groups, selecting)
                     end
                 end
 
-                -- Refresh image/label and update result_table whenever the menu changes.
+                -- Refresh the preview image/label whenever the menu changes,
+                -- and re-evaluate whether Confirm may be enabled.
                 local function refresh(b)
-                    if not group[1] then return end
                     local sel = group[b.selected_index]
-                    dlg["image"..i].label = sel.image
-                    dlg["label"..i].label = sel.description
-                    for j, spell in ipairs(group) do
-                        -- Store as boolean so evaluate_single sync is unambiguous.
-                        result_table[spell.id] = (j == b.selected_index
-                            and spell.id ~= "skill_locked")
+                    if sel then
+                        dlg["image"..i].label = sel.image
+                        dlg["label"..i].label = sel.description
                     end
+                    update_confirm_enabled()
                 end
                 refresh(btn)
                 btn.on_modified = refresh
@@ -416,9 +448,15 @@ local function make_preshow(caster, caster_data, groups, selecting)
             local cb = dlg["confirm_button"]
             if cb then
                 cb.on_button_click = function()
+                    -- Read each group's current menu selection directly, so the
+                    -- same spell may appear in multiple groups without collisions.
                     local new_eq = {}
-                    for spell_id, chosen in pairs(result_table) do
-                        if chosen == true then table.insert(new_eq, spell_id) end
+                    for gi, g in ipairs(groups) do
+                        local mb  = dlg["button" .. gi]
+                        local sel = mb and g[mb.selected_index]
+                        if sel and sel.id and sel.id ~= "skill_locked" then
+                            table.insert(new_eq, sel.id)
+                        end
                     end
                     wesnoth.sync.invoke_command("magic_sync_equipped", {
                         caster_id = caster.id,
@@ -456,7 +494,7 @@ local function make_preshow(caster, caster_data, groups, selecting)
             end
         end
 
-    end, result_table
+    end
 end
 
 ---------------------------------------------------------------------------
@@ -476,7 +514,7 @@ local function open_dialog(caster, caster_data, selecting)
 
     local groups = prepare_groups(caster_data)
     local dialog = build_layout(caster, caster_data, groups, selecting)
-    local preshow, result_table = make_preshow(caster, caster_data, groups, selecting)
+    local preshow = make_preshow(caster, caster_data, groups, selecting)
 
     -- Deselect caster so the dialog doesn't appear over a selected unit.
     wesnoth.interface.game_display.selected_unit = nil

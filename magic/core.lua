@@ -55,6 +55,27 @@ local function require_filter(cfg, tag_name)
         or wml.error("[" .. tag_name .. "] missing required [filter] tag")
 end
 
+-- Splits a comma-separated id list into trimmed, non-empty ids.
+-- Trimming matters: scenario macros may pass "skill_a, skill_b" with spaces.
+local function split_ids(str)
+    local t = {}
+    for item in (str or ""):gmatch("[^,]+") do
+        item = item:match("^%s*(.-)%s*$")
+        if item ~= "" then t[#t + 1] = item end
+    end
+    return t
+end
+
+-- Finds matching units both on the map and on the recall list, so casters can
+-- be assigned/modified even while they are waiting on the recall list.
+local function find_casters(filter)
+    local units = wesnoth.units.find_on_map(filter)
+    for _, u in ipairs(wesnoth.units.find_on_recall(filter)) do
+        units[#units + 1] = u
+    end
+    return units
+end
+
 ---------------------------------------------------------------------------
 -- SKILL COST  (synced command — runs identically on all clients)
 ---------------------------------------------------------------------------
@@ -106,7 +127,7 @@ end
 ---------------------------------------------------------------------------
 
 wml_actions["assign_caster"] = function(cfg)
-    local units = wesnoth.units.find(require_filter(cfg, "assign_caster"))
+    local units = find_casters(require_filter(cfg, "assign_caster"))
     for _, u in ipairs(units) do
         local data = CasterState.from_config(u, cfg)
         CasterState.save(data)
@@ -122,7 +143,7 @@ end
 ---------------------------------------------------------------------------
 
 wml_actions["modify_caster"] = function(cfg)
-    local units = wesnoth.units.find(require_filter(cfg, "modify_caster"))
+    local units = find_casters(require_filter(cfg, "modify_caster"))
     for _, u in ipairs(units) do
         local data = CasterState.load(u.id)
         if data then
@@ -141,7 +162,7 @@ end
 ---------------------------------------------------------------------------
 
 wml_actions["remove_caster"] = function(cfg)
-    local units = wesnoth.units.find(require_filter(cfg, "remove_caster"))
+    local units = wesnoth.units.find_on_map(require_filter(cfg, "remove_caster"))
     for _, u in ipairs(units) do
         if CasterState.exists(u.id) then
             CasterState.delete(u.id)
@@ -158,11 +179,11 @@ end
 
 wml_actions["unlock_spell"] = function(cfg)
     if not cfg.spell_id then return end
-    local units = wesnoth.units.find(require_filter(cfg, "unlock_spell"))
+    local units = wesnoth.units.find_on_map(require_filter(cfg, "unlock_spell"))
     for _, u in ipairs(units) do
         local data = CasterState.load(u.id)
         if data then
-            for spell_id in cfg.spell_id:gmatch("[^,]+") do
+            for _, spell_id in ipairs(split_ids(cfg.spell_id)) do
                 CasterOps.unlock(data, spell_id)
             end
             CasterState.save(data)
@@ -172,11 +193,11 @@ end
 
 wml_actions["lock_spell"] = function(cfg)
     if not cfg.spell_id then return end
-    local units = wesnoth.units.find(require_filter(cfg, "lock_spell"))
+    local units = wesnoth.units.find_on_map(require_filter(cfg, "lock_spell"))
     for _, u in ipairs(units) do
         local data = CasterState.load(u.id)
         if data then
-            for spell_id in cfg.spell_id:gmatch("[^,]+") do
+            for _, spell_id in ipairs(split_ids(cfg.spell_id)) do
                 CasterOps.lock(data, spell_id)
             end
             CasterState.save(data)
@@ -190,11 +211,11 @@ end
 
 wml_actions["equip_spell"] = function(cfg)
     if not cfg.spell_id then return end
-    local units = wesnoth.units.find(require_filter(cfg, "equip_spell"))
+    local units = wesnoth.units.find_on_map(require_filter(cfg, "equip_spell"))
     for _, u in ipairs(units) do
         local data = CasterState.load(u.id)
         if data then
-            for spell_id in cfg.spell_id:gmatch("[^,]+") do
+            for _, spell_id in ipairs(split_ids(cfg.spell_id)) do
                 CasterOps.equip(data, spell_id)
             end
             CasterState.save(data)
@@ -205,11 +226,11 @@ end
 
 wml_actions["unequip_spell"] = function(cfg)
     if not cfg.spell_id then return end
-    local units = wesnoth.units.find(require_filter(cfg, "unequip_spell"))
+    local units = wesnoth.units.find_on_map(require_filter(cfg, "unequip_spell"))
     for _, u in ipairs(units) do
         local data = CasterState.load(u.id)
         if data then
-            for spell_id in cfg.spell_id:gmatch("[^,]+") do
+            for _, spell_id in ipairs(split_ids(cfg.spell_id)) do
                 CasterOps.unequip(data, spell_id)
             end
             CasterState.save(data)
@@ -226,7 +247,7 @@ end
 wml_actions["find_equipped_spell"] = function(cfg)
     wml.variables["equipped_spell_found"] = false
     if not cfg.spell_id then return end
-    local units = wesnoth.units.find(require_filter(cfg, "find_equipped_spell"))
+    local units = wesnoth.units.find_on_map(require_filter(cfg, "find_equipped_spell"))
     for _, u in ipairs(units) do
         local data = CasterState.load(u.id)
         if data and CasterOps.is_equipped(data, cfg.spell_id) then
@@ -239,7 +260,7 @@ end
 wml_actions["find_unlocked_spell"] = function(cfg)
     wml.variables["equipped_spell_found"] = false
     if not cfg.spell_id then return end
-    local units = wesnoth.units.find(require_filter(cfg, "find_unlocked_spell"))
+    local units = wesnoth.units.find_on_map(require_filter(cfg, "find_unlocked_spell"))
     for _, u in ipairs(units) do
         local data = CasterState.load(u.id)
         if data and CasterOps.is_unlocked(data, cfg.spell_id) then
@@ -254,7 +275,7 @@ end
 ---------------------------------------------------------------------------
 
 wml_actions["caster_status"] = function(cfg)
-    local units = wesnoth.units.find(require_filter(cfg, "caster_status"))
+    local units = wesnoth.units.find_on_map(require_filter(cfg, "caster_status"))
     for _, u in ipairs(units) do
         local data = CasterState.load(u.id)
         if data then
@@ -266,7 +287,7 @@ wml_actions["caster_status"] = function(cfg)
 end
 
 wml_actions["caster_advance"] = function(cfg)
-    local units = wesnoth.units.find(require_filter(cfg, "caster_advance"))
+    local units = wesnoth.units.find_on_map(require_filter(cfg, "caster_advance"))
     for _, u in ipairs(units) do
         local data = CasterState.load(u.id)
         if data then
@@ -283,7 +304,7 @@ end
 ---------------------------------------------------------------------------
 
 wml_actions["caster_reselect"] = function(cfg)
-    local units = wesnoth.units.find(require_filter(cfg, "caster_reselect"))
+    local units = wesnoth.units.find_on_map(require_filter(cfg, "caster_reselect"))
     for _, u in ipairs(units) do
         local data = CasterState.load(u.id)
         if data then
@@ -300,7 +321,7 @@ end
 ---------------------------------------------------------------------------
 
 wml_actions["caster_max_casts"] = function(cfg)
-    local units = wesnoth.units.find(require_filter(cfg, "caster_max_casts"))
+    local units = wesnoth.units.find_on_map(require_filter(cfg, "caster_max_casts"))
     for _, u in ipairs(units) do
         local data = CasterState.load(u.id)
         if data then
@@ -326,7 +347,7 @@ end
 ---------------------------------------------------------------------------
 
 wml_actions["refresh_caster_animations"] = function(cfg)
-    local units = wesnoth.units.find(require_filter(cfg, "refresh_caster_animations"))
+    local units = wesnoth.units.find_on_map(require_filter(cfg, "refresh_caster_animations"))
     for _, u in ipairs(units) do
         if CasterState.exists(u.id) then
             wml.fire.remove_object({ id=u.id, object_id="magic_system_animations" })
@@ -397,13 +418,13 @@ end
 
 wml_actions["select_caster_skills"] = function(cfg)
     wesnoth.audio.play("miss-2.ogg")
-    local units = wesnoth.units.find(require_filter(cfg, "select_caster_skills"))
+    local units = wesnoth.units.find_on_map(require_filter(cfg, "select_caster_skills"))
     for _, u in ipairs(units) do open_for_unit(u, true) end
 end
 
 wml_actions["show_caster_skills"] = function(cfg)
     wesnoth.audio.play("miss-2.ogg")
-    local units = wesnoth.units.find(require_filter(cfg, "show_caster_skills"))
+    local units = wesnoth.units.find_on_map(require_filter(cfg, "show_caster_skills"))
     for _, u in ipairs(units) do open_for_unit(u, false) end
 end
 

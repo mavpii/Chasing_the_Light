@@ -13,7 +13,10 @@ local CasterState = {}
 local function parse_list(str)
     local t = {}
     for item in (str or ""):gmatch("[^,]+") do
-        table.insert(t, item)
+        -- Trim surrounding whitespace so " skill_x" (from comma-lists written
+        -- with spaces in scenario configs) matches the clean "skill_x" id.
+        item = item:match("^%s*(.-)%s*$")
+        if item ~= "" then table.insert(t, item) end
     end
     return t
 end
@@ -43,9 +46,10 @@ function CasterState.load(unit_id)
     local equipped_list = parse_list(wml.variables[prefix .. ".spell_equipped"])
 
     local groups = {}
-    for i = 1, 10 do
-        local g = wml.variables[prefix .. ".spell_group_" .. i]
-        if g then groups[i] = parse_list(g) end
+    local gi = 1
+    while wml.variables[prefix .. ".spell_group_" .. gi] do
+        groups[gi] = parse_list(wml.variables[prefix .. ".spell_group_" .. gi])
+        gi = gi + 1
     end
 
     return {
@@ -87,13 +91,17 @@ function CasterState.save(data)
     wml.variables[prefix .. ".spell_unlocked"] = table.concat(data.unlocked, ",")
     wml.variables[prefix .. ".spell_equipped"] = table.concat(data.equipped, ",")
 
-    for i = 1, 10 do
-        local key = prefix .. ".spell_group_" .. i
-        if data.groups[i] then
-            wml.variables[key] = table.concat(data.groups[i], ",")
+    -- Write every group, and clear any stale group variables left over from a
+    -- previous (larger) group count. Scans until both data and WML run out.
+    local gi = 1
+    while data.groups[gi] or wml.variables[prefix .. ".spell_group_" .. gi] do
+        local key = prefix .. ".spell_group_" .. gi
+        if data.groups[gi] then
+            wml.variables[key] = table.concat(data.groups[gi], ",")
         else
             wml.variables[key] = nil
         end
+        gi = gi + 1
     end
 
     wml.variables[prefix .. ".utils_spellcasting_allowed"] = data.spellcasting_disabled and "disabled" or nil
@@ -124,10 +132,10 @@ function CasterState.from_config(unit, cfg)
         .. " <b>double-click on " .. unit.name .. " to cast them</b>."
 
     local groups = {}
-    for i = 1, 10 do
-        if cfg["spell_group_" .. i] then
-            groups[i] = parse_list(cfg["spell_group_" .. i])
-        end
+    local gi = 1
+    while cfg["spell_group_" .. gi] do
+        groups[gi] = parse_list(cfg["spell_group_" .. gi])
+        gi = gi + 1
     end
 
     local unlocked_list = parse_list(cfg.unlocked_spells or "")
