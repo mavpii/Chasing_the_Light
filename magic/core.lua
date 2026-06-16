@@ -133,7 +133,11 @@ wml_actions["magic_apply_selection"] = function(cfg)
     local id = cfg.id
     if not id then return end
 
-    if cfg.wait == "yes" then
+    -- "Choose Later". NOTE: wait travels through wesnoth.sync.invoke_command, and
+    -- Wesnoth coerces the WML attribute "yes" into the Lua boolean true on the way
+    -- back, so the value arrives here as `true`, not the string "yes". Accept both
+    -- so the flag is always set (this was silently a no-op when only "yes" matched).
+    if cfg.wait == "yes" or cfg.wait == true then
         wml.variables["caster_" .. id .. ".wait_to_select_spells"] = "yes"
         return
     end
@@ -147,8 +151,10 @@ wml_actions["magic_apply_selection"] = function(cfg)
     -- the caster's groups/equipped over it.
     if #list == 0 then return end
 
-    if data.free_assign then
-        -- Free-assign: each entry becomes a one-spell slot, unlocked + equipped.
+    if data.free_assign or data.free_unlocked then
+        -- Free-assign / free-pick: each entry becomes a one-spell slot, unlocked
+        -- + equipped. (In free-pick the spells are already unlocked, so the
+        -- unlock step inside assign_free is just idempotent.)
         CasterOps.assign_free(data, list)
     else
         -- Standard: just replace the equipped list.
@@ -383,6 +389,24 @@ wml_actions["caster_free_assign"] = function(cfg)
         local data = CasterState.load(u.id)
         if data then
             CasterOps.set_free_assign(data, cfg.free_assign_allowed == true)
+            CasterState.save(data)
+        end
+    end
+end
+
+---------------------------------------------------------------------------
+-- CASTER FREE UNLOCKED (free-pick)
+-- Enables/disables free-pick mode: same picker UI as free-assign, but the
+-- grid is restricted to the caster's UNLOCKED spells only.
+-- Use: [caster_free_unlocked] free_unlocked_allowed=yes [filter]...[/filter] [/caster_free_unlocked]
+---------------------------------------------------------------------------
+
+wml_actions["caster_free_unlocked"] = function(cfg)
+    local units = wesnoth.units.find_on_map(require_filter(cfg, "caster_free_unlocked"))
+    for _, u in ipairs(units) do
+        local data = CasterState.load(u.id)
+        if data then
+            CasterOps.set_free_unlocked(data, cfg.free_unlocked_allowed == true)
             CasterState.save(data)
         end
     end

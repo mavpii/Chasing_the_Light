@@ -141,6 +141,12 @@ function CasterOps.set_free_assign(data, enabled)
     data.free_assign = enabled == true
 end
 
+-- Enable or disable free-pick mode: same picker UI as free-assign, but the grid
+-- is restricted to spells the caster has already unlocked.
+function CasterOps.set_free_unlocked(data, enabled)
+    data.free_unlocked = enabled == true
+end
+
 -- Free-assign: rebuild the caster's slots from an ordered list of spell ids
 -- (one id per slot). Each slot becomes a one-spell group containing the chosen
 -- spell, the spell is unlocked (so it is castable), and the equipped list is
@@ -204,6 +210,10 @@ function CasterOps.apply_config(data, cfg)
 
     if cfg.free_assign ~= nil then
         data.free_assign = (cfg.free_assign == true)
+    end
+
+    if cfg.free_unlocked ~= nil then
+        data.free_unlocked = (cfg.free_unlocked == true)
     end
 end
 

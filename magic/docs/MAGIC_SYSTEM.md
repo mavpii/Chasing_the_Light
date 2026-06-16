@@ -97,6 +97,7 @@ All stored as WML variables under the prefix `caster_<unit_id>.*`.
 | `max_casts` | `.max_casts` | number (≥1) | Upgrade: casts allowed per turn |
 | `casts_this_turn` | `.casts_this_turn` | number | Counter reset each turn start |
 | `free_assign` | `.free_assign` | `true` / nil | Upgrade: pick any spell into any slot |
+| `free_unlocked` | `.free_unlocked` | `true` / nil | Upgrade: free-pick — same UI as free_assign, restricted to unlocked spells |
 
 The `caster_registry` WML variable holds a comma-list of all registered unit IDs. It lets `caster_set_menu` iterate only active casters instead of scanning the full unit list.
 
@@ -222,6 +223,24 @@ unlocked, equipped, and turned into its own one-spell group, so cast mode and
 
 Slot count equals the caster's current number of `spell_group_N` entries.
 
+### `[caster_free_unlocked]` *(upgrade — free-pick)*
+Enables or disables **free-pick** mode. This is the free-assign UI (one clickable
+slot per group, opening a picker grid), but the picker is **restricted to the
+caster's unlocked spells** instead of the full catalogue. The player can freely
+place any *unlocked* spell into any slot.
+
+```cfg
+[caster_free_unlocked]
+    [filter] id=Haralin [/filter]
+    free_unlocked_allowed = yes   # or no to remove
+[/caster_free_unlocked]
+```
+
+If both `free_assign` and `free_unlocked` are set, `free_assign` wins (full
+catalogue), since it is the strict superset. Commit flows through
+`[magic_apply_selection]` exactly like free-assign (`assign_free`), so cast mode
+and `refresh_skills` are unchanged.
+
 ### `[refresh_skills]`
 Re-fires the `refresh_skills` WML event which causes `spells.cfg` to add/remove unit abilities matching the current equipped list. Called automatically after equip/unequip changes.
 
@@ -264,6 +283,7 @@ Opens the spell dialog in cast mode (or selection mode if `wait_to_select` is se
 | `{CASTER_RESELECT (id=X) yes/no}` | `[caster_reselect]` | Upgrade: free reselect |
 | `{CASTER_MAX_CASTS (id=X) N}` | `[caster_max_casts]` | Upgrade: multi-cast |
 | `{CASTER_FREE_ASSIGN (id=X) yes/no}` | `[caster_free_assign]` | Upgrade: any spell in any slot |
+| `{CASTER_FREE_UNLOCKED (id=X) yes/no}` | `[caster_free_unlocked]` | Upgrade: free-pick — any unlocked spell in any slot |
 
 ---
 
@@ -410,6 +430,24 @@ slot (the slot's own current spell stays selectable). The disabled set is rebuil
 from the other slots' choices each time the picker opens.
 
 ---
+
+## Upgrade: Free Pick (unlocked-only)
+
+Unlocked per-caster via `[caster_free_unlocked] free_unlocked_allowed=yes`.
+
+Free-pick reuses the entire free-assign UI and commit path — one clickable slot
+per group, a picker grid, confirm-disabled-until-full, no-duplicate handling, and
+`assign_free` on commit. The **only** difference is the picker's contents: instead
+of `all_spells_sorted()` over the whole catalogue, the grid is filtered to the
+caster's `unlocked_set` via `open_picker`'s `allowed_set` argument.
+
+To keep state consistent, any slot that opens pre-filled with a now-locked spell is
+cleared to empty (`false`), so a locked spell can never be confirmed through
+free-pick. If a caster has both `free_assign` and `free_unlocked`, `free_assign`
+takes precedence (the full catalogue), since it is the strict superset.
+
+This is the lightest-weight way to give a caster "free choice, but only from what
+they've earned": no new dialog, no new commit logic, just a filtered picker.
 
 ## File map
 

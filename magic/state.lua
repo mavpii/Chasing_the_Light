@@ -52,6 +52,13 @@ function CasterState.load(unit_id)
         gi = gi + 1
     end
 
+    -- Normalize the "wait to select" flag. It is stored as the string "yes", but
+    -- Wesnoth coerces boolean-like attribute values ("yes"/"no") to Lua booleans
+    -- on read, so wml.variables returns `true` here, not "yes". Collapse both forms
+    -- to a consistent "yes"/nil so downstream `== "yes"` checks (open_for_unit) work.
+    local wts = wml.variables[prefix .. ".wait_to_select_spells"]
+    local wait_to_select = (wts == "yes" or wts == true) and "yes" or nil
+
     return {
         id            = unit_id,
         title_select  = wml.variables[prefix .. ".u_title_select"],
@@ -70,7 +77,7 @@ function CasterState.load(unit_id)
         advancement_disabled  = wml.variables[prefix .. ".utils_advancement_allowed"]  == "disabled",
         spellcasted_this_turn = wml.variables[prefix .. ".spellcasted_this_turn"],
         polymorphed           = wml.variables[prefix .. ".polymorphed"],
-        wait_to_select        = wml.variables[prefix .. ".wait_to_select_spells"],
+        wait_to_select        = wait_to_select,
 
         -- Upgrade: free spell reselect at any time.
         reselect_free   = wml.variables[prefix .. ".reselect_free"] == true,
@@ -79,6 +86,9 @@ function CasterState.load(unit_id)
         casts_this_turn = tonumber(wml.variables[prefix .. ".casts_this_turn"]) or 0,
         -- Upgrade: free assign (pick any spell into any slot from a picker grid).
         free_assign     = wml.variables[prefix .. ".free_assign"] == true,
+        -- Upgrade: free pick — same picker UI as free assign, but the grid is
+        -- restricted to the caster's UNLOCKED spells only.
+        free_unlocked   = wml.variables[prefix .. ".free_unlocked"] == true,
     }
 end
 
@@ -116,6 +126,7 @@ function CasterState.save(data)
     wml.variables[prefix .. ".max_casts"]       = (data.max_casts ~= nil and data.max_casts > 1) and data.max_casts or nil
     wml.variables[prefix .. ".casts_this_turn"] = (data.casts_this_turn ~= nil and data.casts_this_turn > 0) and data.casts_this_turn or nil
     wml.variables[prefix .. ".free_assign"]     = data.free_assign and true or nil
+    wml.variables[prefix .. ".free_unlocked"]   = data.free_unlocked and true or nil
 end
 
 -- Removes all WML variables for this caster.
@@ -168,6 +179,7 @@ function CasterState.from_config(unit, cfg)
         max_casts       = 1,
         casts_this_turn = 0,
         free_assign     = (cfg.free_assign == true),
+        free_unlocked   = (cfg.free_unlocked == true),
     }
 end
 

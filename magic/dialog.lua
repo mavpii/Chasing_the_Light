@@ -24,6 +24,14 @@ local function format_cost(spell)
     return s
 end
 
+-- Neutral label for a locked subskill, so its real name/cost isn't spoiled.
+-- Padded with spaces (like the real subskill labels in table.lua) so the button
+-- auto-sizes wide enough at build time — otherwise the word "Locked" gets clipped
+-- to "Locke" on buttons whose original (shorter) label set a narrow width.
+local function locked_subskill_label()
+    return "   <span color='grey'>" .. _"Locked" .. "</span>   "
+end
+
 ---------------------------------------------------------------------------
 -- Private: skill preprocessing
 -- Converts raw group data into display-ready tables, marking locked spells.
@@ -126,9 +134,18 @@ end
 -- or nil if the player cancelled. Pure local UI: no game state changes here.
 -- `used` is a set of spell ids already taken by OTHER slots; those cells are
 -- shown disabled so the same spell cannot be picked into two slots.
-local function open_picker(used)
+-- `allowed_set` (optional) is a set of spell ids the player may pick; when given,
+-- the grid is filtered to those spells only (used by free-pick / unlocked mode).
+local function open_picker(used, allowed_set)
     used = used or {}
     local spells = all_spells_sorted()
+    if allowed_set then
+        local filtered = {}
+        for _, s in ipairs(spells) do
+            if allowed_set[s.id] then filtered[#filtered + 1] = s end
+        end
+        spells = filtered
+    end
     local layout = build_picker_layout(spells)
     local chosen = nil
 
@@ -252,7 +269,7 @@ local function build_header(caster_data, selecting)
     }
 end
 
-local function build_skill_rows(groups, selecting, equipped_list)
+local function build_skill_rows(groups, selecting, equipped_list, unlocked_set)
     local equipped_set = {}
     for _, s in ipairs(equipped_list) do equipped_set[s] = true end
 
@@ -295,9 +312,12 @@ local function build_skill_rows(groups, selecting, equipped_list)
                 if equipped_spell.subskills then
                     subskill_row = T.row{}
                     for _, sub in ipairs(equipped_spell.subskills) do
-                        -- Subskills are always considered unlocked if the parent is unlocked.
+                        -- Locked subskills show a neutral "Locked" label (set here, at
+                        -- build time, so the button sizes to it and the text never clips).
+                        local sub_label = (unlocked_set and not unlocked_set[sub.id])
+                            and locked_subskill_label() or sub.label
                         table.insert(subskill_row[2],
-                            T.column{ T.button{ id=sub.id, use_markup=true, label=sub.label }})
+                            T.column{ T.button{ id=sub.id, use_markup=true, label=sub_label }})
                     end
                 end
             else
@@ -471,7 +491,7 @@ local function build_layout(caster, caster_data, groups, selecting, free_slots)
     if free_slots then
         skill_grid = build_free_select_rows(free_slots, build_spell_index())
     else
-        skill_grid = build_skill_rows(groups, selecting, caster_data.equipped)
+        skill_grid = build_skill_rows(groups, selecting, caster_data.equipped, caster_data.unlocked_set)
     end
     table.insert(grid[2], T.row{ T.column{
         horizontal_alignment="left", skill_grid }})
@@ -501,8 +521,23 @@ local function make_preshow(caster, caster_data, groups, selecting, free_slots)
     -- returns early, never touching the group/cast wiring below.
     if free_slots then
         local spell_index = build_spell_index()
+
+        -- Free-pick mode: restrict the picker grid to the caster's unlocked
+        -- spells. Plain free-assign (nil) shows the whole catalogue. If both
+        -- flags are set, free-assign wins (full catalogue) — it is the superset.
+        local allowed_set = (caster_data.free_unlocked and not caster_data.free_assign)
+            and caster_data.unlocked_set or nil
+
         local slot_choice = {}
-        for i, spell_id in ipairs(free_slots) do slot_choice[i] = spell_id end
+        for i, spell_id in ipairs(free_slots) do
+            -- Drop any pre-filled pick that isn't selectable in this mode, so a
+            -- locked spell can never be confirmed via free-pick.
+            if spell_id and allowed_set and not allowed_set[spell_id] then
+                slot_choice[i] = false
+            else
+                slot_choice[i] = spell_id
+            end
+        end
 
         return function(dlg)
             local function refresh_slot(i)
@@ -537,7 +572,7 @@ local function make_preshow(caster, caster_data, groups, selecting, free_slots)
                         for j = 1, #free_slots do
                             if j ~= i and slot_choice[j] then used[slot_choice[j]] = true end
                         end
-                        local picked = open_picker(used)
+                        local picked = open_picker(used, allowed_set)
                         if picked then
                             slot_choice[i] = picked
                             refresh_slot(i)
@@ -609,6 +644,11 @@ local function make_preshow(caster, caster_data, groups, selecting, free_slots)
         local casts_done = caster_data.casts_this_turn or 0
         local blocked_label
         if not caster_data.unlocked_set[spell.id] then
+            -- Locked subskill: hide its real name/cost so an un-earned upgrade
+            -- isn't spoiled — show a neutral "Locked" tag instead. (Main equipped
+            -- spells are always unlocked, so in practice this only hits subskills.)
+            -- Uses the same padded label as build time, so the width already fits.
+            if small then btn.label = locked_subskill_label() end
             btn.enabled = false; return
         elseif casts_done >= max_casts then
             blocked_label = (max_casts == 1)
@@ -793,8 +833,10 @@ local function open_dialog(caster, caster_data, selecting)
         and sides[1].is_local
         and wml.variables["side_number"] == sides[1].side) then return end
 
-    -- Free-assign mode only applies while selecting; cast mode is unchanged.
-    local free_slots = (selecting and caster_data.free_assign)
+    -- Free-assign and free-pick (unlocked-only) both use the slot/picker UI while
+    -- selecting; cast mode is unchanged. The two differ only in which spells the
+    -- picker offers (see open_picker's allowed_set in make_preshow).
+    local free_slots = (selecting and (caster_data.free_assign or caster_data.free_unlocked))
         and prepare_free_slots(caster_data) or nil
 
     local groups = free_slots and {} or prepare_groups(caster_data)
