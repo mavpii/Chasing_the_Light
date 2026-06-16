@@ -12,10 +12,10 @@ local CasterState = {}
 
 local function parse_list(str)
     local t = {}
-    for item in (str or ""):gmatch("[^,]+") do
+    for raw in (str or ""):gmatch("[^,]+") do
         -- Trim surrounding whitespace so " skill_x" (from comma-lists written
         -- with spaces in scenario configs) matches the clean "skill_x" id.
-        item = item:match("^%s*(.-)%s*$")
+        local item = raw:match("^%s*(.-)%s*$")
         if item ~= "" then table.insert(t, item) end
     end
     return t
@@ -77,6 +77,8 @@ function CasterState.load(unit_id)
         -- Upgrade: multi-cast (how many spells can be cast per turn).
         max_casts       = tonumber(wml.variables[prefix .. ".max_casts"]) or 1,
         casts_this_turn = tonumber(wml.variables[prefix .. ".casts_this_turn"]) or 0,
+        -- Upgrade: free assign (pick any spell into any slot from a picker grid).
+        free_assign     = wml.variables[prefix .. ".free_assign"] == true,
     }
 end
 
@@ -113,6 +115,7 @@ function CasterState.save(data)
     wml.variables[prefix .. ".reselect_free"]   = data.reselect_free and true or nil
     wml.variables[prefix .. ".max_casts"]       = (data.max_casts ~= nil and data.max_casts > 1) and data.max_casts or nil
     wml.variables[prefix .. ".casts_this_turn"] = (data.casts_this_turn ~= nil and data.casts_this_turn > 0) and data.casts_this_turn or nil
+    wml.variables[prefix .. ".free_assign"]     = data.free_assign and true or nil
 end
 
 -- Removes all WML variables for this caster.
@@ -164,6 +167,7 @@ function CasterState.from_config(unit, cfg)
         reselect_free   = false,
         max_casts       = 1,
         casts_this_turn = 0,
+        free_assign     = (cfg.free_assign == true),
     }
 end
 

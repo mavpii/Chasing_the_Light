@@ -59,8 +59,8 @@ end
 -- Trimming matters: scenario macros may pass "skill_a, skill_b" with spaces.
 local function split_ids(str)
     local t = {}
-    for item in (str or ""):gmatch("[^,]+") do
-        item = item:match("^%s*(.-)%s*$")
+    for raw in (str or ""):gmatch("[^,]+") do
+        local item = raw:match("^%s*(.-)%s*$")
         if item ~= "" then t[#t + 1] = item end
     end
     return t
@@ -106,20 +106,59 @@ function wesnoth.custom_synced_commands.magic_set_caster(t)
     wml.variables["current_caster"] = t.id
 end
 
--- Synced: write equipped spells + refresh skill abilities on ALL clients.
--- Called from dialog.lua confirm/wait button clicks via wesnoth.sync.invoke_command.
--- Must be called from inside show_dialog button clicks (not after show_dialog returns).
-function wesnoth.custom_synced_commands.magic_sync_equipped(t)
-    if t.wait == "yes" then
-        -- "Choose Later": only set the wait flag, don't touch spell_equipped.
-        wml.variables["caster_" .. t.caster_id .. ".wait_to_select_spells"] = "yes"
-    else
-        -- "Confirm": update equipped list and clear wait flag.
-        wml.variables["caster_" .. t.caster_id .. ".spell_equipped"] =
-            (t.equipped ~= "") and t.equipped or nil
-        wml.variables["caster_" .. t.caster_id .. ".wait_to_select_spells"] = nil
-        wml.fire("refresh_skills", { id = t.caster_id })
+-- Commits a spell selection on ALL clients. The chosen spells are passed as the
+-- command's own parameters (t.equipped / t.wait), so the data travels inside the
+-- synced packet — unlike the earlier do_command+[set_variable] hand-off, where the
+-- variable set inside do_command was not visible to the fired event (equipped
+-- arrived empty). Safe because the selection dialog is always opened from an
+-- unsynced context (right-click menu, double-click, or the deferred RESELECT).
+function wesnoth.custom_synced_commands.magic_commit(t)
+    wml.variables["current_caster"] = t.id
+    wesnoth.wml_actions.magic_apply_selection({ id = t.id, equipped = t.equipped, wait = t.wait })
+end
+
+-- Applies a spell-selection result to a caster, then re-applies its abilities.
+-- Invoked on every client by the `magic_commit` synced command (above), which the
+-- dialog's Confirm / Choose Later button handlers call via wesnoth.sync.invoke_command.
+-- The chosen spells travel as command PARAMETERS (id/equipped/wait), not through a
+-- WML variable — the earlier do_command+[set_variable] hand-off delivered the spells
+-- empty, because the variable set inside do_command was not visible to the fired event.
+-- invoke_command is safe here because the dialog is always opened from an unsynced
+-- context (right-click menu, double-click, or RESELECT deferred to a mouse move).
+--
+-- Parameters: id, equipped (comma-list, one spell per slot in free-assign mode),
+--             wait ("yes" = "Choose Later").
+-- Free-assign vs. standard is decided by the caster's own free_assign flag.
+wml_actions["magic_apply_selection"] = function(cfg)
+    local id = cfg.id
+    if not id then return end
+
+    if cfg.wait == "yes" then
+        wml.variables["caster_" .. id .. ".wait_to_select_spells"] = "yes"
+        return
     end
+
+    local data = CasterState.load(id)
+    if not data then return end
+
+    local list = split_ids(cfg.equipped or "")
+    -- Safety: a confirmed selection always has at least one spell (Confirm is disabled
+    -- otherwise). An empty list here means something went wrong upstream — never wipe
+    -- the caster's groups/equipped over it.
+    if #list == 0 then return end
+
+    if data.free_assign then
+        -- Free-assign: each entry becomes a one-spell slot, unlocked + equipped.
+        CasterOps.assign_free(data, list)
+    else
+        -- Standard: just replace the equipped list.
+        data.equipped     = list
+        data.equipped_set = {}
+        for _, s in ipairs(list) do data.equipped_set[s] = true end
+    end
+    data.wait_to_select = nil
+    CasterState.save(data)
+    wml.fire("refresh_skills", { id = id })
 end
 
 ---------------------------------------------------------------------------
@@ -332,6 +371,24 @@ wml_actions["caster_max_casts"] = function(cfg)
 end
 
 ---------------------------------------------------------------------------
+-- CASTER FREE ASSIGN
+-- Enables/disables free-assign mode: the spell selection dialog lets the
+-- player pick ANY spell into ANY slot through a picker grid.
+-- Use: [caster_free_assign] free_assign_allowed=yes [filter]...[/filter] [/caster_free_assign]
+---------------------------------------------------------------------------
+
+wml_actions["caster_free_assign"] = function(cfg)
+    local units = wesnoth.units.find_on_map(require_filter(cfg, "caster_free_assign"))
+    for _, u in ipairs(units) do
+        local data = CasterState.load(u.id)
+        if data then
+            CasterOps.set_free_assign(data, cfg.free_assign_allowed == true)
+            CasterState.save(data)
+        end
+    end
+end
+
+---------------------------------------------------------------------------
 -- REFRESH SKILLS
 -- Sets current_caster and fires the refresh_skills WML event (defined in spells.cfg).
 ---------------------------------------------------------------------------
@@ -416,10 +473,36 @@ local function open_for_unit(u, force_select)
     end
 end
 
+-- Opening the selection dialog must happen from an UNSYNCED context — that's why
+-- the right-click menu (registered synced=false) works. When [select_caster_skills]
+-- / RESELECT_SKILLS is fired from a synced game event (e.g. moveto, mid-move),
+-- open_dialog's evaluate_single + do_command commit can't run and the chosen spells
+-- are silently dropped. So defer the open to the next mouse move — an unsynced
+-- moment — the same approach RESELECT_SKILLS_AFTER_OBJECTIVES already relies on.
+local deferred_select_ids = {}
+
 wml_actions["select_caster_skills"] = function(cfg)
-    wesnoth.audio.play("miss-2.ogg")
     local units = wesnoth.units.find_on_map(require_filter(cfg, "select_caster_skills"))
-    for _, u in ipairs(units) do open_for_unit(u, true) end
+    if #units == 0 then return end
+
+    local schedule = (#deferred_select_ids == 0) -- only install the handler once
+    for _, u in ipairs(units) do
+        deferred_select_ids[#deferred_select_ids + 1] = u.id
+    end
+    if not schedule then return end
+
+    local prev = wesnoth.game_events.on_mouse_move
+    wesnoth.game_events.on_mouse_move = function(x, y)
+        wesnoth.game_events.on_mouse_move = prev -- one-shot: restore previous handler
+        local ids = deferred_select_ids
+        deferred_select_ids = {}
+        wesnoth.audio.play("miss-2.ogg")
+        for _, id in ipairs(ids) do
+            local u = wesnoth.units.find_on_map{ id = id }[1]
+            if u then open_for_unit(u, true) end
+        end
+        if prev then return prev(x, y) end
+    end
 end
 
 wml_actions["show_caster_skills"] = function(cfg)

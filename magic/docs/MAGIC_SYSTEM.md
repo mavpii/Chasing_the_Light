@@ -34,8 +34,42 @@ utils.cfg
 | GUI (dialog) | Local client only | `wesnoth.sync.evaluate_single` |
 | Costs (XP/HP/Gold/ATK) | All clients | `wesnoth.sync.invoke_command("spellcasting_cost", …)` |
 | Casts-per-turn counter | All clients | `casts_increment=true` flag in `spellcasting_cost` |
-| Spell selection result | All clients | `evaluate_single` return value (boolean map) |
+| Spell selection picker | Local client only | `gui.show_dialog` inside `evaluate_single`; choice via shared Lua table |
+| Commit selection + re-apply abilities | All clients | `do_command{ set_variable; fire_event=magic_commit_selection }` inside `evaluate_single` |
 | All other caster state | All clients | WML variables (auto-synced) |
+
+**Committing a selection (and why it mirrors the cast path).** The selection/picker dialog
+only *collects* the player's choice into a shared Lua table (`choice`); it does **not** write
+any game state. This is the exact pattern spell casting uses: the button handlers fill an
+upvalue, and the commit is read back and issued **inside** the `evaluate_single` function (the
+function's *return value* is not used — it does not reliably carry the data here). On Confirm,
+`open_dialog` runs
+
+```
+wml.fire.do_command{
+    [set_variable] current_caster      = <id>
+    [set_variable] magic_apply_equipped = <comma-list of chosen spells>
+    [fire_event]   magic_commit_selection
+}
+```
+
+Only `[set_variable]` and `[fire_event]` are placed inside `[do_command]` because those are the
+primitives this codebase already relies on there. The `magic_commit_selection` event (in
+`utils.cfg`) calls the `[magic_apply_selection]` WML action, which writes the equipped/group
+variables (calling `assign_free` when the caster is in free-assign mode) and then fires
+`refresh_skills` to re-apply abilities — exactly like `[assign_caster]` does. `[do_command]`
+makes this replay-safe whether the dialog was opened from an unsynced trigger (right-click
+menu `synced=false`, double-click, post-cast "Change Spells") or a synced one
+(`RESELECT_SKILLS` fired from a game event).
+
+`[magic_apply_selection]` refuses to apply an **empty** spell list, so a glitch upstream can
+never wipe a caster's groups/equipped.
+
+The earlier design committed from *inside* the dialog via
+`wesnoth.sync.invoke_command(...)`. That works for unsynced triggers but silently does
+**nothing** when the dialog is opened from a synced event — so from `RESELECT_SKILLS` neither
+the variables nor the abilities ever updated. Committing after the dialog via `do_command`
+fixes both.
 
 **Rule:** never write game-affecting state inside `evaluate_single` without going through `invoke_command`. WML variable writes inside `evaluate_single` are local-only.
 
@@ -62,6 +96,7 @@ All stored as WML variables under the prefix `caster_<unit_id>.*`.
 | `reselect_free` | `.reselect_free` | `true` / nil | Upgrade: shows "Change Spells" button |
 | `max_casts` | `.max_casts` | number (≥1) | Upgrade: casts allowed per turn |
 | `casts_this_turn` | `.casts_this_turn` | number | Counter reset each turn start |
+| `free_assign` | `.free_assign` | `true` / nil | Upgrade: pick any spell into any slot |
 
 The `caster_registry` WML variable holds a comma-list of all registered unit IDs. It lets `caster_set_menu` iterate only active casters instead of scanning the full unit list.
 
@@ -169,6 +204,24 @@ Sets how many spells the caster may cast per turn. Default is 1. When `max_casts
 
 The counter is tracked via the synced command `spellcasting_cost` (flag `casts_increment=true`) and reset to 0 at `turn refresh` / `start`.
 
+### `[caster_free_assign]` *(upgrade)*
+Enables or disables free-assign mode. When enabled, the **selection dialog** no
+longer offers a fixed per-group menu; instead every slot becomes a clickable
+cell. Clicking a slot's image/name opens a **picker grid** of every spell in the
+catalogue. Hovering a spell shows its description and cost; clicking one closes
+the picker and drops that spell into the slot. On confirm, each slot's pick is
+unlocked, equipped, and turned into its own one-spell group, so cast mode and
+`refresh_skills` keep working unchanged.
+
+```cfg
+[caster_free_assign]
+    [filter] id=Haralin [/filter]
+    free_assign_allowed = yes   # or no to remove
+[/caster_free_assign]
+```
+
+Slot count equals the caster's current number of `spell_group_N` entries.
+
 ### `[refresh_skills]`
 Re-fires the `refresh_skills` WML event which causes `spells.cfg` to add/remove unit abilities matching the current equipped list. Called automatically after equip/unequip changes.
 
@@ -210,6 +263,7 @@ Opens the spell dialog in cast mode (or selection mode if `wait_to_select` is se
 | `{REMOVE_CASTER (id=X)}` | `[remove_caster]` | |
 | `{CASTER_RESELECT (id=X) yes/no}` | `[caster_reselect]` | Upgrade: free reselect |
 | `{CASTER_MAX_CASTS (id=X) N}` | `[caster_max_casts]` | Upgrade: multi-cast |
+| `{CASTER_FREE_ASSIGN (id=X) yes/no}` | `[caster_free_assign]` | Upgrade: any spell in any slot |
 
 ---
 
@@ -316,6 +370,44 @@ When `max_casts > 1`, the bottom of the **cast dialog** shows a colored counter:
 The counter is incremented via the `spellcasting_cost` synced command (flag `casts_increment=true`), so it is properly reflected in savegames and replays on all clients.
 
 Setting `max_casts=1` (or calling `[caster_max_casts] max_casts=1`) restores default behavior and hides the counter.
+
+---
+
+## Upgrade: Free Assign
+
+Unlocked per-caster via `[caster_free_assign] free_assign_allowed=yes`.
+
+When active, the **selection dialog** replaces the per-group menu buttons with one
+clickable slot per group. Clicking a slot (its image or its name) opens a **spell
+picker**: a grid of every spell in the catalogue, each cell showing the spell's
+image and name. Hovering a cell shows a tooltip with the spell's description and
+cost; clicking a cell closes the picker and assigns that spell to the slot.
+
+The picker is a nested, purely-local dialog (no game state changes) opened from
+within the selection dialog's `evaluate_single` block; the chosen id is stored in
+the slot through a Lua table. Only **Confirm** commits the result: the per-slot spell
+ids are written to WML variables in the button handler, read back after the dialog,
+and applied via `[magic_apply_selection]` (see *Committing a selection* under
+Multiplayer model). Because the caster is in free-assign mode, that action calls
+`assign_free`, which rebuilds the caster's groups (one spell each), unlocks every
+chosen spell, and rewrites the equipped list, then fires `refresh_skills`. Because
+the result still flows through `groups` / `equipped` / `unlocked`, **cast mode and
+`spells.cfg` need no changes**. "Choose Later" only sets the `wait_to_select_spells`
+flag.
+
+Slot count is normally the caster's number of `spell_group_N` entries, but if those
+are missing (a caster whose state was reset), it falls back to
+`max(max_casts, #equipped, 3)` empty slots so free-assign always works and can
+rebuild a caster from nothing. Empty slots are tracked with `false` (never `nil`) so
+the slot array length stays correct.
+
+Confirm stays disabled until every slot holds a spell. Slot count equals the
+caster's number of `spell_group_N` entries. Setting `free_assign_allowed=no`
+restores the default per-group menu selection UI.
+
+To prevent duplicates, the picker disables any spell already chosen in another
+slot (the slot's own current spell stays selectable). The disabled set is rebuilt
+from the other slots' choices each time the picker opens.
 
 ---
 

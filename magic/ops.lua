@@ -12,8 +12,8 @@ local CasterOps = {}
 -- commas ("a, b, c"), and untrimmed ids never match the clean catalogue ids.
 local function parse_list(str)
     local t = {}
-    for item in (str or ""):gmatch("[^,]+") do
-        item = item:match("^%s*(.-)%s*$")
+    for raw in (str or ""):gmatch("[^,]+") do
+        local item = raw:match("^%s*(.-)%s*$")
         if item ~= "" then table.insert(t, item) end
     end
     return t
@@ -136,6 +136,32 @@ function CasterOps.set_max_casts(data, n)
     data.max_casts = math.max(1, math.floor(tonumber(n) or 1))
 end
 
+-- Enable or disable free-assign mode (any spell into any slot).
+function CasterOps.set_free_assign(data, enabled)
+    data.free_assign = enabled == true
+end
+
+-- Free-assign: rebuild the caster's slots from an ordered list of spell ids
+-- (one id per slot). Each slot becomes a one-spell group containing the chosen
+-- spell, the spell is unlocked (so it is castable), and the equipped list is
+-- rebuilt to match. This keeps cast mode and refresh_skills working unchanged,
+-- since they read groups/equipped/unlocked exactly as before.
+function CasterOps.assign_free(data, slot_spells)
+    data.groups       = {}
+    data.equipped     = {}
+    data.equipped_set = {}
+    for i, spell_id in ipairs(slot_spells) do
+        if spell_id and spell_id ~= "" then
+            data.groups[i] = { spell_id }
+            CasterOps.unlock(data, spell_id)
+            if not data.equipped_set[spell_id] then
+                table.insert(data.equipped, spell_id)
+                data.equipped_set[spell_id] = true
+            end
+        end
+    end
+end
+
 -- Returns true when the caster still has casts left this turn.
 function CasterOps.can_cast(data)
     return (data.casts_this_turn or 0) < (data.max_casts or 1)
@@ -174,6 +200,10 @@ function CasterOps.apply_config(data, cfg)
 
     if cfg.spellcasting_allowed ~= nil then
         data.spellcasting_disabled = (cfg.spellcasting_allowed == false)
+    end
+
+    if cfg.free_assign ~= nil then
+        data.free_assign = (cfg.free_assign == true)
     end
 end
 

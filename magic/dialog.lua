@@ -41,6 +41,125 @@ local function build_spell_index()
     return idx
 end
 
+---------------------------------------------------------------------------
+-- Free-assign helpers (spell picker)
+---------------------------------------------------------------------------
+
+-- Extracts a compact, single-line name from a spell's display label.
+-- Spell labels are built by table.lua's label() helper, which wraps the name
+-- in tall padding spans; the picker grid wants just the inner name. Falls back
+-- to the full label if the expected markup is not present.
+local function compact_name(spell)
+    local s = tostring(spell.label or "")
+    local inner = s:match("size='large'>(.-)</span>")
+    return inner or s
+end
+
+-- Returns every selectable spell from the catalogue, ordered by catalogue key.
+-- Uses pairs (not ipairs) so gaps in the numeric keys do not truncate the list.
+local function all_spells_sorted()
+    local keys = {}
+    for k, v in pairs(spell_data.skill_set) do
+        if type(v) == "table" and v.id then keys[#keys + 1] = k end
+    end
+    table.sort(keys)
+    local list = {}
+    for _, k in ipairs(keys) do list[#list + 1] = spell_data.skill_set[k] end
+    return list
+end
+
+-- Builds the tooltip text for a spell: description plus its cost (if any).
+local function spell_tooltip(spell)
+    local tip  = tostring(spell.description or "")
+    local cost = format_cost(spell)
+    if cost then tip = tip .. "\n" .. _"Cost: " .. cost end
+    return tip
+end
+
+-- Builds the spell-picker dialog: a grid of clickable spell cells (image + name),
+-- each showing a description/cost tooltip on hover.
+local PICKER_COLS = 6
+local function build_picker_layout(spells)
+    local table_grid = T.grid{}
+    local row
+    for idx, spell in ipairs(spells) do
+        if (idx - 1) % PICKER_COLS == 0 then
+            row = { "row", {} }
+            table.insert(table_grid[2], row)
+        end
+        table.insert(row[2], T.column{ border="all", border_size=4,
+            T.toggle_panel{ id="pick" .. idx, definition="fancy",
+                tooltip = spell_tooltip(spell),
+                T.grid{
+                    T.row{ T.column{ horizontal_alignment="center", border="all", border_size=3,
+                        T.image{ id="pick_img" .. idx, label = spell.image }}},
+                    T.row{ T.column{ horizontal_alignment="center", border="bottom", border_size=3,
+                        T.label{ id="pick_name" .. idx, use_markup=true,
+                            label = "<span size='small'>" .. compact_name(spell) .. "</span>" }}},
+                }}})
+    end
+    -- Pad the final row so every row has the same column count (grids must be rectangular).
+    if row then
+        local filled = #spells % PICKER_COLS
+        if filled ~= 0 then
+            for _ = filled + 1, PICKER_COLS do
+                table.insert(row[2], T.column{ T.spacer{ width=1, height=1 }})
+            end
+        end
+    end
+
+    local grid = T.grid{}
+    table.insert(grid[2], T.row{ T.column{ border="all", border_size=10,
+        T.label{ definition="title", horizontal_alignment="center",
+            label = _"Choose a Spell" }}})
+    table.insert(grid[2], T.row{ T.column{ border="all", border_size=8, table_grid }})
+    table.insert(grid[2], T.row{ T.column{ horizontal_alignment="center", border="all", border_size=8,
+        T.button{ id="picker_cancel", return_value=2, label=_"Cancel" }}})
+
+    return { definition="menu",
+        T.helptip{ id="helptip" },
+        T.tooltip{ id="tooltip" },
+        grid }
+end
+
+-- Opens the picker as a nested modal dialog and returns the chosen spell id,
+-- or nil if the player cancelled. Pure local UI: no game state changes here.
+-- `used` is a set of spell ids already taken by OTHER slots; those cells are
+-- shown disabled so the same spell cannot be picked into two slots.
+local function open_picker(used)
+    used = used or {}
+    local spells = all_spells_sorted()
+    local layout = build_picker_layout(spells)
+    local chosen = nil
+
+    gui.show_dialog(layout, function(dlg)
+        for idx, spell in ipairs(spells) do
+            local cell = dlg["pick" .. idx]
+            if cell then
+                if used[spell.id] then
+                    -- Already chosen in another slot: block it and make the
+                    -- "taken" state obvious — greyed-out image + struck-through name.
+                    cell.enabled = false
+                    local img = dlg["pick_img" .. idx]
+                    if img then img.label = spell.image .. "~GS()~O(0.4)" end
+                    local nm = dlg["pick_name" .. idx]
+                    if nm then
+                        nm.label = "<span size='small' color='#888888'><s>"
+                            .. compact_name(spell) .. "</s></span>"
+                    end
+                else
+                    cell.on_modified = function()
+                        chosen = spell.id
+                        gui.widget.close(dlg)
+                    end
+                end
+            end
+        end
+    end)
+
+    return chosen
+end
+
 local function prepare_groups(caster_data)
     -- Returns an ordered array of display groups (no sparse keys).
     -- Order follows the numeric order of caster_data.groups keys.
@@ -75,6 +194,43 @@ local function prepare_groups(caster_data)
     end
 
     return result
+end
+
+-- Free-assign mode: returns an ordered array of initial spell ids, one per slot.
+-- Each slot is pre-filled with the spell currently equipped from that group (so
+-- re-opening keeps the player's previous choices), falling back to the group's
+-- first spell, to the equipped spell at that index, or nil (empty).
+--
+-- Slot count is normally the caster's number of groups, but if the groups are
+-- missing (e.g. a caster whose state was reset) it falls back to a sensible number
+-- so free-assign always shows usable slots and can rebuild the caster from scratch.
+local function prepare_free_slots(caster_data)
+    local keys = {}
+    for i in pairs(caster_data.groups) do table.insert(keys, i) end
+    table.sort(keys)
+
+    local count = #keys
+    if count == 0 then
+        count = math.max(caster_data.max_casts or 1, #caster_data.equipped, 3)
+    end
+
+    local slots = {}
+    for n = 1, count do
+        local i      = keys[n]
+        local group  = i and caster_data.groups[i] or nil
+        local chosen = nil
+        if group then
+            for _, spell_id in ipairs(group) do
+                if caster_data.equipped_set[spell_id] then chosen = spell_id; break end
+            end
+            if not chosen and group[1] then chosen = group[1] end
+        end
+        if not chosen then chosen = caster_data.equipped[n] end -- fallback when no group
+        -- Use `false` (never nil) for an empty slot, so #slots / ipairs stay correct
+        -- even when slots are unfilled. Consumers treat false as "no spell".
+        slots[n] = chosen or false
+    end
+    return slots
 end
 
 ---------------------------------------------------------------------------
@@ -178,6 +334,44 @@ local function build_skill_rows(groups, selecting, equipped_list)
     return skill_grid
 end
 
+-- Free-assign selection mode: one clickable slot per group. Each slot is a
+-- toggle_panel holding the current spell's image and name (so clicking either
+-- the image or the text opens the picker), with the description shown alongside.
+local function build_free_select_rows(slots, spell_index)
+    local skill_grid = T.grid{}
+
+    for i, spell_id in ipairs(slots) do
+        local def  = spell_id and spell_index[spell_id] or nil
+        local img  = def and def.image or "icons/locked.png"
+        local name = def and def.label or _"<span color='grey'><i>— click to choose —</i></span>"
+        local desc = def and def.description or ""
+
+        local panel = T.toggle_panel{ id="slot" .. i, definition="fancy",
+            tooltip = _"Click to choose any spell for this slot.",
+            T.grid{ T.row{
+                T.column{ border="all", border_size=6,
+                    T.image{ id="slot_image" .. i, label=img }},
+                T.column{ border="all", border_size=6, horizontal_alignment="left",
+                    T.label{ id="slot_name" .. i, use_markup=true, label=name }},
+            }}}
+
+        table.insert(skill_grid[2], T.row{
+            T.column{ border="left", border_size=15, horizontal_alignment="left", panel },
+            T.column{ T.label{ label="  " }},
+            T.column{ horizontal_alignment="left",
+                T.label{ id="slot_desc" .. i, use_markup=true, label=desc }},
+        })
+
+        -- Spacer row.
+        table.insert(skill_grid[2], T.row{
+            T.column{ T.label{ label="  " }},
+            T.column{ T.label{} }, T.column{ T.label{} },
+        })
+    end
+
+    return skill_grid
+end
+
 local function build_footer(caster, caster_data, selecting)
     if selecting then
         -- No return_value: on_button_click handlers in make_preshow close the dialog
@@ -262,7 +456,7 @@ end
 -- Public: build_layout
 -- Returns a complete WML dialog table ready for gui.show_dialog.
 ---------------------------------------------------------------------------
-local function build_layout(caster, caster_data, groups, selecting)
+local function build_layout(caster, caster_data, groups, selecting, free_slots)
     local dialog = { definition="menu",
         T.helptip{ id="helptip" },
         T.tooltip{ id="tooltip" },
@@ -273,7 +467,12 @@ local function build_layout(caster, caster_data, groups, selecting)
         table.insert(grid[2], row)
     end
 
-    local skill_grid = build_skill_rows(groups, selecting, caster_data.equipped)
+    local skill_grid
+    if free_slots then
+        skill_grid = build_free_select_rows(free_slots, build_spell_index())
+    else
+        skill_grid = build_skill_rows(groups, selecting, caster_data.equipped)
+    end
     table.insert(grid[2], T.row{ T.column{
         horizontal_alignment="left", skill_grid }})
 
@@ -292,7 +491,90 @@ end
 -- Public: make_preshow
 -- Returns a function(dialog) that populates and wires the dialog.
 ---------------------------------------------------------------------------
-local function make_preshow(caster, caster_data, groups, selecting)
+local function make_preshow(caster, caster_data, groups, selecting, free_slots)
+    -- Selection Confirm / Choose Later button handlers commit the chosen spells on
+    -- all clients via the "magic_commit" synced command (data passed as parameters),
+    -- the same in-handler invoke_command pattern cast mode uses for spell costs.
+
+    -- Free-assign selection mode: each slot opens the spell picker; the final
+    -- choice per slot is committed on confirm. This path is self-contained and
+    -- returns early, never touching the group/cast wiring below.
+    if free_slots then
+        local spell_index = build_spell_index()
+        local slot_choice = {}
+        for i, spell_id in ipairs(free_slots) do slot_choice[i] = spell_id end
+
+        return function(dlg)
+            local function refresh_slot(i)
+                local def = slot_choice[i] and spell_index[slot_choice[i]] or nil
+                dlg["slot_image" .. i].label = def and def.image or "icons/locked.png"
+                dlg["slot_name"  .. i].label = def and def.label
+                    or _"<span color='grey'><i>— click to choose —</i></span>"
+                if dlg["slot_desc" .. i] then
+                    dlg["slot_desc" .. i].label = def and def.description or ""
+                end
+            end
+
+            local function update_confirm_enabled()
+                local cb = dlg["confirm_button"]
+                if not cb then return end
+                for i = 1, #free_slots do
+                    if not slot_choice[i] then cb.enabled = false; return end
+                end
+                cb.enabled = true
+            end
+
+            for i = 1, #free_slots do
+                refresh_slot(i)
+                local panel = dlg["slot" .. i]
+                if panel then
+                    local busy = false -- guards against re-entrant on_modified
+                    panel.on_modified = function()
+                        if busy then return end
+                        busy = true
+                        -- Block spells already chosen in other slots (no duplicates).
+                        local used = {}
+                        for j = 1, #free_slots do
+                            if j ~= i and slot_choice[j] then used[slot_choice[j]] = true end
+                        end
+                        local picked = open_picker(used)
+                        if picked then
+                            slot_choice[i] = picked
+                            refresh_slot(i)
+                        end
+                        panel.selected = false -- reset so the slot can be reopened
+                        update_confirm_enabled()
+                        busy = false
+                    end
+                end
+            end
+            update_confirm_enabled()
+
+            local cb = dlg["confirm_button"]
+            if cb then
+                cb.on_button_click = function()
+                    -- Filter out empty (false) slots so table.concat never sees a boolean.
+                    local list = {}
+                    for i = 1, #free_slots do
+                        if slot_choice[i] then list[#list + 1] = slot_choice[i] end
+                    end
+                    wesnoth.sync.invoke_command("magic_commit",
+                        { id = caster.id, equipped = table.concat(list, ","), wait = "" })
+                    gui.widget.close(dlg)
+                end
+            end
+
+            local wb = dlg["wait_button"]
+            if wb then
+                wb.on_button_click = function()
+                    wesnoth.sync.invoke_command("magic_commit",
+                        { id = caster.id, equipped = "", wait = "yes" })
+                    gui.widget.close(dlg)
+                end
+            end
+        end
+    end
+
     -- Helper: check if caster has an object by id.
     local function has_object(object_id)
         return wesnoth.units.find_on_map{
@@ -404,15 +686,19 @@ local function make_preshow(caster, caster_data, groups, selecting)
 
                 -- Refresh the preview image/label whenever the menu changes,
                 -- and re-evaluate whether Confirm may be enabled.
-                local function refresh(b)
-                    local sel = group[b.selected_index]
+                -- IMPORTANT: on_modified is invoked with NO arguments (Wesnoth
+                -- 1.19 widget API), so read the selection from the captured `btn`
+                -- rather than a parameter — otherwise changing a dropdown crashes
+                -- with "attempt to index a nil value".
+                local function refresh()
+                    local sel = group[btn.selected_index]
                     if sel then
                         dlg["image"..i].label = sel.image
                         dlg["label"..i].label = sel.description
                     end
                     update_confirm_enabled()
                 end
-                refresh(btn)
+                refresh()
                 btn.on_modified = refresh
 
             else
@@ -441,9 +727,10 @@ local function make_preshow(caster, caster_data, groups, selecting)
             end
         end
 
-        -- Selection mode: wire Confirm and Choose Later buttons to sync on ALL clients.
-        -- invoke_command MUST be called from inside a show_dialog button handler in MP —
-        -- it does NOT work after show_dialog returns (non-active clients skip that code).
+        -- Selection mode: Confirm/Choose Later commit on ALL clients via the
+        -- magic_commit synced command (data passed as parameters). invoke_command
+        -- from inside the button handler is the proven cast-mode pattern and works
+        -- because the dialog is always opened from an unsynced context.
         if selecting then
             local cb = dlg["confirm_button"]
             if cb then
@@ -458,22 +745,16 @@ local function make_preshow(caster, caster_data, groups, selecting)
                             table.insert(new_eq, sel.id)
                         end
                     end
-                    wesnoth.sync.invoke_command("magic_sync_equipped", {
-                        caster_id = caster.id,
-                        equipped  = table.concat(new_eq, ","),
-                        wait      = "",
-                    })
+                    wesnoth.sync.invoke_command("magic_commit",
+                        { id = caster.id, equipped = table.concat(new_eq, ","), wait = "" })
                     gui.widget.close(dlg)
                 end
             end
             local wb = dlg["wait_button"]
             if wb then
                 wb.on_button_click = function()
-                    wesnoth.sync.invoke_command("magic_sync_equipped", {
-                        caster_id = caster.id,
-                        equipped  = "",
-                        wait      = "yes",
-                    })
+                    wesnoth.sync.invoke_command("magic_commit",
+                        { id = caster.id, equipped = "", wait = "yes" })
                     gui.widget.close(dlg)
                 end
             end
@@ -512,9 +793,13 @@ local function open_dialog(caster, caster_data, selecting)
         and sides[1].is_local
         and wml.variables["side_number"] == sides[1].side) then return end
 
-    local groups = prepare_groups(caster_data)
-    local dialog = build_layout(caster, caster_data, groups, selecting)
-    local preshow = make_preshow(caster, caster_data, groups, selecting)
+    -- Free-assign mode only applies while selecting; cast mode is unchanged.
+    local free_slots = (selecting and caster_data.free_assign)
+        and prepare_free_slots(caster_data) or nil
+
+    local groups = free_slots and {} or prepare_groups(caster_data)
+    local dialog = build_layout(caster, caster_data, groups, selecting, free_slots)
+    local preshow = make_preshow(caster, caster_data, groups, selecting, free_slots)
 
     -- Deselect caster so the dialog doesn't appear over a selected unit.
     wesnoth.interface.game_display.selected_unit = nil
@@ -524,9 +809,9 @@ local function open_dialog(caster, caster_data, selecting)
     wml.fire("redraw")
 
     if selecting then
-        -- invoke_command for sync is now handled inside button click handlers in preshow
-        -- (confirm_button / wait_button). Non-active clients skip evaluate_single entirely,
-        -- so any invoke_command called after show_dialog returns would only run locally.
+        -- The dialog is local UI; the Confirm / Choose Later button handlers commit
+        -- the result on all clients via the magic_commit synced command (data passed
+        -- as parameters). This is the same pattern cast mode uses for spell costs.
         wesnoth.sync.evaluate_single(function()
             gui.show_dialog(dialog, preshow)
         end)
