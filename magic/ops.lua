@@ -153,6 +153,19 @@ end
 -- rebuilt to match. This keeps cast mode and refresh_skills working unchanged,
 -- since they read groups/equipped/unlocked exactly as before.
 function CasterOps.assign_free(data, slot_spells)
+    -- Preserve the original multi-spell group pools the FIRST time free mode
+    -- rebuilds them into one-spell slots, so leaving free mode can restore the
+    -- full per-group menus instead of leaving only the chosen spells behind.
+    if data.groups_backup == nil then
+        local backup = {}
+        for i, g in pairs(data.groups) do
+            local copy = {}
+            for _, s in ipairs(g) do copy[#copy + 1] = s end
+            backup[i] = copy
+        end
+        data.groups_backup = backup
+    end
+
     data.groups       = {}
     data.equipped     = {}
     data.equipped_set = {}
@@ -166,6 +179,40 @@ function CasterOps.assign_free(data, slot_spells)
             end
         end
     end
+end
+
+-- Restores the original group pools saved by assign_free (when the caster first
+-- entered free mode) and rebuilds a valid equipped list from them. Returns true if
+-- a restore actually happened. Called when leaving free mode so the normal
+-- per-group selection menus come back with all their options.
+function CasterOps.restore_groups(data)
+    if data.groups_backup == nil then return false end
+
+    data.groups        = data.groups_backup
+    data.groups_backup = nil
+
+    -- Re-derive equipped from the restored groups: prefer a spell that is still
+    -- equipped, else the first unlocked spell in the group. This keeps cast mode
+    -- and the selection defaults valid after the one-spell free groups are dropped.
+    local new_eq, new_set = {}, {}
+    for _, g in pairs(data.groups) do
+        local chosen
+        for _, s in ipairs(g) do
+            if data.equipped_set[s] then chosen = s; break end
+        end
+        if not chosen then
+            for _, s in ipairs(g) do
+                if data.unlocked_set[s] then chosen = s; break end
+            end
+        end
+        if chosen and not new_set[chosen] then
+            new_eq[#new_eq + 1] = chosen
+            new_set[chosen] = true
+        end
+    end
+    data.equipped     = new_eq
+    data.equipped_set = new_set
+    return true
 end
 
 -- Returns true when the caster still has casts left this turn.

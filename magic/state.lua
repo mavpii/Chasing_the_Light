@@ -32,6 +32,9 @@ end
 ---------------------------------------------------------------------------
 
 -- Returns true if a caster with this unit ID has been registered.
+-- The caster's data lives in the [caster_<id>] container; reading the bare
+-- variable is truthy whenever that container holds any sub-fields, so no separate
+-- marker variable is needed.
 function CasterState.exists(unit_id)
     return wml.variables["caster_" .. unit_id] ~= nil
 end
@@ -50,6 +53,17 @@ function CasterState.load(unit_id)
     while wml.variables[prefix .. ".spell_group_" .. gi] do
         groups[gi] = parse_list(wml.variables[prefix .. ".spell_group_" .. gi])
         gi = gi + 1
+    end
+
+    -- Backup of the original group pools — present only while the caster is in
+    -- free mode (saved by assign_free, restored by restore_groups). Stays nil when
+    -- there is none, so callers can test `groups_backup == nil`.
+    local groups_backup
+    local bi = 1
+    while wml.variables[prefix .. ".spell_group_backup_" .. bi] do
+        groups_backup = groups_backup or {}
+        groups_backup[bi] = parse_list(wml.variables[prefix .. ".spell_group_backup_" .. bi])
+        bi = bi + 1
     end
 
     -- Normalize the "wait to select" flag. It is stored as the string "yes", but
@@ -72,6 +86,7 @@ function CasterState.load(unit_id)
         equipped_set  = list_to_set(equipped_list), -- O(1) lookup
 
         groups        = groups, -- groups[i] = { spell_id, ... }
+        groups_backup = groups_backup, -- original pools while in free mode, else nil
 
         spellcasting_disabled = wml.variables[prefix .. ".utils_spellcasting_allowed"] == "disabled",
         advancement_disabled  = wml.variables[prefix .. ".utils_advancement_allowed"]  == "disabled",
@@ -96,7 +111,8 @@ end
 function CasterState.save(data)
     local prefix = "caster_" .. data.id
 
-    wml.variables[prefix]                  = true
+    -- No separate existence marker: the [caster_<id>] container created by the
+    -- sub-field writes below already makes wml.variables[prefix] truthy. See exists().
     wml.variables[prefix .. ".u_title_select"] = data.title_select
     wml.variables[prefix .. ".u_title_cast"]   = data.title_cast
     wml.variables[prefix .. ".u_description"]  = data.description
@@ -114,6 +130,20 @@ function CasterState.save(data)
             wml.variables[key] = nil
         end
         gi = gi + 1
+    end
+
+    -- Write the backup group pools (present only in free mode), clearing any
+    -- stale entries when the backup shrinks or is removed by restore_groups.
+    local bi = 1
+    while (data.groups_backup and data.groups_backup[bi])
+        or wml.variables[prefix .. ".spell_group_backup_" .. bi] do
+        local key = prefix .. ".spell_group_backup_" .. bi
+        if data.groups_backup and data.groups_backup[bi] then
+            wml.variables[key] = table.concat(data.groups_backup[bi], ",")
+        else
+            wml.variables[key] = nil
+        end
+        bi = bi + 1
     end
 
     wml.variables[prefix .. ".utils_spellcasting_allowed"] = data.spellcasting_disabled and "disabled" or nil
@@ -168,6 +198,7 @@ function CasterState.from_config(unit, cfg)
         equipped_set  = list_to_set(equipped_list),
 
         groups        = groups,
+        groups_backup = nil,
 
         spellcasting_disabled = (cfg.spellcasting_allowed == false),
         advancement_disabled  = false,

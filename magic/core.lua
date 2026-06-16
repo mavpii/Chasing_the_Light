@@ -389,7 +389,14 @@ wml_actions["caster_free_assign"] = function(cfg)
         local data = CasterState.load(u.id)
         if data then
             CasterOps.set_free_assign(data, cfg.free_assign_allowed == true)
+            -- Leaving ALL free modes restores the original per-group pools that
+            -- assign_free replaced with one-spell slots.
+            local restored = false
+            if not data.free_assign and not data.free_unlocked then
+                restored = CasterOps.restore_groups(data)
+            end
             CasterState.save(data)
+            if restored then wml.fire("refresh_skills", { id=u.id }) end
         end
     end
 end
@@ -407,7 +414,14 @@ wml_actions["caster_free_unlocked"] = function(cfg)
         local data = CasterState.load(u.id)
         if data then
             CasterOps.set_free_unlocked(data, cfg.free_unlocked_allowed == true)
+            -- Leaving ALL free modes restores the original per-group pools that
+            -- assign_free replaced with one-spell slots.
+            local restored = false
+            if not data.free_assign and not data.free_unlocked then
+                restored = CasterOps.restore_groups(data)
+            end
             CasterState.save(data)
+            if restored then wml.fire("refresh_skills", { id=u.id }) end
         end
     end
 end
