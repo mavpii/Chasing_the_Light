@@ -16,6 +16,23 @@ Dialog.init(spell_data) -- inject spell catalogue into dialog layer
 
 local wml_actions = wesnoth.wml_actions
 
+-- spell id -> definition, INCLUDING subskills (skill_summon_mud, etc.), so the
+-- command-cast tags can look up costs for both top-level spells and subskills.
+local spell_index = (function()
+    local idx = {}
+    for _, s in pairs(spell_data.skill_set) do
+        if type(s) == "table" and s.id then
+            idx[s.id] = s
+            if s.subskills then
+                for _, sub in pairs(s.subskills) do
+                    if type(sub) == "table" and sub.id then idx[sub.id] = sub end
+                end
+            end
+        end
+    end
+    return idx
+end)()
+
 ---------------------------------------------------------------------------
 -- Caster registry
 -- Tracks which unit IDs are currently registered as casters.
@@ -97,6 +114,29 @@ end
 -- Legacy alias used by TRSS.cfg and some spells.
 function spellcasting_cost(t)
     wesnoth.custom_synced_commands.spellcasting_cost(t)
+end
+
+-- Deducts a spell's catalogue costs (XP/HP/gold/attack) from a unit, the same way
+-- the cast dialog does. No-op if the spell id is unknown or has no costs.
+-- Used by [cast_spell]/[cast_targeted_spell].
+local function apply_spell_cost(unit_id, spell_id)
+    local spell = spell_index[spell_id]
+    if not spell then return end
+    spellcasting_cost({
+        id        = unit_id,
+        xp_cost   = spell.xp_cost,
+        hp_cost   = spell.hp_cost,
+        gold_cost = spell.gold_cost,
+        atk_cost  = spell.atk_cost,
+    })
+end
+
+-- Increments the per-turn cast counter directly, INDEPENDENT of cost. A free cast
+-- must still count against max_casts — otherwise the adaptive AI (which casts free
+-- by default) would loop forever, because can_cast() never flips to false.
+local function increment_cast(unit_id)
+    local k = "caster_" .. unit_id .. ".casts_this_turn"
+    wml.variables[k] = (tonumber(wml.variables[k]) or 0) + 1
 end
 
 -- Synced: set current_caster on ALL clients.
@@ -547,6 +587,81 @@ wml_actions["show_caster_skills"] = function(cfg)
     wesnoth.audio.play("miss-2.ogg")
     local units = wesnoth.units.find_on_map(require_filter(cfg, "show_caster_skills"))
     for _, u in ipairs(units) do open_for_unit(u, false) end
+end
+
+---------------------------------------------------------------------------
+-- COMMAND-DRIVEN CASTING
+-- Cast a spell from WML (cutscenes, AI, scripted events) without the dialog.
+--
+-- [cast_spell]    — fires a normal (self/automatic) spell's event directly.
+-- [cast_targeted_spell] — fires a TRSS spell's "_cast" effect on a chosen hex,
+--                         skipping the interactive click-to-target step.
+--
+-- Both deduct the spell's catalogue costs by default; add free=yes to skip.
+-- Optional gates: require_unlocked=yes / require_equipped=yes (skip if the caster
+-- hasn't unlocked/equipped the spell). count_cast=yes also spends a per-turn cast.
+---------------------------------------------------------------------------
+
+-- Returns true when the caster passes the optional require_unlocked/require_equipped
+-- gates in cfg (data may be nil for a non-registered unit, which fails any gate).
+local function cast_gate_ok(cfg, data, spell_id)
+    if cfg.require_unlocked and not (data and CasterOps.is_unlocked(data, spell_id)) then
+        return false
+    end
+    if cfg.require_equipped and not (data and CasterOps.is_equipped(data, spell_id)) then
+        return false
+    end
+    return true
+end
+
+wml_actions["cast_spell"] = function(cfg)
+    local spell_id = cfg.spell_id or wml.error("[cast_spell] requires spell_id=")
+    local units = wesnoth.units.find_on_map(require_filter(cfg, "cast_spell"))
+    for _, u in ipairs(units) do
+        local data = CasterState.load(u.id)
+        if cast_gate_ok(cfg, data, spell_id) then
+            if not cfg.free then apply_spell_cost(u.id, spell_id) end
+            if cfg.count_cast then increment_cast(u.id) end
+            wml.variables["current_caster"] = u.id
+            wesnoth.game_events.fire(spell_id)
+        end
+    end
+end
+
+wml_actions["cast_targeted_spell"] = function(cfg)
+    local spell_id = cfg.spell_id or wml.error("[cast_targeted_spell] requires spell_id=")
+
+    -- Target hex: explicit target_x/target_y, or the first unit matching a [target] filter.
+    local tx, ty = tonumber(cfg.target_x), tonumber(cfg.target_y)
+    if not (tx and ty) then
+        local tf = wml.get_child(cfg, "target")
+        local tu = tf and wesnoth.units.find_on_map(tf)[1]
+        if tu then tx, ty = tu.x, tu.y end
+    end
+    if not (tx and ty) then
+        wml.error("[cast_targeted_spell] requires target_x/target_y or a [target] filter")
+    end
+
+    -- The effect lives in the "<spell>_cast" event (override with cast_event=).
+    local cast_event = cfg.cast_event or (spell_id .. "_cast")
+
+    local units = wesnoth.units.find_on_map(require_filter(cfg, "cast_targeted_spell"))
+    for _, u in ipairs(units) do
+        local data = CasterState.load(u.id)
+        if cast_gate_ok(cfg, data, spell_id) then
+            if not cfg.free then apply_spell_cost(u.id, spell_id) end
+            if cfg.count_cast then increment_cast(u.id) end
+            -- Recreate the variables the TRSS click-handler would have set.
+            wml.variables["current_caster"]        = u.id
+            wml.variables["unit_to_modify_x"]      = u.x
+            wml.variables["unit_to_modify_y"]      = u.y
+            wml.variables["unit_to_cast_on_x"]     = tx
+            wml.variables["unit_to_cast_on_y"]     = ty
+            wml.variables["distance_between_units"] = wesnoth.map.distance_between(u.x, u.y, tx, ty) * 72
+            wesnoth.game_events.fire(cast_event)
+            wesnoth.game_events.fire(cast_event .. "_post")
+        end
+    end
 end
 
 ---------------------------------------------------------------------------

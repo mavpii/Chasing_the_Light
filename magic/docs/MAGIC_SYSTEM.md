@@ -262,6 +262,48 @@ Opens the spell selection dialog for the matching unit(s). Forces selection mode
 ### `[show_caster_skills]`
 Opens the spell dialog in cast mode (or selection mode if `wait_to_select` is set).
 
+### `[cast_spell]` *(command-driven cast)*
+Casts a **normal** (self/automatic) spell from WML, without opening the dialog —
+for cutscenes, AI, or scripted events. Sets `current_caster`, deducts the spell's
+catalogue cost, and fires the spell's event.
+
+```cfg
+[cast_spell]
+    [filter] id=Haralin [/filter]   # the caster
+    spell_id = skill_shield
+    free            = no   # optional: yes = no cost
+    require_unlocked = no  # optional: yes = skip unless caster has it unlocked
+    require_equipped = no  # optional: yes = skip unless equipped
+    count_cast      = no   # optional: yes = also spend one of the per-turn casts
+[/cast_spell]
+```
+
+The spell's effect must be defined as `[event name=<spell_id>]` (as in `spells.cfg`).
+For a TRSS spell, `[cast_spell]` would start the interactive click-to-target flow;
+use `[cast_targeted_spell]` instead to target a hex directly.
+
+### `[cast_targeted_spell]` *(command-driven TRSS cast)*
+Fires a TRSS spell's `"<spell_id>_cast"` effect **directly on a chosen hex**,
+skipping the interactive targeting. Sets `current_caster`, `unit_to_modify_x/y`
+(caster), `unit_to_cast_on_x/y` (target), and `distance_between_units`, then fires
+`<spell_id>_cast` and `<spell_id>_cast_post`.
+
+```cfg
+[cast_targeted_spell]
+    [filter] id=Haralin [/filter]       # the caster
+    spell_id = skill_summon_mud         # cast_event defaults to skill_summon_mud_cast
+    target_x,target_y = 12,9            # OR a [target] unit filter (below)
+    # [target] id=SomeEnemy [/target]
+    cast_event = ...   # optional override of the fired event name
+    free = no          # same optional flags as [cast_spell]
+[/cast_targeted_spell]
+```
+
+Works for **adjacent** and **ranged** TRSS effects (their whole effect lives in the
+`_cast` event). The **rose** spells (`skill_bend_*`) keep extra logic — unit
+push, lava damage — inside the interactive click handler, so a direct cast only
+runs their per-hex `_cast` body, not those extras.
+
 ---
 
 ## WML macros
@@ -284,6 +326,88 @@ Opens the spell dialog in cast mode (or selection mode if `wait_to_select` is se
 | `{CASTER_MAX_CASTS (id=X) N}` | `[caster_max_casts]` | Upgrade: multi-cast |
 | `{CASTER_FREE_ASSIGN (id=X) yes/no}` | `[caster_free_assign]` | Upgrade: any spell in any slot |
 | `{CASTER_FREE_UNLOCKED (id=X) yes/no}` | `[caster_free_unlocked]` | Upgrade: free-pick — any unlocked spell in any slot |
+| `{CAST_SPELL (id=X) spell_id}` | `[cast_spell]` | Command-cast a normal spell (with cost) |
+| `{CAST_SPELL_FREE (id=X) spell_id}` | `[cast_spell]` | Command-cast a normal spell (no cost) |
+| `{CAST_TARGETED_SPELL (id=X) spell_id X Y}` | `[cast_targeted_spell]` | Command-cast a TRSS spell on hex X,Y (with cost) |
+| `{CAST_TARGETED_SPELL_FREE (id=X) spell_id X Y}` | `[cast_targeted_spell]` | Command-cast a TRSS spell on hex X,Y (no cost) |
+| `{CASTER_AI side score}` | `[modify_ai]` + `ai.lua` | Adaptive AI: caster auto-picks the best of its own equipped spells |
+| `{CASTER_AI_SPELL side spell range mode score}` | `[modify_ai]` + `ai.lua` | Adaptive AI: cast a specific targeted spell at the best enemy in range |
+| `{CASTER_AI_SPELL_SELF side spell score}` | `[modify_ai]` + `ai.lua` | Adaptive AI: self-cast a specific spell (shield, stasis, …) |
+
+---
+
+## Adaptive AI casting
+
+`magic/ai.lua` lets an **AI side use its casters' spells** as part of its normal
+decision loop (not scripted turn events). It registers a Lua `[candidate_action]`
+whose `eval`/`exec` call into `ai.lua`; the cast goes through the same
+`[cast_spell]` / `[cast_targeted_spell]` tags. There are two ways to wire it up.
+
+### Autonomous — the caster chooses (recommended)
+
+One macro for the whole side. Each AI caster looks at **its own equipped spells**
+(`data.equipped`) and picks the most useful one for the current board:
+
+```cfg
+{CASTER_AI 3 95000}   # side 3, candidate-action score ~95000
+```
+
+Which spell it picks is decided by the editable catalogue **`magic/ai_profiles.lua`**
+— one line per castable spell. **Add a line to enable a spell for the AI, delete a
+line to disable it.** Each entry declares a `kind` (and a few numbers); the engine
+in `ai.lua` knows how to value and target each kind:
+
+```lua
+return {
+    skill_disattack = { kind="damage",    range=6, power=27, base=20 }, -- zap an enemy
+    skill_smite     = { kind="aoe_self",  radius=1, power=30, base=15 }, -- hit adjacent foes
+    skill_disheal   = { kind="heal_target", range=7, base=15 },         -- heal a wounded ally
+    skill_shield    = { kind="buff_self", threat=3, weight=12, base=20 },-- guard when threatened
+    skill_summon    = { kind="summon", cast="skill_summon_mud", threat=4 },
+    ...
+}
+```
+
+Kinds: `damage`, `aoe_self` (radius around caster, `ally_penalty` for friendly
+splash), `heal_target`, `heal_self_aura`, `buff_self`, `buff_team`, `debuff_aura`
+(`vs_casters=true` for counterspell), `summon`. Each turn the AI scores every
+profiled, **affordable** spell the caster has equipped and casts the single
+highest-utility one — so it zaps in range, heals a hurt ally, shields when cornered,
+smites a cluster, etc. The shipped catalogue covers **every castable spell and every
+subskill** — damage (disattack), summons (all five), bend (all four), polymorph (all
+four forms), smite, nature's revenge, blizzard, cataclysm, disheal, massheal,
+panacea, shield, levitate, flight, stasis, counterspell, illusion, time dilation,
+swap, ward. Equipping the **parent** (Summon/Bend/Polymorph) auto-expands to its
+subskills, and the AI picks the strongest one it can afford. A few carry caveats
+(bend's push/lava extras live in the interactive handler; stasis petrifies the
+caster; panacea kills the healed ally next turn) — noted in `ai_profiles.lua`. The
+only spell that can't be auto-cast is `skill_relocate` (two interactive steps).
+Profiles can also be tweaked at runtime with `ai.lua`'s `set_profile`/`forget_profile`.
+
+### Explicit — you pick the spell + rule
+
+Lower-level: register one candidate action per spell with a fixed targeting rule
+and score (useful for forcing a specific behaviour):
+
+```cfg
+{CASTER_AI_SPELL 3 skill_disattack 6 nearest 95000}  # targeted: nearest|weakest in range
+{CASTER_AI_SPELL_SELF 3 skill_shield 95000}          # self-cast
+```
+
+### Common behaviour
+
+AI casts are **charged by default** (xp/hp/gold/attack, from `table.lua`), and the
+AI never picks a spell the caster cannot afford. Casts always count against
+`max_casts` — so a caster fires at most `max_casts` spells per turn and the
+candidate action can never loop (the per-turn counter is incremented independently
+of cost). Pass `free=true` in a hand-written `[candidate_action]` to cast for free.
+The selection is stateless (run in both eval and exec), so multiple casting CAs on
+one side never clobber each other. Register once per side, in or after `prestart`.
+
+Limitations: targeting heuristics are per-profile (or `nearest`/`weakest` in the
+explicit form); AoE placement and the rose `bend_*` push/damage aren't modelled.
+A targeted spell's **range is supplied by the profile/macro**, since TRSS radii
+live in `spells.cfg`, not `table.lua`.
 
 ---
 
@@ -461,4 +585,6 @@ they've earned": no new dialog, no new commit logic, just a filtered picker.
 | `magic/state.lua` | WML ↔ Lua data bridge (`load` / `save` / `delete` / `from_config`) |
 | `magic/ops.lua` | Pure functions on caster data tables |
 | `magic/dialog.lua` | Dialog layout, preshow wiring, evaluate_single orchestration |
+| `magic/ai.lua` | Adaptive AI casting engine: candidate-action eval/exec, per-kind valuation |
+| `magic/ai_profiles.lua` | Editable catalogue of how the AI uses each spell (add/remove a line) |
 | `magic/table.lua` | Read-only catalogue of all 36 spell definitions |
