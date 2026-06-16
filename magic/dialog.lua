@@ -32,6 +32,13 @@ local function locked_subskill_label()
     return "   <span color='grey'>" .. _"Locked" .. "</span>   "
 end
 
+-- Appends a subtle "(current)" tag to a spell's dropdown label, marking which
+-- option in a group is the one currently equipped. Uses `..` (not table.concat)
+-- because translatable labels are t_string userdata.
+local function mark_current(label)
+    return label .. "  <span color='#888888' size='small'><i>" .. _"(current)" .. "</i></span>"
+end
+
 ---------------------------------------------------------------------------
 -- Private: skill preprocessing
 -- Converts raw group data into display-ready tables, marking locked spells.
@@ -192,7 +199,11 @@ local function prepare_groups(caster_data)
         local group = caster_data.groups[i]
         local display_group = {}
         local all_locked = true
+        local locked_count = 0
 
+        -- Collect unlocked spells first, count the locked ones, then append the
+        -- "Locked" placeholders at the END so they sink to the bottom of the
+        -- dropdown instead of scattering between real options. Names stay hidden.
         for _, spell_id in ipairs(group) do
             local spell_def = spell_index[spell_id]
             if spell_def then
@@ -200,9 +211,13 @@ local function prepare_groups(caster_data)
                     table.insert(display_group, spell_def)
                     all_locked = false
                 else
-                    table.insert(display_group, spell_data.locked)
+                    locked_count = locked_count + 1
                 end
             end
+        end
+
+        for _ = 1, locked_count do
+            table.insert(display_group, spell_data.locked)
         end
 
         if not all_locked and #display_group > 0 then
@@ -280,10 +295,16 @@ local function build_skill_rows(groups, selecting, equipped_list, unlocked_set)
         local button, subskill_row
 
         if selecting then
-            -- Menu button for picking which spell from this group.
+            -- Menu button for picking which spell from this group. The currently
+            -- equipped spell gets a "(current)" tag so the player can see what
+            -- they're changing from.
             button = T.menu_button{ id="button"..i, use_markup=true }
             for _, spell in ipairs(group) do
-                table.insert(button[2], T.option{ label=spell.label })
+                local lbl = spell.label
+                if spell.id and spell.id ~= "skill_locked" and equipped_set[spell.id] then
+                    lbl = mark_current(lbl)
+                end
+                table.insert(button[2], T.option{ label=lbl })
             end
         else
             -- Show label or castable button for the equipped spell in this group.
@@ -399,8 +420,8 @@ local function build_footer(caster, caster_data, selecting)
         return T.row{ T.column{ T.grid{ T.row{
             T.column{ border="top,right", border_size=10,
                 T.button{ id="confirm_button", use_markup=true,
-                    tooltip=_"You must choose an unlocked spell in every group.",
-                    label=_"Confirm Spells <small><i>(can be changed every scenario)</i></small>" }},
+                    tooltip=_"Your spells can be changed every scenario.\nConfirm is unavailable until you pick an unlocked spell in every group.",
+                    label=_"Confirm Spells" }},
             T.column{ border="top,left",  border_size=10,
                 T.button{ id="wait_button", use_markup=true,
                     label=_"Choose Later" }},
