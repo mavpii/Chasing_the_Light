@@ -85,6 +85,13 @@ return {
     skill_polymorph_yeti   = { kind = "buff_self", threat = 2, weight = 8,  base = 14 },
     skill_polymorph_orc    = { kind = "buff_self", threat = 2, weight = 10, base = 18 },
 
+    -- Faisim — conjure a melee weapon when an enemy is in reach (then wade in)
+    skill_arms_blade   = { kind = "buff_self", threat = 1, weight = 4, base = 12 },
+    skill_arms_spear   = { kind = "buff_self", threat = 1, weight = 4, base = 10 },
+    skill_arms_mace    = { kind = "buff_self", threat = 1, weight = 4, base = 10 },
+    skill_arms_daggers = { kind = "buff_self", threat = 1, weight = 4, base = 11 },
+    skill_arms_astral  = { kind = "buff_self", threat = 1, weight = 4, base = 9 },
+
     -- auras / control
     skill_counterspell = { kind = "debuff_aura", radius = 3, weight = 8, vs_casters = true, base = 15 },
     skill_illusion     = { kind = "debuff_aura", radius = 2, weight = 8, base = 10 },

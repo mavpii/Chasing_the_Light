@@ -371,6 +371,22 @@ local skill_set = {
 		image       = "attacks/frenzy.png",
 		description = _"<span color='#ad6a61'><i><b>Attack:</b></i></span> Melee 10x3(<span color='#00bbe6'><i>lvl3</i></span>) or 13x3(<span color='#00bbe6'><i>lvl4</i></span>) blade, <i>berserk</i>, <i>drains</i>, <i>magical</i>.",
 	},
+	-------------------------
+	-- ASTRAL ARMS
+	-------------------------
+	[37] = {
+		id          = "skill_astral_arms",
+		label       = label(_"Astral Arms"),
+		image       = "icons/sword-astral.png",
+		description = _"<span color='#6ca364'><i><b>Spell:</b></i></span> Conjure a spectral weapon. Pick a form - similar power, but a different damage type and trick.\nLasts until you change it.",
+		subskills   = {
+			[1]={ id="skill_arms_astral",  castable    = true, label="   <span>Astral</span>   "},
+			[2]={ id="skill_arms_blade",   castable    = true, label="   <span>Blade</span>   "},
+			[3]={ id="skill_arms_spear",   castable    = true, label="   <span>Spear</span>   ",},
+			[4]={ id="skill_arms_mace",    castable    = true, label="   <span>Mace</span>   ",},
+			[5]={ id="skill_arms_daggers", castable    = true, label="   <span>Daggers</span>   ",},
+		},
+	},
 }
 
 --###############################

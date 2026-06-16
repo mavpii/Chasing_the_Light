@@ -263,13 +263,18 @@ end
 -- (wesnoth.current.side, i.e. whose turn it is), and the priority is set by the
 -- candidate action's max_score (a normal attribute, which does substitute). eval
 -- returns a big constant that max_score caps to the configured score.
-function M.eval_auto()
-    local side = wesnoth.current.side
+-- `side`/`score` may be passed by the macro (from WML variables); we PREFER
+-- wesnoth.current.side (the side whose turn it is), which is correct even when
+-- several sides each register a CASTER_AI, and fall back to the passed side.
+-- eval returns a big constant that the candidate action's max_score caps to score.
+function M.eval_auto(side)
+    side = wesnoth.current.side or tonumber(side)
     return choose({ side = side }) and 1000000 or 0
 end
 
-function M.exec_auto()
-    local pick = choose({ side = wesnoth.current.side })
+function M.exec_auto(side)
+    side = wesnoth.current.side or tonumber(side)
+    local pick = choose({ side = side })
     if pick then do_cast({}, pick) end
 end
 
