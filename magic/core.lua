@@ -417,6 +417,25 @@ wml_actions["caster_max_casts"] = function(cfg)
 end
 
 ---------------------------------------------------------------------------
+-- CASTER RESTORE CASTS
+-- Gives back casts already spent this turn -- e.g. after a scripted retry,
+-- or to refund a cancelled targeted spell. With no `count`, fully restores
+-- (back to 0 spent). With `count`, restores only that many.
+-- Use: [caster_restore_casts] count=1 [filter]...[/filter] [/caster_restore_casts]
+---------------------------------------------------------------------------
+
+wml_actions["caster_restore_casts"] = function(cfg)
+    local units = wesnoth.units.find_on_map(require_filter(cfg, "caster_restore_casts"))
+    for _, u in ipairs(units) do
+        local data = CasterState.load(u.id)
+        if data then
+            CasterOps.restore_casts(data, cfg.count)
+            CasterState.save(data)
+        end
+    end
+end
+
+---------------------------------------------------------------------------
 -- CASTER FREE ASSIGN
 -- Enables/disables free-assign mode: the spell selection dialog lets the
 -- player pick ANY spell into ANY slot through a picker grid.

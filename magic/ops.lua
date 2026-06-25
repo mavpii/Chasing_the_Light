@@ -136,6 +136,18 @@ function CasterOps.set_max_casts(data, n)
     data.max_casts = math.max(1, math.floor(tonumber(n) or 1))
 end
 
+-- Gives back casts already spent this turn. With no amount, fully restores
+-- (back to 0 spent). With an amount, gives back only that many -- floored at
+-- 0 spent, so it can never grant casts beyond what was actually used.
+function CasterOps.restore_casts(data, amount)
+    if amount == nil then
+        data.casts_this_turn = 0
+        return
+    end
+    local n = math.max(0, math.floor(tonumber(amount) or 0))
+    data.casts_this_turn = math.max(0, (data.casts_this_turn or 0) - n)
+end
+
 -- Enable or disable free-assign mode (any spell into any slot).
 function CasterOps.set_free_assign(data, enabled)
     data.free_assign = enabled == true

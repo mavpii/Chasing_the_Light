@@ -205,6 +205,16 @@ Sets how many spells the caster may cast per turn. Default is 1. When `max_casts
 
 The counter is tracked via the synced command `spellcasting_cost` (flag `casts_increment=true`) and reset to 0 at `turn refresh` / `start`.
 
+### `[caster_restore_casts]`
+Gives back casts already spent this turn. With no `count`, fully restores (back to 0 spent). With `count`, restores only that many — floored at 0 spent, so it can never grant casts beyond what was actually used. Used internally by `TRSS.cfg` to refund the cast when a targeted spell is cancelled (the dialog already incremented `casts_this_turn` before targeting started); also useful in scenario scripts that script a "failed attempt" but want the caster to retry the same turn.
+
+```cfg
+[caster_restore_casts]
+    [filter] id=Haralin [/filter]
+    count = 1   # optional; omit for a full restore
+[/caster_restore_casts]
+```
+
 ### `[caster_free_assign]` *(upgrade)*
 Enables or disables free-assign mode. When enabled, the **selection dialog** no
 longer offers a fixed per-group menu; instead every slot becomes a clickable
@@ -324,6 +334,8 @@ runs their per-hex `_cast` body, not those extras.
 | `{REMOVE_CASTER (id=X)}` | `[remove_caster]` | |
 | `{CASTER_RESELECT (id=X) yes/no}` | `[caster_reselect]` | Upgrade: free reselect |
 | `{CASTER_MAX_CASTS (id=X) N}` | `[caster_max_casts]` | Upgrade: multi-cast |
+| `{CASTER_RESTORE_CASTS (id=X)}` | `[caster_restore_casts]` | Fully restore casts spent this turn |
+| `{CASTER_RESTORE_CASTS_COUNT (id=X) N}` | `[caster_restore_casts]` | Restore N casts spent this turn |
 | `{CASTER_FREE_ASSIGN (id=X) yes/no}` | `[caster_free_assign]` | Upgrade: any spell in any slot |
 | `{CASTER_FREE_UNLOCKED (id=X) yes/no}` | `[caster_free_unlocked]` | Upgrade: free-pick — any unlocked spell in any slot |
 | `{CAST_SPELL (id=X) spell_id}` | `[cast_spell]` | Command-cast a normal spell (with cost) |
