@@ -92,6 +92,21 @@ return {
     skill_arms_daggers = { kind = "buff_self", threat = 1, weight = 4, base = 11 },
     skill_arms_astral  = { kind = "buff_self", threat = 1, weight = 4, base = 9 },
 
+    -- Faisim — Group 3 mobility / burst
+    skill_shadowstep     = { kind = "damage",    range = 6, power = 0, base = 8 },  -- gap-close to an enemy
+    skill_astral_chains  = { kind = "damage",    range = 4, power = 0, base = 8 },  -- yank an enemy in
+    skill_phantom_flurry = { kind = "buff_self", threat = 1, weight = 4, base = 10 },
+    skill_haste          = { kind = "buff_self", threat = 2, weight = 4, base = 8 },
+
+    -- Faisim — Group 2 (veil_ward / bloodbound_vigor / soul_knit / phantom_guard)
+    -- are PASSIVE — auto-applied via refresh_skills, never cast — so no AI profile.
+
+    -- Faisim — Group 4 soul & flame (strong, expensive; affordability gates them)
+    skill_soul_siphon = { kind = "damage", range = 6, power = 30, base = 22 },
+    skill_oblivion    = { kind = "damage", range = 5, power = 50, base = 40 },
+    skill_void_rift   = { kind = "damage", range = 5, power = 25, base = 30 },  -- targets an enemy; AoE hits its cluster
+    skill_phylactery  = { kind = "buff_self", threat = 2, weight = 10, base = 20 },
+
     -- auras / control
     skill_counterspell = { kind = "debuff_aura", radius = 3, weight = 8, vs_casters = true, base = 15 },
     skill_illusion     = { kind = "debuff_aura", radius = 2, weight = 8, base = 10 },

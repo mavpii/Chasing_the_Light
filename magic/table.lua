@@ -376,9 +376,9 @@ local skill_set = {
 	-------------------------
 	[37] = {
 		id          = "skill_astral_arms",
-		label       = label(_"Astral Arms"),
+		label       = label(_"Weapon"),
 		image       = "icons/sword-astral.png",
-		description = _"<span color='#6ca364'><i><b>Spell:</b></i></span> Conjure a spectral weapon. Pick a form - similar power, but a different damage type and trick.\nLasts until you change it.",
+		description = _"<span color='#6ca364'><i><b>Spell:</b></i></span> Summon a spectral weapon. Each of them has similar damage, but a different type and specials.\nLasts until you change it.",
 		subskills   = {
 			[1]={ id="skill_arms_astral",  castable    = true, label="   <span>Astral</span>   "},
 			[2]={ id="skill_arms_blade",   castable    = true, label="   <span>Blade</span>   "},
@@ -386,6 +386,123 @@ local skill_set = {
 			[4]={ id="skill_arms_mace",    castable    = true, label="   <span>Mace</span>   ",},
 			[5]={ id="skill_arms_daggers", castable    = true, label="   <span>Daggers</span>   ",},
 		},
+	},
+	-------------------------
+	-- SHADOWSTEP
+	-------------------------
+	[38] = {
+		id          = "skill_shadowstep",
+		label       = label(_"Shadowstep"),
+		image       = "icons/relocate.png", --TODO
+		description = _"<span color='#6ca364'><i><b>Spell:</b></i></span> Spend <span color='#00bbe6'><i>10xp</i></span> to teleport next to a selected unit.\n<span color='#ad6a61'><i><b>Radius:</b></i></span> <i>6 hexes.</i>",
+		xp_cost     = 8,
+	},
+	-------------------------
+	-- PHANTOM FLURRY
+	-------------------------
+	[39] = {
+		id          = "skill_phantom_flurry",
+		label       = label(_"Flurry"), --TODO
+		image       = "icons/dancing-daggers.png", --TODO
+		description = _"<span color='#6ca364'><i><b>Spell:</b></i></span> Spend <span color='#00bbe6'><i>12xp</i></span> to gain <b>+2 attacks</b> this turn.",
+		xp_cost     = 12,
+	},
+	-------------------------
+	-- ASTRAL CHAINS
+	-------------------------
+	[40] = {
+		id          = "skill_astral_chains",
+		label       = label(_"Chains"),
+		image       = "icons/swap.png",
+		description = _"<span color='#6ca364'><i><b>Spell:</b></i></span> Spend <span color='#00bbe6'><i>10xp</i></span> to pull a selected unit next to you.\n<span color='#ad6a61'><i><b>Radius:</b></i></span> <i>4 hexes.</i>",
+		xp_cost     = 10,
+	},
+	-------------------------
+	-- HASTE
+	-------------------------
+	[41] = {
+		id          = "skill_haste",
+		label       = label(_"Haste"),
+		image       = "icons/sandals.png", --TODO
+		description = _"<span color='#6ca364'><i><b>Spell:</b></i></span> Spend <span color='#00bbe6'><i>12xp</i></span> to gain the <i>skirmisher</i> ability, <i>50%</i> defense on all terrain and <i>+3 MP</i>.\n           Lasts until the start of your next turn or until cancelled.",
+		xp_cost     = 12,
+	},
+	-------------------------
+	-- VEIL
+	-------------------------
+	[42] = {
+		id          = "skill_veil_ward",
+		label       = label(_"Veil"),
+		image       = "icons/shield.png",
+		description = _"<span color='#a9a150'><i><b>Passive:</b></i></span> <i>+25% defense</i> on all terrain.",
+	},
+	-------------------------
+	-- VIGOR
+	-------------------------
+	[43] = {
+		id          = "skill_bloodbound_vigor",
+		label       = label(_"Vigor"), --TODO
+		image       = "icons/potion_green_small.png",
+		description = _"<span color='#a9a150'><i><b>Passive:</b></i></span> <b>+15 max HP</b>.",
+	},
+	-------------------------
+	-- KNIT
+	-------------------------
+	[44] = {
+		id          = "skill_soul_knit",
+		label       = label(_"Knit"), --TODO
+		image       = "icons/disheal.png",
+		description = _"<span color='#a9a150'><i><b>Passive:</b></i></span> <i>Regenerate +8 HP</i> each turn.",
+	},
+	-------------------------
+	-- GUARD
+	-------------------------
+	[45] = {
+		id          = "skill_phantom_guard",
+		label       = label(_"Guard"), --TODO
+		image       = "icons/illusion.png",
+		description = _"<span color='#a9a150'><i><b>Passive:</b></i></span> Double resistances when defending up to 50%.",
+	},
+
+	-------------------------
+	-- DRAIN
+	-------------------------
+	[46] = {
+		id          = "skill_soul_siphon",
+		label       = label(_"Drain"),
+		image       = "icons/enervate.png", --TODO
+		description = _"<span color='#6ca364'><i><b>Spell:</b></i></span> Spend <span color='#00bbe6'><i>28xp</i></span> to deal 30 arcane damage to a selected enemy, healing yourself for the amount of damage dealt.\n<span color='#ad6a61'><i><b>Radius:</b></i></span> <i>6 hexes.</i>",
+		xp_cost     = 28,
+	},
+	-------------------------
+	-- OBLIVION
+	-------------------------
+	[47] = {
+		id          = "skill_oblivion",
+		label       = label(_"Curse"), --TODO
+		image       = "attacks/beam-eye.png",
+		description = _"<span color='#6ca364'><i><b>Spell:</b></i></span> Spend <span color='#00bbe6'><i>40xp</i></span> to deal 50 arcane damage to a selected enemy.\n<span color='#ad6a61'><i><b>Radius:</b></i></span> <i>5 hexes.</i>",
+		xp_cost     = 40,
+	},
+	-------------------------
+	-- RIFT
+	-------------------------
+	[48] = {
+		id          = "skill_void_rift",
+		label       = label(_"Rift"),
+		image       = "icons/cataclysm.png", --TODO
+		description = _"<span color='#6ca364'><i><b>Spell:</b></i></span> Spend <span color='#00bbe6'><i>32xp</i></span> to tear open a rift, dealing 25 arcane damage to all enemies within 2 hexes of the target location.\n<span color='#ad6a61'><i><b>Radius:</b></i></span> <i>5 hexes.</i>",
+		xp_cost     = 32,
+	},
+	-------------------------
+	-- RIFT
+	-------------------------
+	[49] = {
+		id          = "skill_phylactery",
+		label       = label(_"Backup"),
+		image       = "icons/contingency.png", --TODO
+		description = _"<span color='#6ca364'><i><b>Spell:</b></i></span> Spend <span color='#00bbe6'><i>48xp</i></span> to TODO",
+		xp_cost     = 48,
 	},
 }
 

@@ -492,7 +492,6 @@ end
 
 wml_actions["refresh_skills"] = function(cfg)
     wml.variables["current_caster"] = cfg.id
-    wml.variables["caster_" .. cfg.id .. ".spellcasted_this_turn"] = nil
     wesnoth.game_events.fire("refresh_skills")
 end
 
@@ -559,7 +558,6 @@ local function open_for_unit(u, force_select)
 
     local selecting = force_select or (data.wait_to_select == "yes")
     local reselect = Dialog.open_dialog(u, data, selecting)
-    wml.variables["caster_" .. u.id .. ".spellcasted_this_turn"] = nil
 
     -- Reselect upgrade: cast dialog requested switching to spell selection mode.
     if reselect then

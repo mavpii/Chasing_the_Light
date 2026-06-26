@@ -90,7 +90,6 @@ function CasterState.load(unit_id)
 
         spellcasting_disabled = wml.variables[prefix .. ".utils_spellcasting_allowed"] == "disabled",
         advancement_disabled  = wml.variables[prefix .. ".utils_advancement_allowed"]  == "disabled",
-        spellcasted_this_turn = wml.variables[prefix .. ".spellcasted_this_turn"],
         polymorphed           = wml.variables[prefix .. ".polymorphed"],
         wait_to_select        = wait_to_select,
 
@@ -148,7 +147,6 @@ function CasterState.save(data)
 
     wml.variables[prefix .. ".utils_spellcasting_allowed"] = data.spellcasting_disabled and "disabled" or nil
     wml.variables[prefix .. ".utils_advancement_allowed"]  = data.advancement_disabled  and "disabled" or nil
-    wml.variables[prefix .. ".spellcasted_this_turn"]      = data.spellcasted_this_turn
     wml.variables[prefix .. ".polymorphed"]                = data.polymorphed
     wml.variables[prefix .. ".wait_to_select_spells"]      = data.wait_to_select
 
@@ -202,7 +200,6 @@ function CasterState.from_config(unit, cfg)
 
         spellcasting_disabled = (cfg.spellcasting_allowed == false),
         advancement_disabled  = false,
-        spellcasted_this_turn = nil,
         polymorphed           = nil,
         wait_to_select        = nil,
 

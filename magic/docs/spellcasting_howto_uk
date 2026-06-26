@@ -111,8 +111,7 @@ local skill_set = {
      spell_group_2 =
      ... -- підтримується до 10 груп заклять
      spell_group_10 =
-     utils_spellcasted_this_turn = cfg.spellcasted_this_turn or nil  -- (опціонально) чи може юніт використовувати закляття на цьому ходу. По дефолту це nil, якщо поставити щось інше, гра вважатиме, що юніт вже кастував на цьому ходу
-     utils_spellcasting_allowed = tostring(cfg.spellcasting_allowed) or true, -- (опціонально) yes/true or no/false. Чи може юніт використовувати закляття, можна змінити через [caster_status]. По дефолту це true, тобто обмежень не має  
+     utils_spellcasting_allowed = tostring(cfg.spellcasting_allowed) or true, -- (опціонально) yes/true or no/false. Чи може юніт використовувати закляття, можна змінити через [caster_status]. По дефолту це true, тобто обмежень не має
 
 [/assign_caster]
 

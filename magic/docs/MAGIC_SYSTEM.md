@@ -90,7 +90,6 @@ All stored as WML variables under the prefix `caster_<unit_id>.*`.
 | `groups[i]` | `.spell_group_1` … `.spell_group_10` | comma-list | Spell pool per slot |
 | `spellcasting_disabled` | `.utils_spellcasting_allowed` | `"disabled"` / nil | Hides right-click menu |
 | `advancement_disabled` | `.utils_advancement_allowed` | `"disabled"` / nil | Hides advance button |
-| `spellcasted_this_turn` | `.spellcasted_this_turn` | spell id / nil | Local-only signal, cleared after dialog |
 | `polymorphed` | `.polymorphed` | any / nil | Blocks casting while set |
 | `wait_to_select` | `.wait_to_select_spells` | `"yes"` / nil | Forces selection mode on next open |
 | `reselect_free` | `.reselect_free` | `true` / nil | Upgrade: shows "Change Spells" button |

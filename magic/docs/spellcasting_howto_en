@@ -110,8 +110,7 @@ Gives the unit the ability to cast spells
      spell_group_2 =
      ...
      spell_group_10 = -- up to 10 spell groups are supported
-     utils_spellcasted_this_turn = cfg.spellcasted_this_turn or nil -- (optional) whether the unit can cast spells this turn. By default, it is nil, if you set something else, the game will assume that the unit has already cast spells this turn
-     utils_spellcasting_allowed = tostring(cfg.spellcasting_allowed) or true, -- (optional) yes/true or no/false. Whether a unit can cast spells can be changed through [caster_status]. By default, it is true, that is, there are no restrictions  
+     utils_spellcasting_allowed = tostring(cfg.spellcasting_allowed) or true, -- (optional) yes/true or no/false. Whether a unit can cast spells can be changed through [caster_status]. By default, it is true, that is, there are no restrictions
 [/assign_caster]
 
 

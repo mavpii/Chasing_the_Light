@@ -692,8 +692,7 @@ local function make_preshow(caster, caster_data, groups, selecting, free_slots)
             -- Set current_caster on ALL clients from inside the button click.
             -- invoke_command is only valid inside show_dialog button handlers in MP.
             wesnoth.sync.invoke_command("magic_set_caster", { id = caster.id })
-            wml.variables["caster_" .. caster.id .. ".spell_to_cast"]        = spell.id
-            wml.variables["caster_" .. caster.id .. ".spellcasted_this_turn"] = spell.id
+            wml.variables["caster_" .. caster.id .. ".spell_to_cast"] = spell.id
             gui.widget.close(dlg)
         end
     end
@@ -887,8 +886,6 @@ local function open_dialog(caster, caster_data, selecting)
             end
         end)
     end
-
-    wml.variables["caster_" .. caster.id .. ".spellcasted_this_turn"] = nil
 
     -- Check if the user clicked "Change Spells" (free-reselect upgrade).
     local reselect = wml.variables["caster_" .. caster.id .. ".requested_reselect"] == true
