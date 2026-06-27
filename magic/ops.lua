@@ -232,6 +232,22 @@ function CasterOps.can_cast(data)
     return (data.casts_this_turn or 0) < (data.max_casts or 1)
 end
 
+-- Records that spell_id was cast on `turn` (AI repeat-avoidance scoring only).
+function CasterOps.record_cast(data, spell_id, turn)
+    data.spell_last_cast = data.spell_last_cast or {}
+    data.spell_last_cast[spell_id] = turn
+end
+
+-- Utility multiplier in [min_factor, 1]: min_factor the same turn it was cast,
+-- ramping linearly back to 1 over `window` turns. 1 if never cast / outside window.
+function CasterOps.repeat_factor(data, spell_id, turn, window, min_factor)
+    local last = data.spell_last_cast and data.spell_last_cast[spell_id]
+    if not last then return 1 end
+    local age = turn - last
+    if age >= window then return 1 end
+    return min_factor + (1 - min_factor) * (age / window)
+end
+
 ---------------------------------------------------------------------------
 -- Bulk update (used by modify_caster)
 ---------------------------------------------------------------------------

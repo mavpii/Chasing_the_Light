@@ -27,6 +27,20 @@ local function list_to_set(list)
     return set
 end
 
+-- "skill_a:5,skill_b:3" <-> { skill_a = 5, skill_b = 3 }. Used for spell_last_cast
+-- (AI repeat-avoidance scoring: which turn each spell was last cast on).
+local function parse_kv_list(str)
+    local t = {}
+    for k, v in (str or ""):gmatch("([^,:]+):([^,]+)") do t[k] = tonumber(v) end
+    return t
+end
+
+local function kv_list_to_str(t)
+    local parts = {}
+    for k, v in pairs(t) do parts[#parts + 1] = k .. ":" .. v end
+    return table.concat(parts, ",")
+end
+
 ---------------------------------------------------------------------------
 -- Public API
 ---------------------------------------------------------------------------
@@ -98,6 +112,8 @@ function CasterState.load(unit_id)
         -- Upgrade: multi-cast (how many spells can be cast per turn).
         max_casts       = tonumber(wml.variables[prefix .. ".max_casts"]) or 1,
         casts_this_turn = tonumber(wml.variables[prefix .. ".casts_this_turn"]) or 0,
+        -- AI repeat-avoidance: spell_id -> turn it was last cast on (autonomous AI only).
+        spell_last_cast = parse_kv_list(wml.variables[prefix .. ".spell_last_cast"]),
         -- Upgrade: free assign (pick any spell into any slot from a picker grid).
         free_assign     = wml.variables[prefix .. ".free_assign"] == true,
         -- Upgrade: free pick — same picker UI as free assign, but the grid is
@@ -153,6 +169,7 @@ function CasterState.save(data)
     wml.variables[prefix .. ".reselect_free"]   = data.reselect_free and true or nil
     wml.variables[prefix .. ".max_casts"]       = (data.max_casts ~= nil and data.max_casts > 1) and data.max_casts or nil
     wml.variables[prefix .. ".casts_this_turn"] = (data.casts_this_turn ~= nil and data.casts_this_turn > 0) and data.casts_this_turn or nil
+    wml.variables[prefix .. ".spell_last_cast"] = next(data.spell_last_cast or {}) and kv_list_to_str(data.spell_last_cast) or nil
     wml.variables[prefix .. ".free_assign"]     = data.free_assign and true or nil
     wml.variables[prefix .. ".free_unlocked"]   = data.free_unlocked and true or nil
 end
@@ -206,6 +223,7 @@ function CasterState.from_config(unit, cfg)
         reselect_free   = false,
         max_casts       = 1,
         casts_this_turn = 0,
+        spell_last_cast = {},
         free_assign     = (cfg.free_assign == true),
         free_unlocked   = (cfg.free_unlocked == true),
     }

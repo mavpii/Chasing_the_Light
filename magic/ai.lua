@@ -16,6 +16,7 @@
 local CasterState = wesnoth.require "~add-ons/Chasing_the_Light/magic/state.lua"
 local CasterOps   = wesnoth.require "~add-ons/Chasing_the_Light/magic/ops.lua"
 local spell_data  = wesnoth.require "~add-ons/Chasing_the_Light/magic/table.lua"
+local AH          = wesnoth.require "ai/lua/ai_helper.lua"
 
 local M = {}
 
@@ -25,6 +26,13 @@ M.profiles = wesnoth.require "~add-ons/Chasing_the_Light/magic/ai_profiles.lua"
 
 function M.set_profile(id, profile) M.profiles[id] = profile end
 function M.forget_profile(id)       M.profiles[id] = nil end
+
+-- Spell-choice variety: a spell cast `age` turns ago has its utility scaled down
+-- to REPEAT_MIN_FACTOR, ramping linearly back to 1 over REPEAT_WINDOW turns. Keeps
+-- the AI from camping on one favorite spell when several are close in value, while
+-- still letting a clear enough need (e.g. an urgent heal) win again immediately.
+local REPEAT_WINDOW     = 3
+local REPEAT_MIN_FACTOR = 0.5
 
 ---------------------------------------------------------------------------
 -- Cost index (id -> costs), including subskills, for affordability checks.
@@ -95,6 +103,36 @@ local function allies_within(u, range, include_self)
     return out
 end
 
+-- Like enemies_within/allies_within, but anchored on an arbitrary hex instead of
+-- u's own position -- for scoring a candidate target's splash radius.
+local function enemies_near_hex(u, x, y, radius)
+    local out = {}
+    for _, e in ipairs(wesnoth.units.find_on_map{}) do
+        if e.id ~= u.id and not same_team(u, e)
+           and wesnoth.map.distance_between(x, y, e.x, e.y) <= radius then
+            out[#out + 1] = e
+        end
+    end
+    return out
+end
+
+local function allies_near_hex(u, x, y, radius)
+    local out = {}
+    for _, a in ipairs(wesnoth.units.find_on_map{}) do
+        if same_team(u, a) and wesnoth.map.distance_between(x, y, a.x, a.y) <= radius then
+            out[#out + 1] = a
+        end
+    end
+    return out
+end
+
+-- power adjusted for the target's resistance to dtype (same formula spells.cfg's
+-- own [harm_unit]/resistance_against handlers use). No dtype -> power unchanged.
+local function adjusted_power(power, target, dtype)
+    if not dtype then return power end
+    return math.floor(power * (100 - target:resistance_against(dtype, false, target.x, target.y)) / 100)
+end
+
 -- An empty hex adjacent to the caster, closest to the nearest enemy (for summons).
 local function empty_adjacent_toward_enemy(u)
     local foes = enemies_within(u, 999)
@@ -125,11 +163,29 @@ KINDS.damage = function(u, p)
     local best, bu
     for _, e in ipairs(enemies_within(u, p.range or 1)) do
         local v = (p.power or 10)
-        if (p.power or 0) >= e.hitpoints then v = v + 50 end          -- can finish it
+        local dmg = adjusted_power(p.power or 10, e, p.dtype)
+        if dmg >= e.hitpoints then v = v + 50 end                     -- can finish it
         v = v + (e.max_hitpoints - e.hitpoints) * 0.2                 -- prefer wounded
         if not best or v > bu then best, bu = e, v end
     end
     if best then return { util = (p.base or 20) + bu, target = best } end
+end
+
+-- Like `damage`, but the target's own hex is the center of a splash effect of
+-- radius `aoe_radius` (e.g. Void Rift's harm_unit radius=2) -- so the target is
+-- chosen by how many enemies the splash would catch, not just its own HP.
+KINDS.aoe_targeted = function(u, p)
+    local best, bv
+    for _, e in ipairs(enemies_within(u, p.range or 1)) do
+        local foes   = #enemies_near_hex(u, e.x, e.y, p.aoe_radius or 1)
+        local allies = #allies_near_hex(u, e.x, e.y, p.aoe_radius or 1)
+        local dmg = adjusted_power(p.power or 10, e, p.dtype)
+        local v = (p.power or 10) * foes - (p.ally_penalty or 0) * allies
+        if dmg >= e.hitpoints then v = v + 50 end
+        v = v + (e.max_hitpoints - e.hitpoints) * 0.2
+        if not best or v > bv then best, bv = e, v end
+    end
+    if best then return { util = (p.base or 20) + bv, target = best } end
 end
 
 KINDS.aoe_self = function(u, p)
@@ -192,6 +248,36 @@ KINDS.summon = function(u, p)
 end
 
 ---------------------------------------------------------------------------
+-- Move-into-range: if a spell scores nothing from the caster's current hex,
+-- search hexes it can reach this turn for a better spot. KINDS.* functions only
+-- ever read u.id/u.side/u.x/u.y/u.hitpoints/u.max_hitpoints (no unit methods), so
+-- a plain probe table stands in for a real unit at a hypothetical hex.
+---------------------------------------------------------------------------
+local function probe_at(u, x, y)
+    return { side = u.side, x = x, y = y, id = u.id,
+             hitpoints = u.hitpoints, max_hitpoints = u.max_hitpoints }
+end
+
+-- Returns the best (hex, result) for prof's kind, preferring u's current hex.
+local function best_hex_for(u, prof)
+    local handler = KINDS[prof.kind]
+    if not handler then return nil end
+    local res = handler(u, prof)
+    if res then return { x = u.x, y = u.y }, res end
+
+    local best_hex, best_res
+    for _, r in ipairs(wesnoth.paths.find_reach(u, {})) do
+        if not (r[1] == u.x and r[2] == u.y) then
+            local hres = handler(probe_at(u, r[1], r[2]), prof)
+            if hres and (not best_res or hres.util > best_res.util) then
+                best_hex, best_res = { x = r[1], y = r[2] }, hres
+            end
+        end
+    end
+    return best_hex, best_res
+end
+
+---------------------------------------------------------------------------
 -- Candidate casters: registered casters on cfg.side that can still cast.
 ---------------------------------------------------------------------------
 local function casters_for(cfg)
@@ -208,7 +294,12 @@ local function casters_for(cfg)
 end
 
 -- Issues the chosen cast through the WML tags. Charged unless cfg.free == true.
+-- Moves the caster to pick.move_to first if the best casting hex isn't its current one.
 local function do_cast(cfg, pick)
+    if pick.move_to and (pick.move_to.x ~= pick.caster.x or pick.move_to.y ~= pick.caster.y) then
+        AH.movefull_stopunit(ai, pick.caster, pick.move_to.x, pick.move_to.y)
+    end
+
     local free = (cfg.free == true)
     local id = pick.cast or pick.spell
     if pick.self then
@@ -223,6 +314,21 @@ local function do_cast(cfg, pick)
             wml.tag.filter{ id = pick.caster.id },
         })
     end
+
+    -- Record for repeat-avoidance scoring. Only autonomous-mode picks set `cast`
+    -- (explicit-mode CASTER_AI_SPELL picks only set `spell` -- it forces one spell
+    -- by design, so there is no choice to diversify there). Reload fresh rather
+    -- than reusing the pre-cast `data` from choose_for: the wml.fire above already
+    -- incremented casts_this_turn (and applied costs) directly in WML, and saving
+    -- the stale snapshot here would overwrite that back to its pre-cast value --
+    -- which silently breaks max_casts, since can_cast() would never see the cast.
+    if pick.cast then
+        local fresh = CasterState.load(pick.caster.id)
+        if fresh then
+            CasterOps.record_cast(fresh, pick.cast, wesnoth.current.turn)
+            CasterState.save(fresh)
+        end
+    end
 end
 
 ---------------------------------------------------------------------------
@@ -233,12 +339,16 @@ local function choose_for(u, data)
     for _, spell_id in ipairs(data.equipped) do
         for _, cast_id in ipairs(castable_ids(spell_id)) do
             local prof = M.profiles[cast_id]
-            local handler = prof and KINDS[prof.kind]
-            if handler and can_afford(u, cast_id) then
-                local res = handler(u, prof)
-                if res and (not best or res.util > best.util) then
-                    best = { caster = u, spell = spell_id, cast = cast_id,
-                             util = res.util, self = res.self, target = res.target }
+            if prof and can_afford(u, cast_id) then
+                local hex, res = best_hex_for(u, prof)
+                if res then
+                    res.util = res.util * CasterOps.repeat_factor(
+                        data, cast_id, wesnoth.current.turn, REPEAT_WINDOW, REPEAT_MIN_FACTOR)
+                    if not best or res.util > best.util then
+                        best = { caster = u, spell = spell_id, cast = cast_id,
+                                 util = res.util, self = res.self, target = res.target,
+                                 move_to = hex }
+                    end
                 end
             end
         end

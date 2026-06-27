@@ -5,16 +5,21 @@
 -- the SUBSKILL id — the engine expands an equipped parent to its subskills).
 -- ADD a line to enable a spell, DELETE a line to disable it. The engine (ai.lua)
 -- dispatches on `kind`. Each turn an AI caster scores every profiled, AFFORDABLE
--- (sub)spell it has equipped and casts the single highest-utility one.
+-- (sub)spell it has equipped and casts the single highest-utility one. If nothing
+-- qualifies from its current hex, it searches hexes it can reach this turn and
+-- moves to the best one before casting (see ai.lua's best_hex_for).
 --
 -- Cast method follows the kind automatically:
---   * target kinds (damage / heal_target / summon) -> [cast_targeted_spell], i.e.
---     they fire "<id>_cast" on a hex — use these for TRSS spells.
+--   * target kinds (damage / aoe_targeted / heal_target / summon) -> [cast_targeted_spell],
+--     i.e. they fire "<id>_cast" on a hex — use these for TRSS spells.
 --   * self kinds (aoe_self / heal_self_aura / buff_self / buff_team / debuff_aura)
 --     -> [cast_spell], i.e. they fire "<id>" directly — use these for self/aura spells.
 --
 -- kinds & fields (see ai.lua for exact maths):
 --   damage         enemy in `range`; `power` = nominal damage (kill/wounded bonus)
+--   aoe_targeted   like damage, but the target's hex is the center of a splash of
+--                  radius `aoe_radius` (e.g. Void Rift) — scores by cluster size, not
+--                  just the target's own HP; `ally_penalty` for allies caught in it
 --   heal_target    most-wounded ally (incl self) in `range`
 --   summon         empty adjacent hex toward the enemy; fires when foes within `threat`
 --   aoe_self       enemies within `radius`; `power`/foe, `ally_penalty`/friendly, needs `min`
@@ -22,13 +27,15 @@
 --   buff_self      self; fires when >= `min` enemies within `threat`; `weight`/foe
 --   buff_team      self+allies; fires when >= `min` allies within `radius`
 --   debuff_aura    enemies within `radius`; `vs_casters=true` adds value vs casters
--- Common: `base` (flat priority). Costs come from table.lua; unaffordable = skipped.
+-- Common: `base` (flat priority). `dtype` (damage/aoe_targeted only) adjusts `power` for
+-- the target's resistance — set it to the spell's real damage_type, omit if not applicable.
+-- Costs come from table.lua; unaffordable = skipped.
 
 return {
     --======================= TARGETED (TRSS) — fire <id>_cast =======================
 
     -- ranged single-target damage
-    skill_disattack = { kind = "damage", range = 6, power = 27, base = 20 },
+    skill_disattack = { kind = "damage", range = 6, power = 27, dtype = "arcane", base = 20 },
 
     -- ranged heal of a wounded ally
     skill_disheal   = { kind = "heal_target", range = 7, base = 15 },
@@ -48,7 +55,7 @@ return {
 
     -- bend nature (rose spells). CAVEAT: their push/lava-damage extras live in the
     -- interactive click handler, so an auto-cast only runs the per-hex _cast body.
-    skill_bend_lava  = { kind = "damage", range = 4, power = 20, base = 8 },
+    skill_bend_lava  = { kind = "damage", range = 4, power = 20, dtype = "fire", base = 8 },
     skill_bend_water = { kind = "damage", range = 4, power = 3,  base = 6 },
     skill_bend_air   = { kind = "damage", range = 4, power = 2,  base = 5 },
     skill_bend_earth = { kind = "damage", range = 4, power = 1,  base = 4 },
@@ -102,9 +109,11 @@ return {
     -- are PASSIVE — auto-applied via refresh_skills, never cast — so no AI profile.
 
     -- Faisim — Group 4 soul & flame (strong, expensive; affordability gates them)
-    skill_soul_siphon = { kind = "damage", range = 6, power = 30, base = 22 },
-    skill_oblivion    = { kind = "damage", range = 5, power = 50, base = 40 },
-    skill_void_rift   = { kind = "damage", range = 5, power = 25, base = 30 },  -- targets an enemy; AoE hits its cluster
+    skill_soul_siphon = { kind = "damage", range = 6, power = 30, dtype = "arcane", base = 22 },
+    skill_oblivion    = { kind = "damage", range = 5, power = 50, dtype = "arcane", base = 40 },
+    -- AoE on the clicked enemy's hex (harm_unit radius=2) -- score by cluster size, not just its own HP
+    skill_void_rift   = { kind = "aoe_targeted", range = 5, aoe_radius = 2, power = 25,
+                           dtype = "arcane", ally_penalty = 15, base = 30 },
     skill_phylactery  = { kind = "buff_self", threat = 2, weight = 10, base = 20 },
 
     -- auras / control
