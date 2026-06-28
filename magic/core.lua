@@ -106,9 +106,15 @@ function wesnoth.custom_synced_commands.spellcasting_cost(t)
     if t.atk_cost  then u.attacks_left            = u.attacks_left            - t.atk_cost  end
     -- Multi-cast: increment the per-turn cast counter (synced so it persists in saves/replays).
     if t.casts_increment then
-        local ct = tonumber(wml.variables["caster_" .. u.id .. ".casts_this_turn"]) or 0
-        wml.variables["caster_" .. u.id .. ".casts_this_turn"] = ct + 1
+        local key = CasterState.key(u.id) .. ".casts_this_turn"
+        local ct = tonumber(wml.variables[key]) or 0
+        wml.variables[key] = ct + 1
     end
+    -- Don't rely on a later invoke_command (e.g. magic_set_caster, called right
+    -- after this in dialog.lua) to flush this command too — flush here directly,
+    -- same as every other custom_synced_command in this file, so the deduction
+    -- reaches other clients even if nothing else happens to run afterward.
+    wml.fire.do_command({ wml.tag.fire_event{ raise="magic_sync_flush" }})
 end
 
 -- Legacy alias used by TRSS.cfg and some spells.
@@ -135,7 +141,7 @@ end
 -- must still count against max_casts — otherwise the adaptive AI (which casts free
 -- by default) would loop forever, because can_cast() never flips to false.
 local function increment_cast(unit_id)
-    local k = "caster_" .. unit_id .. ".casts_this_turn"
+    local k = CasterState.key(unit_id) .. ".casts_this_turn"
     wml.variables[k] = (tonumber(wml.variables[k]) or 0) + 1
 end
 
@@ -180,7 +186,7 @@ wml_actions["magic_apply_selection"] = function(cfg)
     -- back, so the value arrives here as `true`, not the string "yes". Accept both
     -- so the flag is always set (this was silently a no-op when only "yes" matched).
     if cfg.wait == "yes" or cfg.wait == true then
-        wml.variables["caster_" .. id .. ".wait_to_select_spells"] = "yes"
+        wml.variables[CasterState.key(id) .. ".wait_to_select_spells"] = "yes"
         return
     end
 
@@ -538,7 +544,7 @@ wml_actions["caster_set_menu"] = function(_cfg)
                 },
                 wml.tag.show_if{
                     wml.tag.variable{
-                        name       = "caster_" .. unit_id .. ".utils_spellcasting_allowed",
+                        name       = CasterState.key(unit_id) .. ".utils_spellcasting_allowed",
                         not_equals = "disabled",
                     }
                 },

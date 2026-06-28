@@ -10,6 +10,16 @@ local CasterState = {}
 -- Private helpers
 ---------------------------------------------------------------------------
 
+-- WML variable path segments only allow [A-Za-z0-9_] (config::valid_tag in the
+-- engine). Engine-assigned ids (e.g. auto-generated MP leader ids like
+-- "Bone Shooter-1") can contain spaces and hyphens; writing through such a
+-- segment is silently discarded (invalid_variablename_exception, caught and
+-- logged, never surfaced in-game). Replace anything outside that set with "_"
+-- before using an id as a variable path segment.
+local function sanitize_id(id)
+    return (id or ""):gsub("[^A-Za-z0-9_]", "_")
+end
+
 local function parse_list(str)
     local t = {}
     for raw in (str or ""):gmatch("[^,]+") do
@@ -45,18 +55,26 @@ end
 -- Public API
 ---------------------------------------------------------------------------
 
+-- Builds the WML variable path for a caster's state container. Exposed so the
+-- handful of call sites outside this file that touch caster_<id> variables
+-- directly (multi-cast counters, TRSS click-cast flags, etc.) build the exact
+-- same key this module reads and writes — see sanitize_id above.
+function CasterState.key(unit_id)
+    return "caster_" .. sanitize_id(unit_id)
+end
+
 -- Returns true if a caster with this unit ID has been registered.
 -- The caster's data lives in the [caster_<id>] container; reading the bare
 -- variable is truthy whenever that container holds any sub-fields, so no separate
 -- marker variable is needed.
 function CasterState.exists(unit_id)
-    return wml.variables["caster_" .. unit_id] ~= nil
+    return wml.variables[CasterState.key(unit_id)] ~= nil
 end
 
 -- Loads caster state from WML variables into a Lua table.
 -- Returns nil if the caster does not exist.
 function CasterState.load(unit_id)
-    local prefix = "caster_" .. unit_id
+    local prefix = CasterState.key(unit_id)
     if not wml.variables[prefix] then return nil end
 
     local unlocked_list = parse_list(wml.variables[prefix .. ".spell_unlocked"])
@@ -124,7 +142,7 @@ end
 
 -- Writes a caster data table back to WML variables.
 function CasterState.save(data)
-    local prefix = "caster_" .. data.id
+    local prefix = CasterState.key(data.id)
 
     -- No separate existence marker: the [caster_<id>] container created by the
     -- sub-field writes below already makes wml.variables[prefix] truthy. See exists().
@@ -176,7 +194,7 @@ end
 
 -- Removes all WML variables for this caster.
 function CasterState.delete(unit_id)
-    wml.variables["caster_" .. unit_id] = nil
+    wml.variables[CasterState.key(unit_id)] = nil
 end
 
 -- Builds a new caster data table from a unit and an [assign_caster] config.

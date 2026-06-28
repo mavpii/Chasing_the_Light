@@ -35,43 +35,43 @@ utils.cfg
 | Costs (XP/HP/Gold/ATK) | All clients | `wesnoth.sync.invoke_command("spellcasting_cost", …)` |
 | Casts-per-turn counter | All clients | `casts_increment=true` flag in `spellcasting_cost` |
 | Spell selection picker | Local client only | `gui.show_dialog` inside `evaluate_single`; choice via shared Lua table |
-| Commit selection + re-apply abilities | All clients | `do_command{ set_variable; fire_event=magic_commit_selection }` inside `evaluate_single` |
+| Commit selection + re-apply abilities | All clients | `wesnoth.sync.invoke_command("magic_commit", {id, equipped, wait})` |
+| Cast a chosen spell | All clients | `do_command{ custom_command=magic_set_caster; fire_event=<spell id> }` after `evaluate_single` |
 | All other caster state | All clients | WML variables (auto-synced) |
 
-**Committing a selection (and why it mirrors the cast path).** The selection/picker dialog
-only *collects* the player's choice into a shared Lua table (`choice`); it does **not** write
-any game state. This is the exact pattern spell casting uses: the button handlers fill an
-upvalue, and the commit is read back and issued **inside** the `evaluate_single` function (the
-function's *return value* is not used — it does not reliably carry the data here). On Confirm,
-`open_dialog` runs
-
-```
-wml.fire.do_command{
-    [set_variable] current_caster      = <id>
-    [set_variable] magic_apply_equipped = <comma-list of chosen spells>
-    [fire_event]   magic_commit_selection
-}
-```
-
-Only `[set_variable]` and `[fire_event]` are placed inside `[do_command]` because those are the
-primitives this codebase already relies on there. The `magic_commit_selection` event (in
-`utils.cfg`) calls the `[magic_apply_selection]` WML action, which writes the equipped/group
-variables (calling `assign_free` when the caster is in free-assign mode) and then fires
-`refresh_skills` to re-apply abilities — exactly like `[assign_caster]` does. `[do_command]`
-makes this replay-safe whether the dialog was opened from an unsynced trigger (right-click
-menu `synced=false`, double-click, post-cast "Change Spells") or a synced one
-(`RESELECT_SKILLS` fired from a game event).
+**Committing a selection.** The selection/picker dialog only *collects* the player's choice into
+a shared Lua table (`choice`); it does **not** write any game state. On Confirm, the button
+handler calls `wesnoth.sync.invoke_command("magic_commit", { id = caster.id, equipped = ..., wait = ... })`
+from **inside** the button click — this is the one place in `gui.show_dialog` it's safe to call
+`invoke_command`, since the dialog is always opened from an unsynced context (right-click menu,
+double-click, or RESELECT deferred to a mouse move; see `core.lua`'s `magic_commit`/`magic_apply_selection`).
+`magic_commit` runs on every client: it sets `current_caster`, calls `[magic_apply_selection]`
+directly (passing `equipped`/`wait` as **command parameters**, not WML variables) to write the
+equipped/group variables (calling `assign_free` in free-assign mode) and fire `refresh_skills`,
+then fires `magic_sync_flush` ([disallow_undo]) so the change reaches other clients immediately
+instead of waiting on the undo stack.
 
 `[magic_apply_selection]` refuses to apply an **empty** spell list, so a glitch upstream can
 never wipe a caster's groups/equipped.
 
-The earlier design committed from *inside* the dialog via
-`wesnoth.sync.invoke_command(...)`. That works for unsynced triggers but silently does
-**nothing** when the dialog is opened from a synced event — so from `RESELECT_SKILLS` neither
-the variables nor the abilities ever updated. Committing after the dialog via `do_command`
-fixes both.
+**Why parameters, not a WML variable hand-off.** An earlier design tried
+`do_command{ [set_variable] current_caster=<id>; [fire_event] magic_commit_selection }`, reading
+`current_caster`/`equipped` back from WML variables inside the `magic_commit_selection` event.
+This silently delivered an **empty** equipped list: `[set_variable]` is not in `[do_command]`'s
+`allowed_tags` (engine-side: `src/game_events/action_wml.cpp`, the `do_command` WML handler only
+honors `attack`, `move`, `recruit`, `recall`, `disband`, `fire_event`, `custom_command` — anything
+else is logged as `"unsupported tag"` and dropped). The variable write never happened, so the
+fired event read stale/empty data. Passing the data as **custom_command parameters** (what
+`wesnoth.sync.invoke_command` does under the hood — see `intf_invoke_synced_command` in
+`game_lua_kernel.cpp`) sidesteps this entirely, since `custom_command` *is* an allowed tag.
+The cast path (`dialog.lua`'s cast-mode button handler) hit the exact same trap for
+`current_caster` specifically — fixed the same way, by wrapping the `magic_set_caster` call as a
+`[custom_command]` child alongside `[fire_event]` instead of a bare `[set_variable]`.
 
-**Rule:** never write game-affecting state inside `evaluate_single` without going through `invoke_command`. WML variable writes inside `evaluate_single` are local-only.
+**Rule:** never write game-affecting state inside `evaluate_single` without going through
+`invoke_command`. WML variable writes inside `evaluate_single` are local-only. And never put a
+bare `[set_variable]` inside `[do_command]` — it is not an allowed tag and is silently dropped;
+use `[custom_command]` (or `invoke_command`) to carry data into a synced action instead.
 
 ---
 

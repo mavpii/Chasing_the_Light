@@ -8,6 +8,8 @@
 local _ = wesnoth.textdomain "wesnoth-ctl"
 local T = wml.tag
 
+local CasterState = wesnoth.require "state.lua"
+
 local spell_data -- set by init(), avoids circular require at load time
 
 -- Formats a spell's costs into a short colored string, or nil when free.
@@ -633,7 +635,7 @@ local function make_preshow(caster, caster_data, groups, selecting, free_slots)
             btn.on_button_click = function()
                 -- Set current_caster on ALL clients before the cancel event fires.
                 wesnoth.sync.invoke_command("magic_set_caster", { id = caster.id })
-                wml.variables["caster_" .. caster.id .. ".spell_to_cast"] = spell.id .. "_cancel"
+                wml.variables[CasterState.key(caster.id) .. ".spell_to_cast"] = spell.id .. "_cancel"
                 gui.widget.close(dlg)
             end
             return
@@ -692,7 +694,7 @@ local function make_preshow(caster, caster_data, groups, selecting, free_slots)
             -- Set current_caster on ALL clients from inside the button click.
             -- invoke_command is only valid inside show_dialog button handlers in MP.
             wesnoth.sync.invoke_command("magic_set_caster", { id = caster.id })
-            wml.variables["caster_" .. caster.id .. ".spell_to_cast"] = spell.id
+            wml.variables[CasterState.key(caster.id) .. ".spell_to_cast"] = spell.id
             gui.widget.close(dlg)
         end
     end
@@ -809,7 +811,7 @@ local function make_preshow(caster, caster_data, groups, selecting, free_slots)
                     wesnoth.sync.invoke_command("spellcasting_cost",
                         { id=caster.id, xp_cost=advance_xp_needed })
                     wesnoth.sync.invoke_command("magic_set_caster", { id = caster.id })
-                    wml.variables["caster_" .. caster.id .. ".spell_to_cast"] = "advance_caster"
+                    wml.variables[CasterState.key(caster.id) .. ".spell_to_cast"] = "advance_caster"
                 end
             end
         end
@@ -866,31 +868,41 @@ local function open_dialog(caster, caster_data, selecting)
 
             -- rv == 4 means the "Change Spells" button was clicked (return_value=4).
             if rv == 4 then
-                wml.variables["caster_" .. caster.id .. ".requested_reselect"] = true
+                wml.variables[CasterState.key(caster.id) .. ".requested_reselect"] = true
                 return
             end
 
-            local spell_to_cast = wml.variables["caster_" .. caster.id .. ".spell_to_cast"]
+            local spell_to_cast = wml.variables[CasterState.key(caster.id) .. ".spell_to_cast"]
             if spell_to_cast then
                 wml.variables["is_badly_timed"] = true
                 -- Set current_caster INSIDE do_command so it's synced atomically with fire_event.
                 -- invoke_command("magic_set_caster") from show_dialog button handlers may arrive
                 -- on non-active clients AFTER the do_command packet, causing a race condition.
-                -- Including set_variable here guarantees correct current_caster on ALL clients.
+                --
+                -- [set_variable] is NOT in [do_command]'s allowed_tags (only "attack", "move",
+                -- "recruit", "recall", "disband", "fire_event", "custom_command" — see
+                -- src/game_events/action_wml.cpp's do_command handler), so a bare set_variable
+                -- child here is silently dropped (logged as "unsupported tag", never applied).
+                -- Use a [custom_command] child instead — same shape intf_invoke_synced_command
+                -- builds for wesnoth.sync.invoke_command — so current_caster is set by the same
+                -- in-order replay command that fires the spell event, not a separate packet.
                 wml.fire.do_command({
-                    wml.tag.set_variable{ name="current_caster", value=caster.id },
+                    wml.tag.custom_command{
+                        name = "magic_set_caster",
+                        wml.tag.data{ id = caster.id },
+                    },
                     wml.tag.fire_event{ raise = spell_to_cast },
                 })
-                wml.variables["caster_" .. caster.id .. ".spell_to_cast"] = nil
+                wml.variables[CasterState.key(caster.id) .. ".spell_to_cast"] = nil
                 wml.variables["is_badly_timed"] = nil
             end
         end)
     end
 
     -- Check if the user clicked "Change Spells" (free-reselect upgrade).
-    local reselect = wml.variables["caster_" .. caster.id .. ".requested_reselect"] == true
+    local reselect = wml.variables[CasterState.key(caster.id) .. ".requested_reselect"] == true
     if reselect then
-        wml.variables["caster_" .. caster.id .. ".requested_reselect"] = nil
+        wml.variables[CasterState.key(caster.id) .. ".requested_reselect"] = nil
     end
     return reselect
 end
