@@ -727,4 +727,5 @@ end
 
 function wesnoth.custom_synced_commands.on_click_spell_event(t)
     _G["on_click_spell_event" .. t.type](t)
+    wml.fire.do_command({ wml.tag.fire_event{ raise="magic_sync_flush" }})
 end
