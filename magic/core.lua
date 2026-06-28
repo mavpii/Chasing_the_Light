@@ -144,6 +144,7 @@ end
 -- Must be called from inside show_dialog button clicks (not after show_dialog returns).
 function wesnoth.custom_synced_commands.magic_set_caster(t)
     wml.variables["current_caster"] = t.id
+    wml.fire.do_command({ wml.tag.fire_event{ raise="magic_sync_flush" }})
 end
 
 -- Commits a spell selection on ALL clients. The chosen spells are passed as the
@@ -155,6 +156,7 @@ end
 function wesnoth.custom_synced_commands.magic_commit(t)
     wml.variables["current_caster"] = t.id
     wesnoth.wml_actions.magic_apply_selection({ id = t.id, equipped = t.equipped, wait = t.wait })
+    wml.fire.do_command({ wml.tag.fire_event{ raise="magic_sync_flush" }})
 end
 
 -- Applies a spell-selection result to a caster, then re-applies its abilities.
