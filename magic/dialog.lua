@@ -86,10 +86,14 @@ local function spell_tooltip(spell)
     return tip
 end
 
--- Builds the spell-picker dialog: a grid of clickable spell cells (image + name),
--- each showing a description/cost tooltip on hover.
+-- Remembers the player's last-used picker view (1 = grid, 2 = list) across
+-- multiple slot clicks within the same selection dialog session.
+local picker_view = 1
+
+-- Grid view: a compact table of clickable spell cells (image + name), each
+-- showing its description/cost as a hover tooltip only.
 local PICKER_COLS = 6
-local function build_picker_layout(spells)
+local function build_picker_grid(spells)
     local table_grid = T.grid{}
     local row
     for idx, spell in ipairs(spells) do
@@ -117,12 +121,92 @@ local function build_picker_layout(spells)
             end
         end
     end
+    return table_grid
+end
+
+-- List view: one row per spell, with image + name + full description all
+-- visible at once (no hover needed). Wrapped in a scrollbar_panel since the
+-- full catalogue (free-assign mode) is far too long to fit on screen as a
+-- flat list.
+local function build_picker_list(spells)
+    local rows_grid = T.grid{}
+    for idx, spell in ipairs(spells) do
+        table.insert(rows_grid[2], T.row{ T.column{ border="all", border_size=2, horizontal_grow=true,
+            T.toggle_panel{ id="pick_list" .. idx, definition="fancy",
+                T.grid{ T.row{
+                    T.column{ border="all", border_size=4, horizontal_alignment="center", vertical_alignment="center",
+                        T.image{ id="pick_list_img" .. idx, label = spell.image }},
+                    T.column{ border="all", border_size=4, horizontal_alignment="left", vertical_alignment="center",
+                        T.label{ id="pick_list_name" .. idx, use_markup=true,
+                            label = "<span size='small'>" .. compact_name(spell) .. "</span>" }},
+                    T.column{ border="all", border_size=4, horizontal_alignment="left", vertical_alignment="center",
+                        horizontal_grow=true, grow_factor=1,
+                        T.label{ id="pick_list_desc" .. idx, use_markup=true, wrap=true,
+                            label = "<span size='small'><i>" .. spell_tooltip(spell) .. "</i></span>" }},
+                }}
+            }}})
+    end
+    return rows_grid
+end
+
+-- Builds the spell-picker dialog for a single view (1 = grid, 2 = list): a
+-- title, a button that switches to the OTHER view, the chosen view's content,
+-- and a Cancel button.
+--
+-- Both views are never built into the same dialog. An earlier version put
+-- both into a [stacked_widget] and toggled its active layer in place, but
+-- gui2::stacked_widget only searches its currently-active layer unless
+-- find_in_all_layers_ is set (stacked_widget.cpp), and that flag has no Lua
+-- binding (only a C++ setter, used by core dialogs like preferences/mp_create_game).
+-- So widgets in the inactive layer could never be found/wired from Lua. Closing
+-- and reopening the dialog with the other view sidesteps that entirely, at the
+-- cost of a brief flicker when toggling.
+-- Neither view's content has an intrinsic height limit, so its best size is
+-- the full height of every row stacked up (free-assign mode lists ~49 spells,
+-- 9 rows even in the 6-wide grid) and the dialog grows to fit -- nearly the
+-- whole screen. [size_lock] forces a fixed size on its single child
+-- (size_lock.cpp: calculate_best_size always returns exactly width x height,
+-- content-size is not consulted), so each view is locked to the same sensible
+-- height and scrolls the rest, the same way GUI_FORCE_WIDGET_SIZE locks widget
+-- sizes elsewhere in core Wesnoth. Width is tuned per view (grid's rows are
+-- much narrower than list's, and since size_lock fixes width unconditionally
+-- too, sharing one value would either starve the list's description column or
+-- stretch the grid wider than its content needs). Both use screen-relative
+-- formulas (same mechanism already used in this addon by
+-- journey_ui.lua/outro_teaser.lua) capped with an absolute pixel ceiling so
+-- the box neither overflows small screens nor balloons on huge ones.
+local PICKER_HEIGHT     = "(min(700, screen_height * 65 / 100))"
+local PICKER_GRID_WIDTH = "(min(650, screen_width * 35 / 100))"
+local PICKER_LIST_WIDTH = "(min(900, screen_width * 45 / 100))"
+
+-- Wraps any picker content grid in a scrollbar_panel locked to PICKER_HEIGHT
+-- tall by `width` wide, so it scrolls internally instead of growing the dialog.
+local function wrap_scrollable(inner_grid, width, h_grow)
+    local inner_col = h_grow
+        and T.column{ horizontal_grow=true, vertical_alignment="top", inner_grid }
+        or  T.column{ horizontal_alignment="center", vertical_alignment="top", inner_grid }
+    return T.grid{ T.row{ T.column{ horizontal_grow=true, vertical_grow=true,
+        T.size_lock{ width = width, height = PICKER_HEIGHT,
+            T.widget{
+                T.scrollbar_panel{ vertical_scrollbar_mode="initial_auto", horizontal_scrollbar_mode="never",
+                    T.definition{ T.row{ inner_col }}
+                }}
+        }}}}
+end
+
+local function build_picker_layout(spells, view)
+    local content = (view == 1)
+        and wrap_scrollable(build_picker_grid(spells), PICKER_GRID_WIDTH, false)
+        or  wrap_scrollable(build_picker_list(spells), PICKER_LIST_WIDTH, true)
 
     local grid = T.grid{}
     table.insert(grid[2], T.row{ T.column{ border="all", border_size=10,
         T.label{ definition="title", horizontal_alignment="center",
             label = _"Choose a Spell" }}})
-    table.insert(grid[2], T.row{ T.column{ border="all", border_size=8, table_grid }})
+    table.insert(grid[2], T.row{ T.column{ horizontal_alignment="right", border="all", border_size=4,
+        T.button{ id="picker_view_toggle", use_markup=true,
+            label = (view == 1) and _"List View" or _"Grid View" }}})
+    table.insert(grid[2], T.row{ T.column{ border="all", border_size=8, content }})
     table.insert(grid[2], T.row{ T.column{ horizontal_alignment="center", border="all", border_size=8,
         T.button{ id="picker_cancel", return_value=2, label=_"Cancel" }}})
 
@@ -148,35 +232,59 @@ local function open_picker(used, allowed_set)
         end
         spells = filtered
     end
-    local layout = build_picker_layout(spells)
-    local chosen = nil
 
-    gui.show_dialog(layout, function(dlg)
-        for idx, spell in ipairs(spells) do
-            local cell = dlg["pick" .. idx]
-            if cell then
-                if used[spell.id] then
-                    -- Already chosen in another slot: block it and make the
-                    -- "taken" state obvious — greyed-out image + struck-through name.
-                    cell.enabled = false
-                    local img = dlg["pick_img" .. idx]
-                    if img then img.label = spell.image .. "~GS()~O(0.4)" end
-                    local nm = dlg["pick_name" .. idx]
-                    if nm then
-                        nm.label = "<span size='small' color='#888888'><s>"
-                            .. compact_name(spell) .. "</s></span>"
-                    end
-                else
-                    cell.on_modified = function()
-                        chosen = spell.id
-                        gui.widget.close(dlg)
+    -- Loops on view-toggle: the toggle button closes this dialog and the loop
+    -- reopens it built for the other view, rather than switching views in place
+    -- (see build_picker_layout's comment for why in-place switching can't work).
+    while true do
+        local view = picker_view
+        local prefix     = (view == 1) and "pick"      or "pick_list"
+        local img_prefix  = (view == 1) and "pick_img"  or "pick_list_img"
+        local name_prefix = (view == 1) and "pick_name" or "pick_list_name"
+
+        local layout = build_picker_layout(spells, view)
+        local chosen = nil
+        local switch_view = false
+
+        gui.show_dialog(layout, function(dlg)
+            local toggle = dlg["picker_view_toggle"]
+            if toggle then
+                toggle.on_button_click = function()
+                    switch_view = true
+                    gui.widget.close(dlg)
+                end
+            end
+
+            for idx, spell in ipairs(spells) do
+                local cell = dlg[prefix .. idx]
+                if cell then
+                    if used[spell.id] then
+                        -- Already chosen in another slot: block it and make the
+                        -- "taken" state obvious — greyed-out image + struck-through name.
+                        cell.enabled = false
+                        local img = dlg[img_prefix .. idx]
+                        if img then img.label = spell.image .. "~GS()~O(0.4)" end
+                        local nm = dlg[name_prefix .. idx]
+                        if nm then
+                            nm.label = "<span size='small' color='#888888'><s>"
+                                .. compact_name(spell) .. "</s></span>"
+                        end
+                    else
+                        cell.on_modified = function()
+                            chosen = spell.id
+                            gui.widget.close(dlg)
+                        end
                     end
                 end
             end
-        end
-    end)
+        end)
 
-    return chosen
+        if switch_view then
+            picker_view = (view == 1) and 2 or 1
+        else
+            return chosen
+        end
+    end
 end
 
 local function prepare_groups(caster_data)
