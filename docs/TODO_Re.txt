@@ -1,0 +1,217 @@
+================================
+Chasing the Light: 2.0
+English
+================================
+
+S1:
+- Do something about Haralin's AMLA
+- Remove the Loyal trait from guards
+
+S2:
+- Add variety to the villagers' portraits in the intro cutscene
+- Rework the arrival of Wesfolk reinforcements
+- Test changes to gameplay/events
+
+S3:
+- Make the undead present from the 1st turn
+- Add friendly reinforcements after 10–12 turns
+- Update and expand the map
+- Add the ability to get the sorcerer's spellbook from S2
+- Remove the random spawn of bats
+
+S4:
+- Add more commentary on Haralin's power
+
+S5:
+- Explain the spells selection in dialog between Haralin and Daeola
+- Clarify who can destroy the monoliths in the objectives
+
+S6:
+- Improve the random spawn of bats
+- Add a dialog line warning that the undead/bandits from S5 may appear behind them
+- Add 1–2 small camps where the player can recruit units
+- Clarify the objectives
+- Destroying webs should update fog/shroud
+
+
+S7:
+- Remove the objective to evacuate ALL of the Count's units
+- Make it possible to undo the Count's moves
+- Simplify access to the Place of Force
+- Improve the AI of allies
+- Clarify the objectives
+
+S8:
+- Update the map in accordance with the changes in S1–S3
+- Add a dialogue line where the Voice explicitly states what it is
+- Give the Voice the ability to use the magic system
+- Fix the issue with Haralin not having a minimum XP 
+
+S9:
+- Enable the default UI in the basement and the cursed meadow
+- Improve spawn of monsters in the basement
+- Replace incorrect units in the chess minigame
+- Add an explanation for whom Daeola enchants the necklace and what it does
+
+S10:
+- Remove spellcasting from Wose
+- Add a time limit for units to desert
+- Clarify that Asa will not desert
+- Simplify access to the Place of Force
+- Clarify exactly what benefits the player receives for holding back the undead
+- Add a note to the objectives that might hint at Haralin's leaving.
+
+
+Storyline:
+- Modify the storyline of Chapter 2 to take into account Dalas' ideas/suggestions
+- Mention Haenys more often
+
+
+Spells:
+- Remove "unstable" from Magic Blast
+- Regroup spells according to the standards of TDG
+- Reduce the number of spell groups
+- Rebalance Daeola's Lightbeam
+- Improve the description of Distant Heal
+- Add healing-related spells for Daeola. Passive XP or healing as a passive ability
+- Swap should kill the caster when teleporting onto impassable terrain
+- Swap shouldn't work on units with moves=0
+- Improve the description of Polymorph
+- Rename Magic Rage to Fury
+- Rework Bend Nature
+- Rework Haralin's spell set in Chapter 2. Add more powerful spells.
+- Rework Haralin's spell set in Chapters 3/4.
+- Implement dynamic spell descriptions based on caster's level, unlocked subskills, etc.
+- Remove AMLA for casters in Chapter 2. Maybe enable it in Chapter 3 for Haralin?
+
+
+Units:
+- Rebalance the Mage Healer
+- Add a Wesfolk faction
+- Buff the Spell Knight
+- Add a core version of the Shadow Mage/Lord
+
+
+Visuals:
+- Create custom sprites for Wesfolk Princesses
+- Ask Refumee to create new sprites for Wesfolk units
+- Ask Refumee to create a Color Changer for clothing of Outlaws/Wesfolk
+
+
+Other:
+- Give players 15–20 gold for each loyal unit they don't have
+- Add special formatting to Voice lines
+- Swap the Scarhane and Blackmore icons on the big map
+- Remove the delay in displaying the spellcasting dialog
+- Reloading a turn should allow players to reselect spells
+- Add an explanation of why the White/Red Mage cannot level up to level 3
+- Investigate how I can optimize the AI and speed it up in S5, S6, S7, and S10
+
+================================
+Chasing the Light: 2.0
+Ukainian
+================================
+
+S1:
+- Зробити щось з Haralin's AMLA
+- Прибрати Loyal trait у охоронців
+
+S2:
+- Переробити прибуття Wesfolk підкріплень
+- Протестувати зміни в геймплеї/івентах
+- Додати різноманіття для портретів селян у вступній катсцені
+
+S3:
+- Undead присутні з 1-го ходу
+- Додати дружнє підкріплення через 10-12 turns
+- Оновити та розширити мапу
+- Додати можливість отримати sorcerer's spellbook з S2
+- Прибрати рандомний спавн літучих мишей
+
+S4:
+- Додати більше обговорень сили Haralin'а
+
+S5:
+- Пояснити механіку вибору заклять
+- Уточнити, хто може знищувати моноліти в обджективах
+
+S6:
+- Покращити рандомний спавн літучих мишей
+- Додати рядок діалогу, що мерці/бандити з S5 можуть з'явитися в них за спиною
+- Додати 1/2 невеликий табори, щоб гравець міг вербувати там\
+- Уточнити обджективи
+- Знищення павутиння має оновлювати fog/shroud
+
+S7:
+- Прибрати необхідність евакуації УСІХ юнітів Графа
+- Зробити, щоб дії Графа було можливо undo
+- Зробити Place of Force більш доступним
+- Покращити ШІ союзників
+- Уточнити обджективи
+
+S8:
+- Оновити мапу відповідно до змін в S1-S3
+- Додати рядок діалогу, де Голос прямо говорить, що воно таке
+- Дати Голосу здатність використовувати магічну систему
+- Виправити відсутність мінімального XP для Haralin
+
+S9:
+- Знайти та виправити помилку в назві "Scarhane"
+- Вмикати дефолтний UI в підвалі та cursed meadow
+- Покращити спавн монстрів у підвалі
+- Замінити некоректних юнітів у шахах
+- Додати пояснення для кого Daeola зачаровує намисто й що воно робить
+
+S10:
+- Прибрати spellcasting у Wose
+- Додати обмеження по часу для дезертирства юнітів
+- Уточнити, що Аса не дезертуватиме
+- Спростити доступ до Places of Force
+- Уточнити які саме переваги отримує гравець за стримування мерців
+- Додати note в обджективи, що може натякнути на відход Haralin'а
+
+
+Історія:
+- Модифікувати сюжет Chapter 2 з урахуванням ідей/побажань Dalas'а
+- Частіше згадувати Haenys'а
+
+
+Закляття:
+- Прибрати "unstable" в Magic Blast
+- Регрупувати закляття за стандартом TDG
+- Зменшити кількість Spell Groups
+- Ребалансувати Daeola's Lightbeam
+- Покращити опис Distant Heal
+- Додати пов'язані з healing закляття для Daeola. Пасивний XP або саме healing як пасивна здібність
+- Swap має вбивати кастера при телепорті onto impassable terrain
+- Swap не має працювати на юнітах з moves=0
+- Покращити опис Polymorph
+- Перейменувати Haralin's Magic Rage to Fury
+- Переробити Haralin's Bend Nature
+- Переробити Haralin's spell set in Chapter 2. Додати більш потужні закляття.
+- Переробити Haralin's spell set in Chapter 3/4
+- Зробити динамічні описи заклять, залежно від рівня, розблокованих subskills та т.д.
+- Прибрати AMLA для кастерів в Chapter 2. Можливо, дозволити в Chapter 3 для Haralin?
+
+
+Юніти:
+- Переробити Mage Healer
+- Створити Wesfolk фракцію
+- Покращити Spell Knight
+- Додати core версію of Shadow Mage/Lord
+
+
+Графіка:
+- Зробити кастомні спрайти для Принцес
+- Попросити Refumee зробити нові спрайти для Wesfolk юнітів
+- Попросити Refumee зробити Color Changer для одягу Outlaws/Wesfolk
+
+
+Інше:
+- Компенсувати гравцям 15-20 золота за кожного втраченого вірного юніта
+- Додати діалогам Голосу особливе форматування
+- Змінити icons Scarhane та Blackmore місцями на bigmap
+- Прибрати затримку в показуванні spellcasting dialog
+- Reloading turn має дозволяти перевибирати закляття
+- Додати пояснення, чому White/Red Mage не може level up до 3 рівня
+- Дослідити як я можу оптимізувати ШІ та прискорити його в S5,S6,S7,S10
