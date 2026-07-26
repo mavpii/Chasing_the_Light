@@ -28,7 +28,6 @@ S6:
 - Add a dialog line warning that the undead/bandits from S5 may appear behind them
 - Add 1–2 small camps where the player can recruit units
 - Clarify the objectives
-- Destroying webs should update fog/shroud
 
 S7:
 - Remove the objective to evacuate ALL of the Count's units
