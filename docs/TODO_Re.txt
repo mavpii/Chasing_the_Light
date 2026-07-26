@@ -4,8 +4,6 @@ English
 ================================
 
 S1:
-- Do something about Haralin's AMLA
-- Remove the Loyal trait from guards
 
 S2:
 - Add variety to the villagers' portraits in the intro cutscene
@@ -15,7 +13,6 @@ S2:
 S3:
 - Make the undead present from the 1st turn
 - Add friendly reinforcements after 10–12 turns
-- Update and expand the map
 - Add the ability to get the sorcerer's spellbook from S2
 - Remove the random spawn of bats
 
@@ -32,7 +29,6 @@ S6:
 - Add 1–2 small camps where the player can recruit units
 - Clarify the objectives
 - Destroying webs should update fog/shroud
-
 
 S7:
 - Remove the objective to evacuate ALL of the Count's units
