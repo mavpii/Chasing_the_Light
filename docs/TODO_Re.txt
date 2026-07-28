@@ -96,7 +96,6 @@ S11:
 
 Інше:
 - Додати діалогам Голосу особливе форматування
-- Змінити icons Scarhane та Blackmore місцями на bigmap
 - Прибрати затримку в показуванні spellcasting dialog
 - Reloading turn має дозволяти перевибирати закляття
 - Додати пояснення, чому White/Red Mage не може level up до 3 рівня
