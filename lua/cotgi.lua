@@ -12,7 +12,7 @@ function ctl_chess_get_piece_type(chess_id)
 	    ctl_chess_type = ctl_chess_moveset_queen
     elseif chess_piece.type == "Haralin_L2" or chess_piece.type == "Lenvan" then
 	    ctl_chess_type = ctl_chess_moveset_king
-    elseif chess_piece.type == "Highwayman_Peasant" or chess_piece.type == "Bone Skeleton" then
+    elseif chess_piece.type == "Shock Trooper" or chess_piece.type == "Bone Skeleton" then
 	    ctl_chess_type = ctl_chess_moveset_rook
     elseif chess_piece.type == "Knight" or chess_piece.type == "Wesfolk Chariot" then
 	    ctl_chess_type = ctl_chess_moveset_knight
@@ -703,7 +703,7 @@ function ctl_chess_piece_value(unit_type)
     if unit_type == "Peasant" or unit_type == "Walking Corpse" then return 1 end
     if unit_type == "Knight" or unit_type == "Wesfolk Chariot" then return 3 end
     if unit_type == "Lieutenant" or unit_type == "Death Squire" then return 3 end
-    if unit_type == "Highwayman_Peasant" or unit_type == "Bone Skeleton" then return 5 end
+    if unit_type == "Shock Trooper" or unit_type == "Bone Skeleton" then return 5 end
     if unit_type == "Daeola_L1_Mage" or unit_type == "Wesfolk Princess" then return 9 end
     if unit_type == "Haralin_L2" or unit_type == "Lenvan" then return 100 end
     return 1

@@ -78,7 +78,6 @@ S11:
 - Переробити Haralin's spell set in Chapter 2. Додати більш потужні закляття.
 - Переробити Haralin's spell set in Chapter 3/4
 - Зробити динамічні описи заклять, залежно від рівня, розблокованих subskills та т.д.
-- Прибрати AMLA для кастерів в Chapter 2. Можливо, дозволити в Chapter 3 для Haralin?
 
 
 Юніти:
