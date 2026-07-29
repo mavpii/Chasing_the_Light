@@ -13,14 +13,12 @@ S3:
 - Undead присутні з 1-го ходу
 - Додати дружнє підкріплення через 10-12 turns
 - Додати можливість отримати sorcerer's spellbook з S2
-- Прибрати рандомний спавн літучих мишей
 
 S4:
 - Додати більше обговорень сили Haralin'а
 
 S5:
 - Пояснити механіку вибору заклять
-- Уточнити обджективу
 
 S6:
 -! Покращити рандомний спавн літучих мишей
@@ -119,7 +117,6 @@ S3:
 - Make the undead present from the 1st turn
 - Add friendly reinforcements after 10–12 turns
 - Add the ability to get the sorcerer's spellbook from S2
-- Remove the random spawn of bats
 
 S4:
 - Add more commentary on Haralin's power
@@ -131,7 +128,6 @@ S6:
 - Improve the random spawn of bats
 - Add a dialog line warning that the undead/bandits from S5 may appear behind them
 - Add 1–2 small camps where the player can recruit units
-- Clarify the objectives
 
 S7:
 - Remove the objective to evacuate ALL of the Count's units
