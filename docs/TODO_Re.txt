@@ -36,7 +36,6 @@ S8:
 - Гаралін має повністю знищувати голос, а не зливатися з ним
 
 S9:
-- Додати пояснення для кого Daeola зачаровує намисто й що воно робить
 
 S10:
 - Додати відхід лісовика через N ходів оборони
@@ -112,7 +111,6 @@ S2:
 - Test changes to gameplay/events
 
 S3:
-- Make the undead present from the 1st turn
 - Add friendly reinforcements after 10–12 turns
 - Add the ability to get the sorcerer's spellbook from S2
 
@@ -123,27 +121,18 @@ S5:
 - Explain the spells selection in dialog between Haralin and Daeola
 
 S6:
-- Improve the random spawn of bats
 - Add a dialog line warning that the undead/bandits from S5 may appear behind them
-- Add 1–2 small camps where the player can recruit units
 
 S7:
-- Remove the objective to evacuate ALL of the Count's units
-- Make it possible to undo the Count's moves
 - Simplify access to the Place of Force
 - Improve the AI of allies
 - Clarify the objectives
 
 S8:
-- Update the map in accordance with the changes in S1–S3
 - Add a dialogue line where the Voice explicitly states what it is
 - Give the Voice the ability to use the magic system
-- Fix the issue with Haralin not having a minimum XP 
 
 S9:
-- Enable the default UI in the basement and the cursed meadow
-- Improve spawn of monsters in the basement
-- Add an explanation for whom Daeola enchants the necklace and what it does
 
 S10:
 - Add a time limit for units to desert
