@@ -54,7 +54,6 @@ local UI_TAB_LABELS = {
 	_ "Journal",
 	_ "Knowledge",
 	_ "Achievements",
-	_ "Map",
 }
 
 local BIO_STATUS_LABELS = {
@@ -1205,40 +1204,6 @@ local journeylog_achievements_grid = {
 	}
 }
 
-local journeylog_map_grid = {
-    T.row {
-        grow_factor = 1,
-        T.column {
-            horizontal_grow = true,
-            vertical_grow = true,
-            border = "all",
-            border_size = 5,
-
-            T.panel {
-                id = "map_panel",
-                definition = "naia_journeylog_panel_map",
-
-                T.grid {
-                    T.row {
-                        grow_factor = 1,
-                        T.column {
-                            horizontal_grow = true,
-                            vertical_grow = true,
-
-                            T.label {
-								id = "nightmare_text",
-								definition = "naia_journeylog_page",
-								wrap = true,
-								text_alignment = "center",
-							}
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
-
 local journeylog_nightmare_grid = {
 	T.row {
 		grow_factor = 1,
@@ -1417,7 +1382,6 @@ local journeylog_dlg = {
                 	T.layer(journeylog_dialoglog_grid),
                 	T.layer(journeylog_archive_grid),
                 	T.layer(journeylog_achievements_grid),
-                	T.layer(journeylog_map_grid),
                 }
 			}
 		},
