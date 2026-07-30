@@ -21,7 +21,6 @@ S5:
 - Пояснити механіку вибору заклять
 
 S6:
-- Додати рядок діалогу, що мерці/бандити з S5 можуть з'явитися в них за спиною
 
 S7:
 - Прибрати Place of Force
@@ -63,7 +62,6 @@ S11:
 - Додати пов'язані з healing закляття для Daeola. Пасивний XP або саме healing як пасивна здібність
 - Swap має вбивати кастера при телепорті onto impassable terrain
 - Покращити опис Polymorph
-- Перейменувати Haralin's Magic Rage to Fury
 - Переробити Haralin's Bend Nature
 - Переробити Haralin's spell set in Chapter 2. Додати більш потужні закляття.
 - Переробити Haralin's spell set in Chapter 3/4
@@ -119,7 +117,6 @@ S5:
 - Explain the spells selection in dialog between Haralin and Daeola
 
 S6:
-- Add a dialog line warning that the undead/bandits from S5 may appear behind them
 
 S7:
 - Simplify access to the Place of Force
@@ -153,7 +150,6 @@ Spells:
 - Add healing-related spells for Daeola. Passive XP or healing as a passive ability
 - Swap should kill the caster when teleporting onto impassable terrain
 - Improve the description of Polymorph
-- Rename Magic Rage to Fury
 - Rework Bend Nature
 - Rework Haralin's spell set in Chapter 2. Add more powerful spells.
 - Rework Haralin's spell set in Chapters 3/4.
