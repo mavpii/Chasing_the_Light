@@ -448,6 +448,40 @@ Each spell in `spell_data.skill_set` is a table:
 
 `spell_data.locked` is a sentinel entry (id `"skill_locked"`) shown for spells not yet unlocked.
 
+### Descriptions that depend on the caster
+
+A spell whose effect changes with the caster's level or unlocked subskills can
+replace the plain `description` with either of these optional fields (resolved by
+`describe()` in `dialog.lua`, so every place a description is shown — both picker
+views, free-assign slots, selection mode and cast mode — agrees):
+
+```lua
+{
+    -- One text per level. The caster gets the highest level listed that it has
+    -- reached, so [2] keeps showing at level 3 and up; below the lowest listed
+    -- level the lowest entry is used, so the text is never blank.
+    description_by_level = {
+        [1] = _"Ranged 9x2 impact, magical.",
+        [2] = _"Ranged 12x3 impact, magical.",
+    },
+
+    -- Extra lines, appended only once the caster has UNLOCKED the spell/subskill
+    -- the entry is keyed by. Ordered by the spell's `subskills` list.
+    description_extra = {
+        skill_summon_fire = _"Fire spirits are available.",
+    },
+
+    -- Optional: joins the entries above into ONE line instead of one per line
+    -- (see Polymorph, which lists its unlocked forms this way).
+    description_extra_separator = ", ",
+}
+```
+
+Both are optional and combine: `description_by_level` (or plain `description`)
+provides the first line, `description_extra` adds lines under it. Keep the numbers
+in sync with the spell's `[event name=refresh_skills]` block in `spells.cfg` — that
+block is what actually grants the attack.
+
 ---
 
 ## How to add a new caster

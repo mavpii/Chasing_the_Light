@@ -14,7 +14,12 @@ local skill_set = {
 		id          = "skill_magic_blast",
 		label       = label(_"Magic Blast"),
 		image       = "attacks/mud-missile.png",
-		description = _"<span color='#ad6a61'><i><b>Attack:</b></i></span> Ranged 9x2(<span color='#00bbe6'><i>lvl1</i></span>) or 12x3(<span color='#00bbe6'><i>lvl2+</i></span>) impact, <i>magical</i>.",
+		description_by_level = {
+			[1] = _"<span color='#ad6a61'><i><b>Attack:</b></i></span> Ranged 9x2 impact, <i>magical</i>.",
+			[2] = _"<span color='#ad6a61'><i><b>Attack:</b></i></span> Ranged 12x3 impact, <i>magical</i>.",
+			[3] = _"<span color='#ad6a61'><i><b>Attack:</b></i></span> Ranged 12x3 impact, <i>magical</i>.",
+			[4] = _"<span color='#ad6a61'><i><b>Attack:</b></i></span> Ranged 12x3 impact, <i>magical</i>.",
+		},
 	},
 	-------------------------
 	-- SUMMON
@@ -121,7 +126,11 @@ local skill_set = {
 		id          = "skill_fireball2",
 		label       = label(_"Fireball"),
 		image       = "attacks/fireball.png",
-		description = _"<span color='#ad6a61'><i><b>Attack:</b></i></span> Ranged 8x4(<span color='#00bbe6'><i>lvl2</i></span>) or 12x4(<span color='#00bbe6'><i>lvl3+</i></span>) fire, <i>magical</i>.",
+		description_by_level = {
+			[2] = _"<span color='#ad6a61'><i><b>Attack:</b></i></span> Ranged 8x4 fire, <i>magical</i>.",
+			[3] = _"<span color='#ad6a61'><i><b>Attack:</b></i></span> Ranged 12x4 fire, <i>magical</i>.",
+			[4] = _"<span color='#ad6a61'><i><b>Attack:</b></i></span> Ranged 12x4 fire, <i>magical</i>.",
+		},
 	},
 	-------------------------
 	-- GLAMOUR
@@ -168,7 +177,17 @@ local skill_set = {
 		id          = "skill_polymorph",
 		label       = label(_"Polymorph"),
 		image       = "icons/polymorph.png",
-		description = _"<span color='#6ca364'><i><b>Spell:</b></i></span> Transform into a lizard (<span color='#00bbe6'><i>8xp</i></span>), bear (<span color='#00bbe6'><i>12xp</i></span>), yeti (<span color='#00bbe6'><i>20xp</i></span>), or orc (<span color='#00bbe6'><i>32xp</i></span>). Lasts until cancelled.\n            Replaces Haralin’s attacks, spells, and passives, but does not affect hitpoints.",
+		description = _"<span color='#6ca364'><i><b>Spell:</b></i></span> Take the shape of another creature. Lasts until cancelled.\n            Replaces Haralin’s attacks, spells, and passives, but does not affect hitpoints.",
+		-- The available forms, listed on one line and shown only after each one is
+		-- unlocked, so the ones Haralin has yet to learn are not spoiled.
+		-- Unit types match EVENT_POLYMORPH.
+		description_extra_separator = ", ",
+		description_extra = {
+			skill_polymorph_lizard = _"            <i>Swamp Lizard</i> (<span color='#00bbe6'><i>8xp</i></span>)",
+			skill_polymorph_bear   = _"            <i>Cave Bear</i> (<span color='#00bbe6'><i>12xp</i></span>)",
+			skill_polymorph_yeti   = _"            <i>Yeti</i> (<span color='#00bbe6'><i>20xp</i></span>)",
+			skill_polymorph_orc    = _"            <span color='#a308b8'><i>Orcish Warlord</i></span> (<span color='#00bbe6'><i>32xp</i></span>)",
+		},
 		subskills   = {
 			[1]={ id="skill_polymorph_lizard",  xp_cost=8,  label="   <span>Lizard (<span color='#00bbe6'><i>8xp</i></span>)</span>   " },
 			[2]={ id="skill_polymorph_bear",   xp_cost=12,  label="   <span>Bear (<span  color='#00bbe6'><i>12xp</i></span>)</span>   " },
@@ -219,7 +238,10 @@ local skill_set = {
 		id          = "skill_lightning",
 		label       = label(_"Chain Lightning"),
 		image       = "attacks/lightning.png",
-		description = _"<span color='#ad6a61'><i><b>Attack:</b></i></span> Ranged 9x4(<span color='#00bbe6'><i>lvl3</i></span>) or 14x4(<span color='#00bbe6'><i>lvl4</i></span>) fire, <i>magical</i>. If this attack kills an enemy, you may attack again.",
+		description_by_level = {
+			[3] = _"<span color='#ad6a61'><i><b>Attack:</b></i></span> Ranged 9x4 fire, <i>magical</i>. If this attack kills an enemy, you may attack again.",
+			[4] = _"<span color='#ad6a61'><i><b>Attack:</b></i></span> Ranged 14x4 fire, <i>magical</i>. If this attack kills an enemy, you may attack again.",
+		},
 	},
 	-------------------------
 	-- TIME DILATION
@@ -248,7 +270,12 @@ local skill_set = {
 		id          = "skill_magic_missile",
 		label       = label(_"Magic Missile"),
 		image       = "attacks/magic-missile.png",
-		description = _"<span color='#ad6a61'><i><b>Attack:</b></i></span> Ranged 7x3(<span color='#00bbe6'><i>lvl1</i></span>) or 10x3(<span color='#00bbe6'><i>lvl2+</i></span>) fire, <i>magical</i>.",
+		description_by_level = {
+			[1] = _"<span color='#ad6a61'><i><b>Attack:</b></i></span> Ranged 7x3 fire, <i>magical</i>.",
+			[2] = _"<span color='#ad6a61'><i><b>Attack:</b></i></span> Ranged 10x3 fire, <i>magical</i>.",
+			[3] = _"<span color='#ad6a61'><i><b>Attack:</b></i></span> Ranged 10x3 fire, <i>magical</i>.",
+			[4] = _"<span color='#ad6a61'><i><b>Attack:</b></i></span> Ranged 10x3 fire, <i>magical</i>.",
+		},
 	},
 	-------------------------
 	-- DISTANT ATTACK
@@ -366,10 +393,13 @@ local skill_set = {
 	-- RAGE
 	-------------------------
 	[36] = {
-		id          = "skill_rage",
+		id          = "skill_fury",
 		label       = label(_"Magic Rage"),
 		image       = "attacks/frenzy.png",
-		description = _"<span color='#ad6a61'><i><b>Attack:</b></i></span> Melee 10x3(<span color='#00bbe6'><i>lvl3</i></span>) or 13x3(<span color='#00bbe6'><i>lvl4</i></span>) blade, <i>berserk</i>, <i>drains</i>, <i>magical</i>.",
+		description_by_level = {
+			[3] = _"<span color='#ad6a61'><i><b>Attack:</b></i></span> Melee 10x3 blade, <i>berserk</i>, <i>drains</i>, <i>magical</i>.",
+			[4] = _"<span color='#ad6a61'><i><b>Attack:</b></i></span> Melee 13x3 blade, <i>berserk</i>, <i>drains</i>, <i>magical</i>.",
+		},
 	},
 	-------------------------
 	-- ASTRAL ARMS

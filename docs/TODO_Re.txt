@@ -60,7 +60,6 @@ S11:
 - Ребалансувати Daeola's Lightbeam
 - Покращити опис Distant Heal
 - Додати пов'язані з healing закляття для Daeola. Пасивний XP або саме healing як пасивна здібність
-- Swap має вбивати кастера при телепорті onto impassable terrain
 - Покращити опис Polymorph
 - Переробити Haralin's Bend Nature
 - Переробити Haralin's spell set in Chapter 2. Додати більш потужні закляття.
@@ -148,7 +147,6 @@ Spells:
 - Rebalance Daeola's Lightbeam
 - Improve the description of Distant Heal
 - Add healing-related spells for Daeola. Passive XP or healing as a passive ability
-- Swap should kill the caster when teleporting onto impassable terrain
 - Improve the description of Polymorph
 - Rework Bend Nature
 - Rework Haralin's spell set in Chapter 2. Add more powerful spells.

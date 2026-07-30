@@ -26,6 +26,80 @@ local function format_cost(spell)
     return s
 end
 
+---------------------------------------------------------------------------
+-- Private: spell descriptions
+-- A description is either plain text (`description`, as before) or varies with
+-- the caster: `description_by_level` holds one text per level, and every
+-- `description_extra` entry is appended once the caster unlocks the spell or
+-- subskill it is keyed by.
+---------------------------------------------------------------------------
+
+-- The caster the dialog is currently open for. Set by open_dialog before anything
+-- is built: descriptions are read from five places (both picker views, free-assign
+-- slots, and the selection/cast rows), and passing the caster through all of them
+-- would change every builder's signature for one string.
+local desc_ctx = nil
+
+-- Picks the description_by_level entry for `level`: the highest level listed that
+-- the caster has reached, so a "level 2 and up" text keeps showing at level 3+.
+-- Below the lowest listed level the lowest entry is used, so the text is never blank.
+local function description_for_level(by_level, level)
+    local best, best_level, lowest, lowest_level
+    for lvl, text in pairs(by_level) do
+        if not lowest_level or lvl < lowest_level then lowest, lowest_level = text, lvl end
+        if lvl <= level and (not best_level or lvl > best_level) then best, best_level = text, lvl end
+    end
+    return best or lowest
+end
+
+-- Resolves a spell's description for the caster the dialog is open for.
+-- Returns "" for a nil spell (an empty free-assign slot).
+local function describe(spell)
+    if not spell then return "" end
+
+    local level    = desc_ctx and desc_ctx.level    or 1
+    local unlocked = desc_ctx and desc_ctx.unlocked or {}
+
+    local text = spell.description_by_level
+        and description_for_level(spell.description_by_level, level)
+        or spell.description
+    text = tostring(text or "")
+
+    if spell.description_extra then
+        local shown, lines = {}, {}
+        local function add(id)
+            local extra = spell.description_extra[id]
+            if extra and unlocked[id] and not shown[id] then
+                shown[id] = true
+                lines[#lines + 1] = tostring(extra)
+            end
+        end
+        -- Subskill order first, so the lines always appear in the order the spell
+        -- lists them; any remaining keys follow, sorted, to stay deterministic.
+        for _, sub in ipairs(spell.subskills or {}) do add(sub.id) end
+        local rest = {}
+        for id in pairs(spell.description_extra) do
+            if not shown[id] then rest[#rest + 1] = id end
+        end
+        table.sort(rest)
+        for _, id in ipairs(rest) do add(id) end
+
+        if #lines > 0 then
+            -- One entry per line by default. A spell can set
+            -- description_extra_separator (e.g. ", ") to keep them on a single line;
+            -- then only the first entry keeps its indent, so the joined line reads
+            -- as one sentence.
+            local separator = spell.description_extra_separator
+            if separator then
+                for i = 2, #lines do lines[i] = lines[i]:gsub("^%s+", "") end
+            end
+            text = text .. "\n" .. table.concat(lines, separator or "\n")
+        end
+    end
+
+    return text
+end
+
 -- Neutral label for a locked subskill, so its real name/cost isn't spoiled.
 -- Padded with spaces (like the real subskill labels in table.lua) so the button
 -- auto-sizes wide enough at build time — otherwise the word "Locked" gets clipped
@@ -80,7 +154,7 @@ end
 
 -- Builds the tooltip text for a spell: description plus its cost (if any).
 local function spell_tooltip(spell)
-    local tip  = tostring(spell.description or "")
+    local tip  = describe(spell)
     local cost = format_cost(spell)
     if cost then tip = tip .. "\n" .. _"Cost: " .. cost end
     return tip
@@ -474,7 +548,7 @@ local function build_free_select_rows(slots, spell_index)
         local def  = spell_id and spell_index[spell_id] or nil
         local img  = def and def.image or "icons/locked.png"
         local name = def and def.label or _"<span color='grey'><i>— click to choose —</i></span>"
-        local desc = def and def.description or ""
+        local desc = describe(def)
 
         local panel = T.toggle_panel{ id="slot" .. i, definition="fancy",
             tooltip = _"Click to choose any spell for this slot.",
@@ -656,7 +730,7 @@ local function make_preshow(caster, caster_data, groups, selecting, free_slots)
                 dlg["slot_name"  .. i].label = def and def.label
                     or _"<span color='grey'><i>— click to choose —</i></span>"
                 if dlg["slot_desc" .. i] then
-                    dlg["slot_desc" .. i].label = def and def.description or ""
+                    dlg["slot_desc" .. i].label = describe(def)
                 end
             end
 
@@ -761,9 +835,11 @@ local function make_preshow(caster, caster_data, groups, selecting, free_slots)
             if small then btn.label = locked_subskill_label() end
             btn.enabled = false; return
         elseif casts_done >= max_casts then
-            blocked_label = (max_casts == 1)
-                and _"<span> Can only cast\n1 spell per turn</span>"
-                or  ("<span> No spells left\n(" .. casts_done .. "/" .. max_casts .. ")</span>")
+            -- The cap comes from caster_data, so a caster with the multi-cast upgrade
+            -- shows its real limit ("2 spells/turn") instead of a hardcoded one.
+            blocked_label = "<span> " .. ((max_casts == 1)
+                and tostring(_"1 spell/turn")
+                or  (max_casts .. " " .. _"spells/turn")) .. "</span>"
         elseif caster_data.polymorphed then
             blocked_label = _"<span>  Blocked by\n  Polymorph</span>"
         elseif wesnoth.units.find_on_map{
@@ -843,7 +919,7 @@ local function make_preshow(caster, caster_data, groups, selecting, free_slots)
                     local sel = group[btn.selected_index]
                     if sel then
                         dlg["image"..i].label = sel.image
-                        dlg["label"..i].label = sel.description
+                        dlg["label"..i].label = describe(sel)
                     end
                     update_confirm_enabled()
                 end
@@ -862,7 +938,7 @@ local function make_preshow(caster, caster_data, groups, selecting, free_slots)
                 if equipped_spell then
                     dlg["button"..i].visible = true
                     dlg["image"..i].label    = equipped_spell.image
-                    dlg["label"..i].label    = equipped_spell.description
+                    dlg["label"..i].label    = describe(equipped_spell)
                     setup_cast_button(dlg, "button"..i, equipped_spell, false)
 
                     if equipped_spell.subskills then
@@ -942,6 +1018,16 @@ local function open_dialog(caster, caster_data, selecting)
         and sides[1].is_local
         and wml.variables["side_number"] == sides[1].side) then return end
 
+    -- Descriptions may depend on the caster (level, unlocked subskills), so the
+    -- context is set before anything below builds a description. See describe().
+    desc_ctx = { level = caster.level or 1, unlocked = caster_data.unlocked_set or {} }
+
+    -- Every read below happens AFTER the dialog closed, and the cast fired from it may
+    -- have replaced the unit — polymorph swaps in a whole new unit — which leaves this
+    -- proxy dangling ("bad argument #1 to 'index' (unit not found)"). The id is stable
+    -- across that swap, so capture it now, while the unit is definitely still there.
+    local caster_id = caster.id
+
     -- Free-assign and free-pick (unlocked-only) both use the slot/picker UI while
     -- selecting; cast mode is unchanged. The two differ only in which spells the
     -- picker offers (see open_picker's allowed_set in make_preshow).
@@ -976,11 +1062,11 @@ local function open_dialog(caster, caster_data, selecting)
 
             -- rv == 4 means the "Change Spells" button was clicked (return_value=4).
             if rv == 4 then
-                wml.variables[CasterState.key(caster.id) .. ".requested_reselect"] = true
+                wml.variables[CasterState.key(caster_id) .. ".requested_reselect"] = true
                 return
             end
 
-            local spell_to_cast = wml.variables[CasterState.key(caster.id) .. ".spell_to_cast"]
+            local spell_to_cast = wml.variables[CasterState.key(caster_id) .. ".spell_to_cast"]
             if spell_to_cast then
                 wml.variables["is_badly_timed"] = true
                 -- Set current_caster INSIDE do_command so it's synced atomically with fire_event.
@@ -997,20 +1083,20 @@ local function open_dialog(caster, caster_data, selecting)
                 wml.fire.do_command({
                     wml.tag.custom_command{
                         name = "magic_set_caster",
-                        wml.tag.data{ id = caster.id },
+                        wml.tag.data{ id = caster_id },
                     },
                     wml.tag.fire_event{ raise = spell_to_cast },
                 })
-                wml.variables[CasterState.key(caster.id) .. ".spell_to_cast"] = nil
+                wml.variables[CasterState.key(caster_id) .. ".spell_to_cast"] = nil
                 wml.variables["is_badly_timed"] = nil
             end
         end)
     end
 
     -- Check if the user clicked "Change Spells" (free-reselect upgrade).
-    local reselect = wml.variables[CasterState.key(caster.id) .. ".requested_reselect"] == true
+    local reselect = wml.variables[CasterState.key(caster_id) .. ".requested_reselect"] == true
     if reselect then
-        wml.variables[CasterState.key(caster.id) .. ".requested_reselect"] = nil
+        wml.variables[CasterState.key(caster_id) .. ".requested_reselect"] = nil
     end
     return reselect
 end
