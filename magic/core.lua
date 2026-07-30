@@ -722,8 +722,12 @@ end)
 
 function wml_actions.listen_for_mousemove(_cfg)
     wesnoth.game_events.on_mouse_move = function(x, y)
-        wesnoth.game_events.fire("mousemove_synced", x, y)
+        -- Clear BEFORE firing, not after. The event chain this starts ends in
+        -- [select_caster_skills], which installs its own one-shot on_mouse_move to
+        -- defer the dialog to an unsynced moment; clearing afterwards wiped that
+        -- handler out, so RESELECT_SKILLS_AFTER_OBJECTIVES never opened anything.
         wesnoth.game_events.on_mouse_move = nil -- trigger once only
+        wesnoth.game_events.fire("mousemove_synced", x, y)
     end
 end
 
