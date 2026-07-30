@@ -61,7 +61,6 @@ S12:
 - Регрупувати закляття за стандартом TDG
 - Зменшити кількість Spell Groups
 - Ребалансувати Daeola's Lightbeam
-- Покращити опис Distant Heal
 - Додати пов'язані з healing закляття для Daeola. Пасивний XP за healing
 - Переробити Haralin's Bend Nature
 - Переробити Haralin's spell set in Chapter 2. Додати більш потужні закляття.

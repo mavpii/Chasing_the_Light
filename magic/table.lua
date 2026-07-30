@@ -307,7 +307,7 @@ local skill_set = {
 		label       = label(_"Distant Heal"),
 		image       = "icons/disheal.png",
 		-- #po: <span color='#6ca364'><i><b>Spell:</b></i></span> Використайте <span color='#00bbe6'><i>6xp</i></span>, щоб вилікувати себе або дружнього юніта на +8 ОЗ. \n<span color='#ad6a61'><i><b>Radius:</b></i></span> <i>7 клітинок.</i>",
-		description = _"<span color='#6ca364'><i><b>Spell:</b></i></span> Spend <span color='#00bbe6'><i>6xp</i></span> to heal yourself or a friendly unit for +8 HP. \n<span color='#ad6a61'><i><b>Radius:</b></i></span> <i>7 hexes.</i>",
+		description = _"<span color='#6ca364'><i><b>Spell:</b></i></span> Spend <span color='#00bbe6'><i>6xp</i></span> to cure yourself or a friendly unit and heal for +8 HP. \n<span color='#ad6a61'><i><b>Radius:</b></i></span> <i>7 hexes.</i>",
 		xp_cost=6,
 	},
 	-------------------------
