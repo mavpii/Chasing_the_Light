@@ -80,8 +80,6 @@ S11:
 - Зробити кастомні спрайти для Принцес
 - Попросити Refumee зробити нові спрайти для Wesfolk юнітів
 - Попросити Refumee зробити Color Changer для одягу Outlaws/Wesfolk
-- Попросити Refumee зробити Color Changer для Light Spirit (IN PROGRESS)
-- Попросити Refumee зробити новий спрайт для Chapter 2 Даеоли
 
 
 Інше:
