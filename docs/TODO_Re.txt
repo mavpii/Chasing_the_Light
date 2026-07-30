@@ -11,7 +11,6 @@ S2:
 
 S3:
 - Додати дружнє підкріплення через 10-12 turns
-- Додати можливість отримати sorcerer's spellbook з S2
 - Додати image спалених сел
 
 S4:
@@ -48,23 +47,27 @@ S10:
 S11:
 - Прибрати відхід Єнцира за підкріпленням, замість цього він відпочиває в селі біля озера
 - Портал Даеола може відкрити лише якщо підібрала обруч в S9. Це веде до порятунку ветеранів та босфайту в S12
+- Доробити
+
+S12:
+- Створити каркас
+
+S12:
+- Зробити мапу
 
 Історія:
 - Модифікувати сюжет Chapter 2 з урахуванням ідей/побажань Dalas'а
 - Частіше згадувати Haenys'а
-
 
 Закляття:
 - Регрупувати закляття за стандартом TDG
 - Зменшити кількість Spell Groups
 - Ребалансувати Daeola's Lightbeam
 - Покращити опис Distant Heal
-- Додати пов'язані з healing закляття для Daeola. Пасивний XP або саме healing як пасивна здібність
-- Покращити опис Polymorph
+- Додати пов'язані з healing закляття для Daeola. Пасивний XP за healing
 - Переробити Haralin's Bend Nature
 - Переробити Haralin's spell set in Chapter 2. Додати більш потужні закляття.
 - Переробити Haralin's spell set in Chapter 3/4
-- Зробити динамічні описи заклять, залежно від рівня, розблокованих subskills та т.д.
 
 
 Юніти:
@@ -86,6 +89,7 @@ S11:
 - Додати пояснення, чому White/Red Mage не може level up до 3 рівня
 - Дослідити як я можу оптимізувати ШІ та прискорити його в S5,S6,S7,S10
 - Перетворити усі портрети/зображення на webp
+- Доробити журнал
 
 
 
@@ -146,12 +150,10 @@ Spells:
 - Reduce the number of spell groups
 - Rebalance Daeola's Lightbeam
 - Improve the description of Distant Heal
-- Add healing-related spells for Daeola. Passive XP or healing as a passive ability
-- Improve the description of Polymorph
+- Add healing-related spells for Daeola. Passive XP for healing
 - Rework Bend Nature
 - Rework Haralin's spell set in Chapter 2. Add more powerful spells.
 - Rework Haralin's spell set in Chapters 3/4.
-- Implement dynamic spell descriptions based on caster's level, unlocked subskills, etc.
 
 
 Units:
