@@ -1029,7 +1029,7 @@ msgstr ""
 "села."
 
 #. [part]
-#. [message]: speaker=Count_Edvar
+#. [message]: speaker=Edvar
 #. [unit]: id=voice, type=Voice
 #. [message]: speaker=narrator
 #. Гараліне, твій час майже настав. Ти зрозумієш, коли побачиш все сам
@@ -3184,13 +3184,13 @@ msgstr "Невже це ще вороги? Скільки ж їх..."
 msgid "Well, that's it, now we're definitely finished..."
 msgstr "Ну ось і все, тепер нам точно кінець..."
 
-#. [unit]: id=southbay_king, type=Grand Knight
+#. [unit]: id=Addroran, type=Grand Knight
 #. Принц Аддроран IV
 #: Chasing_the_Light/scenarios/03_Despair.cfg:1227
 msgid "Prince Addroran IV"
 msgstr "Принц Аддроран IV"
 
-#. [unit]: id=Count_Edvar, type=Lieutenant
+#. [unit]: id=Edvar, type=Lieutenant
 #. Принц Едвар
 #: Chasing_the_Light/scenarios/03_Despair.cfg:1249
 msgid "Prince Edvar"
@@ -6491,7 +6491,7 @@ msgstr ""
 msgid "Haralin's Squad"
 msgstr "Загін Гараліна"
 
-#. [unit]: id=southbay_king, type=Grand Knight
+#. [unit]: id=Addroran, type=Grand Knight
 #. Король Аддроран IV
 #: Chasing_the_Light/scenarios/04x_Southbay.cfg:72
 msgid "King Addroran IV"
@@ -13391,14 +13391,14 @@ msgstr ""
 "трохи далі величезну браму, крізь щілини якої лилося яскраве сонячне "
 "світло..."
 
-#. [side]: id=Count_Edvar, type=Royal Warrior
-#. [unit]: id=Count_Edvar, type=Royal Warrior
+#. [side]: id=Edvar, type=Royal Warrior
+#. [unit]: id=Edvar, type=Royal Warrior
 #: Chasing_the_Light/scenarios/07_Scarhane.cfg:135
 #: Chasing_the_Light/scenarios/08_Quiescence.cfg:304
 msgid "Count Edvar"
 msgstr "Граф Едвар"
 
-#. [side]: id=Count_Edvar, type=Royal Warrior
+#. [side]: id=Edvar, type=Royal Warrior
 #. [side]
 #. Захисники Скархейну
 #. Захисники Скархейну
@@ -16438,7 +16438,7 @@ msgstr ""
 "Світлом, понад усе на світі я й справді прагну, щоб усіх проклятих "
 "західняків було знищено, проте... Чому я не йду своїм власним шляхом?"
 
-#. [message]: speaker=Count_Edvar
+#. [message]: speaker=Edvar
 #. Гараліне, ти й справді прийшов сюди зовсім один, як і очікувалося. Це було вкрай нерозумне рішення, тобі й самому це відомо...
 #: Chasing_the_Light/scenarios/08_Quiescence.cfg:343
 msgid ""
