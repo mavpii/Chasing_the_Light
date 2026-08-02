@@ -295,7 +295,7 @@ use `[cast_targeted_spell]` instead to target a hex directly.
 Fires a TRSS spell's `"<spell_id>_cast"` effect **directly on a chosen hex**,
 skipping the interactive targeting. Sets `current_caster`, `unit_to_modify_x/y`
 (caster), `unit_to_cast_on_x/y` (target), and `distance_between_units`, then fires
-`<spell_id>_cast` and `<spell_id>_cast_post`.
+`<spell_id>_cast` with its `_pre`/`_post` hooks (below).
 
 ```cfg
 [cast_targeted_spell]
@@ -312,6 +312,45 @@ Works for **adjacent** and **ranged** TRSS effects (their whole effect lives in 
 `_cast` event). The **rose** spells (`skill_bend_*`) keep extra logic — unit
 push, lava damage — inside the interactive click handler, so a direct cast only
 runs their per-hex `_cast` body, not those extras.
+
+---
+
+## Spell event hooks: `_pre` / `_post`
+
+Every spell event the system fires is bracketed by two optional hook events:
+
+| Fired | Event |
+|---|---|
+| before the spell | `<event>_pre` |
+| the spell itself | `<event>` |
+| after the spell | `<event>_post` |
+
+They are ordinary game events — define one only when you need it, an event with no
+handler costs nothing. Use them to hang setup/cleanup on a spell (store state,
+animate, clean up variables) without editing the spell's own body in `spells.cfg`.
+
+```cfg
+[event]
+    name=skill_swap_cast_pre
+    first_time_only=no
+    # runs just before swap's effect, with current_caster / unit_to_cast_on_x|y set
+[/event]
+```
+
+This applies to every cast path — the cast dialog, the TRSS click handlers, and the
+`[cast_spell]` / `[cast_targeted_spell]` tags — so `<spell_id>_pre` / `<spell_id>_post`
+wrap a normal spell, and `<spell_id>_cast_pre` / `<spell_id>_cast_post` wrap a targeted
+(TRSS) effect. Casts fired from Lua go through `magic_fire_spell_event()` in `core.lua`;
+the dialog sends all three as `[fire_event]` children of one `[do_command]`, so the order
+is identical on every client.
+
+Two details worth knowing:
+
+- A TRSS spell fired from the dialog gets `<spell_id>_pre` / `<spell_id>_post` around the
+  event that **starts targeting**, not around the effect — the effect's own hooks are the
+  `_cast_pre` / `_cast_post` pair fired when the player clicks a hex.
+- **Rose** spells (`skill_bend_*`) fire their `_cast` event once per hex in the chosen
+  direction; their `_cast_pre` / `_cast_post` bracket the whole chain, firing once each.
 
 ---
 

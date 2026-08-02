@@ -1080,12 +1080,17 @@ local function open_dialog(caster, caster_data, selecting)
                 -- Use a [custom_command] child instead — same shape intf_invoke_synced_command
                 -- builds for wesnoth.sync.invoke_command — so current_caster is set by the same
                 -- in-order replay command that fires the spell event, not a separate packet.
+                -- The _pre/_post hooks travel inside the SAME do_command as the spell
+                -- event itself, so all three arrive in this order on every client
+                -- (see magic_fire_spell_event in core.lua for the Lua-side casts).
                 wml.fire.do_command({
                     wml.tag.custom_command{
                         name = "magic_set_caster",
                         wml.tag.data{ id = caster_id },
                     },
+                    wml.tag.fire_event{ raise = spell_to_cast .. "_pre" },
                     wml.tag.fire_event{ raise = spell_to_cast },
+                    wml.tag.fire_event{ raise = spell_to_cast .. "_post" },
                 })
                 wml.variables[CasterState.key(caster_id) .. ".spell_to_cast"] = nil
                 wml.variables["is_badly_timed"] = nil

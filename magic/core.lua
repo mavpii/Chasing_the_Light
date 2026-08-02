@@ -145,6 +145,26 @@ local function increment_cast(unit_id)
     wml.variables[k] = (tonumber(wml.variables[k]) or 0) + 1
 end
 
+---------------------------------------------------------------------------
+-- SPELL EVENT HOOKS
+-- Every spell event the system fires is bracketed by two optional hooks:
+--   <event>_pre   — fired immediately before the spell's own event
+--   <event>_post  — fired immediately after it
+-- They are ordinary game events, so a scenario can hang setup/cleanup on any
+-- spell (or on a TRSS "<spell>_cast" effect) without touching spells.cfg, and
+-- cost nothing when no handler exists.
+--
+-- Global rather than local: TRSS.cfg's inline [lua] click handlers fire the
+-- targeted spells' "_cast" events and call this too — same reason the legacy
+-- spellcasting_cost alias below is global.
+---------------------------------------------------------------------------
+
+function magic_fire_spell_event(event_name, ...)
+    wesnoth.game_events.fire(event_name .. "_pre", ...)
+    wesnoth.game_events.fire(event_name, ...)
+    wesnoth.game_events.fire(event_name .. "_post", ...)
+end
+
 -- Synced: set current_caster on ALL clients.
 -- Called from dialog.lua button click handlers via wesnoth.sync.invoke_command.
 -- Must be called from inside show_dialog button clicks (not after show_dialog returns).
@@ -648,7 +668,7 @@ wml_actions["cast_spell"] = function(cfg)
             if not cfg.free then apply_spell_cost(u.id, spell_id) end
             if cfg.count_cast then increment_cast(u.id) end
             wml.variables["current_caster"] = u.id
-            wesnoth.game_events.fire(spell_id)
+            magic_fire_spell_event(spell_id)
         end
     end
 end
@@ -683,8 +703,7 @@ wml_actions["cast_targeted_spell"] = function(cfg)
             wml.variables["unit_to_cast_on_x"]     = tx
             wml.variables["unit_to_cast_on_y"]     = ty
             wml.variables["distance_between_units"] = wesnoth.map.distance_between(u.x, u.y, tx, ty) * 72
-            wesnoth.game_events.fire(cast_event)
-            wesnoth.game_events.fire(cast_event .. "_post")
+            magic_fire_spell_event(cast_event)
         end
     end
 end
