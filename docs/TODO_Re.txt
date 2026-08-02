@@ -6,8 +6,8 @@ Ukrainian
 S1:
 
 S2:
--* Переробити прибуття Wesfolk підкріплень
 -* Передивитись діалоги
+-* Протестувати сценарій
 
 S3:
 - Додати дружнє підкріплення через 10-12 turns
@@ -102,7 +102,6 @@ English OUTDATED
 S1:
 
 S2:
-- Rework the arrival of Wesfolk reinforcements
 - Test changes to gameplay/events
 
 S3:
