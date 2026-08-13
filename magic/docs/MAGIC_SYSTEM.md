@@ -6,11 +6,12 @@
 
 ## Architecture
 
-The system is split into four Lua files loaded by `utils.cfg`:
+The system is split into four Lua files loaded by `_init.cfg`, the entry point
+`_main.cfg` includes:
 
 ```
-utils.cfg
-  └─ [lua] wesnoth.require 'magic/core.lua'
+magic/_init.cfg
+  └─ [lua] wesnoth.require 'magic/core/core.lua'
                 ├─ wesnoth.require 'state.lua'   (Layer 1: WML ↔ Lua)
                 ├─ wesnoth.require 'ops.lua'     (Layer 2: pure functions)
                 ├─ wesnoth.require 'dialog.lua'  (Layer 3: UI)
@@ -97,6 +98,10 @@ All stored as WML variables under the prefix `caster_<unit_id>.*`.
 | `casts_this_turn` | `.casts_this_turn` | number | Counter reset each turn start |
 | `free_assign` | `.free_assign` | `true` / nil | Upgrade: pick any spell into any slot |
 | `free_unlocked` | `.free_unlocked` | `true` / nil | Upgrade: free-pick — same UI as free_assign, restricted to unlocked spells |
+| `free_slots` | `.free_slots` | number / nil | Explicit free-assign slot count; nil = derive from groups |
+| `free_casting` | `.free_casting` | `true` / nil | Spells cost nothing (dialog, AI, command casts) |
+| `levels_normally` | `.levels_normally` | `true` / nil | Caster advances like a normal unit |
+| `unlock_subskills` | `.unlock_subskills` | `true` / nil | Equipping a multi-skill unlocks all of its subskills at once |
 
 The `caster_registry` WML variable holds a comma-list of all registered unit IDs. It lets `caster_set_menu` iterate only active casters instead of scanning the full unit list.
 
@@ -214,6 +219,24 @@ Gives back casts already spent this turn. With no `count`, fully restores (back 
 [/caster_restore_casts]
 ```
 
+### `[caster_refund]`
+Gives back what a cast cost when it turned out to do nothing (no valid target, no
+free hex) — the counterpart of `[caster_restore_casts]`, which gives back the
+cast itself. Used by the cancel paths in `spells.cfg` and `TRSS.cfg`.
+
+`xp` / `hp` / `gold` are catalogue costs, so a **free-casting** caster never paid
+them and gets nothing back — refunding unconditionally would mint XP and gold on
+every cancelled spell. `moves` is not a catalogue cost (the spell's own event
+spends it), so it is always returned.
+
+```cfg
+[caster_refund]
+    [filter] id=Haralin [/filter]
+    xp    = 10
+    moves = 1
+[/caster_refund]
+```
+
 ### `[caster_free_assign]` *(upgrade)*
 Enables or disables free-assign mode. When enabled, the **selection dialog** no
 longer offers a fixed per-group menu; instead every slot becomes a clickable
@@ -231,6 +254,44 @@ unlocked, equipped, and turned into its own one-spell group, so cast mode and
 ```
 
 Slot count equals the caster's current number of `spell_group_N` entries.
+
+### `[caster_free_slots]` *(upgrade)*
+Fixes how many slots the free-assign / free-pick picker offers, instead of
+deriving the count from the caster's `spell_group_N` entries. Meant for casters
+built from nothing — the magic **modification** creates casters with no spells at
+all and takes the slot count from a game setting.
+
+```cfg
+[caster_free_slots]
+    [filter] id=Haralin [/filter]
+    slots = 4   # 0 = go back to deriving it from the caster's groups
+[/caster_free_slots]
+```
+
+### `[caster_free_casting]` *(upgrade)*
+Spells cost this caster nothing: XP/HP/gold/attack are neither required nor
+spent. Honoured everywhere a cost is charged — the cast dialog (no "No XP" /
+"No Gold" blocks), the adaptive AI, and `[cast_spell]` / `[cast_targeted_spell]`.
+The costs printed on the buttons still show; they are simply not charged.
+
+```cfg
+[caster_free_casting]
+    [filter] id=Haralin [/filter]
+    free_casting_allowed = yes
+[/caster_free_casting]
+```
+
+### `[caster_leveling]`
+Casters are normally frozen one XP below their advancement threshold (XP is
+spell fuel, not levels — see the `pre advance` handler in `utils.cfg`). This lets
+one advance like any other unit.
+
+```cfg
+[caster_leveling]
+    [filter] id=Haralin [/filter]
+    leveling_allowed = yes
+[/caster_leveling]
+```
 
 ### `[caster_free_unlocked]` *(upgrade — free-pick)*
 Enables or disables **free-pick** mode. This is the free-assign UI (one clickable
@@ -376,6 +437,9 @@ Two details worth knowing:
 | `{CASTER_RESTORE_CASTS_COUNT (id=X) N}` | `[caster_restore_casts]` | Restore N casts spent this turn |
 | `{CASTER_FREE_ASSIGN (id=X) yes/no}` | `[caster_free_assign]` | Upgrade: any spell in any slot |
 | `{CASTER_FREE_UNLOCKED (id=X) yes/no}` | `[caster_free_unlocked]` | Upgrade: free-pick — any unlocked spell in any slot |
+| `{CASTER_FREE_SLOTS (id=X) N}` | `[caster_free_slots]` | Upgrade: fixed number of free-assign slots |
+| `{CASTER_FREE_CASTING (id=X) yes/no}` | `[caster_free_casting]` | Upgrade: spells cost nothing |
+| `{CASTER_LEVELING (id=X) yes/no}` | `[caster_leveling]` | Let the caster advance like a normal unit |
 | `{CAST_SPELL (id=X) spell_id}` | `[cast_spell]` | Command-cast a normal spell (with cost) |
 | `{CAST_SPELL_FREE (id=X) spell_id}` | `[cast_spell]` | Command-cast a normal spell (no cost) |
 | `{CAST_TARGETED_SPELL (id=X) spell_id X Y}` | `[cast_targeted_spell]` | Command-cast a TRSS spell on hex X,Y (with cost) |
@@ -657,18 +721,152 @@ takes precedence (the full catalogue), since it is the strict superset.
 This is the lightest-weight way to give a caster "free choice, but only from what
 they've earned": no new dialog, no new commit logic, just a filtered picker.
 
+## The magic system as a modification
+
+The same system ships as a **multiplayer/singleplayer modification** bundled with
+the add-on: `[modification] id=ctl_magic_system`, listed as *"Magic System
+(Chasing the Light)"* in the Modifications list of any MP game or SP campaign.
+Enable it and any unit you control can be turned into a caster whose spells you
+pick freely from the whole catalogue.
+
+**How a player uses it.** Right-click one of your units → **Awaken Magic**. The
+unit becomes a caster and the spell picker opens: one slot per configured spell
+slot, each slot opening the full 36-spell grid. Confirm, and from then on it is
+an ordinary caster — double-click it (or right-click → *Cast Spells*) to cast.
+The item is hidden for units that are casters already, which is what keeps it off
+the campaign's own casters when the modification runs alongside Chasing the Light
+(the check reads the `caster_registry` variable, not a marker of its own).
+
+**Options** (all read in `mod.lua`'s `settings()`, each with a fallback default
+so a missing variable can never break the mod):
+
+| Option id | Meaning |
+|---|---|
+| `ctl_magic_mod_slots` | Spell slots per caster (1–8, default 3) — the "N spells" of the free pick |
+| `ctl_magic_mod_casts` | Spells cast per turn (`max_casts`) |
+| `ctl_magic_mod_who` | `any` (default) or `leaders` — who may be awakened |
+| `ctl_magic_mod_limit` | Casters per side — `1`…`10` or `unlimited`; a dead caster frees its place |
+| `ctl_magic_mod_costs` | `free` (no XP/gold/HP/attack charged) or `normal` |
+| `ctl_magic_mod_xp` | XP granted on awakening, normal-cost games only |
+| `ctl_magic_mod_change` | "Change Spells" button in the cast window, or final choices |
+| `ctl_magic_mod_levels` | Casters level up normally, or freeze at max XP − 1 like the campaign |
+| `ctl_magic_mod_ai` | Computer-controlled sides' leaders become casters and use `ai.lua` |
+
+**How it is built.** Nothing about the magic system is duplicated — the mod is
+glue only:
+
+* an awakened unit is an ordinary `[assign_caster]` with `free_assign=yes`, N
+  **empty** groups, and `free_slots=N` (so the picker's slot count is right even
+  before a single spell exists);
+* the settings map straight onto existing per-caster fields — `max_casts`,
+  `reselect_free`, `free_casting`, `levels_normally`;
+* `unlock_subskills` is set on every mod caster, so equipping Summon / Bend /
+  Polymorph / Astral Arms hands over all of its subskills at once — there is no
+  campaign progression here to earn them from, and without it those spells would
+  show nothing but "Locked" buttons in the cast window;
+* the caster's dialog text switches from "choose N spells" to "here is how to
+  cast" once a selection exists — `[magic_mod_refresh_description]`, hooked on
+  `refresh_skills`, which fires right after a commit;
+* the picker is opened with `[select_caster_skills]`, which defers it to an
+  unsynced moment — the menu-item command that awakens the unit is **synced**
+  (it writes caster state on every client) and a dialog cannot open from there;
+* AI sides get a fixed loadout drawn from `AI_LOADOUT` in `mod.lua` (a
+  deterministic rotation, never `random`, so every client builds the same one)
+  plus the same autonomous candidate action `{CASTER_AI}` registers. Arming
+  happens on `start`, not `prestart`: a scenario places its own units in its
+  prestart handler, and handlers run in registration order;
+* a unit with no id gets one (`ctl_caster_<underlying id>`) before any state is
+  written. Caster state is keyed by id, and the WML side builds variable *names*
+  out of it (`pre_polymorphed_caster_<id>`), so an id is not optional — and in
+  multiplayer most units arrive without one.
+
+**Loading.** `_main.cfg` guards everything with the mod's `define=CTL_MAGIC_MOD`.
+The *system* is loaded only when nothing else already did it — the campaign block
+loads it for Chasing the Light, the `MULTIPLAYER` block for every multiplayer
+game — while the *modification's glue* (`magic/mod/mod.cfg`) is always added. The
+`[modification]` tag then contributes `MAGIC_MOD__EVENTS` to every scenario, plus
+`MAGIC_SYSTEM__GLOBAL_EVENTS` unless the campaign is running (which adds those
+itself, the same way `[campaign]` adds them to each of its scenarios).
+
+**Alongside the campaign.** Enabling the modification while playing Chasing the
+Light is supported and additive: the campaign's scripted casters keep their own
+spells, descriptions and progression (the mod only ever touches casters it built,
+identified by `free_slots`), and every *other* unit gains the "Awaken Magic"
+option. Note that the per-side caster limit counts the campaign's casters too,
+and that "Computer players get casters" arms enemy leaders — turn it off for a
+normal campaign run.
+
+`98_MP_Magic_Test` force-enables the modification (`force_modification` in its
+`[multiplayer]` tag) and no longer expands `MAGIC_SYSTEM__GLOBAL_EVENTS` itself —
+the modification supplies them. `97_AI_Caster_Battle` still expands them on its
+own and is therefore listed under `disallow_scenario`.
+
+---
+
+## Art and audio
+
+Everything the magic system draws or plays lives in `magic/images/` and
+`magic/sounds/`, found through the second `[binary_path]` that `magic/_init.cfg`
+registers (`data/add-ons/Chasing_the_Light/magic`). Binary paths are additive and
+asset references are **root-less**, so `icons/shield.png`,
+`halo/blizzard/0001.png` or `{SOUND skill-shield.wav}` resolve to the magic copy
+without any file naming the folder — no path in the campaign had to change.
+
+Two consequences worth knowing:
+
+* **Campaign files legitimately read out of `magic/`.** Scenarios 07 and 11 play
+  `skill-illusion.wav` / `skill-polymorph.wav` / `skill-shield.wav` and
+  `utils/macros.cfg` uses the last one for an AMLA. On the art side: the portal units
+  (`units/Spirits/Portal_*.cfg`) share the elemental sprites and the blizzard /
+  air-lightning halos, scenarios 07/08/11 share the swap circle and
+  `halo/shield.png`, `utils/macros.cfg` uses the spell icons for its AMLAs,
+  `lua/cotgi.lua` the `misc/` chess icons, and `units/Faisim/Faisim_Princess.cfg`
+  the astral sword icon. All of them keep working because the magic system is
+  loaded in every context those files exist in (campaign and multiplayer alike).
+* **Absolute paths are the exception that does need editing.** A reference
+  written as `data/add-ons/Chasing_the_Light/images/...` bypasses the binary path
+  entirely. `achievements.cfg` had one (the rock-elemental achievement icon) and
+  now points at `.../Chasing_the_Light/magic/images/...`. Keep new absolute
+  references out of magic art, or remember to spell out the `magic/` segment.
+
+No animation folder is split: where the magic system draws part of a sequence,
+the whole folder moved with it (`halo/air-lightning`, `halo/blackportal`,
+`halo/portal_swap/ucircle-frames` — the campaign's portals and scenario 07 read
+their remaining frames straight out of `magic/images/`). Only
+`halo/portal_swap/particle-anims`, which no spell touches, stayed behind. The
+familiar sprites (`units/wesfolk/familiar/`, `portraits/wesfolk/familiar.webp`)
+stay in the campaign's `images/` by request, even though Phylactery uses them.
+
+---
+
 ## File map
+
+```
+magic/
+  utils.cfg     entry point: binary path, includes, unit types, global events
+  wml/          macros.cfg, spells.cfg, TRSS.cfg
+  lua/          core, state, ops, dialog, table, ai, ai_profiles
+  mod/          mod.cfg, mod.lua  (the modification)
+  units/        unit types the spells need
+  images/       art used only by the magic system
+  docs/
+```
 
 | File | Role |
 |---|---|
-| `magic/utils.cfg` | Entry point. Includes other cfg files, loads `core.lua`, defines global events (turn reset, anti-leveling, etc.) |
-| `magic/macros.cfg` | WML macros for use in scenario files |
-| `magic/spells.cfg` | `refresh_skills` event handlers that apply/remove unit abilities; individual spell cast events |
-| `magic/TRSS.cfg` | Adjacent spell targeting system (separate from main magic flow) |
-| `magic/core.lua` | All `wml_actions`, caster registry, double-click handler |
-| `magic/state.lua` | WML ↔ Lua data bridge (`load` / `save` / `delete` / `from_config`) |
-| `magic/ops.lua` | Pure functions on caster data tables |
-| `magic/dialog.lua` | Dialog layout, preshow wiring, evaluate_single orchestration |
-| `magic/ai.lua` | Adaptive AI casting engine: candidate-action eval/exec, per-kind valuation |
-| `magic/ai_profiles.lua` | Editable catalogue of how the AI uses each spell (add/remove a line) |
-| `magic/table.lua` | Read-only catalogue of all 36 spell definitions |
+| `magic/_init.cfg` | Entry point. Adds the magic binary path, includes the wml/ files and unit types, loads `lua/core.lua`, defines the global events (turn reset, anti-leveling, etc.) |
+| `magic/core/macros.cfg` | WML macros for use in scenario files |
+| `magic/core/core.lua` | All `wml_actions`, caster registry, double-click handler |
+| `magic/core/state.lua` | WML ↔ Lua data bridge (`load` / `save` / `delete` / `from_config`) |
+| `magic/core/ops.lua` | Pure functions on caster data tables |
+| `magic/core/dialog.lua` | Dialog layout, preshow wiring, evaluate_single orchestration |
+| `magic/spells/spells.cfg` | `refresh_skills` event handlers that apply/remove unit abilities; individual spell cast events |
+| `magic/spells/TRSS.cfg` | Adjacent spell targeting system (separate from main magic flow) |
+| `magic/spells/table.lua` | Read-only catalogue of all spell definitions |
+| `magic/ai/ai.lua` | Adaptive AI casting engine: candidate-action eval/exec, per-kind valuation |
+| `magic/ai/ai_profiles.lua` | Editable catalogue of how the AI uses each spell (add/remove a line) |
+| `magic/mod/mod.cfg` | Modification: loads `mod.lua`, defines `MAGIC_MOD__EVENTS` |
+| `magic/mod/mod.lua` | Modification: options, awaken action, menu item, AI arming |
+| `magic/units/` | Elemental Air/Fire/Rock/Water (Summon), Brazier (Holy Ward), Phylactery. Mudcrawler, Swamp Lizard, Cave Bear, Yeti and Orcish Warlord come from mainline |
+| `magic/images/` | **Every** image the magic system uses (677 files), the familiar sprites excepted — see below |
+| `magic/sounds/` | The 15 add-on sounds the spells and the air elemental play |
