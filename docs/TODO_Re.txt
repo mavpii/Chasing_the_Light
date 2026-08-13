@@ -56,7 +56,6 @@ S10:
 
 
 Юніти:
-- Переробити Mage Healer
 - Створити Wesfolk фракцію
 - Покращити Spell Knight
 
@@ -125,16 +124,13 @@ S2:
 S3:
 
 S4:
-- Add more commentary on Haralin's power
 
 S5:
-- Explain the spells selection in dialog between Haralin and Daeola
 
 S6:
 
 S7:
 - Improve the AI of allies
-- Clarify the objectives
 
 S8:
 - Add a dialogue line where the Voice explicitly states what it is
