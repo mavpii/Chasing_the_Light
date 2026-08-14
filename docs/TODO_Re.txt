@@ -3,13 +3,8 @@ Chasing the Light: 2.0
 Ukrainian
 ================================
 
-S1:
+S1,S2:
 - Оновити story
-
-
-S2:
-- Оновити story
--* Передивитись діалоги
 
 
 S7:
@@ -39,8 +34,8 @@ S10:
 
 Закляття:
 - Регрупувати закляття за стандартом TDG
+- Юнифікувати стиль описів заклять з TDG
 - Зменшити кількість Spell Groups
-- Ребалансувати Daeola's Lightbeam
 - Додати пов'язані з healing закляття для Daeola. Пасивний XP за healing
 - Переробити Haralin's Bend Nature
 - Переробити Haralin's spell set in Chapter 2. Додати більш потужні закляття.
@@ -52,8 +47,7 @@ S10:
 
 
 Інше:
-- Додати пояснення, чому White/Red Mage не може level up до 3 рівня
-- Дослідити як я можу оптимізувати ШІ та прискорити його в S5,S6,S7,S10(відключати анімації юнітам в тумані/shroud)
+- Дослідити як я можу оптимізувати ШІ та прискорити його в S5,S6,S7,S10
 - Доробити журнал
 
 
@@ -76,7 +70,6 @@ S10:
 - Зробити кастомні спрайти для Принцес
 - Анімації атаки/захисту/смерті для Faisim
 - Попросити Refumee зробити нові спрайти для Wesfolk юнітів
-- Попросити Refumee зробити Color Changer для одягу Outlaws/Wesfolk
 
 
 Портрети:
@@ -112,27 +105,10 @@ Chasing the Light: 2.0
 English OUTDATED
 ================================
 
-S1:
-
-S2:
-- Test changes to gameplay/events
-
-S3:
-
-S4:
-
-S5:
-
-S6:
-
-S7:
-- Improve the AI of allies
-
 S8:
 - Add a dialogue line where the Voice explicitly states what it is
 - Give the Voice the ability to use the magic system
 
-S9:
 
 S10:
 - Add a time limit for units to desert
@@ -144,14 +120,11 @@ S10:
 
 Storyline:
 - Modify the storyline of Chapter 2 to take into account Dalas' ideas/suggestions
-- Mention Haenys more often
 
 
 Spells:
 - Regroup spells according to the standards of TDG
 - Reduce the number of spell groups
-- Rebalance Daeola's Lightbeam
-- Improve the description of Distant Heal
 - Add healing-related spells for Daeola. Passive XP for healing
 - Rework Bend Nature
 - Rework Haralin's spell set in Chapter 2. Add more powerful spells.
@@ -159,20 +132,13 @@ Spells:
 
 
 Units:
-- Rebalance the Mage Healer
-- Add a Wesfolk faction
 - Buff the Spell Knight
 
 
 Visuals:
 - Create custom sprites for Wesfolk Princesses
 - Ask Refumee to create new sprites for Wesfolk units
-- Ask Refumee to create a Color Changer for clothing of Outlaws/Wesfolk
 
 
 Other:
-- Add special formatting to Voice lines
-- Remove the delay in displaying the spellcasting dialog
-- Reloading a turn should allow players to reselect spells
-- Add an explanation of why the White/Red Mage cannot level up to level 3
 - Investigate how I can optimize the AI and speed it up in S5, S6, S7, and S10

@@ -14,6 +14,9 @@
 --                units drifting off north to fight while the convoy heads
 --                south, pulls stragglers forward, and puts the escort on the
 --                hexes the convoy needs covered before it can advance.
+--                When something is chasing the column, a share of the escort
+--                proportional to the threat behind is held back as a rearguard
+--                instead of being sent to the front.
 --
 -- [args] parameters:
 --   [filter]         -- protected units (SUF, own side implied)      required
@@ -25,6 +28,8 @@
 --   min_quality=F    -- refuse screen placements worse than this     default 0.18
 --   vanguard_lead=N  -- how far ahead of the convoy the column sits  default 4
 --   column_slack=N   -- tolerance before a unit is repositioned      default 2
+--   rear_guard=N     -- how far behind the convoy the tail sits      default 3
+--   threat_radius=N  -- enemies inside this count towards the split  default 12
 --   ca_score=N       -- passed in by the [candidate_action]          default 105000
 
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
@@ -39,117 +44,18 @@ local best_unit, best_hex
 -- action of the side, so this is the main lever on how heavy it is.
 local MAX_REACHMAPS = 6
 
--- Damage profiles are per turn, since time of day changes between turns
-local profile_cache = { turn = -1, profiles = {} }
-
---------------------------------------------------------------------------------
--- damage estimation
---------------------------------------------------------------------------------
-
--- Per-attack damage of @enemy against @unit, before terrain is taken into
--- account. Returns an array of { damage = , magical = , marksman = }.
-local function threat_profile(enemy, unit)
-    if (profile_cache.turn ~= wesnoth.current.turn) then
-        profile_cache.turn, profile_cache.profiles = wesnoth.current.turn, {}
-    end
-
-    local key = enemy.id .. '|' .. unit.id
-    local cached = profile_cache.profiles[key]
-    if cached then return cached end
-
-    local tod = AH.get_unit_time_of_day_bonus(
-        enemy.alignment,
-        wesnoth.schedule.get_illumination(enemy).lawful_bonus
-    )
-
-    local profile = {}
-    for _,attack in ipairs(enemy.attacks) do
-        local magical, marksman = false, false
-        for _,sp in ipairs(attack.specials) do
-            if (sp[1] == 'chance_to_hit') then
-                if (sp[2].id == 'magical') then magical = true end
-                if (sp[2].id == 'marksman') then marksman = true end
-            end
-        end
-
-        -- resistance_against() returns the UI-sense resistance (positive means
-        -- resistant), so the damage multiplier is (100 - resistance)/100
-        local resistance = unit:resistance_against(attack.type)
-        table.insert(profile, {
-            damage = (attack.damage or 0) * (attack.number or 0)
-                * (100 - resistance) / 100. * tod,
-            magical = magical,
-            marksman = marksman
-        })
-    end
-
-    profile_cache.profiles[key] = profile
-    return profile
-end
-
--- Expected damage of one attack round, given the defense the escort has on the
--- hex it would be standing on. @defense is unit:defense_on(), UI sense.
-local function expected_damage(profile, defense)
-    local base_hit = 100 - defense
-
-    local worst = 0
-    for _,a in ipairs(profile) do
-        local hit = base_hit
-        if a.magical then
-            hit = 70
-        elseif a.marksman and (hit < 60) then
-            hit = 60
-        end
-
-        local dmg = a.damage * hit / 100.
-        if (dmg > worst) then worst = dmg end
-    end
-
-    return worst
-end
-
--- Enemies still alive that can attack the hex. The threat map is built once per
--- turn, so some of the units in it may have been killed since; their proxies
--- must not be touched.
-local function live_attackers(threats, x, y)
-    local attackers = {}
-    for _,enemy in ipairs(threats:get(x, y) or {}) do
-        if enemy.valid then table.insert(attackers, enemy) end
-    end
-    return attackers
-end
-
 -- Fraction of @unit expected to still be standing on (@x,@y) at the start of our
--- next turn, clamped to (0, 1]. Also returns the defense on that hex.
+-- next turn, clamped to (0, 1]. Also returns the defense there and how many
+-- enemies can reach it. The damage model itself lives in ctl_ai_maps so that the
+-- convoy CA works from exactly the same numbers.
 local function survival_on(unit, x, y, threats)
-    local defense = unit:defense_on(wesnoth.current.map[{ x, y }])
-    local attackers = live_attackers(threats, x, y)
-
-    -- No more enemies can hit at once than there are hexes to hit from
-    local free_slots = 0
-    for xa,ya in wesnoth.current.map:iter_adjacent({ x, y }) do
-        local occupant = wesnoth.units.get(xa, ya)
-        if (not occupant) or (occupant.side ~= wesnoth.current.side) then
-            free_slots = free_slots + 1
-        end
-    end
-
-    local damages = {}
-    for _,enemy in ipairs(attackers) do
-        table.insert(damages, expected_damage(threat_profile(enemy, unit), defense))
-    end
-    table.sort(damages, function(a, b) return a > b end)
-
-    local incoming = 0
-    for i = 1, math.min(#damages, free_slots) do
-        incoming = incoming + damages[i]
-    end
+    local incoming, defense, n_attackers = MAPS.exposure(unit, x, y, threats)
 
     local survival = (unit.hitpoints - incoming) / unit.max_hitpoints
     if (survival < 0.05) then survival = 0.05 end
     if (survival > 1.) then survival = 1. end
 
-    return survival, defense, #attackers
+    return survival, defense, n_attackers
 end
 
 --------------------------------------------------------------------------------
@@ -238,6 +144,8 @@ function ca_ctl_escort:evaluation(cfg)
     local min_quality = tonumber(cfg.min_quality) or 0.18
     local vanguard_lead = tonumber(cfg.vanguard_lead) or 4
     local column_slack = tonumber(cfg.column_slack) or 2
+    local rear_guard = tonumber(cfg.rear_guard) or 3
+    local threat_radius = tonumber(cfg.threat_radius) or 12
 
     local goal_x, goal_y = tonumber(cfg.goal_x), tonumber(cfg.goal_y)
     local filter = wml.get_child(cfg, "filter")
@@ -258,7 +166,7 @@ function ca_ctl_escort:evaluation(cfg)
     }, true)
     if (not escorts[1]) then return 0 end
 
-    local reach, threats = MAPS.threat()
+    local reach, threats, enemies = MAPS.threat()
     local avoid_map = AH.get_avoid_map(ai, wml.get_child(cfg, "avoid"), true)
 
     local reachmaps, n_reachmaps = {}, 0
@@ -371,21 +279,88 @@ function ca_ctl_escort:evaluation(cfg)
         local value = progress(p.x, p.y)
         if (value > convoy_progress) then convoy_progress = value end
     end
-    local target = convoy_progress + vanguard_lead
+
+    ----------------------------------------------------------------------------
+    -- Which side of the convoy the pressure is on. Pushing the whole escort to
+    -- the front leaves the tail open whenever something is chasing the column,
+    -- so part of it is held back when there is a threat behind.
+    ----------------------------------------------------------------------------
+
+    local front_threat, rear_threat = 0, 0
+    for _,enemy in ipairs(enemies) do
+        if enemy.valid then
+            local relevant = false
+            for _,p in ipairs(protectees) do
+                if (M.distance_between(enemy.x, enemy.y, p.x, p.y) <= threat_radius) then
+                    relevant = true
+                    break
+                end
+            end
+
+            if relevant then
+                if (progress(enemy.x, enemy.y) > convoy_progress) then
+                    front_threat = front_threat + 1
+                else
+                    rear_threat = rear_threat + 1
+                end
+            end
+        end
+    end
+
+    -- Every escort counts towards manning a side, whether it has moves left or
+    -- not, otherwise the split drifts as units are used up during the turn
+    local all_escorts = AH.get_live_units {
+        side = wesnoth.current.side,
+        { "and", filter_second }
+    }
+
+    local desired_rear = 0
+    if (rear_threat > 0) then
+        desired_rear = math.ceil(#all_escorts * rear_threat / (rear_threat + front_threat))
+        local cap = math.floor(#all_escorts / 2)
+        if (desired_rear > cap) then desired_rear = cap end
+    end
+
+    local target_front = convoy_progress + vanguard_lead
+    local target_rear = convoy_progress - rear_guard
+
+    -- The units already furthest back become the rearguard, so nobody is marched
+    -- past the wagons and straight back again. Assigning by "is behind the
+    -- convoy" instead would break down in the usual case where most of the
+    -- escort is behind it.
+    local rear_set = {}
+    if (desired_rear > 0) then
+        local by_progress = {}
+        for _,unit in ipairs(all_escorts) do table.insert(by_progress, unit) end
+        table.sort(by_progress, function(a, b)
+            return progress(a.x, a.y) < progress(b.x, b.y)
+        end)
+
+        for i = 1, math.min(desired_rear, #by_progress) do
+            rear_set[by_progress[i].id] = true
+        end
+    end
+
+    local function target_for(unit)
+        if rear_set[unit.id] then return target_rear end
+        return target_front
+    end
 
     -- Reposition the unit that is furthest out of place, one per evaluation.
-    -- Being behind is worse than being ahead: a straggler is doing nothing at
-    -- all, while a unit that overshot is at least in front of the convoy.
-    local worst_offset, chosen = column_slack, nil
+    -- Being behind its target is worse than being ahead of it: a straggler is
+    -- doing nothing at all, while a unit that overshot is at least in the way.
+    local worst_offset, chosen, chosen_target = column_slack, nil, nil
     for _,unit in ipairs(escorts) do
-        local offset = target - progress(unit.x, unit.y)
+        local unit_target = target_for(unit)
+        local offset = unit_target - progress(unit.x, unit.y)
         if (offset < 0) then offset = -offset * 0.5 end
 
         if (offset > worst_offset) then
-            worst_offset, chosen = offset, unit
+            worst_offset, chosen, chosen_target = offset, unit, unit_target
         end
     end
     if (not chosen) then return 0 end
+    local target = chosen_target
 
     -- Deliberately not going through the budget: this is a single map, and the
     -- column must not be starved by whatever layer 1 already spent

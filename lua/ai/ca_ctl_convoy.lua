@@ -17,7 +17,13 @@
 --   goal_x=, goal_y= -- where the protected units are heading         required
 --   [avoid]          -- hexes to route around (SLF)                   optional
 --   min_cover=N      -- escorts that must be able to reach the hex    default 2
+--   max_risk=F       -- share of its HP the unit may risk on a hex    default 0.5
 --   ca_score=N       -- passed in by the [candidate_action]           default 300000
+--
+-- Note that having an escort in reach and surviving are two different tests, and
+-- both are needed. fast_ai deletes retreat_injured from the side
+-- (mai-defs/fast.lua:122), so nothing else will pull a protected unit out of a
+-- hex it is about to die on.
 
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
 local LS = wesnoth.require "location_set"
@@ -33,6 +39,7 @@ function ca_ctl_convoy:evaluation(cfg)
 
     local score = cfg.ca_score or 300000
     local min_cover = tonumber(cfg.min_cover) or 2
+    local max_risk = tonumber(cfg.max_risk) or 0.5
 
     local goal_x, goal_y = tonumber(cfg.goal_x), tonumber(cfg.goal_y)
     local filter = wml.get_child(cfg, "filter")
@@ -73,10 +80,22 @@ function ca_ctl_convoy:evaluation(cfg)
         return cover_map:get(x, y) or 0
     end
 
-    local function is_safe_enough(x, y)
+    -- Share of its current hitpoints the unit would expect to lose standing on
+    -- a hex until its next turn. Having an escort within reach is not the same
+    -- as surviving: Count Edvar can be fully covered and still be standing in
+    -- front of enough Draugs to die, and the cover test alone would keep him
+    -- there.
+    local function risk_on(unit, x, y)
+        local incoming = MAPS.exposure(unit, x, y, danger)
+        return incoming / math.max(unit.hitpoints, 1)
+    end
+
+    -- A hex the unit may come to rest on
+    local function acceptable(unit, x, y)
         -- Finishing is never held back: the goal hex is where the unit is taken
         -- off the map, so there is nothing left to protect it from
         if (x == goal_x) and (y == goal_y) then return true end
+        if (risk_on(unit, x, y) >= max_risk) then return false end
         return safety_level(x, y) >= min_cover
     end
 
@@ -87,59 +106,85 @@ function ca_ctl_convoy:evaluation(cfg)
     end)
 
     for _,p in ipairs(protectees) do
-        -- Two reach maps, as next_hop does: one to tell how far along the route
-        -- the unit could get this turn, one to tell where it may actually stop
-        local reach_any = AH.get_reachmap(p, { avoid_map = avoid_map })
-        local reach_free = AH.get_reachmap(p, {
-            exclude_occupied = true,
-            avoid_map = avoid_map
-        })
-
+        -- The route the convoy is trying to follow. Prefer the one that routes
+        -- around whatever is in the way today; if the enemy has the corridor
+        -- blocked outright, fall back to the ideal line, exactly as
+        -- ca_messenger_move does with its path1/path2 pair.
         local path, cost = AH.find_path_with_avoid(p, goal_x, goal_y, avoid_map)
+        if (not path) or (cost >= AH.no_path) then
+            path, cost = AH.find_path_with_avoid(
+                p, goal_x, goal_y, avoid_map, { ignore_enemies = true })
+        end
 
-        -- 1. Advance along the actual route, but only as far as the escort reaches
-        local chosen
+        -- No route at all: hand the unit back to ca_messenger_move rather than
+        -- park it here for the rest of the scenario
         if path and (cost < AH.no_path) then
+            -- How far along the route the unit could get this turn. This must
+            -- come from the raw reach, because AH.get_reachmap drops hexes that
+            -- own units with no moves left are standing on -- and the column
+            -- puts escorts on exactly those hexes, just ahead of the convoy.
+            -- Treating them as impassable is what stopped a caravan dead.
+            local reach_any = LS.create()
+            for _,loc in ipairs(wesnoth.paths.find_reach(p)) do
+                reach_any:insert(loc[1], loc[2], true)
+            end
+
+            -- Where it may actually come to rest
+            local reach_free = AH.get_reachmap(p, {
+                exclude_occupied = true,
+                avoid_map = avoid_map
+            })
+
+            -- 1. Advance along the route, as far as the escort reaches and the
+            --    unit can stand without being cut down
+            local chosen
             for i = 2, #path do
                 local x, y = path[i][1], path[i][2]
                 if (not reach_any:get(x, y)) then break end
 
-                if reach_free:get(x, y) and is_safe_enough(x, y) then
+                if reach_free:get(x, y) and acceptable(p, x, y) then
                     chosen = { x, y }
                 end
             end
-        end
 
-        if chosen then
-            best_unit, best_hex, best_is_wait = p, chosen, false
-            return score
-        end
-
-        -- 2. Nothing covered ahead. If the unit is standing somewhere its escort
-        --    cannot reach either, fall back towards them rather than sit there.
-        local own_safety = safety_level(p.x, p.y)
-        if (own_safety < min_cover) then
-            local best_rating, fallback = -math.huge, nil
-            reach_free:iter(function(x, y)
-                local rating = math.min(safety_level(x, y), min_cover) * 100
-                    - M.distance_between(x, y, goal_x, goal_y)
-                    + p:defense_on(wesnoth.current.map[{ x, y }]) / 100.
-                if (rating > best_rating) then best_rating, fallback = rating, { x, y } end
-            end)
-
-            if fallback
-                and ((fallback[1] ~= p.x) or (fallback[2] ~= p.y))
-                and (safety_level(fallback[1], fallback[2]) > own_safety)
-            then
-                best_unit, best_hex, best_is_wait = p, fallback, false
+            if chosen then
+                best_unit, best_hex, best_is_wait = p, chosen, false
                 return score
             end
-        end
 
-        -- 3. Covered where it stands, but not on anything it could advance to:
-        --    hold this turn and let the escort catch up
-        best_unit, best_hex, best_is_wait = p, { p.x, p.y }, true
-        return score
+            -- 2. Cannot advance. If where it stands is not somewhere it should
+            --    be standing either -- no escort within reach, or enough enemies
+            --    on it to be lethal -- get out instead of holding position.
+            if (not acceptable(p, p.x, p.y)) then
+                local here_risk = risk_on(p, p.x, p.y)
+                local here_safety = safety_level(p.x, p.y)
+
+                local best_rating, refuge = -math.huge, nil
+                reach_free:iter(function(x, y)
+                    local rating = -risk_on(p, x, y) * 1000.
+                        + math.min(safety_level(x, y), min_cover) * 100.
+                        - M.distance_between(x, y, goal_x, goal_y)
+                        + p:defense_on(wesnoth.current.map[{ x, y }]) / 100.
+                    if (rating > best_rating) then best_rating, refuge = rating, { x, y } end
+                end)
+
+                -- Only move if it is a real improvement, so the unit does not
+                -- shuffle back and forth between two equally bad hexes
+                if refuge and ((refuge[1] ~= p.x) or (refuge[2] ~= p.y)) then
+                    local better_odds = risk_on(p, refuge[1], refuge[2]) <= here_risk - 0.1
+                    local better_cover = safety_level(refuge[1], refuge[2]) > here_safety
+                    if better_odds or better_cover then
+                        best_unit, best_hex, best_is_wait = p, refuge, false
+                        return score
+                    end
+                end
+            end
+
+            -- 3. Where it stands is fine, but nothing it could advance to is:
+            --    hold this turn and let the escort catch up
+            best_unit, best_hex, best_is_wait = p, { p.x, p.y }, true
+            return score
+        end
     end
 
     return 0

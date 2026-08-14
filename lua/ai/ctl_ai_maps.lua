@@ -23,6 +23,7 @@ local ctl_ai_maps = {}
 local threat_cache = { turn = -1, side = -1 }
 local cover_cache = { turn = -1, side = -1 }
 local route_cache = { turn = -1, side = -1, routes = {} }
+local profile_cache = { turn = -1, side = -1, profiles = {} }
 
 local function stale(cache)
     return (cache.turn ~= wesnoth.current.turn) or (cache.side ~= wesnoth.current.side)
@@ -36,12 +37,14 @@ end
 -- enemy reach and threat
 --------------------------------------------------------------------------------
 
----Returns two location sets:
+---Returns two location sets and one array:
 ---  reach   : value = number of enemies that can MOVE onto the hex
 ---  threats : value = array of enemies that can ATTACK the hex
+---  enemies : the enemies these were built from, for working out which side of
+---            the convoy the pressure is coming from
 function ctl_ai_maps.threat()
     if (not stale(threat_cache)) then
-        return threat_cache.reach, threat_cache.threats
+        return threat_cache.reach, threat_cache.threats, threat_cache.enemies
     end
 
     local own = wesnoth.units.find_on_map { side = wesnoth.current.side }
@@ -104,7 +107,8 @@ function ctl_ai_maps.threat()
 
     stamp(threat_cache)
     threat_cache.reach, threat_cache.threats = reach, threats
-    return reach, threats
+    threat_cache.enemies = enemies
+    return reach, threats, enemies
 end
 
 --------------------------------------------------------------------------------
@@ -141,6 +145,109 @@ function ctl_ai_maps.cover(escorts)
     stamp(cover_cache)
     cover_cache.cover = cover
     return cover
+end
+
+--------------------------------------------------------------------------------
+-- how much damage a unit would take on a hex
+--------------------------------------------------------------------------------
+
+-- Per-attack damage of @enemy against @unit, before terrain is taken into
+-- account. Cached per turn, since time of day changes between turns.
+local function threat_profile(enemy, unit)
+    if stale(profile_cache) then
+        stamp(profile_cache)
+        profile_cache.profiles = {}
+    end
+
+    local key = enemy.id .. '|' .. unit.id
+    local cached = profile_cache.profiles[key]
+    if cached then return cached end
+
+    local tod = AH.get_unit_time_of_day_bonus(
+        enemy.alignment,
+        wesnoth.schedule.get_illumination(enemy).lawful_bonus
+    )
+
+    local profile = {}
+    for _,attack in ipairs(enemy.attacks) do
+        local magical, marksman = false, false
+        for _,sp in ipairs(attack.specials) do
+            if (sp[1] == 'chance_to_hit') then
+                if (sp[2].id == 'magical') then magical = true end
+                if (sp[2].id == 'marksman') then marksman = true end
+            end
+        end
+
+        -- resistance_against() returns the UI-sense resistance (positive means
+        -- resistant), so the damage multiplier is (100 - resistance)/100
+        local resistance = unit:resistance_against(attack.type)
+        table.insert(profile, {
+            damage = (attack.damage or 0) * (attack.number or 0)
+                * (100 - resistance) / 100. * tod,
+            magical = magical,
+            marksman = marksman
+        })
+    end
+
+    profile_cache.profiles[key] = profile
+    return profile
+end
+
+-- Worst single attack round, given the defense the unit has on the hex
+local function expected_damage(profile, defense)
+    local base_hit = 100 - defense
+
+    local worst = 0
+    for _,a in ipairs(profile) do
+        local hit = base_hit
+        if a.magical then
+            hit = 70
+        elseif a.marksman and (hit < 60) then
+            hit = 60
+        end
+
+        local dmg = a.damage * hit / 100.
+        if (dmg > worst) then worst = dmg end
+    end
+
+    return worst
+end
+
+---Expected damage @unit would take on (@x,@y) before its next turn.
+---Returns incoming damage, the unit's defense on the hex, and how many enemies
+---can attack it there.
+---@param threats location_set The threat map from ctl_ai_maps.threat()
+function ctl_ai_maps.exposure(unit, x, y, threats)
+    local defense = unit:defense_on(wesnoth.current.map[{ x, y }])
+
+    -- The threat map is built once per turn, so some of the enemies in it may
+    -- have been killed since; their proxies must not be touched
+    local attackers = {}
+    for _,enemy in ipairs(threats:get(x, y) or {}) do
+        if enemy.valid then table.insert(attackers, enemy) end
+    end
+
+    -- No more enemies can hit at once than there are hexes to hit from
+    local free_slots = 0
+    for xa,ya in wesnoth.current.map:iter_adjacent({ x, y }) do
+        local occupant = wesnoth.units.get(xa, ya)
+        if (not occupant) or (occupant.side ~= wesnoth.current.side) then
+            free_slots = free_slots + 1
+        end
+    end
+
+    local damages = {}
+    for _,enemy in ipairs(attackers) do
+        table.insert(damages, expected_damage(threat_profile(enemy, unit), defense))
+    end
+    table.sort(damages, function(a, b) return a > b end)
+
+    local incoming = 0
+    for i = 1, math.min(#damages, free_slots) do
+        incoming = incoming + damages[i]
+    end
+
+    return incoming, defense, #attackers
 end
 
 --------------------------------------------------------------------------------
