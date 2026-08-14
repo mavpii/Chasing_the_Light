@@ -1061,7 +1061,7 @@ local function open_dialog(caster, caster_data, selecting)
 
     -- Deselect caster so the dialog doesn't appear over a selected unit.
     wesnoth.interface.game_display.selected_unit = nil
-    wesnoth.interface.delay(300)
+    --wesnoth.interface.delay(300)
     wesnoth.units.select()
     wesnoth.interface.deselect_hex()
     wml.fire("redraw")
