@@ -18,6 +18,8 @@
 --   [avoid]          -- hexes to route around (SLF)                   optional
 --   min_cover=N      -- escorts that must be able to reach the hex    default 2
 --   max_risk=F       -- share of its HP the unit may risk on a hex    default 0.5
+--   max_wait=N       -- turns held before the leash comes off once    default 3
+--   retreat_slack=N  -- route progress it may give up falling back    default 3
 --   ca_score=N       -- passed in by the [candidate_action]           default 300000
 --
 -- Note that having an escort in reach and surviving are two different tests, and
@@ -40,6 +42,8 @@ function ca_ctl_convoy:evaluation(cfg)
     local score = cfg.ca_score or 300000
     local min_cover = tonumber(cfg.min_cover) or 2
     local max_risk = tonumber(cfg.max_risk) or 0.5
+    local max_wait = tonumber(cfg.max_wait) or 3
+    local retreat_slack = tonumber(cfg.retreat_slack) or 3
 
     local goal_x, goal_y = tonumber(cfg.goal_x), tonumber(cfg.goal_y)
     local filter = wml.get_child(cfg, "filter")
@@ -135,6 +139,14 @@ function ca_ctl_convoy:evaluation(cfg)
                 avoid_map = avoid_map
             })
 
+            -- After sitting still this many turns the leash comes off for one
+            -- move. Without it a unit that is perfectly safe where it stands but
+            -- has nothing acceptable ahead waits forever -- which is how a
+            -- caravan ended up parked inside the fenced graveyard, a dead end
+            -- that no enemy can reach and therefore scores as ideal.
+            local waits = p.variables.ctl_convoy_waits or 0
+            local impatient = (waits >= max_wait)
+
             -- 1. Advance along the route, as far as the escort reaches and the
             --    unit can stand without being cut down
             local chosen
@@ -142,7 +154,7 @@ function ca_ctl_convoy:evaluation(cfg)
                 local x, y = path[i][1], path[i][2]
                 if (not reach_any:get(x, y)) then break end
 
-                if reach_free:get(x, y) and acceptable(p, x, y) then
+                if reach_free:get(x, y) and (impatient or acceptable(p, x, y)) then
                     chosen = { x, y }
                 end
             end
@@ -159,8 +171,19 @@ function ca_ctl_convoy:evaluation(cfg)
                 local here_risk = risk_on(p, p.x, p.y)
                 local here_safety = safety_level(p.x, p.y)
 
+                -- Falling back must not mean bolting off the route into the
+                -- nearest pocket. Progress is measured along the corridor the
+                -- convoy actually has to travel, so a walled-off dead end a few
+                -- hexes to the side scores badly however quiet it is.
+                local _, progress = MAPS.route(p, goal_x, goal_y, avoid_map)
+                local here_progress = progress and progress(p.x, p.y) or 0
+
                 local best_rating, refuge = -math.huge, nil
                 reach_free:iter(function(x, y)
+                    if progress and (progress(x, y) < here_progress - retreat_slack) then
+                        return
+                    end
+
                     local rating = -risk_on(p, x, y) * 1000.
                         + math.min(safety_level(x, y), min_cover) * 100.
                         - M.distance_between(x, y, goal_x, goal_y)
@@ -195,9 +218,11 @@ function ca_ctl_convoy:execution(cfg)
     best_unit, best_hex, best_is_wait = nil, nil, false
 
     if wait then
+        unit.variables.ctl_convoy_waits = (unit.variables.ctl_convoy_waits or 0) + 1
         -- Only the movement is given up; the unit keeps its attack
         AH.checked_stopunit_moves(ai, unit)
     else
+        unit.variables.ctl_convoy_waits = 0
         AH.checked_move_full(ai, unit, hex[1], hex[2])
     end
 end
