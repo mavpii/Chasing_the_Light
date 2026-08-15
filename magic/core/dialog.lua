@@ -63,9 +63,23 @@ local function describe(spell)
     local text = spell.description_by_level
         and description_for_level(spell.description_by_level, level)
         or spell.description
-    text = tostring(text or "")
+    if text == nil then return "" end
 
+    -- A description may refer to the caster by name with $caster (Polymorph does:
+    -- "Replaces $caster's attacks..."). One string then serves every caster that
+    -- can learn the spell, instead of naming one of them in the text.
+    local name = desc_ctx and desc_ctx.name
+    if name and tostring(text):find("$caster", 1, true) then
+        -- gsub with a function, not a plain replacement string: a name is player
+        -- data and a % in it would be read as a capture reference otherwise.
+        text = tostring(text):gsub("%$caster", function() return name end)
+    end
+
+    -- Only flatten to a plain string when the extra lines actually have to be
+    -- glued on: everywhere else the translatable string is handed to the widget
+    -- exactly as table.lua wrote it, which is what TDG's dialog does too.
     if spell.description_extra then
+        text = tostring(text)
         local shown, lines = {}, {}
         local function add(id)
             local extra = spell.description_extra[id]
@@ -152,9 +166,33 @@ local function all_spells_sorted()
     return list
 end
 
+-- Descriptions carry <ref dst='...'> links into the help browser, which only a
+-- rich_label understands; every row that shows a description uses one. What is
+-- left over goes through Pango and has the links flattened to the words they
+-- wrap, since Pango would refuse to parse a tag it does not know: the picker's
+-- hover tooltips (a tooltip cannot hold a link at all) and its list view, where
+-- the text sits inside the panel that selects the spell, so a link there would
+-- swallow that click.
+local function strip_refs(text)
+    return (tostring(text or ""):gsub("<ref[^>]*>", ""):gsub("</ref>", ""))
+end
+
+-- Makes the <ref> links in a rich_label's description clickable: clicking one
+-- opens that topic in the help browser, exactly as TDG's spell dialog does.
+-- A rich_label only wires up its click/hover signals when a handler is
+-- registered, so setting the label alone leaves the links inert.
+local function make_links_clickable(widget)
+    if not widget then return end
+    -- pcall'd on purpose: a rich_label supports both fields, but a dialog must
+    -- never die over a link. link_aware first — the widget refuses to register
+    -- the callback while it is off.
+    pcall(function() widget.link_aware = true end)
+    pcall(function() widget.on_link_click = function(dest) gui.show_help(dest) end end)
+end
+
 -- Builds the tooltip text for a spell: description plus its cost (if any).
 local function spell_tooltip(spell)
-    local tip  = describe(spell)
+    local tip  = strip_refs(describe(spell))
     local cost = format_cost(spell)
     if cost then tip = tip .. "\n" .. _"Cost: " .. cost end
     return tip
@@ -512,12 +550,16 @@ local function build_skill_rows(groups, selecting, equipped_list, unlocked_set)
         end
 
         -- Main row: button | spacer | image | spacer | description label
+        -- The description is a rich_label, not a label: it is the one place the
+        -- <ref dst='...'> links in table.lua are rendered as links into the help
+        -- browser (a plain label goes straight to Pango, which does not know the
+        -- tag). width=0 means "do not wrap", as in TDG's own spell dialog.
         table.insert(skill_grid[2], T.row{
             T.column{ border="left",  border_size=15, button },
             T.column{ T.label{ label="  " }},
             T.column{ horizontal_alignment="left", T.image{ id="image"..i }},
             T.column{ border="right", border_size=15, T.label{ label="  " }},
-            T.column{ horizontal_alignment="left", T.label{ id="label"..i, use_markup=true }},
+            T.column{ horizontal_alignment="left", T.rich_label{ id="label"..i, width=0 }},
         })
 
         -- Subskill row (only in cast mode).
@@ -564,8 +606,11 @@ local function build_free_select_rows(slots, spell_index)
         table.insert(skill_grid[2], T.row{
             T.column{ border="left", border_size=15, horizontal_alignment="left", panel },
             T.column{ T.label{ label="  " }},
+            -- rich_label, like the per-group rows above: the slot description is
+            -- outside the clickable panel, so its <ref> links can be followed
+            -- without stealing the click that opens the picker.
             T.column{ horizontal_alignment="left",
-                T.label{ id="slot_desc" .. i, use_markup=true, label=desc }},
+                T.rich_label{ id="slot_desc" .. i, width=0, label=desc }},
         })
 
         -- Spacer row.
@@ -733,6 +778,7 @@ local function make_preshow(caster, caster_data, groups, selecting, free_slots)
                     or _"<span color='grey'><i>— click to choose —</i></span>"
                 if dlg["slot_desc" .. i] then
                     dlg["slot_desc" .. i].label = describe(def)
+                    make_links_clickable(dlg["slot_desc" .. i])
                 end
             end
 
@@ -941,6 +987,7 @@ local function make_preshow(caster, caster_data, groups, selecting, free_slots)
                     if sel then
                         dlg["image"..i].label = sel.image
                         dlg["label"..i].label = describe(sel)
+                        make_links_clickable(dlg["label"..i])
                     end
                     update_confirm_enabled()
                 end
@@ -960,6 +1007,7 @@ local function make_preshow(caster, caster_data, groups, selecting, free_slots)
                     dlg["button"..i].visible = true
                     dlg["image"..i].label    = equipped_spell.image
                     dlg["label"..i].label    = describe(equipped_spell)
+                    make_links_clickable(dlg["label"..i])
                     setup_cast_button(dlg, "button"..i, equipped_spell, false)
 
                     if equipped_spell.subskills then
@@ -1039,9 +1087,14 @@ local function open_dialog(caster, caster_data, selecting)
         and sides[1].is_local
         and wml.variables["side_number"] == sides[1].side) then return end
 
-    -- Descriptions may depend on the caster (level, unlocked subskills), so the
-    -- context is set before anything below builds a description. See describe().
-    desc_ctx = { level = caster.level or 1, unlocked = caster_data.unlocked_set or {} }
+    -- Descriptions may depend on the caster (level, unlocked subskills, its name),
+    -- so the context is set before anything below builds a description. The name
+    -- is the displayed one, falling back to the id for a caster without one.
+    desc_ctx = {
+        level    = caster.level or 1,
+        unlocked = caster_data.unlocked_set or {},
+        name     = tostring(caster.name ~= nil and caster.name ~= "" and caster.name or caster.id),
+    }
 
     -- Every read below happens AFTER the dialog closed, and the cast fired from it may
     -- have replaced the unit — polymorph swaps in a whole new unit — which leaves this
