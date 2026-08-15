@@ -44,12 +44,8 @@ local skill_set = {
 		image       = "icons/summon.png",
 		-- #po: Закличте духа природи до себе на допомогу, навіть знаходячись за межами цитаделі.    Для цього закляття використовується <span color='#FFD700' style='italic'>золото</span> та <span color='#00bbe6' style='italic'>досвід</span>
 		description = header_spell().._"Summon the spirit of nature to your aid, even when outside the keep.\n           This spell uses <span color='#FFD700' style='italic'>gold</span> and <span color='#00bbe6' style='italic'>experience</span>.",
-		-- The spirits, listed on one line and shown only after each one is
-		-- unlocked, like Polymorph's forms. Unit types match EVENT_SUMMON_*.
 		description_extra_separator = ", ",
 		description_extra = {
-			-- The unit types' own names, so the line reads like the help topic it
-			-- links to (the short Mud/Stone/... wording stays on the cast buttons).
 			skill_summon_mud   = _"           <i><ref dst='unit_Mudcrawler'>Mudcrawler</ref></i>",
 			skill_summon_rock  = _"           <i><ref dst='unit_Elemental Rock'>Rock Elemental</ref></i>",
 			skill_summon_water = _"           <i><ref dst='unit_Elemental Water'>Water Elemental</ref></i>",
@@ -57,11 +53,11 @@ local skill_set = {
 			skill_summon_fire  = _"           <i><ref dst='unit_Elemental Fire'>Fire Elemental</ref></i>",
 		},
 		subskills   = {
-			[1]={ id="skill_summon_mud",     xp_cost=6,  gold_cost=8,  label="   <span>".._"Mud"  .." (<span color='#FFD700' style='italic'>".._"8g" .."</span> <span color='#00bbe6' style='italic'>".._"6 XP".."</span>)</span>   " },
-			[2]={ id="skill_summon_rock",    xp_cost=8,  gold_cost=14, label="   <span>".._"Stone".." (<span color='#FFD700' style='italic'>".._"14g".."</span> <span color='#00bbe6' style='italic'>".._"8 XP".."</span>)</span>   " },
-			[3]={ id="skill_summon_water",   xp_cost=8,  gold_cost=10, label="   <span>".._"Water".." (<span color='#FFD700' style='italic'>".._"10g".."</span> <span color='#00bbe6' style='italic'>".._"8 XP".."</span>)</span>   " },
-			[4]={ id="skill_summon_air",     xp_cost=8,  gold_cost=10, label="   <span>".._"Air"  .." (<span color='#FFD700' style='italic'>".._"10g".."</span> <span color='#00bbe6' style='italic'>".._"8 XP".."</span>)</span>   " },
-			[5]={ id="skill_summon_fire",    xp_cost=8,  gold_cost=12, label="   <span>".._"Fire" .." (<span color='#FFD700' style='italic'>".._"12g".."</span> <span color='#00bbe6' style='italic'>".._"8 XP".."</span>)</span>   " }, },
+			[1]={ id="skill_summon_mud",     xp_cost=6,  gold_cost=8,  label="   <span>".._"Mud"  .." (<span color='#FFD700' style='italic'>".._"8G" .."</span> <span color='#00bbe6' style='italic'>".._"6 XP".."</span>)</span>   " },
+			[2]={ id="skill_summon_rock",    xp_cost=8,  gold_cost=14, label="   <span>".._"Stone".." (<span color='#FFD700' style='italic'>".._"14G".."</span> <span color='#00bbe6' style='italic'>".._"8 XP".."</span>)</span>   " },
+			[3]={ id="skill_summon_water",   xp_cost=8,  gold_cost=10, label="   <span>".._"Water".." (<span color='#FFD700' style='italic'>".._"10G".."</span> <span color='#00bbe6' style='italic'>".._"8 XP".."</span>)</span>   " },
+			[4]={ id="skill_summon_air",     xp_cost=8,  gold_cost=10, label="   <span>".._"Air"  .." (<span color='#FFD700' style='italic'>".._"10G".."</span> <span color='#00bbe6' style='italic'>".._"8 XP".."</span>)</span>   " },
+			[5]={ id="skill_summon_fire",    xp_cost=8,  gold_cost=12, label="   <span>".._"Fire" .." (<span color='#FFD700' style='italic'>".._"12G".."</span> <span color='#00bbe6' style='italic'>".._"8 XP".."</span>)</span>   " }, },
 	},
 	-------------------------
 	-- SHIELD
@@ -203,24 +199,16 @@ local skill_set = {
 		id          = "skill_polymorph",
 		label       = label(_"Polymorph"),
 		image       = "icons/polymorph.png",
-		-- $caster is replaced with the caster's own name by describe() in dialog.lua.
 		description = header_spell().._"Take the shape of another creature. Lasts until cancelled.\n            Replaces $caster’s attacks, spells, and passives, but does not affect hitpoints.",
-		-- The available forms, listed on one line and shown only after each one is
-		-- unlocked, so the ones Haralin has yet to learn are not spoiled.
-		-- Unit types match EVENT_POLYMORPH.
 		description_extra_separator = ", ",
 		description_extra = {
-			skill_polymorph_lizard = _"            <i><ref dst='unit_Swamp Lizard'>Swamp Lizard</ref></i> (<span color='#00bbe6' style='italic'>8 XP</span>)",
-			skill_polymorph_bear   = _"            <i><ref dst='unit_Cave Bear'>Cave Bear</ref></i> (<span color='#00bbe6' style='italic'>12 XP</span>)",
-			skill_polymorph_yeti   = _"            <i><ref dst='unit_Yeti'>Yeti</ref></i> (<span color='#00bbe6' style='italic'>20 XP</span>)",
-			-- Linked like the other forms rather than painted purple: a rich_label's
-			-- <span> applies its attributes to its own text and does not recurse,
-			-- so a link nested inside a span would be dropped. The purple "this is
-			-- the strongest form" marker lives on the cast button below instead.
-			skill_polymorph_orc    = _"            <i><ref dst='unit_Orcish Warlord'>Orcish Warlord</ref></i> (<span color='#00bbe6' style='italic'>32 XP</span>)",
+			skill_polymorph_lizard = _"           <i><ref dst='unit_Swamp Lizard'>Swamp Lizard</ref></i>",
+			skill_polymorph_bear   = _"           <i><ref dst='unit_Cave Bear'>Cave Bear</ref></i>",
+			skill_polymorph_yeti   = _"           <i><ref dst='unit_Yeti'>Yeti</ref></i>",
+			skill_polymorph_orc    = _"           <i><ref dst='unit_Orcish Warlord'>Orcish Warlord</ref></i>",
 		},
 		subskills   = {
-			[1]={ id="skill_polymorph_lizard", xp_cost=8,  label="   <span>".._"Lizard".." (<span color='#00bbe6' style='italic'>".._"8 XP" .."</span>)</span>   " },
+			[1]={ id="skill_polymorph_lizard", xp_cost=8,  label="   <span>".._"Swamp Lizard".." (<span color='#00bbe6' style='italic'>".._"8 XP" .."</span>)</span>   " },
 			[2]={ id="skill_polymorph_bear",   xp_cost=12, label="   <span>".._"Bear"  .." (<span color='#00bbe6' style='italic'>".._"12 XP".."</span>)</span>   " },
 			[3]={ id="skill_polymorph_yeti",   xp_cost=20, label="   <span>".._"Yeti"  .." (<span color='#00bbe6' style='italic'>".._"20 XP".."</span>)</span>   " },
 			[4]={ id="skill_polymorph_orc",    xp_cost=32, label="   <span><span color='#a308b8'>".._"Orcish Warlord".."</span> (<span color='#00bbe6' style='italic'>".._"32 XP".."</span>)</span>   " }, },
