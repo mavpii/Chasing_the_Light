@@ -137,13 +137,12 @@ local skill_set = {
 		id          = "skill_bend",
 		label       = label(_"Bend Nature"),
 		image       = "icons/landmass.png",
-		-- #po: Керуйте самою природою, створюючи та направляючи її елементи — землю, воду, лаву та повітря.      Для цього закляття використовується <span color='#00bbe6' style='italic'>досвід</span>
-		description = header_spell().._"Control nature itself by creating and bending its elements — earth, water, <ref dst='terrain_lava'>lava</ref>, and air.\n           This spell uses <span color='#00bbe6' style='italic'>experience</span>.",
+		-- #po: Змініть клітинки в обраному напрямку на <b>2 ходи</b>, після чого місцевість повертається.\n           Земля: непрохідна, <i>скам'яніння</i> · Вода: мілка вода, <i>сповільнення</i> · Лава: 50 вогняної шкоди.
+		description = header_spell().._"Bend the hexes in a chosen direction for <b>2 turns</b>, after which the terrain returns.\n           Earth: impassable, <ref dst='weaponspecial_petrifies'>petrifies</ref> · Water: shallow water, <ref dst='weaponspecial_slows'>slows</ref> · Lava: 50 fire damage.",
 		subskills   = {
 			[1]={ id="skill_bend_earth",  xp_cost=12, label="   <span>".._"Earth".." (<span color='#00bbe6' style='italic'>".._"12 XP".."</span>)</span>   " },
 			[2]={ id="skill_bend_water",  xp_cost=8,  label="   <span>".._"Water".." (<span color='#00bbe6' style='italic'>".._"8 XP" .."</span>)</span>   " },
-			[3]={ id="skill_bend_lava",   xp_cost=32, label="   <span>".._"Lava" .." (<span color='#00bbe6' style='italic'>".._"32 XP".."</span>)</span>   " },
-			[4]={ id="skill_bend_air",    xp_cost=8,  label="   <span>".._"Air"  .." (<span color='#00bbe6' style='italic'>".._"8 XP" .."</span>)</span>   " },				},
+			[3]={ id="skill_bend_lava",   xp_cost=32, label="   <span>".._"Lava" .." (<span color='#00bbe6' style='italic'>".._"32 XP".."</span>)</span>   " },	},
 	},
 	-------------------------
 	-- FIREBALL2

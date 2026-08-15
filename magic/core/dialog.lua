@@ -560,7 +560,8 @@ local function build_skill_rows(groups, selecting, equipped_list, unlocked_set)
                         local sub_label = (unlocked_set and not unlocked_set[sub.id])
                             and locked_subskill_label() or sub.label
                         table.insert(subskill_row[2],
-                            T.column{ T.button{ id=sub.id, use_markup=true, label=sub_label }})
+                            T.column{ horizontal_alignment="left",
+                                T.button{ id=sub.id, use_markup=true, label=sub_label }})
                     end
                 end
             else
@@ -581,12 +582,15 @@ local function build_skill_rows(groups, selecting, equipped_list, unlocked_set)
             T.column{ horizontal_alignment="left", T.rich_label{ id="label"..i, width=0 }},
         })
 
-        -- Subskill row (only in cast mode).
+        -- Subskill row (only in cast mode). Left-aligned, not centred: the rows
+        -- hold different numbers of buttons of different widths, and a centred
+        -- grid starts each one at its own offset, so the columns of buttons never
+        -- line up between one spell and the next.
         if subskill_row then
             table.insert(skill_grid[2], T.row{
                 T.column{ T.label{} }, T.column{ T.label{} },
                 T.column{ T.label{} }, T.column{ T.label{} },
-                T.column{ T.grid{ subskill_row }},
+                T.column{ horizontal_alignment="left", T.grid{ subskill_row }},
             })
         end
 

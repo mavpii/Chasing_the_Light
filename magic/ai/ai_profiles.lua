@@ -57,7 +57,6 @@ return {
     -- interactive click handler, so an auto-cast only runs the per-hex _cast body.
     skill_bend_lava  = { kind = "damage", range = 4, power = 20, dtype = "fire", base = 8 },
     skill_bend_water = { kind = "damage", range = 4, power = 3,  base = 6 },
-    skill_bend_air   = { kind = "damage", range = 4, power = 2,  base = 5 },
     skill_bend_earth = { kind = "damage", range = 4, power = 1,  base = 4 },
 
     --======================= SELF / AURA — fire <id> directly =======================
