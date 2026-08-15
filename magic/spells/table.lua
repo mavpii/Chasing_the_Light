@@ -153,6 +153,7 @@ local skill_set = {
 		label       = label(_"Fireball"),
 		image       = "attacks/fireball.png",
 		description_by_level = {
+			[1] = header_attack().._"Ranged 6x4 fire, <i><ref dst='weaponspecial_magical'>magical</ref></i>.",
 			[2] = header_attack().._"Ranged 8x4 fire, <i><ref dst='weaponspecial_magical'>magical</ref></i>.",
 			[3] = header_attack().._"Ranged 12x4 fire, <i><ref dst='weaponspecial_magical'>magical</ref></i>.",
 			[4] = header_attack().._"Ranged 12x4 fire, <i><ref dst='weaponspecial_magical'>magical</ref></i>.",
@@ -261,6 +262,7 @@ local skill_set = {
 		label       = label(_"Chain Lightning"),
 		image       = "attacks/lightning.png",
 		description_by_level = {
+			[1] = header_attack().._"Ranged 5x4 fire, <i><ref dst='weaponspecial_magical'>magical</ref></i>. If this attack kills an enemy, you may attack again.",
 			[3] = header_attack().._"Ranged 9x4 fire, <i><ref dst='weaponspecial_magical'>magical</ref></i>. If this attack kills an enemy, you may attack again.",
 			[4] = header_attack().._"Ranged 14x4 fire, <i><ref dst='weaponspecial_magical'>magical</ref></i>. If this attack kills an enemy, you may attack again.",
 		},
@@ -419,6 +421,7 @@ local skill_set = {
 		label       = label(_"Magic Rage"),
 		image       = "attacks/frenzy.png",
 		description_by_level = {
+			[1] = header_attack().._"Melee 7x3 fire, <i><ref dst='weaponspecial_berserk'>berserk</ref></i>, <i><ref dst='weaponspecial_magical'>magical</ref></i>.",
 			[3] = header_attack().._"Melee 10x3 fire, <i><ref dst='weaponspecial_berserk'>berserk</ref></i>, <i><ref dst='weaponspecial_magical'>magical</ref></i>.",
 			[4] = header_attack().._"Melee 13x3 fire, <i><ref dst='weaponspecial_berserk'>berserk</ref></i>, <i><ref dst='weaponspecial_magical'>magical</ref></i>.",
 		},
@@ -564,6 +567,33 @@ local skill_set = {
 		label       = label(_"Empathy"),
 		image       = "icons/potion_red_small.png",
 		description = header_passive().._"Whenever your healing ability restores allies at the start of your turn,\n               you gain <span color='#00bbe6' style='italic'>2 XP</span> for every unit you heal.",
+	},
+	-------------------------
+	-- DISPEL
+	-------------------------
+	[50] = {
+		id          = "skill_dispel",
+		label       = label(_"Purge"),
+		image       = "attacks/eyeofstorm.png",
+		-- #po: Використайте <span color='#00bbe6' style='italic'>14 XP</span>, щоб завдати <b>сусідньому</b> мерцю або монстру половину вже втраченого ним здоров'я.
+		-- Races are help SECTIONS, so their links need the '..' prefix that mainline
+		-- uses too (core/encyclopedia/geography.cfg: dst='..race_elf'); without it
+		-- the link resolves to a topic that does not exist and opens blank.
+		description = header_spell().._"Spend <span color='#00bbe6' style='italic'>14 XP</span> to deal an <b>adjacent</b> <ref dst='..race_undead'>undead</ref> or <ref dst='..race_monster'>monster</ref> half the damage it has already taken.",
+		xp_cost=14,
+	},
+	-------------------------
+	-- BLINDING FLASH
+	-------------------------
+	[51] = {
+		id          = "skill_blindflash",
+		label       = label(_"Flash"),
+		image       = "icons/contingency.png",
+		-- #po: Використайте <span color='#00bbe6' style='italic'>12 XP</span> та <span color='#c06a61' style='italic'>свою атаку</span>, щоб створити сліпучу хмару на сусідніх клітинках.\n           Усі всередині втрачають усі атаки та зону контролю. Триває до вашого наступного ходу.
+		-- Zones of control have no topic of their own; mainline links them to
+		-- 'movement' as well (core/help.cfg:172).
+		description = header_spell().._"Spend <span color='#00bbe6' style='italic'>12 XP</span> and <span color='#c06a61' style='italic'>your attack</span> to create a blinding cloud on the hexes around you.\n           Everyone inside loses all attacks and <ref dst='movement'>zone of control</ref>. Lasts until your next turn.",
+		xp_cost=12, atk_cost=1,
 	},
 }
 

@@ -43,13 +43,20 @@ local desc_ctx = nil
 -- Picks the description_by_level entry for `level`: the highest level listed that
 -- the caster has reached, so a "level 2 and up" text keeps showing at level 3+.
 -- Below the lowest listed level the lowest entry is used, so the text is never blank.
+--
+-- Second return value: the lowest level listed, but ONLY when the caster has not
+-- reached it. Those spells grant nothing at all below it -- spells.cfg gates the
+-- attack on the caster's level and simply skips it (Chain Lightning starts at 3,
+-- Magic Rage at 3, Fireball at 2) -- so the text alone would promise an attack
+-- that never appears on the unit. describe() turns it into a warning line.
 local function description_for_level(by_level, level)
     local best, best_level, lowest, lowest_level
     for lvl, text in pairs(by_level) do
         if not lowest_level or lvl < lowest_level then lowest, lowest_level = text, lvl end
         if lvl <= level and (not best_level or lvl > best_level) then best, best_level = text, lvl end
     end
-    return best or lowest
+    if best then return best end
+    return lowest, lowest_level
 end
 
 -- Resolves a spell's description for the caster the dialog is open for.
@@ -60,9 +67,12 @@ local function describe(spell)
     local level    = desc_ctx and desc_ctx.level    or 1
     local unlocked = desc_ctx and desc_ctx.unlocked or {}
 
-    local text = spell.description_by_level
-        and description_for_level(spell.description_by_level, level)
-        or spell.description
+    local text, needs_level
+    if spell.description_by_level then
+        text, needs_level = description_for_level(spell.description_by_level, level)
+    else
+        text = spell.description
+    end
     if text == nil then return "" end
 
     -- A description may refer to the caster by name with $caster (Polymorph does:
@@ -109,6 +119,15 @@ local function describe(spell)
             end
             text = text .. "\n" .. table.concat(lines, separator or "\n")
         end
+    end
+
+    -- Said last, and only when the caster is below the spell's first listed level:
+    -- equipping it there is legal and costs a slot, but spells.cfg grants nothing,
+    -- so without this the row describes an attack the unit will never have.
+    if needs_level then
+        text = tostring(text) .. "\n           <span color='grey'>"
+            .. tostring(_"Grants nothing until level %d."):format(needs_level)
+            .. "</span>"
     end
 
     return text
