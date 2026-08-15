@@ -27,9 +27,7 @@ S10:
 
 Закляття:
 - Регрупувати закляття за стандартом TDG
-- Юнифікувати стиль описів заклять з TDG
 - Зменшити кількість Spell Groups
-- Додати пов'язані з healing закляття для Daeola. Пасивний XP за healing
 - Переробити Haralin's Bend Nature
 - Переробити Haralin's spell set in Chapter 2. Додати більш потужні закляття.
 - Переробити Haralin's spell set in Chapter 3/4
@@ -60,7 +58,6 @@ S10:
 НЕЗАЛЕЖНЕ ВІД МЕНЕ:
 Графіка:
 - Анімації атаки/захисту/смерті для Faisim
-- Попросити Refumee зробити нові спрайти для Wesfolk юнітів
 
 
 Портрети:
@@ -96,10 +93,6 @@ Chasing the Light: 2.0
 English OUTDATED
 ================================
 
-S8:
-- Add a dialogue line where the Voice explicitly states what it is
-- Give the Voice the ability to use the magic system
-
 
 S10:
 - Add a time limit for units to desert
@@ -124,12 +117,3 @@ Spells:
 
 Units:
 - Buff the Spell Knight
-
-
-Visuals:
-- Create custom sprites for Wesfolk Princesses
-- Ask Refumee to create new sprites for Wesfolk units
-
-
-Other:
-- Investigate how I can optimize the AI and speed it up in S5, S6, S7, and S10

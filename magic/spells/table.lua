@@ -1,10 +1,24 @@
--- Magic System Rework 2.0 by amakri, original Magic System by Dalas	
+-- Magic System Rework 2.0 by amakri, original Magic System by Dalas
 local _ = wesnoth.textdomain "wesnoth-ctl"
 
 --###########################################################################################################################################################
 --                                                                  DEFINE SKILLS
 --###########################################################################################################################################################
-function label(text)     return "<span size='1000'> \n</span><span size='large'>"..text.."</span><span size='8000'>\n </span>"  end
+-- Description style (kept in step with TDG's skill_set.lua):
+--   * the "Attack:/Spell:/Passive:/Radius:" heading comes from a header_*()
+--     helper, so its markup lives in ONE place and translators see the word
+--     alone instead of a copy of the markup in all 49 descriptions;
+--   * emphasis inside a <span> is written as attributes (style='italic'
+--     weight='bold'), not as nested <i>/<b> tags -- the descriptions are drawn
+--     by a rich_label, which maps a span's attributes onto the text it wraps
+--     and does not recurse into tags nested inside it;
+--   * game terms link into the help browser with <ref dst='...'>;
+--   * costs are written "8 XP", uppercase and spaced.
+function label(text)      return "<span size='1000'> \n</span><span size='large'>"..text.."</span><span size='8000'>\n </span>"  end
+function header_attack()  return "<span color='#ad6a61' style='italic' weight='bold'>".._"Attack:" .." </span>"  end
+function header_spell()   return "<span color='#6ca364' style='italic' weight='bold'>".._"Spell:"  .." </span>"  end
+function header_passive() return "<span color='#a9a150' style='italic' weight='bold'>".._"Passive:".." </span>"  end
+function header_radius()  return "<span color='#ad6a61' style='italic' weight='bold'>".._"Radius:" .." </span>"  end
 
 local skill_set = {
 	-------------------------
@@ -15,10 +29,10 @@ local skill_set = {
 		label       = label(_"Magic Blast"),
 		image       = "attacks/mud-missile.png",
 		description_by_level = {
-			[1] = _"<span color='#ad6a61'><i><b>Attack:</b></i></span> Ranged 9x2 impact, <i>magical</i>.",
-			[2] = _"<span color='#ad6a61'><i><b>Attack:</b></i></span> Ranged 12x3 impact, <i>magical</i>.",
-			[3] = _"<span color='#ad6a61'><i><b>Attack:</b></i></span> Ranged 12x3 impact, <i>magical</i>.",
-			[4] = _"<span color='#ad6a61'><i><b>Attack:</b></i></span> Ranged 12x3 impact, <i>magical</i>.",
+			[1] = header_attack().._"Ranged 9x2 impact, <i><ref dst='weaponspecial_magical'>magical</ref></i>.",
+			[2] = header_attack().._"Ranged 12x3 impact, <i><ref dst='weaponspecial_magical'>magical</ref></i>.",
+			[3] = header_attack().._"Ranged 12x3 impact, <i><ref dst='weaponspecial_magical'>magical</ref></i>.",
+			[4] = header_attack().._"Ranged 12x3 impact, <i><ref dst='weaponspecial_magical'>magical</ref></i>.",
 		},
 	},
 	-------------------------
@@ -28,14 +42,26 @@ local skill_set = {
 		id          = "skill_summon",
 		label       = label(_"Summon"),
 		image       = "icons/summon.png",
-		-- #po: Закличте духа природи до себе на допомогу, навіть знаходячись за межами цитаделі.    Для цього закляття використовується <span color='#FFD700'><i >золото</i></span> та <span color='#00bbe6'><i>досвід</i></span>
-		description = _"<span color='#6ca364'><i><b>Spell:</b></i></span> Summon the spirit of nature to your aid, even when outside the keep.\n           This spell uses <span color='#FFD700'><i>gold</i></span> and <span color='#00bbe6'><i>experience</i></span>.",
+		-- #po: Закличте духа природи до себе на допомогу, навіть знаходячись за межами цитаделі.    Для цього закляття використовується <span color='#FFD700' style='italic'>золото</span> та <span color='#00bbe6' style='italic'>досвід</span>
+		description = header_spell().._"Summon the spirit of nature to your aid, even when outside the keep.\n           This spell uses <span color='#FFD700' style='italic'>gold</span> and <span color='#00bbe6' style='italic'>experience</span>.",
+		-- The spirits, listed on one line and shown only after each one is
+		-- unlocked, like Polymorph's forms. Unit types match EVENT_SUMMON_*.
+		description_extra_separator = ", ",
+		description_extra = {
+			-- The unit types' own names, so the line reads like the help topic it
+			-- links to (the short Mud/Stone/... wording stays on the cast buttons).
+			skill_summon_mud   = _"           <i><ref dst='unit_Mudcrawler'>Mudcrawler</ref></i>",
+			skill_summon_rock  = _"           <i><ref dst='unit_Elemental Rock'>Rock Elemental</ref></i>",
+			skill_summon_water = _"           <i><ref dst='unit_Elemental Water'>Water Elemental</ref></i>",
+			skill_summon_air   = _"           <i><ref dst='unit_Elemental Air'>Air Elemental</ref></i>",
+			skill_summon_fire  = _"           <i><ref dst='unit_Elemental Fire'>Fire Elemental</ref></i>",
+		},
 		subskills   = {
-			[1]={ id="skill_summon_mud",     xp_cost=6, gold_cost=8,  label="  <span>Mud (<span color='#FFD700'><i >8g</i></span> <span color='#00bbe6'><i>6xp</i></span>)</span>   " },
-			[2]={ id="skill_summon_rock",    xp_cost=8, gold_cost=14,  label="   <span>Stone (<span  color='#FFD700'><i >14g</i></span> <span color='#00bbe6'><i>8xp</i></span>)</span>   " },
-			[3]={ id="skill_summon_water",   xp_cost=8, gold_cost=10,  label="   <span>Water (<span  color='#FFD700'><i>10g</i></span> <span color='#00bbe6'><i>8xp</i></span>)</span>   " },
-			[4]={ id="skill_summon_air",     xp_cost=8, gold_cost=10,  label="   <span>Air (<span   color='#FFD700'><i>10g</i></span> <span color='#00bbe6'><i>8xp</i></span>)</span>   " },
-            [5]={ id="skill_summon_fire",    xp_cost=8, gold_cost=12,  label="   <span>Fire (<span   color='#FFD700'><i>12g</i></span> <span color='#00bbe6'><i>8xp</i></span>)</span>   " }, },
+			[1]={ id="skill_summon_mud",     xp_cost=6,  gold_cost=8,  label="   <span>".._"Mud"  .." (<span color='#FFD700' style='italic'>".._"8g" .."</span> <span color='#00bbe6' style='italic'>".._"6 XP".."</span>)</span>   " },
+			[2]={ id="skill_summon_rock",    xp_cost=8,  gold_cost=14, label="   <span>".._"Stone".." (<span color='#FFD700' style='italic'>".._"14g".."</span> <span color='#00bbe6' style='italic'>".._"8 XP".."</span>)</span>   " },
+			[3]={ id="skill_summon_water",   xp_cost=8,  gold_cost=10, label="   <span>".._"Water".." (<span color='#FFD700' style='italic'>".._"10g".."</span> <span color='#00bbe6' style='italic'>".._"8 XP".."</span>)</span>   " },
+			[4]={ id="skill_summon_air",     xp_cost=8,  gold_cost=10, label="   <span>".._"Air"  .." (<span color='#FFD700' style='italic'>".._"10g".."</span> <span color='#00bbe6' style='italic'>".._"8 XP".."</span>)</span>   " },
+			[5]={ id="skill_summon_fire",    xp_cost=8,  gold_cost=12, label="   <span>".._"Fire" .." (<span color='#FFD700' style='italic'>".._"12g".."</span> <span color='#00bbe6' style='italic'>".._"8 XP".."</span>)</span>   " }, },
 	},
 	-------------------------
 	-- SHIELD
@@ -44,486 +70,500 @@ local skill_set = {
 		id          = "skill_shield",
 		label       = label(_"Shield"),
 		image       = "icons/shield.png",
-		description = _"<span color='#6ca364'><i><b>Spell:</b></i></span> Spend <span color='#00bbe6'><i>8xp</i></span> to gain <i>+20% dodge chance</i> until the start of your next turn or until cancelled.",
+		description = header_spell().._"Spend <span color='#00bbe6' style='italic'>8 XP</span> to gain <i>+20% dodge chance</i> until the start of your next turn or until cancelled.",
 		xp_cost=8,
 	},
- 	------------------------- 
+ 	-------------------------
  	-- STASIS
  	-------------------------
  	[4] = {
  		id          = "skill_stasis",
- 		label       = label("Stasis"),
+ 		label       = label(_"Stasis"),
  		image       = "icons/stasis.png",
- 		description = _"<span color='#6ca364'><i><b>Spell:</b></i></span> Spend <span color='#00bbe6'><i>12xp</i></span> and <span color='#c06a61'><i>your attack</i></span> to <i>petrify</i> yourself and adjacent units until the start of your next turn.",
- 		xp_cost=12, 
+ 		description = header_spell().._"Spend <span color='#00bbe6' style='italic'>12 XP</span> and <span color='#c06a61' style='italic'>your attack</span> to <i><ref dst='weaponspecial_petrifies'>petrify</ref></i> yourself and adjacent units until the start of your next turn.",
+ 		xp_cost=12,
  	},
 	-------------------------
 	-- PANACEA
 	-------------------------
-	[4] = {
+	[5] = {
 		id          = "skill_panacea",
 		label       = label(_"Panacea"),
 		image       = "icons/potion_green_small.png",
-		description = _"<span color='#6ca364'><i><b>Spell:</b></i></span> Spend <span color='#00bbe6'><i>12xp</i></span> to fully heal the lowest-health adjacent ally, and increase\n           its attacks, strikes, and damage by its level. <span color='#bb0000'><b>Next turn, it dies.</b></span>",
+		description = header_spell().._"Spend <span color='#00bbe6' style='italic'>12 XP</span> to fully heal the lowest-health adjacent ally, and increase\n           its attacks, strikes, and damage by its level. <span color='#bb0000' weight='bold'>Next turn, it dies.</span>",
 		xp_cost=12,
 	},
 	-------------------------
 	-- CHILL TOUCH
 	-------------------------
-	[5] = {
+	[6] = {
 		id          = "skill_chill_touch",
 		label       = label(_"Chill Touch"),
 		image       = "icons/chill-touch.png",
-		description = _"<span color='#ad6a61'><i><b>Attack:</b></i></span> Melee 6x3 cold, <i>slows</i>.",
+		description = header_attack().._"Melee 6x3 cold, <i><ref dst='weaponspecial_slows'>slows</ref></i>.",
 	},
 	-------------------------
 	-- LEVITATE
 	-------------------------
-	[6] = {
+	[7] = {
 		id          = "skill_levitate",
 		label       = label(_"Levitate"),
 		image       = "icons/levitate.png",
-		description = _"<span color='#6ca364'><i><b>Spell:</b></i></span> Spend <span color='#00bbe6'><i>8xp</i></span> to gain the <i>skirmisher</i> ability and <i>50%</i> defense on all terrain.\n           Lasts until the start of your next turn or until cancelled.",
+		description = header_spell().._"Spend <span color='#00bbe6' style='italic'>8 XP</span> to gain the <i><ref dst='ability_skirmisher'>skirmisher</ref></i> ability and <i>50%</i> defense on all terrain.\n           Lasts until the start of your next turn or until cancelled.",
 		xp_cost=8,
 	},
 	-------------------------
 	-- MNEMONIC
 	-------------------------
-	[7] = {
+	[8] = {
 		id          = "skill_mnemonic",
 		label       = label(_"Mnemonic"),
 		image       = "icons/mnemonic.png",
-		description = _"<span color='#a9a150'><i><b>Passive:</b></i></span> Whenever an adjacent ally gains xp, you gain the same amount of xp.",
+		description = header_passive().._"Whenever an adjacent ally gains XP, you gain the same amount of XP.",
 	},
 	-------------------------
 	-- FIND FAMILIAR
 	-------------------------
-	[8] = {
+	[9] = {
 		id          = "skill_find_familiar",
 		label       = label(_"Find Familiar"),
 		image       = "icons/find-familiar.png",
-		description = _"<span color='#a9a150'><i><b>Passive:</b></i></span> Begin each scenario with your trusty pet raven.\n               Your familiar’s level and xp persist across scenarios, but reset if it dies.",
+		description = header_passive().._"Begin each scenario with your trusty pet <i><ref dst='unit_Raven'>raven</ref></i>.\n               Your familiar’s level and XP persist across scenarios, but reset if it dies.",
 	},
 	-------------------------
 	-- BEND NATURE
 	-------------------------
-	[9] = {
+	[10] = {
 		id          = "skill_bend",
 		label       = label(_"Bend Nature"),
 		image       = "icons/landmass.png",
-		-- #po: Керуйте самою природою, створюючи та направляючи її елементи — землю, воду, лаву та повітря.      Для цього закляття використовується <span color='#00bbe6'><i>досвід</i></span> та <span color='#FFD700'><i >золото</i></span>
-		description = _"<span color='#6ca364'><i><b>Spell:</b></i></span> Control nature itself by creating and bending its elements — earth, water, lava, and air.\n           This spell uses <span color='#00bbe6'><i>experience</i></span>.",
+		-- #po: Керуйте самою природою, створюючи та направляючи її елементи — землю, воду, лаву та повітря.      Для цього закляття використовується <span color='#00bbe6' style='italic'>досвід</span>
+		description = header_spell().._"Control nature itself by creating and bending its elements — earth, water, <ref dst='terrain_lava'>lava</ref>, and air.\n           This spell uses <span color='#00bbe6' style='italic'>experience</span>.",
 		subskills   = {
-			[1]={ id="skill_bend_earth",     xp_cost=12,  label="  <span>Earth (<span color='#00bbe6'><i>12xp</i></span>)</span>   " },
-			[2]={ id="skill_bend_water",    xp_cost=8, label="   <span>Water (<span color='#00bbe6'><i>6xp</i></span>)</span>   " },
-			[3]={ id="skill_bend_lava",   xp_cost=32, label="   <span>Lava (<span color='#00bbe6'><i>32xp</i></span>)</span>   " },
-            [4]={ id="skill_bend_air",   xp_cost=8, label="   <span>Air (<span color='#00bbe6'><i>8xp</i></span>)</span>   " },				},
+			[1]={ id="skill_bend_earth",  xp_cost=12, label="   <span>".._"Earth".." (<span color='#00bbe6' style='italic'>".._"12 XP".."</span>)</span>   " },
+			[2]={ id="skill_bend_water",  xp_cost=8,  label="   <span>".._"Water".." (<span color='#00bbe6' style='italic'>".._"8 XP" .."</span>)</span>   " },
+			[3]={ id="skill_bend_lava",   xp_cost=32, label="   <span>".._"Lava" .." (<span color='#00bbe6' style='italic'>".._"32 XP".."</span>)</span>   " },
+			[4]={ id="skill_bend_air",    xp_cost=8,  label="   <span>".._"Air"  .." (<span color='#00bbe6' style='italic'>".._"8 XP" .."</span>)</span>   " },				},
 	},
 	-------------------------
 	-- FIREBALL2
 	-------------------------
-	[10] = {
+	[11] = {
 		id          = "skill_fireball2",
 		label       = label(_"Fireball"),
 		image       = "attacks/fireball.png",
 		description_by_level = {
-			[2] = _"<span color='#ad6a61'><i><b>Attack:</b></i></span> Ranged 8x4 fire, <i>magical</i>.",
-			[3] = _"<span color='#ad6a61'><i><b>Attack:</b></i></span> Ranged 12x4 fire, <i>magical</i>.",
-			[4] = _"<span color='#ad6a61'><i><b>Attack:</b></i></span> Ranged 12x4 fire, <i>magical</i>.",
+			[2] = header_attack().._"Ranged 8x4 fire, <i><ref dst='weaponspecial_magical'>magical</ref></i>.",
+			[3] = header_attack().._"Ranged 12x4 fire, <i><ref dst='weaponspecial_magical'>magical</ref></i>.",
+			[4] = header_attack().._"Ranged 12x4 fire, <i><ref dst='weaponspecial_magical'>magical</ref></i>.",
 		},
 	},
 	-------------------------
 	-- GLAMOUR
 	-------------------------
-	[11] = {
+	[12] = {
 		id          = "skill_glamour",
 		label       = label(_"Glamour"),
-		image       = "icons/glamour.png", 
-		description = _"<span color='#a9a150'><i><b>Passive:</b></i></span> Gain the <i>leadership</i> ability.",
+		image       = "icons/glamour.png",
+		description = header_passive().._"Gain the <i><ref dst='ability_leadership'>leadership</ref></i> ability.",
 	},
 	-------------------------
 	-- ENERVATE
 	-------------------------
-	[12] = {
+	[13] = {
 		id          = "skill_enervate",
 		label       = label(_"Siphon"),
 		image       = "icons/enervate.png", -- better than fireball2 vs orcs or undead, but sarians resist arcane and are vulnerable to fire. You also get this a few scenarios later than fireball2.
-		description = _"<span color='#ad6a61'><i><b>Attack:</b></i></span> Ranged 8x4 arcane, <i>magical</i>, <i>drains</i>.", 
+		description = header_attack().._"Ranged 8x4 arcane, <i><ref dst='weaponspecial_magical'>magical</ref></i>, <i><ref dst='weaponspecial_drains'>drains</ref></i>.",
 	},
 	-------------------------
 	-- BLIZZARD
 	-------------------------
-	[13] = {
+	[14] = {
 		id          = "skill_blizzard",
 		label       = label(_"Blizzard"),
 		image       = "icons/blizzard.png",
-		description = _"<span color='#6ca364'><i><b>Spell:</b></i></span> Spend <span color='#00bbe6'><i>16xp</i></span> and <span color='#c06a61'><i>your attack</i></span> to slow enemy units and freeze terrain in a 3-hex radius.",
-		xp_cost=16, atk_cost=1, 
+		description = header_spell().._"Spend <span color='#00bbe6' style='italic'>16 XP</span> and <span color='#c06a61' style='italic'>your attack</span> to <i><ref dst='weaponspecial_slows'>slow</ref></i> enemy units and freeze terrain in a 3-hex radius.",
+		xp_cost=16, atk_cost=1,
 	},
 	-------------------------
 	-- COUNTERSPELL
 	-------------------------
-	[14] = {
+	[15] = {
 		id          = "skill_counterspell",
 		label       = label(_"Counterspell"),
 		image       = "icons/counterspell.png",
-		description = _"<span color='#6ca364'><i><b>Spell:</b></i></span> Spend <span color='#00bbe6'><i>16xp</i></span> to <i>disallow magical attacks</i> in a 3-hex radius, until cancelled.\n           Prevents spellcasting, but not passive skills.",
+		description = header_spell().._"Spend <span color='#00bbe6' style='italic'>16 XP</span> to <i>disallow <ref dst='weaponspecial_magical'>magical</ref> attacks</i> in a 3-hex radius, until cancelled.\n           Prevents spellcasting, but not passive skills.",
 		xp_cost=16,
 	},
 	-------------------------
 	-- POLYMORPH
 	-------------------------
-	[15] = {
+	[16] = {
 		id          = "skill_polymorph",
 		label       = label(_"Polymorph"),
 		image       = "icons/polymorph.png",
-		description = _"<span color='#6ca364'><i><b>Spell:</b></i></span> Take the shape of another creature. Lasts until cancelled.\n            Replaces Haralin’s attacks, spells, and passives, but does not affect hitpoints.",
+		-- $caster is replaced with the caster's own name by describe() in dialog.lua.
+		description = header_spell().._"Take the shape of another creature. Lasts until cancelled.\n            Replaces $caster’s attacks, spells, and passives, but does not affect hitpoints.",
 		-- The available forms, listed on one line and shown only after each one is
 		-- unlocked, so the ones Haralin has yet to learn are not spoiled.
 		-- Unit types match EVENT_POLYMORPH.
 		description_extra_separator = ", ",
 		description_extra = {
-			skill_polymorph_lizard = _"            <i>Swamp Lizard</i> (<span color='#00bbe6'><i>8xp</i></span>)",
-			skill_polymorph_bear   = _"            <i>Cave Bear</i> (<span color='#00bbe6'><i>12xp</i></span>)",
-			skill_polymorph_yeti   = _"            <i>Yeti</i> (<span color='#00bbe6'><i>20xp</i></span>)",
-			skill_polymorph_orc    = _"            <span color='#a308b8'><i>Orcish Warlord</i></span> (<span color='#00bbe6'><i>32xp</i></span>)",
+			skill_polymorph_lizard = _"            <i><ref dst='unit_Swamp Lizard'>Swamp Lizard</ref></i> (<span color='#00bbe6' style='italic'>8 XP</span>)",
+			skill_polymorph_bear   = _"            <i><ref dst='unit_Cave Bear'>Cave Bear</ref></i> (<span color='#00bbe6' style='italic'>12 XP</span>)",
+			skill_polymorph_yeti   = _"            <i><ref dst='unit_Yeti'>Yeti</ref></i> (<span color='#00bbe6' style='italic'>20 XP</span>)",
+			-- Linked like the other forms rather than painted purple: a rich_label's
+			-- <span> applies its attributes to its own text and does not recurse,
+			-- so a link nested inside a span would be dropped. The purple "this is
+			-- the strongest form" marker lives on the cast button below instead.
+			skill_polymorph_orc    = _"            <i><ref dst='unit_Orcish Warlord'>Orcish Warlord</ref></i> (<span color='#00bbe6' style='italic'>32 XP</span>)",
 		},
 		subskills   = {
-			[1]={ id="skill_polymorph_lizard",  xp_cost=8,  label="   <span>Lizard (<span color='#00bbe6'><i>8xp</i></span>)</span>   " },
-			[2]={ id="skill_polymorph_bear",   xp_cost=12,  label="   <span>Bear (<span  color='#00bbe6'><i>12xp</i></span>)</span>   " },
-			[3]={ id="skill_polymorph_yeti",   xp_cost=20, label="   <span>Yeti (<span  color='#00bbe6'><i>20xp</i></span>)</span>   " },
-			[4]={ id="skill_polymorph_orc",    xp_cost=32, label="   <span><span color='#a308b8'>Orcish Warlord</span> (<span   color='#00bbe6'><i>32xp</i></span>)</span>   " }, },	
+			[1]={ id="skill_polymorph_lizard", xp_cost=8,  label="   <span>".._"Lizard".." (<span color='#00bbe6' style='italic'>".._"8 XP" .."</span>)</span>   " },
+			[2]={ id="skill_polymorph_bear",   xp_cost=12, label="   <span>".._"Bear"  .." (<span color='#00bbe6' style='italic'>".._"12 XP".."</span>)</span>   " },
+			[3]={ id="skill_polymorph_yeti",   xp_cost=20, label="   <span>".._"Yeti"  .." (<span color='#00bbe6' style='italic'>".._"20 XP".."</span>)</span>   " },
+			[4]={ id="skill_polymorph_orc",    xp_cost=32, label="   <span><span color='#a308b8'>".._"Orcish Warlord".."</span> (<span color='#00bbe6' style='italic'>".._"32 XP".."</span>)</span>   " }, },
 	},
 	-------------------------
 	-- DANCING DAGGERS
 	-------------------------
-	[16] = {
+	[17] = {
 		id          = "skill_dancing_daggers",
 		label       = label(_"Dancing Daggers"),
 		image       = "icons/dancing-daggers.png",
-		description = _"<span color='#ad6a61'><i><b>Attack:</b></i></span> Ranged 5x8 blade, <i>backstab</i>.",
+		description = header_attack().._"Ranged 5x8 blade, <i><ref dst='weaponspecial_backstab'>backstab</ref></i>.",
 	},
 	-------------------------
 	-- ILLUSION
 	-------------------------
-	[17] = {
+	[18] = {
 		id          = "skill_illusion",
 		label       = label(_"Enthrall"),
 		image       = "icons/illusion.png",
-		description = _"<span color='#6ca364'><i><b>Spell:</b></i></span> Spend <span color='#00bbe6'><i>48xp</i></span> and <span color='#c06a61'><i>your attack</i></span> to magically disguise yourself as an awe-inspiring drake,\n           reducing accuracy and dodge by 10% for enemies in a 2 hex radius.", --Ends if you take damage.
-		xp_cost=48, atk_cost=1, 
+		description = header_spell().._"Spend <span color='#00bbe6' style='italic'>48 XP</span> and <span color='#c06a61' style='italic'>your attack</span> to magically disguise yourself as an awe-inspiring drake,\n           reducing accuracy and dodge by 10% for enemies in a 2 hex radius.", --Ends if you take damage.
+		xp_cost=48, atk_cost=1,
 	},
 	-------------------------
 	-- CONTINGENCY
 	-------------------------
-	[18] = {
+	[19] = {
 		id          = "skill_contingency",
 		label       = label(_"Contingency"),
 		image       = "icons/contingency.png",
-		description = _"<span color='#a9a150'><i><b>Passive:</b></i></span> Whenever one of your soldiers dies, they are instead safely returned to your recall list.",
+		description = header_passive().._"Whenever one of your soldiers dies, they are instead safely returned to your recall list.",
 	},
 	-------------------------
 	-- LIGHTNING
 	-------------------------
-	[19] = {
+	[20] = {
 		id          = "skill_lightning",
 		label       = label(_"Chain Lightning"),
 		image       = "attacks/lightning.png",
 		description_by_level = {
-			[3] = _"<span color='#ad6a61'><i><b>Attack:</b></i></span> Ranged 9x4 fire, <i>magical</i>. If this attack kills an enemy, you may attack again.",
-			[4] = _"<span color='#ad6a61'><i><b>Attack:</b></i></span> Ranged 14x4 fire, <i>magical</i>. If this attack kills an enemy, you may attack again.",
+			[3] = header_attack().._"Ranged 9x4 fire, <i><ref dst='weaponspecial_magical'>magical</ref></i>. If this attack kills an enemy, you may attack again.",
+			[4] = header_attack().._"Ranged 14x4 fire, <i><ref dst='weaponspecial_magical'>magical</ref></i>. If this attack kills an enemy, you may attack again.",
 		},
 	},
 	-------------------------
 	-- TIME DILATION
 	-------------------------
-	[20] = {
+	[21] = {
 		id          = "skill_time_dilation",
 		label       = label(_"Time Dilation"),
 		image       = "icons/time-dilation.png",
-		description = _"<span color='#6ca364'><i><b>Spell:</b></i></span> Spend <span color='#00bbe6'><i>48xp</i></span> to grant yourself and all allies double movement and a second attack this turn.\n           When this turn ends, affected units become slowed.",
+		description = header_spell().._"Spend <span color='#00bbe6' style='italic'>48 XP</span> to grant yourself and all allies double <ref dst='movement'>movement</ref> and a second attack this turn.\n           When this turn ends, affected units become <i><ref dst='weaponspecial_slows'>slowed</ref></i>.",
 		xp_cost=48,
 	},
 	-------------------------
 	-- CATACLYSM
 	-------------------------
-	[21] = {
+	[22] = {
 		id          = "skill_cataclysm",
 		label       = label(_"Cataclysm"),
 		image       = "icons/cataclysm.png",
-		description = _"<span color='#6ca364'><i><b>Spell:</b></i></span> Spend <span color='#00bbe6'><i>99xp</i></span> and <span color='#c06a61'><i>your attack</i></span> to injure everyone in a 4-hex radius for 40%-90%\n           of their current HP. Melts snow, burns forest, and levels castles/villages.",
-		xp_cost=99, atk_cost=1, 
+		description = header_spell().._"Spend <span color='#00bbe6' style='italic'>99 XP</span> and <span color='#c06a61' style='italic'>your attack</span> to injure everyone in a 4-hex radius for 40%-90%\n           of their current HP. Melts snow, burns forest, and levels castles/villages.",
+		xp_cost=99, atk_cost=1,
 	},
 	-------------------------
 	-- MAGIC MISSILE
 	-------------------------
-	[22] = {
+	[23] = {
 		id          = "skill_magic_missile",
 		label       = label(_"Magic Missile"),
 		image       = "attacks/magic-missile.png",
 		description_by_level = {
-			[1] = _"<span color='#ad6a61'><i><b>Attack:</b></i></span> Ranged 7x3 fire, <i>magical</i>.",
-			[2] = _"<span color='#ad6a61'><i><b>Attack:</b></i></span> Ranged 10x3 fire, <i>magical</i>.",
-			[3] = _"<span color='#ad6a61'><i><b>Attack:</b></i></span> Ranged 10x3 fire, <i>magical</i>.",
-			[4] = _"<span color='#ad6a61'><i><b>Attack:</b></i></span> Ranged 10x3 fire, <i>magical</i>.",
+			[1] = header_attack().._"Ranged 7x3 fire, <i><ref dst='weaponspecial_magical'>magical</ref></i>.",
+			[2] = header_attack().._"Ranged 10x3 fire, <i><ref dst='weaponspecial_magical'>magical</ref></i>.",
+			[3] = header_attack().._"Ranged 10x3 fire, <i><ref dst='weaponspecial_magical'>magical</ref></i>.",
+			[4] = header_attack().._"Ranged 10x3 fire, <i><ref dst='weaponspecial_magical'>magical</ref></i>.",
 		},
 	},
 	-------------------------
 	-- DISTANT ATTACK
 	-------------------------
-	[23] = {
+	[24] = {
 		id          = "skill_disattack",
 		label       = label(_"Lightbeam"),
 		image       = "attacks/lightbeam.png",
-		-- #po: <span color='#6ca364'><i><b>Spell:</b></i></span> Використайте <span color='#00bbe6'><i>8xp</i></span>, щоб атакувати ворога дальньою містичною атакою <b>9x3</b>. \n<span color='#ad6a61'><i><b>Radius:</b></i></span> <i>6 клітинок.</i>
-		description = _"<span color='#6ca364'><i><b>Spell:</b></i></span> Spend <span color='#00bbe6'><i>6xp</i></span> to attack the enemy with a <b>9x3</b> ranged arcane attack. \n<span color='#ad6a61'><i><b>Radius:</b></i></span> <i>6 hexes.</i>",
+		-- #po: Використайте <span color='#00bbe6' style='italic'>6 XP</span>, щоб атакувати ворога дальньою містичною атакою <b>9x3</b>. \n<i>6 клітинок.</i>
+		description = header_spell().._"Spend <span color='#00bbe6' style='italic'>6 XP</span> to attack the enemy with a <b>9x3</b> ranged arcane attack. \n"..header_radius().._"<i>6 hexes.</i>",
 		xp_cost=6,
 	},
 	-------------------------
 	-- SWAP
 	-------------------------
-	[24] = {
+	[25] = {
 		id          = "skill_swap",
 		label       = label(_"Swap"),
 		image       = "icons/swap.png",
-		-- #po: "<span color='#6ca364'><i><b>Spell:</b></i></span> Використайте <span color='#00bbe6'><i>8xp</i></span>, щоб миттєво обмінятися місцями з будь-яким юнітом. \n<span color='#ad6a61'><i><b>Radius:</b></i></span> <i>4 клітинок.</i>",
-		description = _"<span color='#6ca364'><i><b>Spell:</b></i></span> Spend <span color='#00bbe6'><i>8xp</i></span> to instantly swap places with any unit. \n<span color='#ad6a61'><i><b>Radius:</b></i></span> <i>4 hexes.</i>",
+		-- #po: Використайте <span color='#00bbe6' style='italic'>8 XP</span>, щоб миттєво обмінятися місцями з будь-яким юнітом. \n<i>4 клітинки.</i>
+		description = header_spell().._"Spend <span color='#00bbe6' style='italic'>8 XP</span> to instantly swap places with any unit. \n"..header_radius().._"<i>4 hexes.</i>",
 		xp_cost=8,
 	},
 	-------------------------
 	-- DISTANT HEAL
 	-------------------------
-	[25] = {
+	[26] = {
 		id          = "skill_disheal",
 		label       = label(_"Distant Heal"),
 		image       = "icons/disheal.png",
-		-- #po: <span color='#6ca364'><i><b>Spell:</b></i></span> Використайте <span color='#00bbe6'><i>6xp</i></span>, щоб вилікувати себе або дружнього юніта на +8 ОЗ. \n<span color='#ad6a61'><i><b>Radius:</b></i></span> <i>7 клітинок.</i>",
-		description = _"<span color='#6ca364'><i><b>Spell:</b></i></span> Spend <span color='#00bbe6'><i>6xp</i></span> to cure yourself or a friendly unit and heal for +8 HP. \n<span color='#ad6a61'><i><b>Radius:</b></i></span> <i>7 hexes.</i>",
+		-- #po: Використайте <span color='#00bbe6' style='italic'>6 XP</span>, щоб вилікувати себе або дружнього юніта на +8 ОЗ. \n<i>7 клітинок.</i>
+		description = header_spell().._"Spend <span color='#00bbe6' style='italic'>6 XP</span> to <ref dst='ability_cures'>cure</ref> yourself or a friendly unit and heal for +8 HP. \n"..header_radius().._"<i>7 hexes.</i>",
 		xp_cost=6,
 	},
 	-------------------------
 	-- WARD
 	-------------------------
-	[26] = {
+	[27] = {
 		id          = "skill_ward",
 		label       = label(_"Holy Ward"),
 		image       = "icons/ward.png",
-		-- #po: "<span color='#6ca364'><i><b>Spell:</b></i></span> Використайте <span color='#00bbe6'><i>10xp</i></span>, щоб на кілька ходів розмістити на мапі <i>Оберіг</i>.\n          Кожного ходу він завдаватиме навколишнім мерцям <b>10</b> містичної шкоди. \n<span color='#ad6a61'><i><b>Radius:</b></i></span> <i>2 клітинки.</i>",
-		description = _"<span color='#6ca364'><i><b>Spell:</b></i></span> Spend <span color='#00bbe6'><i>10xp</i></span> to place <i>Ward</i> on the map for a few turns.\n           Each turn, it will deal <b>20</b> arcane damage to the surrounding undead. \n<span color='#ad6a61'><i><b>Radius:</b></i></span> <i>2 hexes.</i>",
+		-- #po: Використайте <span color='#00bbe6' style='italic'>10 XP</span>, щоб на кілька ходів розмістити на мапі <i><ref dst='unit_Brazier'>Оберіг</ref></i>.\n           Кожного ходу він завдаватиме навколишнім мерцям <b>20</b> містичної шкоди. \n<i>2 клітинки.</i>
+		description = header_spell().._"Spend <span color='#00bbe6' style='italic'>10 XP</span> to place a <i><ref dst='unit_Brazier'>Ward</ref></i> on the map for a few turns.\n           Each turn, it will deal <b>20</b> arcane damage to the surrounding undead. \n"..header_radius().._"<i>2 hexes.</i>",
 		xp_cost=10,
 	},
 	-------------------------
 	-- RELOCATE
 	-------------------------
-	[27] = {
+	[28] = {
 		id          = "skill_relocate",
 		label       = label(_"Relocate"),
 		image       = "icons/relocate.png",
-		description = _"<span color='#6ca364'><i><b>Spell:</b></i></span> Spend <span color='#00bbe6'><i>10xp</i></span> to instantly teleport any friendly unit. \n<span color='#ad6a61'><i><b>Radius:</b></i></span> <i>3 hexes.</i>",
+		description = header_spell().._"Spend <span color='#00bbe6' style='italic'>10 XP</span> to instantly teleport any friendly unit. \n"..header_radius().._"<i>3 hexes.</i>",
 		xp_cost=10,
 	},
 	-------------------------
 	-- ILLUMINATE
 	-------------------------
-	[28] = {
+	[29] = {
 		id          = "skill_illuminate",
 		label       = label(_"Illuminate"),
 		image       = "icons/illuminate.png",
-		description = _"<span color='#a9a150'><i><b>Passive:</b></i></span> Gain the <i>illuminate</i> ability.",
+		description = header_passive().._"Gain the <i><ref dst='ability_illumination'>illuminates</ref></i> ability.",
 	},
 	-------------------------
 	-- LIGHTBEAM
 	-------------------------
-	[29] = {
+	[30] = {
 		id          = "skill_lightbeam",
 		label       = label(_"Ray of Light"),
 		image       = "attacks/beam-eye.png",
-		description = _"<span color='#ad6a61'><i><b>Attack:</b></i></span> Ranged 15x2 arcane, <i>magical</i>.",
+		description = header_attack().._"Ranged 15x2 arcane, <i><ref dst='weaponspecial_magical'>magical</ref></i>.",
 	},
 	-------------------------
 	-- FLIGHT
 	-------------------------
-	[30] = {
+	[31] = {
 		id          = "skill_flight",
 		label       = label(_"Flight"),
 		image       = "icons/sandals.png",
-		description = _"<span color='#6ca364'><i><b>Spell:</b></i></span> Spend <span color='#00bbe6'><i>12xp</i></span> to gain the <i>skirmisher</i> ability, <i>50%</i> defense on all terrain and <i>+2 MP</i>.\n           Lasts until the start of your next turn or until cancelled.",
+		description = header_spell().._"Spend <span color='#00bbe6' style='italic'>12 XP</span> to gain the <i><ref dst='ability_skirmisher'>skirmisher</ref></i> ability, <i>50%</i> defense on all terrain and <i>+2 MP</i>.\n           Lasts until the start of your next turn or until cancelled.",
 		xp_cost=12,
 	},
 	-------------------------
 	-- MASSHEAL
 	-------------------------
-	[31] = {
+	[32] = {
 		id          = "skill_massheal",
 		label       = label(_"Massive Heal"),
 		image       = "icons/massheal.png",
-		description = _"<span color='#6ca364'><i><b>Spell:</b></i></span> Spend <span color='#00bbe6'><i>12xp</i></span> to heal every adjacent friendly unit for +10 HP.",
+		description = header_spell().._"Spend <span color='#00bbe6' style='italic'>12 XP</span> to heal every adjacent friendly unit for +10 HP.",
 		xp_cost=12,
 	},
 	-------------------------
 	-- SMITE
 	-------------------------
-	[32] = {
+	[33] = {
 		id          = "skill_smite",
 		label       = label(_"Smite"),
 		image       = "attacks/banishment.png",
-		description = _"<span color='#6ca364'><i><b>Spell:</b></i></span> Spend <span color='#00bbe6'><i>16xp</i></span> to deal 30 arcane damage to every adjacent enemy unit.",
+		description = header_spell().._"Spend <span color='#00bbe6' style='italic'>16 XP</span> to deal 30 arcane damage to every adjacent enemy unit.",
 		xp_cost=16,
 	},
 	-------------------------
 	-- NATURE'S REVENGE
 	-------------------------
-	[33] = {
+	[34] = {
 		id          = "skill_nature_revenge",
 		label       = label(_"Nature's Revenge"),
 		image       = "attacks/entangle.png",
-		description = _"<span color='#6ca364'><i><b>Spell:</b></i></span> Spend <span color='#00bbe6'><i>16xp</i></span> to deal 30 impact damage to every adjacent enemy unit.",
+		description = header_spell().._"Spend <span color='#00bbe6' style='italic'>16 XP</span> to deal 30 impact damage to every adjacent enemy unit.",
 		xp_cost=16,
 	},
 	-------------------------
 	-- RAGE
 	-------------------------
-	[34] = {
+	[35] = {
 		id          = "skill_fury",
 		label       = label(_"Magic Rage"),
 		image       = "attacks/frenzy.png",
 		description_by_level = {
-			[3] = _"<span color='#ad6a61'><i><b>Attack:</b></i></span> Melee 10x3 fire, <i>berserk</i>, <i>magical</i>.",
-			[4] = _"<span color='#ad6a61'><i><b>Attack:</b></i></span> Melee 13x3 fire, <i>berserk</i>, <i>magical</i>.",
+			[3] = header_attack().._"Melee 10x3 fire, <i><ref dst='weaponspecial_berserk'>berserk</ref></i>, <i><ref dst='weaponspecial_magical'>magical</ref></i>.",
+			[4] = header_attack().._"Melee 13x3 fire, <i><ref dst='weaponspecial_berserk'>berserk</ref></i>, <i><ref dst='weaponspecial_magical'>magical</ref></i>.",
 		},
 	},
 	-------------------------
 	-- ASTRAL ARMS
 	-------------------------
-	[35] = {
+	[36] = {
 		id          = "skill_astral_arms",
 		label       = label(_"Weapon"),
 		image       = "icons/sword-astral.png",
-		description = _"<span color='#6ca364'><i><b>Spell:</b></i></span> Summon a spectral weapon. Each of them has similar damage, but a different type and specials.\nLasts until you change it.",
+		description = header_spell().._"Summon a spectral weapon. Each of them has similar damage, but a different type and specials.\nLasts until you change it.",
 		subskills   = {
-			[1]={ id="skill_arms_astral",  castable    = true, label="   <span>Astral</span>   "},
-			[2]={ id="skill_arms_blade",   castable    = true, label="   <span>Blade</span>   "},
-			[3]={ id="skill_arms_spear",   castable    = true, label="   <span>Spear</span>   ",},
-			[4]={ id="skill_arms_mace",    castable    = true, label="   <span>Mace</span>   ",},
-			[5]={ id="skill_arms_daggers", castable    = true, label="   <span>Daggers</span>   ",},
+			[1]={ id="skill_arms_astral",  castable = true, label="   <span>".._"Astral" .."</span>   "},
+			[2]={ id="skill_arms_blade",   castable = true, label="   <span>".._"Blade"  .."</span>   "},
+			[3]={ id="skill_arms_spear",   castable = true, label="   <span>".._"Spear"  .."</span>   "},
+			[4]={ id="skill_arms_mace",    castable = true, label="   <span>".._"Mace"   .."</span>   "},
+			[5]={ id="skill_arms_daggers", castable = true, label="   <span>".._"Daggers".."</span>   "},
 		},
 	},
 	-------------------------
 	-- SHADOWSTEP
 	-------------------------
-	[36] = {
+	[37] = {
 		id          = "skill_shadowstep",
 		label       = label(_"Shadowstep"),
 		image       = "icons/relocate.png", --TODO
-		description = _"<span color='#6ca364'><i><b>Spell:</b></i></span> Spend <span color='#00bbe6'><i>10xp</i></span> to teleport next to a selected unit.\n<span color='#ad6a61'><i><b>Radius:</b></i></span> <i>6 hexes.</i>",
+		description = header_spell().._"Spend <span color='#00bbe6' style='italic'>8 XP</span> to teleport next to a selected unit.\n"..header_radius().._"<i>6 hexes.</i>",
 		xp_cost     = 8,
 	},
 	-------------------------
 	-- PHANTOM FLURRY
 	-------------------------
-	[37] = {
+	[38] = {
 		id          = "skill_phantom_flurry",
 		label       = label(_"Flurry"), --TODO
 		image       = "icons/dancing-daggers.png", --TODO
-		description = _"<span color='#6ca364'><i><b>Spell:</b></i></span> Spend <span color='#00bbe6'><i>12xp</i></span> to gain <b>+2 attacks</b> this turn.",
+		description = header_spell().._"Spend <span color='#00bbe6' style='italic'>12 XP</span> to gain <b>+2 attacks</b> this turn.",
 		xp_cost     = 12,
 	},
 	-------------------------
 	-- ASTRAL CHAINS
 	-------------------------
-	[38] = {
+	[39] = {
 		id          = "skill_astral_chains",
 		label       = label(_"Chains"),
 		image       = "icons/swap.png",
-		description = _"<span color='#6ca364'><i><b>Spell:</b></i></span> Spend <span color='#00bbe6'><i>10xp</i></span> to pull a selected unit next to you.\n<span color='#ad6a61'><i><b>Radius:</b></i></span> <i>4 hexes.</i>",
+		description = header_spell().._"Spend <span color='#00bbe6' style='italic'>10 XP</span> to pull a selected unit next to you.\n"..header_radius().._"<i>4 hexes.</i>",
 		xp_cost     = 10,
 	},
 	-------------------------
 	-- HASTE
 	-------------------------
-	[39] = {
+	[40] = {
 		id          = "skill_haste",
 		label       = label(_"Haste"),
 		image       = "icons/sandals.png", --TODO
-		description = _"<span color='#6ca364'><i><b>Spell:</b></i></span> Spend <span color='#00bbe6'><i>12xp</i></span> to gain the <i>skirmisher</i> ability, <i>50%</i> defense on all terrain and <i>+3 MP</i>.\n           Lasts until the start of your next turn or until cancelled.",
+		description = header_spell().._"Spend <span color='#00bbe6' style='italic'>12 XP</span> to gain the <i><ref dst='ability_skirmisher'>skirmisher</ref></i> ability, <i>50%</i> defense on all terrain and <i>+3 MP</i>.\n           Lasts until the start of your next turn or until cancelled.",
 		xp_cost     = 12,
 	},
 	-------------------------
 	-- VEIL
 	-------------------------
-	[40] = {
+	[41] = {
 		id          = "skill_veil_ward",
 		label       = label(_"Veil"),
 		image       = "icons/shield.png",
-		description = _"<span color='#a9a150'><i><b>Passive:</b></i></span> <i>+25% defense</i> on all terrain.",
+		description = header_passive().._"<i>+25% defense</i> on all terrain.",
 	},
 	-------------------------
 	-- VIGOR
 	-------------------------
-	[41] = {
+	[42] = {
 		id          = "skill_bloodbound_vigor",
 		label       = label(_"Vigor"), --TODO
 		image       = "icons/potion_green_small.png",
-		description = _"<span color='#a9a150'><i><b>Passive:</b></i></span> <b>+15 max HP</b>.",
+		description = header_passive().._"<b>+15 max HP</b>.",
 	},
 	-------------------------
 	-- KNIT
 	-------------------------
-	[42] = {
+	[43] = {
 		id          = "skill_soul_knit",
 		label       = label(_"Knit"), --TODO
 		image       = "icons/disheal.png",
-		description = _"<span color='#a9a150'><i><b>Passive:</b></i></span> <i>Regenerate +8 HP</i> each turn.",
+		description = header_passive().._"<i><ref dst='ability_regenerates_8'>Regenerate</ref> +8 HP</i> each turn.",
 	},
 	-------------------------
 	-- GUARD
 	-------------------------
-	[43] = {
+	[44] = {
 		id          = "skill_phantom_guard",
 		label       = label(_"Guard"), --TODO
 		image       = "icons/illusion.png",
-		description = _"<span color='#a9a150'><i><b>Passive:</b></i></span> Double resistances when defending up to 50%.",
+		description = header_passive().._"Double resistances when defending up to 50% (<i><ref dst='ability_steadfast'>steadfast</ref></i>).",
 	},
 
 	-------------------------
 	-- DRAIN
 	-------------------------
-	[44] = {
+	[45] = {
 		id          = "skill_soul_siphon",
 		label       = label(_"Drain"),
 		image       = "icons/enervate.png", --TODO
-		description = _"<span color='#6ca364'><i><b>Spell:</b></i></span> Spend <span color='#00bbe6'><i>28xp</i></span> to deal 30 arcane damage to a selected enemy, healing yourself for the amount of damage dealt.\n<span color='#ad6a61'><i><b>Radius:</b></i></span> <i>6 hexes.</i>",
+		description = header_spell().._"Spend <span color='#00bbe6' style='italic'>28 XP</span> to deal 30 arcane damage to a selected enemy, healing yourself for the amount of damage dealt.\n"..header_radius().._"<i>6 hexes.</i>",
 		xp_cost     = 28,
 	},
 	-------------------------
 	-- OBLIVION
 	-------------------------
-	[45] = {
+	[46] = {
 		id          = "skill_oblivion",
 		label       = label(_"Curse"), --TODO
 		image       = "attacks/beam-eye.png",
-		description = _"<span color='#6ca364'><i><b>Spell:</b></i></span> Spend <span color='#00bbe6'><i>40xp</i></span> to deal 50 arcane damage to a selected enemy.\n<span color='#ad6a61'><i><b>Radius:</b></i></span> <i>5 hexes.</i>",
+		description = header_spell().._"Spend <span color='#00bbe6' style='italic'>40 XP</span> to deal 50 arcane damage to a selected enemy.\n"..header_radius().._"<i>5 hexes.</i>",
 		xp_cost     = 40,
 	},
 	-------------------------
 	-- RIFT
 	-------------------------
-	[46] = {
+	[47] = {
 		id          = "skill_void_rift",
 		label       = label(_"Rift"),
 		image       = "icons/cataclysm.png", --TODO
-		description = _"<span color='#6ca364'><i><b>Spell:</b></i></span> Spend <span color='#00bbe6'><i>32xp</i></span> to tear open a rift, dealing 25 arcane damage to all enemies within 2 hexes of the target location.\n<span color='#ad6a61'><i><b>Radius:</b></i></span> <i>5 hexes.</i>",
+		description = header_spell().._"Spend <span color='#00bbe6' style='italic'>32 XP</span> to tear open a rift, dealing 25 arcane damage to all enemies within 2 hexes of the target location.\n"..header_radius().._"<i>5 hexes.</i>",
 		xp_cost     = 32,
 	},
 	-------------------------
-	-- RIFT
+	-- PHYLACTERY
 	-------------------------
-	[47] = {
+	[48] = {
 		id          = "skill_phylactery",
 		label       = label(_"Backup"),
 		image       = "icons/contingency.png", --TODO
-		description = _"<span color='#6ca364'><i><b>Spell:</b></i></span> Spend <span color='#00bbe6'><i>48xp</i></span> to TODO",
+		description = header_spell().._"Spend <span color='#00bbe6' style='italic'>48 XP</span> to TODO",
 		xp_cost     = 48,
+	},
+	-------------------------
+	-- EMPATHY
+	-------------------------
+	[49] = {
+		id          = "skill_empathy",
+		label       = label(_"Empathy"),
+		image       = "icons/potion_red_small.png",
+		description = header_passive().._"Whenever your healing ability restores allies at the start of your turn,\n               you gain <span color='#00bbe6' style='italic'>2 XP</span> for every unit you heal.",
 	},
 }
 
@@ -533,10 +573,10 @@ local skill_set = {
 local locked = {
 	id          = "skill_locked",
 	label       = label("<span color='grey'>Locked</span>"),
-	image       = "icons/locked.png", 
+	image       = "icons/locked.png",
 	description = "<span color='grey'>This option is not available yet.</span>",
 }
-	
+
 return {
 	--###############################
     -- LOCKED INDICATOR
@@ -544,7 +584,7 @@ return {
 	locked = {
 	id          = "skill_locked",
 	label       = label("<span color='grey'>Locked</span>"),
-	image       = "icons/locked.png", 
+	image       = "icons/locked.png",
 	description = "<span color='grey'>This option is not available yet.</span>",
     },
 	skill_set = skill_set,
