@@ -11,6 +11,50 @@ local T = wml.tag
 local CasterState = wesnoth.require "state.lua"
 
 local spell_data -- set by init(), avoids circular require at load time
+local M = {}
+
+-- The modification's options, as the gear in the cast window edits them. Read
+-- straight from the WML variables the [options] block writes, rather than from
+-- mod.lua: the two files load through different require paths ("dialog.lua" from
+-- core.lua, the full path from mod.lua), which gives them SEPARATE module tables
+-- and made an injected hook invisible here.
+local MOD_LIVE_OPTIONS = {
+    { id = "ctl_magic_mod_slots",   kind = "number", min = 1, max = 8,
+      label = _"Spell slots per caster", default = 3 },
+    { id = "ctl_magic_mod_casts",   kind = "number", min = 1, max = 4,
+      label = _"Spells cast per turn", default = 1 },
+    -- The top stop means "no limit"; the slider's own [value_labels] spell that out.
+    { id = "ctl_magic_mod_limit",   kind = "limit",  min = 1, max = 11,
+      label = _"Casters per side", default = "3" },
+    { id = "ctl_magic_mod_costs",   kind = "choice", values = { "free", "normal" },
+      labels = { _"Free casting", _"Normal costs" },
+      label = _"Casting cost", default = "free" },
+    { id = "ctl_magic_mod_advance", kind = "choice", values = { "default", "amla", "levels" },
+      labels = { _"Spells only", _"Spells + AMLAs", _"Spells + Level ups" },
+      label = _"Experience is used for", default = "levels" },
+    { id = "ctl_magic_mod_change",  kind = "bool",
+      label = _"Spells can be changed later", default = true },
+    { id = "ctl_magic_mod_ai",      kind = "bool",
+      label = _"Computer players get casters", default = true },
+}
+
+local function mod_option(opt)
+    local v = wml.variables[opt.id]
+    if v == nil or v == "" then return opt.default end
+    if opt.kind == "bool"   then return v == true or v == "yes" end
+    if opt.kind == "number" then return tonumber(v) or opt.default end
+    return tostring(v)
+end
+
+
+-- The gear shows when the modification is running (its options exist) and the
+-- game was set up to allow changes. Whose turn it is needs no check here: the
+-- cast window itself only opens for a local human side on its own turn.
+local function mod_settings_allowed()
+    if wml.variables["ctl_magic_mod_slots"] == nil then return false end
+    local live = wml.variables["ctl_magic_mod_live"]
+    return live == nil or live == "" or live == true or live == "yes"
+end
 
 -- Formats a spell's costs into a short colored string, or nil when free.
 -- Colors match the rest of the UI: XP cyan, HP red, gold yellow.
@@ -681,6 +725,108 @@ local function build_free_select_rows(slots, spell_index)
     return skill_grid
 end
 
+-- The gear's dialog. Local and side-effect free: it only collects values, and
+-- the synced command mod.lua registers is what actually writes them, so every
+-- client ends up with the same settings.
+local function open_mod_settings()
+    local chosen = {}
+
+    local rows = { T.row{ T.column{ border="all", border_size=8,
+        T.label{ definition="title", label=_"Magic System Settings" }}} }
+
+    for i, opt in ipairs(MOD_LIVE_OPTIONS) do
+        if opt.kind == "choice" then
+            table.insert(rows, T.row{ T.column{ border="left,top", border_size=10,
+                horizontal_alignment="left", T.label{ label=opt.label }}})
+            for k, label in ipairs(opt.labels) do
+                table.insert(rows, T.row{ T.column{ border="left", border_size=25,
+                    horizontal_alignment="left",
+                    T.toggle_button{ id="opt"..i.."_"..k, definition="radio", label=label }}})
+            end
+        elseif opt.kind == "bool" then
+            table.insert(rows, T.row{ T.column{ border="all", border_size=6,
+                horizontal_alignment="left",
+                T.toggle_button{ id="opt"..i, label=opt.label }}})
+        else
+            -- The slider prints its own value, so there is no separate number
+            -- label. [value_labels] is how the top stop of "casters per side"
+            -- can read "unlimited"; the engine requires exactly one label per
+            -- step (slider.cpp: the count is validated).
+            local slider = { id="opt"..i, minimum_value=opt.min, maximum_value=opt.max, step_size=1 }
+            if opt.kind == "limit" then
+                local labels = {}
+                for v = opt.min, opt.max do
+                    table.insert(labels, T.label{ label = (v == opt.max) and _"unlimited" or tostring(v) })
+                end
+                table.insert(slider, T.value_labels(labels))
+            end
+
+            table.insert(rows, T.row{ T.column{ border="all", border_size=6,
+                horizontal_alignment="left", T.grid{ T.row{
+                    T.column{ border="right", border_size=8, horizontal_alignment="left",
+                        T.label{ label=opt.label }},
+                    T.column{ horizontal_alignment="left", T.slider(slider) },
+                }}}})
+        end
+    end
+
+    table.insert(rows, T.row{ T.column{ border="all", border_size=8, T.grid{ T.row{
+        T.column{ border="right", border_size=10, T.button{ id="ok",     return_value=1, label=_"OK" }},
+        T.column{                                 T.button{ id="cancel", return_value=2, label=_"Cancel" }},
+    }}}})
+
+    local grid = T.grid{}
+    for _, r in ipairs(rows) do table.insert(grid[2], r) end
+    local dialog = { T.tooltip{ id="tooltip_large" }, T.helptip{ id="tooltip_large" }, grid }
+
+    local rv = gui.show_dialog(dialog, function(dlg)
+        for i, opt in ipairs(MOD_LIVE_OPTIONS) do
+            local value = mod_option(opt)
+            if opt.kind == "bool" then
+                dlg["opt"..i].selected = value and true or false
+            elseif opt.kind == "limit" then
+                dlg["opt"..i].value = (value == "unlimited") and opt.max
+                    or math.min(opt.max - 1, math.max(opt.min, tonumber(value) or 3))
+            elseif opt.kind == "number" then
+                dlg["opt"..i].value = value
+            else
+                for k, v in ipairs(opt.values) do
+                    local button = dlg["opt"..i.."_"..k]
+                    button.selected = (v == value)
+                    -- Radio buttons are independent toggles in GUI2; clearing the
+                    -- others by hand is what makes the group behave like a group.
+                    button.on_modified = function()
+                        if not button.selected then button.selected = true return end
+                        for other = 1, #opt.values do
+                            if other ~= k then dlg["opt"..i.."_"..other].selected = false end
+                        end
+                    end
+                end
+            end
+        end
+    end, function(dlg)
+        for i, opt in ipairs(MOD_LIVE_OPTIONS) do
+            if opt.kind == "bool" then
+                chosen[opt.id] = dlg["opt"..i].selected and "yes" or "no"
+            elseif opt.kind == "number" then
+                chosen[opt.id] = dlg["opt"..i].value
+            elseif opt.kind == "limit" then
+                local v = dlg["opt"..i].value
+                chosen[opt.id] = (v >= opt.max) and "unlimited" or tostring(v)
+            else
+                chosen[opt.id] = opt.values[1]
+                for k, v in ipairs(opt.values) do
+                    if dlg["opt"..i.."_"..k].selected then chosen[opt.id] = v end
+                end
+            end
+        end
+    end)
+
+    if rv == 1 and next(chosen) then
+        wesnoth.sync.invoke_command("magic_mod_settings", chosen)
+    end
+end
+
 local function build_footer(caster, caster_data, selecting)
     if selecting then
         -- No return_value: on_button_click handlers in make_preshow close the dialog
@@ -713,7 +859,9 @@ local function build_footer(caster, caster_data, selecting)
     local show_counter  = caster_data and max_casts > 1
     local show_reselect = caster_data and caster_data.reselect_free == true
 
-    if show_advance or show_reselect or show_counter then
+    local show_settings = mod_settings_allowed()
+
+    if show_advance or show_reselect or show_counter or show_settings then
         local upgrade_row = { "row", {} }
 
         if show_advance then
@@ -744,6 +892,14 @@ local function build_footer(caster, caster_data, selecting)
                 grow_factor=0, horizontal_alignment="right",
                 T.button{ id="reselect_button", use_markup=true, return_value=4,
                     label=_"Change Spells" }})
+        end
+
+        if show_settings then
+            table.insert(upgrade_row[2], T.column{
+                border="left", border_size=10, grow_factor=0, horizontal_alignment="right",
+                T.button{ id="mod_settings_button", use_markup=true, return_value=5,
+                    tooltip=_"Change the magic system's settings for this game.",
+                    label="<span size='large'>⚙</span>" }})
         end
 
         table.insert(rows, T.row{ T.column{ border="left", border_size=15,
@@ -1198,6 +1354,11 @@ local function open_dialog(caster, caster_data, selecting)
                 return
             end
 
+            if rv == 5 then
+                open_mod_settings()
+                return
+            end
+
             local spell_to_cast = wml.variables[CasterState.key(caster_id) .. ".spell_to_cast"]
             if spell_to_cast then
                 wml.variables["is_badly_timed"] = true
@@ -1241,7 +1402,6 @@ end
 ---------------------------------------------------------------------------
 -- Module init: inject spell_data dependency to avoid circular require.
 ---------------------------------------------------------------------------
-local M = {}
 
 function M.init(sd)
     spell_data = sd

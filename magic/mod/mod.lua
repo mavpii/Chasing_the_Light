@@ -76,9 +76,39 @@ function M.settings()
         costs        = str_opt("ctl_magic_mod_costs",  "free"),    -- "free" | "normal"
         awaken_xp    = num_opt("ctl_magic_mod_xp",     40, 0, 200),
         allow_change = bool_opt("ctl_magic_mod_change", true),
-        levels       = bool_opt("ctl_magic_mod_levels", true),
         ai           = bool_opt("ctl_magic_mod_ai",     true),
+        -- One picker replaces the old pair of checkboxes: "default" freezes the
+        -- caster one point short of advancing, "amla" additionally lets it take
+        -- the repeatable bonuses, "levels" makes it advance like any other unit.
+        advance      = str_opt("ctl_magic_mod_advance", "levels"),
+        live_setup   = bool_opt("ctl_magic_mod_live",   true),
     }
+end
+
+function M.levels_normally() return M.settings().advance == "levels" end
+function M.amla_allowed()    return M.settings().advance ~= "default" end
+
+-- Applies whatever the settings dialog wrote to every caster that already exists,
+-- so a change takes effect immediately instead of only for casters made later.
+function M.apply_live_settings()
+    local s = M.settings()
+    local registry = tostring(wml.variables["caster_registry"] or "")
+    for id in registry:gmatch("[^,]+") do
+        if wml.variables[CasterState.key(id)] then
+            wml.fire("caster_max_casts",    { max_casts = s.casts,  wml.tag.filter{ id = id } })
+            wml.fire("caster_free_casting", { free_casting_allowed = (s.costs == "free") and "yes" or "no",
+                                              wml.tag.filter{ id = id } })
+            wml.fire("caster_reselect",     { reselect_allowed = s.allow_change and "yes" or "no",
+                                              wml.tag.filter{ id = id } })
+            wml.fire("caster_leveling",     { leveling_allowed = M.levels_normally() and "yes" or "no",
+                                              wml.tag.filter{ id = id } })
+            -- Slot count only applies to casters this modification built: a
+            -- campaign caster's slots are its spell groups, not a free-pick size.
+            if wml.variables[CasterState.key(id) .. ".free_slots"] then
+                wml.fire("caster_free_slots", { slots = s.slots, wml.tag.filter{ id = id } })
+            end
+        end
+    end
 end
 
 ---------------------------------------------------------------------------
@@ -229,7 +259,7 @@ function M.make_caster(u, s, opts)
     data.max_casts       = s.casts
     data.reselect_free   = s.allow_change and not opts.spells
     data.free_casting    = (s.costs == "free")
-    data.levels_normally = s.levels
+    data.levels_normally = M.levels_normally()
     -- Equipping Summon/Bend/Polymorph/Astral Arms hands over all of its
     -- subskills at once: there is no campaign here to earn them from, so
     -- without this every multi-skill would sit in the cast window showing
@@ -238,7 +268,7 @@ function M.make_caster(u, s, opts)
     -- The cast dialog's own "advance" button (spend 90% of max XP for +6 HP and
     -- a bigger XP bar) is the alternative to levelling up. Show only one of the
     -- two: hide it whenever the unit advances the ordinary way.
-    data.advancement_disabled = s.levels
+    data.advancement_disabled = M.levels_normally()
     CasterState.save(data)
 
     -- In "normal cost" games a fresh unit has no XP to spend, so awakening comes
@@ -449,6 +479,22 @@ wesnoth.wml_actions.magic_mod_awaken = function(cfg)
     -- Deferred to the next mouse move by [select_caster_skills], because the
     -- picker must open from an unsynced context (this command is synced).
     wml.fire("select_caster_skills", { wml.tag.filter{ id = unit_id } })
+end
+
+
+
+---------------------------------------------------------------------------
+-- Live settings, written by the gear in the cast window (dialog.lua builds it).
+-- Applied through a synced command so every client stores the same values and
+-- re-applies them to the casters that already exist.
+---------------------------------------------------------------------------
+
+function wesnoth.custom_synced_commands.magic_mod_settings(t)
+    for id, value in pairs(t) do
+        if tostring(id):match("^ctl_magic_mod_") then wml.variables[id] = value end
+    end
+    M.apply_live_settings()
+    wml.fire("caster_set_menu")
 end
 
 return M

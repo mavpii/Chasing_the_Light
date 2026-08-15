@@ -871,3 +871,27 @@ function wesnoth.custom_synced_commands.on_click_spell_event(t)
     _G["on_click_spell_event" .. t.type](t)
     wml.fire.do_command({ wml.tag.fire_event{ raise="magic_sync_flush" }})
 end
+
+---------------------------------------------------------------------------
+-- Status icons for spell-inflicted states, shown in the sidebar next to
+-- poisoned/slowed. Wraps whatever handler is already installed rather than
+-- replacing it, the way mainline's stun.lua does.
+---------------------------------------------------------------------------
+
+local _ = wesnoth.textdomain "wesnoth-ctl"
+local previous_unit_status = wesnoth.interface.game_display.unit_status
+
+function wesnoth.interface.game_display.unit_status()
+    local u = wesnoth.interface.get_displayed_unit()
+    if not u then return {} end
+    local status = previous_unit_status()
+
+    if u.status.blinded then
+        table.insert(status, wml.tag.element{
+            image   = "misc/eye.png",
+            tooltip = _"blinded: This unit is caught in a blinding cloud. It has no attacks and holds no zone of control.",
+        })
+    end
+
+    return status
+end

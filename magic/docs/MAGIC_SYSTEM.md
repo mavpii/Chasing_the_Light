@@ -900,8 +900,24 @@ so a missing variable can never break the mod):
 | `ctl_magic_mod_costs` | `free` (no XP/gold/HP/attack charged) or `normal` |
 | `ctl_magic_mod_xp` | XP granted on awakening, normal-cost games only |
 | `ctl_magic_mod_change` | "Change Spells" button in the cast window, or final choices |
-| `ctl_magic_mod_levels` | Casters level up normally, or freeze at max XP − 1 like the campaign |
+| `ctl_magic_mod_advance` | What experience is for — `default` (spell fuel only, frozen at max XP − 1), `amla` (fuel plus the repeatable bonuses), `levels` (advance like any unit) |
 | `ctl_magic_mod_ai` | Computer-controlled sides' leaders become casters and use `ai.lua` |
+| `ctl_magic_mod_live` | Shows the settings gear in the cast window, so the options below can be changed mid-game |
+
+**Changing settings during play.** With `ctl_magic_mod_live` on, the cast window
+grows a ⚙ button next to "Change Spells", shown only to the player whose turn it
+is. It edits the options that still mean something mid-game — casts per turn,
+casting cost, what experience is for, whether spells can be changed, whether the
+AI gets casters — and confirms through the synced command `magic_mod_settings`,
+so every client writes the same values and `apply_live_settings()` pushes them
+onto the casters that already exist.
+
+The option list lives in `dialog.lua` (`MOD_LIVE_OPTIONS`) and reads the WML
+variables directly rather than calling into `mod.lua`. That is deliberate:
+`core.lua` requires the dialog as `"dialog.lua"` and `mod.lua` required it by
+full path, and `wesnoth.require` caches by the string it is given — the two
+paths produced two separate module tables, so a hook injected from the mod was
+invisible to the dialog that was actually on screen.
 
 **How it is built.** Nothing about the magic system is duplicated — the mod is
 glue only:
