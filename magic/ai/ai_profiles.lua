@@ -94,7 +94,6 @@ return {
     -- self defensive buffs (fire only when enemies are close)
     skill_shield   = { kind = "buff_self", threat = 3, weight = 12, base = 20 },
     skill_levitate = { kind = "buff_self", threat = 2, weight = 10, base = 12 },
-    skill_flight   = { kind = "buff_self", threat = 2, weight = 10, base = 12 },
 
     -- stasis: petrifies the CASTER and adjacent units — defensive last resort. CAVEAT.
     skill_stasis   = { kind = "buff_self", threat = 1, weight = 8, min = 2, base = 5 },

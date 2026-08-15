@@ -103,9 +103,18 @@ local skill_set = {
 	-------------------------
 	[7] = {
 		id          = "skill_levitate",
-		label       = label(_"Levitate"),
-		image       = "icons/levitate.png",
-		description = header_spell().._"Spend <span color='#00bbe6' style='italic'>8 XP</span> to gain the <i><ref dst='ability_skirmisher'>skirmisher</ref></i> ability and <i>50%</i> defense on all terrain.\n           Lasts until the start of your next turn or until cancelled.",
+		label_by_level = {
+			[1] = label(_"Levitate"),
+			[3] = label(_"Flight"),
+		},
+		image_by_level = {
+			[1] = "icons/levitate.png",
+			[3] = "icons/sandals.png",
+		},
+		description_by_level = {
+			[1] = header_spell().._"Spend <span color='#00bbe6' style='italic'>8 XP</span> to gain the <i><ref dst='ability_skirmisher'>skirmisher</ref></i> ability and <i>50%</i> defense on all terrain.\n           Lasts until the start of your next turn or until cancelled.",
+			[3] = header_spell().._"Spend <span color='#00bbe6' style='italic'>8 XP</span> to gain the <i><ref dst='ability_skirmisher'>skirmisher</ref></i> ability, <i>50%</i> defense on all terrain and <i>+2 MP</i>.\n           Lasts until the start of your next turn or until cancelled.",
+		},
 		xp_cost=8,
 	},
 	-------------------------
@@ -349,16 +358,6 @@ local skill_set = {
 		label       = label(_"Ray of Light"),
 		image       = "attacks/beam-eye.png",
 		description = header_attack().._"Ranged 15x2 arcane, <i><ref dst='weaponspecial_magical'>magical</ref></i>.",
-	},
-	-------------------------
-	-- FLIGHT
-	-------------------------
-	[31] = {
-		id          = "skill_flight",
-		label       = label(_"Flight"),
-		image       = "icons/sandals.png",
-		description = header_spell().._"Spend <span color='#00bbe6' style='italic'>12 XP</span> to gain the <i><ref dst='ability_skirmisher'>skirmisher</ref></i> ability, <i>50%</i> defense on all terrain and <i>+2 MP</i>.\n           Lasts until the start of your next turn or until cancelled.",
-		xp_cost=12,
 	},
 	-------------------------
 	-- MASSHEAL

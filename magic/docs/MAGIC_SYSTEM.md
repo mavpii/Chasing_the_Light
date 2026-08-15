@@ -8,21 +8,44 @@
 
 ## Architecture
 
-Everything hangs off `magic/_init.cfg`, which `_main.cfg` includes:
+**Integrating it is one line.** An add-on's `_main.cfg` includes
+`{./magic/_init.cfg}` at top level and is done: which context loads the engine,
+which ships the test scenarios, and the `[modification]` definition all live
+inside the system. Nothing under `magic/` refers to anything outside `magic/`.
 
 ```
-magic/_init.cfg
-  ├─ [binary_path] data/add-ons/Chasing_the_Light/magic   (art + sounds)
-  ├─ {./core/macros.cfg}     WML macros for scenarios
-  ├─ {./spells/TRSS.cfg}     click-to-target casting (adjacent / ranged / rose)
-  ├─ {./spells/spells.cfg}   every spell's events + the global event blocks
-  ├─ [+units] {./units}      unit types the spells need
-  └─ [lua] wesnoth.require 'magic/core/core.lua'
-                ├─ wesnoth.require 'state.lua'   (Layer 1: WML ↔ Lua)
-                ├─ wesnoth.require 'ops.lua'     (Layer 2: pure functions)
-                ├─ wesnoth.require 'dialog.lua'  (Layer 3: UI)
-                └─ wesnoth.require 'table.lua'   (read-only spell catalogue)
+magic/_init.cfg                     dispatcher — decides what loads where
+  ├─ #ifdef Chasing_the_Light  → {./_load.cfg}
+  ├─ #ifdef MULTIPLAYER        → {./_load.cfg} + scenarios/96,97,98
+  ├─ #ifdef CTL_MAGIC_MOD      → {./_load.cfg} (if nothing else did) + mod/mod.cfg
+  └─ [modification] ctl_magic_system + its [options]
+
+magic/_load.cfg                     the engine itself
+  ├─ [binary_path] .../magic            (art + sounds)
+  ├─ [lua] require 'core/mouse.lua'     shared mouse-handler registry
+  ├─ {./core/conditionals.cfg}          FILTER / IS_ALLY / THEN / NOT …
+  ├─ {./core/animations.cfg}            ANIMATE_UNIT / FRAME / OVERLAY_FRAME …
+  ├─ {./core/utils.cfg}                 EFFECT / SOUND / DELAY / REMOVE_OBJECT …
+  ├─ {./core/macros.cfg}                WML macros for scenarios
+  ├─ {./spells/TRSS.cfg}                click-to-target casting (adjacent / ranged / rose)
+  ├─ {./spells/spells.cfg}              every spell's events + the global event blocks
+  ├─ [+units] {./units}                 unit types the spells need
+  ├─ [lua] require 'core/core.lua'
+  │        ├─ require 'state.lua'   (Layer 1: WML ↔ Lua)
+  │        ├─ require 'ops.lua'     (Layer 2: pure functions)
+  │        ├─ require 'dialog.lua'  (Layer 3: UI)
+  │        └─ require 'table.lua'   (read-only spell catalogue)
+  └─ #define MAGIC_SYSTEM__GLOBAL_EVENTS
 ```
+
+The campaign keeps one line of its own — `{MAGIC_SYSTEM__GLOBAL_EVENTS}` inside
+its `[campaign]` block — because only that tag can add events to a campaign's
+scenarios. Everything else is the include above.
+
+The three macro files under `core/` used to live in the campaign's `utils/`.
+They were **moved**, not copied, so there is exactly one definition of each: the
+campaign gets them from this include, which runs before anything else in
+`_main.cfg`.
 
 **state.lua** — only file that touches WML variables. `CasterState.load(id)` reads all variables into a plain Lua table; `CasterState.save(data)` writes it back. This is the sync boundary: WML variables auto-sync between multiplayer clients, Lua tables do not.
 
@@ -595,6 +618,33 @@ views, free-assign slots, selection mode and cast mode — agrees):
 }
 ```
 
+### Spells that change with the caster's level
+
+`label_by_level` and `image_by_level` work exactly like `description_by_level`
+and are resolved by the same picker, so **one catalogue entry can be two spells**.
+Levitate is the example: at level 3 its name becomes *Flight*, its icon changes,
+and the description gains the `+2 MP` line, while `spells.cfg` adds the movement
+bonus in a level-gated `[object]` inside `EVENT_LEVITATE`.
+
+```lua
+[7] = {
+    id = "skill_levitate",
+    label_by_level = { [1] = label(_"Levitate"),      [3] = label(_"Flight") },
+    image_by_level = { [1] = "icons/levitate.png",    [3] = "icons/sandals.png" },
+    description_by_level = { [1] = …, [3] = … },
+    xp_cost = 8,
+}
+```
+
+The cost does not change with the level, deliberately: a leveled attack does not
+get more expensive either, and per-level costs would have to be resolved in five
+places (the button's affordability check, `format_cost`, the charge itself,
+`ai.lua`, and `[cast_spell]`).
+
+Every place a name or icon is drawn goes through `spell_label()` / `spell_image()`
+— cast rows, both picker views, free-assign slots and the group dropdowns — so a
+spell that lacks these tables simply falls back to `label` / `image`.
+
 Both are optional and combine: `description_by_level` (or plain `description`)
 provides the first line, `description_extra` adds lines under it. Keep the numbers
 in sync with the spell's `[event name=refresh_skills]` block in `spells.cfg` — that
@@ -1010,11 +1060,16 @@ stay in the campaign's `images/` by request, even though Phylactery uses them.
 
 ```
 magic/
-  _init.cfg     entry point: binary path, includes, unit types, global events
-  core/         macros.cfg, core.lua, state.lua, ops.lua, dialog.lua
+  _init.cfg     dispatcher + [modification]; the one line a host add-on includes
+  _load.cfg     the engine: binary path, includes, unit types, global events
+  core/         core.lua, state.lua, ops.lua, dialog.lua, mouse.lua,
+                macros.cfg, utils.cfg, conditionals.cfg, animations.cfg
   spells/       spells.cfg, TRSS.cfg, table.lua
   ai/           ai.lua, ai_profiles.lua
   mod/          mod.cfg, mod.lua  (the modification)
+  scenarios/    96_Spell_Test, 97_AI_Battle, 98_MP_Test
+  maps/         their maps
+  tools/        lint.sh
   units/        unit types the spells need
   images/       art used only by the magic system
   sounds/
@@ -1023,8 +1078,17 @@ magic/
 
 | File | Role |
 |---|---|
-| `magic/_init.cfg` | Entry point. Adds the magic binary path, includes `core/macros.cfg`, `spells/TRSS.cfg`, `spells/spells.cfg` and the unit types, loads `core/core.lua`, defines the global events (turn reset, anti-leveling, etc.) |
+| `magic/_init.cfg` | Dispatcher: decides which context loads the engine, ships the test scenarios, and holds the `[modification]` with its `[options]`. The only file a host add-on includes |
+| `magic/_load.cfg` | The engine. Adds the magic binary path, includes the macro files, TRSS, spells and unit types, loads `core/core.lua`, defines the global events (turn reset, anti-leveling, etc.) |
 | `magic/core/macros.cfg` | WML macros for use in scenario files |
+| `magic/core/utils.cfg` | `EFFECT`, `SOUND`, `DELAY`, `REMOVE_OBJECT`, `GIVE_OBJECT_TO`, `ADD_MODIFICATION`, `FIRE_EVENT`, `KILL`, `SCREEN_FADER`, `VARIABLES_SPLIT` — moved out of the campaign's `utils/macros.cfg` |
+| `magic/core/conditionals.cfg` | `FILTER`, `IS_ALLY`, `THEN`/`ELSE`, `NOT`/`AND`/`OR`, the `FILTER_*` family |
+| `magic/core/animations.cfg` | `ANIMATE_UNIT`, `FRAME`, `OVERLAY_FRAME`, `SOUND_FRAME` … |
+| `magic/core/mouse.lua` | The shared mouse-handler registry (`register_mouse_handler`). Loaded first, so anything else that registers — chess included — still works |
+| `magic/tools/lint.sh` | Static checks: duplicate catalogue keys, spell ids used by scenarios but absent from the catalogue, missing icons, over-long description lines, WML tag balance, unregistered spell events |
+| `magic/scenarios/96_Spell_Test.cfg` | `wesnoth -u 96_Spell_Test` — casts every catalogue spell once, normally and targeted, and fails the scenario on any error |
+| `magic/scenarios/97_AI_Battle.cfg` | 7v7 AI casters, loadouts rolled at random from `ai_profiles.lua` |
+| `magic/scenarios/98_MP_Test.cfg` | Multiplayer/feature sandbox |
 | `magic/core/core.lua` | All `wml_actions`, caster registry, double-click handler |
 | `magic/core/state.lua` | WML ↔ Lua data bridge (`load` / `save` / `delete` / `from_config`) |
 | `magic/core/ops.lua` | Pure functions on caster data tables |

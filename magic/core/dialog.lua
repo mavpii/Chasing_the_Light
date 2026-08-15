@@ -103,6 +103,25 @@ local function description_for_level(by_level, level)
     return lowest, lowest_level
 end
 
+-- Name and icon can vary with the caster's level the same way the description
+-- does: Levitate becomes Flight at level 3, one catalogue entry throughout. Both
+-- fall back to the plain `label` / `image` for every other spell.
+local function spell_label(spell)
+    if not spell then return "" end
+    if spell.label_by_level then
+        return (description_for_level(spell.label_by_level, desc_ctx and desc_ctx.level or 1))
+    end
+    return spell.label
+end
+
+local function spell_image(spell)
+    if not spell then return "icons/locked.png" end
+    if spell.image_by_level then
+        return (description_for_level(spell.image_by_level, desc_ctx and desc_ctx.level or 1))
+    end
+    return spell.image
+end
+
 -- Resolves a spell's description for the caster the dialog is open for.
 -- Returns "" for a nil spell (an empty free-assign slot).
 local function describe(spell)
@@ -211,7 +230,7 @@ end
 -- in tall padding spans; the picker grid wants just the inner name. Falls back
 -- to the full label if the expected markup is not present.
 local function compact_name(spell)
-    local s = tostring(spell.label or "")
+    local s = tostring(spell_label(spell) or "")
     local inner = s:match("size='large'>(.-)</span>")
     return inner or s
 end
@@ -301,7 +320,7 @@ local function build_picker_grid(spells)
                     -- 6 x 90 + borders + the vertical scrollbar still fits in 650.
                     T.row{ T.column{ T.spacer{ width=90, height=1 }}},
                     T.row{ T.column{ horizontal_alignment="center", border="all", border_size=3,
-                        T.image{ id="pick_img" .. idx, label = spell.image }}},
+                        T.image{ id="pick_img" .. idx, label = spell_image(spell) }}},
                     T.row{ T.column{ horizontal_alignment="center", border="bottom", border_size=3,
                         T.label{ id="pick_name" .. idx, use_markup=true,
                             label = "<span size='small'>" .. compact_name(spell) .. "</span>" }}},
@@ -344,7 +363,7 @@ local function build_picker_list(spells)
                 },
                 T.row{
                     T.column{ border="all", border_size=4, horizontal_alignment="center", vertical_alignment="center",
-                        T.image{ id="pick_list_img" .. idx, label = spell.image }},
+                        T.image{ id="pick_list_img" .. idx, label = spell_image(spell) }},
                     T.column{ border="all", border_size=4, horizontal_alignment="left", vertical_alignment="center",
                         T.label{ id="pick_list_name" .. idx, use_markup=true,
                             label = "<span size='small'>" .. compact_name(spell) .. "</span>" }},
@@ -473,7 +492,7 @@ local function open_picker(used, allowed_set)
                         -- "taken" state obvious — greyed-out image + struck-through name.
                         cell.enabled = false
                         local img = dlg[img_prefix .. idx]
-                        if img then img.label = spell.image .. "~GS()~O(0.4)" end
+                        if img then img.label = spell_image(spell) .. "~GS()~O(0.4)" end
                         local nm = dlg[name_prefix .. idx]
                         if nm then
                             nm.label = "<span size='small' color='#888888'><s>"
@@ -605,7 +624,7 @@ local function build_skill_rows(groups, selecting, equipped_list, unlocked_set)
             -- Menu button for picking which spell from this group.
             button = T.menu_button{ id="button"..i, use_markup=true }
             for _, spell in ipairs(group) do
-                table.insert(button[2], T.option{ label=spell.label })
+                table.insert(button[2], T.option{ label=spell_label(spell) })
             end
         else
             -- Show label or castable button for the equipped spell in this group.
@@ -624,10 +643,10 @@ local function build_skill_rows(groups, selecting, equipped_list, unlocked_set)
                 -- so a zero-cost spell can still be cast via a clickable button.
                 if has_cost or equipped_spell.castable then
                     local cost = format_cost(equipped_spell)
-                    button = T.button{ id="button"..i, use_markup=true, label=equipped_spell.label,
+                    button = T.button{ id="button"..i, use_markup=true, label=spell_label(equipped_spell),
                         tooltip = cost and (_"Cost: " .. cost) or nil }
                 else
-                    button = T.label{ id="button"..i, use_markup=true, label=equipped_spell.label }
+                    button = T.label{ id="button"..i, use_markup=true, label=spell_label(equipped_spell) }
                 end
 
                 -- Subskills row.
@@ -692,8 +711,8 @@ local function build_free_select_rows(slots, spell_index)
 
     for i, spell_id in ipairs(slots) do
         local def  = spell_id and spell_index[spell_id] or nil
-        local img  = def and def.image or "icons/locked.png"
-        local name = def and def.label or _"<span color='grey'><i>— click to choose —</i></span>"
+        local img  = spell_image(def)
+        local name = def and spell_label(def) or _"<span color='grey'><i>— click to choose —</i></span>"
         local desc = describe(def)
 
         local panel = T.toggle_panel{ id="slot" .. i, definition="fancy",
@@ -987,8 +1006,8 @@ local function make_preshow(caster, caster_data, groups, selecting, free_slots)
         return function(dlg)
             local function refresh_slot(i)
                 local def = slot_choice[i] and spell_index[slot_choice[i]] or nil
-                dlg["slot_image" .. i].label = def and def.image or "icons/locked.png"
-                dlg["slot_name"  .. i].label = def and def.label
+                dlg["slot_image" .. i].label = spell_image(def)
+                dlg["slot_name"  .. i].label = def and spell_label(def)
                     or _"<span color='grey'><i>— click to choose —</i></span>"
                 if dlg["slot_desc" .. i] then
                     dlg["slot_desc" .. i].label = describe(def)
@@ -1199,7 +1218,7 @@ local function make_preshow(caster, caster_data, groups, selecting, free_slots)
                 local function refresh()
                     local sel = group[btn.selected_index]
                     if sel then
-                        dlg["image"..i].label = sel.image
+                        dlg["image"..i].label = spell_image(sel)
                         dlg["label"..i].label = describe(sel)
                         make_links_clickable(dlg["label"..i])
                     end
@@ -1219,7 +1238,7 @@ local function make_preshow(caster, caster_data, groups, selecting, free_slots)
 
                 if equipped_spell then
                     dlg["button"..i].visible = true
-                    dlg["image"..i].label    = equipped_spell.image
+                    dlg["image"..i].label    = spell_image(equipped_spell)
                     dlg["label"..i].label    = describe(equipped_spell)
                     make_links_clickable(dlg["label"..i])
                     setup_cast_button(dlg, "button"..i, equipped_spell, false)
