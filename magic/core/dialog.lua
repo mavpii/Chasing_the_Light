@@ -224,6 +224,16 @@ local picker_view = 1
 -- Grid view: a compact table of clickable spell cells (image + name), each
 -- showing its description/cost as a hover tooltip only.
 local PICKER_COLS = 6
+
+-- Width left for a list row's description once the icon (56) and name (150)
+-- columns, the borders and the scrollbar are taken out. A formula, not a number,
+-- so it tracks PICKER_LIST_WIDTH below (keep the two expressions in step): that
+-- view is size_lock'ed to that width with horizontal scrolling "never", so a
+-- fixed width would overflow the lock on a small screen and the dialog would
+-- throw instead of opening. Declared up here because build_picker_list closes
+-- over it -- a local declared further down would compile to a global lookup and
+-- arrive as nil.
+local PICKER_LIST_DESC_WIDTH = "(min(900, screen_width * 45 / 100) - 260)"
 local function build_picker_grid(spells)
     local table_grid = T.grid{}
     local row
@@ -236,6 +246,16 @@ local function build_picker_grid(spells)
             T.toggle_panel{ id="pick" .. idx, definition="fancy",
                 tooltip = spell_tooltip(spell),
                 T.grid{
+                    -- Fixed cell width, so the grid is a grid: without it every
+                    -- column is as wide as its longest spell name and the icons
+                    -- sit on a ragged set of verticals.
+                    --
+                    -- Must stay well under PICKER_GRID_WIDTH / PICKER_COLS: the
+                    -- view is size_lock'ed to that width with horizontal scrolling
+                    -- set to "never", so content wider than the lock cannot be laid
+                    -- out at all and the dialog throws instead of opening.
+                    -- 6 x 90 + borders + the vertical scrollbar still fits in 650.
+                    T.row{ T.column{ T.spacer{ width=90, height=1 }}},
                     T.row{ T.column{ horizontal_alignment="center", border="all", border_size=3,
                         T.image{ id="pick_img" .. idx, label = spell.image }}},
                     T.row{ T.column{ horizontal_alignment="center", border="bottom", border_size=3,
@@ -264,14 +284,29 @@ local function build_picker_list(spells)
     for idx, spell in ipairs(spells) do
         table.insert(rows_grid[2], T.row{ T.column{ border="all", border_size=2, horizontal_grow=true,
             T.toggle_panel{ id="pick_list" .. idx, definition="fancy",
-                T.grid{ T.row{
+                T.grid{
+                -- Each row is its own panel, so its own grid: widths are negotiated
+                -- per row, every panel ends up as wide as its own description, and
+                -- the whole lot is centred -- which is why nothing lined up.
+                --
+                -- All three columns are pinned instead. The last one is a formula
+                -- rather than a number so it tracks PICKER_LIST_WIDTH: the view is
+                -- size_lock'ed to that width with horizontal scrolling "never", so
+                -- a fixed pixel width would overflow (and throw) on a small screen.
+                T.row{
+                    T.column{ T.spacer{ width=56,  height=1 }},
+                    T.column{ T.spacer{ width=150, height=1 }},
+                    T.column{ T.spacer{ width=PICKER_LIST_DESC_WIDTH, height=1 }},
+                },
+                T.row{
                     T.column{ border="all", border_size=4, horizontal_alignment="center", vertical_alignment="center",
                         T.image{ id="pick_list_img" .. idx, label = spell.image }},
                     T.column{ border="all", border_size=4, horizontal_alignment="left", vertical_alignment="center",
                         T.label{ id="pick_list_name" .. idx, use_markup=true,
                             label = "<span size='small'>" .. compact_name(spell) .. "</span>" }},
+                    -- No grow: the spacer row above already fixes this column's
+                    -- width, and growing it back would undo that.
                     T.column{ border="all", border_size=4, horizontal_alignment="left", vertical_alignment="center",
-                        horizontal_grow=true, grow_factor=1,
                         T.label{ id="pick_list_desc" .. idx, use_markup=true, wrap=true,
                             label = "<span size='small'><i>" .. spell_tooltip(spell) .. "</i></span>" }},
                 }}

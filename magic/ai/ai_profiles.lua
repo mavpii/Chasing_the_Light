@@ -27,6 +27,9 @@
 --   buff_self      self; fires when >= `min` enemies within `threat`; `weight`/foe
 --   buff_team      self+allies; fires when >= `min` allies within `radius`
 --   debuff_aura    enemies within `radius`; `vs_casters=true` adds value vs casters
+--   execute        enemy in `range` whose own wounds fuel the spell: damage is
+--                  `share` of the hitpoints it has already lost. `races` (a set of
+--                  race ids) limits what it may be cast on at all
 -- Common: `base` (flat priority). `dtype` (damage/aoe_targeted only) adjusts `power` for
 -- the target's resistance — set it to the spell's real damage_type, omit if not applicable.
 -- Costs come from table.lua; unaffordable = skipped.
@@ -55,9 +58,16 @@ return {
 
     -- bend nature (rose spells). CAVEAT: their push/lava-damage extras live in the
     -- interactive click handler, so an auto-cast only runs the per-hex _cast body.
+    -- bend: every element now lasts 2 turns and the terrain always comes back, so
+    -- earth is worth more than it was (a wall AND the unit on it petrified for two
+    -- turns) and water less (shallow water + slow, no longer an impassable moat).
     skill_bend_lava  = { kind = "damage", range = 4, power = 20, dtype = "fire", base = 8 },
-    skill_bend_water = { kind = "damage", range = 4, power = 3,  base = 6 },
-    skill_bend_earth = { kind = "damage", range = 4, power = 1,  base = 4 },
+    skill_bend_earth = { kind = "damage", range = 4, power = 6,  base = 8 },
+    skill_bend_water = { kind = "damage", range = 4, power = 3,  base = 5 },
+
+    -- adjacent execute: undead and monsters only, half of the wounds they carry
+    skill_dispel     = { kind = "execute", range = 1, share = 0.5, dtype = "arcane",
+                         races = { undead = true, monster = true }, base = 18 },
 
     --======================= SELF / AURA — fire <id> directly =======================
 
@@ -67,6 +77,11 @@ return {
 
     -- big radius — also catches allies (ally_penalty) so it needs an enemy majority
     skill_blizzard  = { kind = "aoe_self", radius = 3, power = 6,  min = 2, ally_penalty = 4,  base = 12 },
+
+    -- Flash disarms everything next to the caster, its own side included, so the
+    -- high ally_penalty is the point: it is only worth casting when the caster is
+    -- the one surrounded and has nobody of its own standing in the cloud.
+    skill_blindflash = { kind = "aoe_self", radius = 1, power = 18, min = 2, ally_penalty = 14, base = 10 },
     skill_cataclysm = { kind = "aoe_self", radius = 4, power = 18, min = 3, ally_penalty = 20, base = 10 },
 
     -- heal every adjacent ally
@@ -117,7 +132,6 @@ return {
 
     -- auras / control
     skill_counterspell = { kind = "debuff_aura", radius = 3, weight = 8, vs_casters = true, base = 15 },
-    skill_illusion     = { kind = "debuff_aura", radius = 2, weight = 8, base = 10 },
 
     -- team tempo
     skill_time_dilation = { kind = "buff_team", radius = 6, weight = 8, min = 2, base = 10 },

@@ -235,16 +235,6 @@ local skill_set = {
 		description = header_attack().._"Ranged 5x8 blade, <i><ref dst='weaponspecial_backstab'>backstab</ref></i>.",
 	},
 	-------------------------
-	-- ILLUSION
-	-------------------------
-	[18] = {
-		id          = "skill_illusion",
-		label       = label(_"Enthrall"),
-		image       = "icons/illusion.png",
-		description = header_spell().._"Spend <span color='#00bbe6' style='italic'>48 XP</span> and <span color='#c06a61' style='italic'>your attack</span> to magically disguise yourself as an awe-inspiring drake,\n           reducing accuracy and dodge by 10% for enemies in a 2 hex radius.", --Ends if you take damage.
-		xp_cost=48, atk_cost=1,
-	},
-	-------------------------
 	-- CONTINGENCY
 	-------------------------
 	[19] = {
@@ -514,7 +504,10 @@ local skill_set = {
 	[44] = {
 		id          = "skill_phantom_guard",
 		label       = label(_"Guard"), --TODO
-		image       = "icons/illusion.png",
+		-- Was icons/illusion.png, which only ever existed in TDG: the file is not
+		-- in magic/images/icons/, so the game logged "could not open image" every
+		-- time this row was drawn. Enthrall is gone, so nothing brings it in now.
+		image       = "icons/shield.png", --TODO
 		description = header_passive().._"Double resistances when defending up to 50% (<i><ref dst='ability_steadfast'>steadfast</ref></i>).",
 	},
 

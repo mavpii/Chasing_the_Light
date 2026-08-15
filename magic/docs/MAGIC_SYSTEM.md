@@ -1,16 +1,22 @@
 # Magic System — Reference
 
-> Last updated to match the 4-file refactor: `state.lua`, `ops.lua`, `dialog.lua`, `core.lua`.
+> Covers the catalogue as it stands: descriptions in TDG's style with help links,
+> the leveled-attack macro, Bend Nature's rework, and the Empathy / Purge / Flash
+> spells. Enthrall and Bend Air were removed and are documented nowhere but here.
 
 ---
 
 ## Architecture
 
-The system is split into four Lua files loaded by `_init.cfg`, the entry point
-`_main.cfg` includes:
+Everything hangs off `magic/_init.cfg`, which `_main.cfg` includes:
 
 ```
 magic/_init.cfg
+  ├─ [binary_path] data/add-ons/Chasing_the_Light/magic   (art + sounds)
+  ├─ {./core/macros.cfg}     WML macros for scenarios
+  ├─ {./spells/TRSS.cfg}     click-to-target casting (adjacent / ranged / rose)
+  ├─ {./spells/spells.cfg}   every spell's events + the global event blocks
+  ├─ [+units] {./units}      unit types the spells need
   └─ [lua] wesnoth.require 'magic/core/core.lua'
                 ├─ wesnoth.require 'state.lua'   (Layer 1: WML ↔ Lua)
                 ├─ wesnoth.require 'ops.lua'     (Layer 2: pure functions)
@@ -482,21 +488,30 @@ return {
 }
 ```
 
-Kinds: `damage`, `aoe_self` (radius around caster, `ally_penalty` for friendly
-splash), `heal_target`, `heal_self_aura`, `buff_self`, `buff_team`, `debuff_aura`
-(`vs_casters=true` for counterspell), `summon`. Each turn the AI scores every
-profiled, **affordable** spell the caster has equipped and casts the single
-highest-utility one — so it zaps in range, heals a hurt ally, shields when cornered,
-smites a cluster, etc. The shipped catalogue covers **every castable spell and every
-subskill** — damage (disattack), summons (all five), bend (all four), polymorph (all
-four forms), smite, nature's revenge, blizzard, cataclysm, disheal, massheal,
-panacea, shield, levitate, flight, stasis, counterspell, illusion, time dilation,
-swap, ward. Equipping the **parent** (Summon/Bend/Polymorph) auto-expands to its
-subskills, and the AI picks the strongest one it can afford. A few carry caveats
-(bend's push/lava extras live in the interactive handler; stasis petrifies the
-caster; panacea kills the healed ally next turn) — noted in `ai_profiles.lua`. The
-only spell that can't be auto-cast is `skill_relocate` (two interactive steps).
-Profiles can also be tweaked at runtime with `ai.lua`'s `set_profile`/`forget_profile`.
+Kinds: `damage`, `aoe_targeted`, `execute`, `aoe_self` (radius around caster,
+`ally_penalty` for friendly splash), `heal_target`, `heal_self_aura`, `buff_self`,
+`buff_team`, `debuff_aura` (`vs_casters=true` for counterspell), `summon`. Each
+turn the AI scores every profiled, **affordable** spell the caster has equipped and
+casts the single highest-utility one — so it zaps in range, heals a hurt ally,
+shields when cornered, smites a cluster, etc. The shipped catalogue covers **every
+castable spell and every subskill** — damage (disattack), summons (all five), bend
+(all three), polymorph (all four forms), smite, nature's revenge, blizzard,
+cataclysm, disheal, massheal, panacea, shield, levitate, flight, stasis,
+counterspell, time dilation, swap, ward, purge, flash. Equipping the **parent**
+(Summon/Bend/Polymorph) auto-expands to its subskills, and the AI picks the
+strongest one it can afford.
+
+`execute` exists for Purge: damage is `share` of the hitpoints the target has
+already lost, and `races` (a set of race ids) keeps the AI from spending a cast on
+something the spell cannot touch. Flash is an `aoe_self` with a deliberately high
+`ally_penalty` — it disarms the caster's own side too, so it should only fire when
+the caster is the one surrounded.
+
+A few carry caveats (bend's lava damage lives in the interactive handler; stasis
+petrifies the caster; panacea kills the healed ally next turn) — noted in
+`ai_profiles.lua`. The only spell that can't be auto-cast is `skill_relocate` (two
+interactive steps). Profiles can also be tweaked at runtime with `ai.lua`'s
+`set_profile`/`forget_profile`.
 
 ### Explicit — you pick the spell + rule
 
@@ -585,6 +600,47 @@ provides the first line, `description_extra` adds lines under it. Keep the numbe
 in sync with the spell's `[event name=refresh_skills]` block in `spells.cfg` — that
 block is what actually grants the attack.
 
+If the caster has **not reached the lowest level listed**, `describe()` still shows
+the lowest text but appends a grey *"Grants nothing until level N."* — those spells
+genuinely grant no attack below their first tier, and the row would otherwise
+promise one. With `{SPELL_LEVELED_ATTACK}` (below) that case no longer arises for
+the shipped spells; the warning stays for anything added later with a gap.
+
+### How descriptions are written
+
+The catalogue follows TDG's `skill_set.lua` style, and `table.lua`'s header
+comment states the rules. Four of them matter when editing:
+
+1. **The heading comes from a helper** — `header_attack()`, `header_spell()`,
+   `header_passive()`, `header_radius()`. The markup lives in one place, and
+   translators get the bare word instead of a copy of the markup 50 times.
+2. **Emphasis inside a `<span>` is written as attributes** (`style='italic'
+   weight='bold'`), never as nested `<i>`/`<b>`. Descriptions are drawn by a
+   **`rich_label`**, which applies a span's attributes to the span's own text and
+   does not recurse into tags nested inside it — a `<ref>` inside a `<span>` is
+   silently dropped.
+3. **Game terms link into the help browser** with `<ref dst='...'>`:
+   * weapon specials → `weaponspecial_<untranslated name>` (`weaponspecial_slows`);
+   * abilities → `ability_<id>` (`ability_skirmisher`), the form mainline's own
+     `help.cfg` uses;
+   * unit types → `unit_<type id>` (`unit_Elemental Rock`);
+   * **races and other help *sections* need the `..` prefix** — `..race_undead`,
+     not `race_undead`, which resolves to a topic that does not exist and opens a
+     blank page;
+   * zones of control have no topic of their own: mainline points them at
+     `movement`, so this does too.
+4. **`$caster`** in a description is replaced with the name of the caster the
+   dialog is open for (Polymorph: *"Replaces $caster's attacks…"*), so one string
+   serves every caster instead of naming one of them.
+
+Lines are wrapped by hand with `\n` plus indent — a `rich_label` with `width=0`
+does not wrap, so **a line longer than the dialog is cut off**. Keep each line
+under ~90 visible characters (markup does not count).
+
+Descriptions reach three widgets, and only one of them renders links: the
+per-spell rows use a `rich_label`, while the picker's hover tooltips and its list
+view go through Pango, where `strip_refs()` flattens each link to its own words.
+
 ---
 
 ## How to add a new caster
@@ -640,6 +696,101 @@ block is what actually grants the attack.
 2. Add it to the relevant caster's `spell_group_N` in `[assign_caster]`.
 3. Add a `[event name=refresh_skills]` block in `spells.cfg` to apply its ability when equipped.
 4. Add a `[event name=<spell_id>]` block for the cast effect.
+5. Register the spell's `#define EVENT_…` in `MAGIC_SYSTEM__SPELLS_EVENTS`, and its
+   `[object]` id (if it grants one) in `EVENT_REMOVE_SKILLS`.
+6. Give the AI a line in `magic/ai/ai_profiles.lua` if it should ever cast it.
+
+### Attacks that scale with the caster's level
+
+Do not hand-write the level ladder — use the macro:
+
+```cfg
+#define EVENT_LIGHTNING
+    {SPELL_LEVELED_ATTACK skill_lightning lightning (_"lightning") attacks/lightning.png ranged fire 3 4 5 4 9 4 14 4 (
+        {WEAPON_SPECIAL_MAGICAL}
+        [dummy]
+            id,name,description=chain,_"chain","If this attack kills an enemy, you may attack again."
+        [/dummy]
+    )}
+#enddef
+```
+
+Arguments: `SPELL_ID NAME DESCRIPTION ICON RANGE TYPE MID HIGH LOW_DMG LOW_NUM
+MID_DMG MID_NUM HIGH_DMG HIGH_NUM SPECIALS`. Three tiers, two thresholds —
+`level < MID`, `level < HIGH`, `level >= HIGH`; a two-tier spell passes the same
+numbers for MID and HIGH (Magic Missile: `2 2 7 3 10 3 10 3`).
+
+The tiers cover **every** level on purpose. Before the macro each spell wrote its
+own `[if] level == 3 … [elseif] level >= 4` chain and simply did nothing below its
+first tier: a level-1 caster could equip Chain Lightning, spend the slot, and get
+no attack at all, while the dialog described a 9x4 bolt.
+
+Keep the numbers in step with the spell's `description_by_level` in `table.lua`.
+
+---
+
+## Spells whose machinery is worth knowing
+
+Most spells are an `[object]` or a `[harm_unit]` and need no explanation. These
+four do something the engine does not hand you.
+
+### Empathy (`skill_empathy`) — 2 XP per ally healed
+
+The engine heals a side's units and fires **no event** for it, but it does so
+between `side turn` and `turn refresh` (`src/play_controller.cpp`: `side_turn` →
+`calculate_healing()` → `turn_refresh`). Those two events are the hook: the first
+records every ally the caster is about to heal, the second counts who actually
+gained hitpoints and pays 2 XP each.
+
+The first half does more than list neighbours because the engine does not
+attribute healing to a healer: healing terrain, regeneration and every adjacent
+healer are folded together by taking the **maximum** (`src/actions/heal.cpp`,
+`heal_amount` → `update_healing`). An ally therefore only counts as *healed by
+this caster* when the caster's own `heals` value beats all of them — otherwise a
+wounded unit on a village would pay out with the caster standing anywhere else.
+
+The snapshot lives in the WML variable `empathy_snapshot`, not a Lua local: the
+turn-start autosave falls between the two events.
+
+### Purge (`skill_dispel`) — adjacent, wound-fuelled
+
+`CTL_RANGED_SPELL` with **radius 1**, so only neighbouring enemies can be picked.
+Damage is half of what the target has already lost, undead and monsters alike;
+the living give the spell nothing to work on and the cast is refunded
+(`[caster_refund]` + `[caster_restore_casts]`) instead of being spent. It can
+never open a fight — only extend one.
+
+### Flash (`skill_blindflash`) — a cloud that stays
+
+Places `[item]` halos on the caster's hex and the six around it, and blinds
+everything standing there (`remove_attacks` — not `attacks_left=0`, which would
+still let the unit strike back — plus `zoc=no`). A `moveto` handler applies the
+same object to anything that walks in later, and the cloud is removed at the start
+of the caster's next turn.
+
+The duration is `"turn end"`, **not** `"turn"`: a modifier with `duration="turn"`
+is stripped in `unit::new_turn()` — at the *start* of its owner's turn — so an
+enemy would shake the blindness off before ever acting.
+
+Art is the Heir to the Throne alchemist's flashpowder smoke, recoloured in the
+image path (`~GS()~CS(190,190,190)`); the three `~CS` values must stay equal or the
+cloud picks up a tint.
+
+### Bend Nature (`skill_bend_*`) — one duration, no terraforming
+
+Rose targeting: six directions, up to four hexes, and the `_cast` event fires once
+per hex from the caster out to the one clicked. All three elements last **2 turns**
+and then the hex returns to exactly the terrain it had.
+
+It used to differ per element (0/1/2 turns) and the "revert" ran a table of
+terrain substitutions instead of restoring anything — water became ford became
+dirt, mountains became hills — so every cast permanently reshaped the map with
+nothing in the description saying so. Both are gone, along with Bend Air.
+
+Each bent hex is remembered in `bend_revert_<turn>` and the turns that have work
+waiting are listed in `revert_bend_turn`; the revert event is filtered on that
+queue being non-empty, drops its turn from the list when done, and `prestart`/
+`victory` clear every queue the list still names.
 
 ---
 
@@ -843,18 +994,20 @@ stay in the campaign's `images/` by request, even though Phylactery uses them.
 
 ```
 magic/
-  utils.cfg     entry point: binary path, includes, unit types, global events
-  wml/          macros.cfg, spells.cfg, TRSS.cfg
-  lua/          core, state, ops, dialog, table, ai, ai_profiles
+  _init.cfg     entry point: binary path, includes, unit types, global events
+  core/         macros.cfg, core.lua, state.lua, ops.lua, dialog.lua
+  spells/       spells.cfg, TRSS.cfg, table.lua
+  ai/           ai.lua, ai_profiles.lua
   mod/          mod.cfg, mod.lua  (the modification)
   units/        unit types the spells need
   images/       art used only by the magic system
+  sounds/
   docs/
 ```
 
 | File | Role |
 |---|---|
-| `magic/_init.cfg` | Entry point. Adds the magic binary path, includes the wml/ files and unit types, loads `lua/core.lua`, defines the global events (turn reset, anti-leveling, etc.) |
+| `magic/_init.cfg` | Entry point. Adds the magic binary path, includes `core/macros.cfg`, `spells/TRSS.cfg`, `spells/spells.cfg` and the unit types, loads `core/core.lua`, defines the global events (turn reset, anti-leveling, etc.) |
 | `magic/core/macros.cfg` | WML macros for use in scenario files |
 | `magic/core/core.lua` | All `wml_actions`, caster registry, double-click handler |
 | `magic/core/state.lua` | WML ↔ Lua data bridge (`load` / `save` / `delete` / `from_config`) |
@@ -868,5 +1021,5 @@ magic/
 | `magic/mod/mod.cfg` | Modification: loads `mod.lua`, defines `MAGIC_MOD__EVENTS` |
 | `magic/mod/mod.lua` | Modification: options, awaken action, menu item, AI arming |
 | `magic/units/` | Elemental Air/Fire/Rock/Water (Summon), Brazier (Holy Ward), Phylactery. Mudcrawler, Swamp Lizard, Cave Bear, Yeti and Orcish Warlord come from mainline |
-| `magic/images/` | **Every** image the magic system uses (677 files), the familiar sprites excepted — see below |
+| `magic/images/` | **Every** image the magic system uses (692 files), the familiar sprites excepted — see below. Includes `halo/blindflash/`, the Heir to the Throne alchemist's smoke frames copied in for Flash, since core has no smoke halo |
 | `magic/sounds/` | The 15 add-on sounds the spells and the air elemental play |

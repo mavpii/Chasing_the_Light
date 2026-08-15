@@ -190,6 +190,24 @@ KINDS.aoe_targeted = function(u, p)
     if best then return { util = (p.base or 20) + bv, target = best } end
 end
 
+-- Damage that scales with the wounds the target already carries (Purge). It does
+-- nothing to a fresh unit and finishes a broken one, so what is valued is the
+-- kill, not the hit -- and `races` keeps the AI from spending a cast on something
+-- the spell cannot touch at all.
+KINDS.execute = function(u, p)
+    local best, bv
+    for _, e in ipairs(enemies_within(u, p.range or 1)) do
+        if not p.races or p.races[e.race] then
+            local dmg = adjusted_power(
+                math.floor((e.max_hitpoints - e.hitpoints) * (p.share or 0.5)), e, p.dtype)
+            local v = dmg
+            if dmg >= e.hitpoints then v = v + 50 end                 -- can finish it
+            if dmg > 0 and (not best or v > bv) then best, bv = e, v end
+        end
+    end
+    if best then return { util = (p.base or 15) + bv, target = best } end
+end
+
 KINDS.aoe_self = function(u, p)
     local r = p.radius or 1
     local foes = #enemies_within(u, r)
