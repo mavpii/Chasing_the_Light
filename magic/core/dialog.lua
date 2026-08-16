@@ -1133,14 +1133,17 @@ local function make_preshow(caster, caster_data, groups, selecting, free_slots)
                 and tostring(_"1 spell/turn")
                 or  (max_casts .. " " .. _"spells/turn")) .. "</span>   "
         elseif caster_data.polymorphed then
-            blocked_label = _"<span>  Blocked by\n  Polymorph</span>"
+            blocked_label = small and small_label(_"Polymorphed")
+                                  or  _"<span>  Blocked by\n  Polymorph</span>"
         elseif wesnoth.units.find_on_map{
             id=caster.id,
             wml.tag.filter_location{ radius=3, wml.tag.filter{ id="Haralin_mirror3" }}
         }[1] then
-            blocked_label = _"<span>  Blocked by\n Counterspell</span>"
+            blocked_label = small and small_label(_"Counterspelled")
+                                  or  _"<span>  Blocked by\n Counterspell</span>"
         elseif wml.variables["counterspell_active"] then
-            blocked_label = _"<span>  Blocked by\n Counterspell</span>"
+            blocked_label = small and small_label(_"Counterspelled")
+                                  or  _"<span>  Blocked by\n Counterspell</span>"
         -- A free-casting caster pays nothing, so none of the affordability checks
         -- below may block it (the spell's printed cost is still shown — it just
         -- isn't charged).
