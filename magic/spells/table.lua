@@ -571,6 +571,16 @@ local skill_set = {
 		description = header_spell().._"Spend <span color='#00bbe6' style='italic'>12 XP</span> and <span color='#c06a61' style='italic'>your attack</span> to blind every adjacent unit.\n           Blinded units have their attacks disabled and cannot enforce a <ref dst='movement'>ZoC</ref>.",
 		xp_cost=12, atk_cost=1,
 	},
+	-------------------------
+	-- GLYPH
+	-------------------------
+	[52] = {
+		id          = "skill_glyph",
+		label       = label(_"Glyph"),
+		image       = "attacks/circle-basic.png",
+		description = header_spell().._"Spend <span color='#00bbe6' style='italic'>6 XP</span> to set a trap on an empty adjacent hex.\n           The first unit to step on it stops there and takes <i>12 arcane</i> damage.",
+		xp_cost=6,
+	},
 }
 
 --###############################

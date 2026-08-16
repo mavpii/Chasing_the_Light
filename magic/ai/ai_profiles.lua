@@ -56,6 +56,10 @@ return {
     -- holy ward placed toward the enemy (caveat: only hurts undead)
     skill_ward      = { kind = "summon", threat = 3, base = 6 },
 
+    -- glyph trap: same placement logic as a summon (empty adjacent hex toward the
+    -- enemy), but it only pays off if something walks onto it, so it ranks low
+    skill_glyph     = { kind = "summon", threat = 3, base = 7 },
+
     -- bend nature (rose spells). CAVEAT: their push/lava-damage extras live in the
     -- interactive click handler, so an auto-cast only runs the per-hex _cast body.
     -- bend: every element now lasts 2 turns and the terrain always comes back, so

@@ -840,6 +840,36 @@ inside its ~860 ms on screen, and the last stage swaps to the tail frames
 (`[0009~0015]`), scaled up to `~SCALE(170,145)` and faded to `~O(35%)`, so the
 smoke visibly thins out instead of being cut off mid-frame.
 
+### Glyph (`skill_glyph`) — a trap that is an image, not a unit
+
+Targeted with `CTL_ADJACENT_SPELL` (radius 1, `ignore_units=true`, so only empty
+hexes light up), exactly like Summon — but nothing is placed on the map except an
+`[item]` image, `scenery/summoning-circle<1-6>.png`, the number rolled with
+`wesnoth.random` so two glyphs rarely look alike. A unit can therefore walk onto
+the hex; there is nothing standing there to block it.
+
+Each glyph is remembered in the `glyph_traps` array as `x`, `y` **and its image**:
+`remove_item` matches on the image path, so the exact one that was placed has to be
+stored, not re-derived.
+
+The `enter_hex` handler is what makes it a trap rather than a floor decoration —
+`moveto` would only fire if the unit *finished* its move on the glyph, letting
+anyone walk straight over it. It fires `[cancel_action]` first (the unit stops on
+the glyph, as mainline's own traps do), then removes the item and harms the unit.
+The harm filters on `$unit.id`, not on the hex: `enter_hex` fires around the step,
+so filtering by location risks looking for a unit that is not there yet.
+
+`victory` clears every glyph still on the map, since `[item]`s are saved scenario
+state and would otherwise ride into the next scenario.
+
+The whole cast animation happens on the target hex, not on the caster: the rune ring
+(Stasis's `mysticaltoad-magic` frames, in their own colour rather than Stasis's
+`~CS(-255,-255,-255)` stone-grey, scaled to `75,75` so it covers exactly one hex)
+runs there as a **halo** for 420 ms, then the glyph image takes its place. Halo paths
+animate (`[1~6]:70`); item *images* do not, which is why the ring is a halo and the
+glyph left behind is a single frame. The caster only plays its ordinary `healing`
+animation, the same one Disheal uses.
+
 ### Bend Nature (`skill_bend_*`) — one duration, no terraforming
 
 Rose targeting: six directions, up to four hexes, and the `_cast` event fires once
