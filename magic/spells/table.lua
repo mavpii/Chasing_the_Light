@@ -568,10 +568,7 @@ local skill_set = {
 		id          = "skill_blindflash",
 		label       = label(_"Flash"),
 		image       = "icons/contingency.png",
-		-- #po: Використайте <span color='#00bbe6' style='italic'>12 XP</span> та <span color='#c06a61' style='italic'>свою атаку</span>, щоб створити сліпучу хмару на сусідніх клітинках.\n           Усі всередині втрачають усі атаки та зону контролю. Триває до вашого наступного ходу.
-		-- Zones of control have no topic of their own; mainline links them to
-		-- 'movement' as well (core/help.cfg:172).
-		description = header_spell().._"Spend <span color='#00bbe6' style='italic'>12 XP</span> and <span color='#c06a61' style='italic'>your attack</span> to create a blinding cloud on the hexes around you.\n           Everyone inside loses all attacks and <ref dst='movement'>zone of control</ref>. Lasts until your next turn.",
+		description = header_spell().._"Spend <span color='#00bbe6' style='italic'>12 XP</span> and <span color='#c06a61' style='italic'>your attack</span> to blind every adjacent unit.\n           Blinded units have their attacks disabled and cannot enforce a <ref dst='movement'>ZoC</ref>.",
 		xp_cost=12, atk_cost=1,
 	},
 }

@@ -810,21 +810,34 @@ the living give the spell nothing to work on and the cast is refunded
 (`[caster_refund]` + `[caster_restore_casts]`) instead of being spent. It can
 never open a fight — only extend one.
 
-### Flash (`skill_blindflash`) — a cloud that stays
+### Flash (`skill_blindflash`) — a burst, not a lingering cloud
 
-Places `[item]` halos on the caster's hex and the six around it, and blinds
-everything standing there (`remove_attacks` — not `attacks_left=0`, which would
-still let the unit strike back — plus `zoc=no`). A `moveto` handler applies the
-same object to anything that walks in later, and the cloud is removed at the start
-of the caster's next turn.
+Blinds whatever stands on the caster's hex and the six around it at the moment of
+the cast (`remove_attacks` — not `attacks_left=0`, which would still let the unit
+strike back — plus `zoc=no`), and nothing else. The smoke is pure animation: the
+`[item]` halos go up, play, and are removed before the event returns, so the map
+carries no Flash state at all.
 
-The duration is `"turn end"`, **not** `"turn"`: a modifier with `duration="turn"`
-is stripped in `unit::new_turn()` — at the *start* of its owner's turn — so an
-enemy would shake the blindness off before ever acting.
+It used to be a cloud that stayed until the caster's next turn, with a `moveto`
+handler blinding anyone who walked in and a `turn refresh` handler lifting the
+halos. That meant three events, three persistent WML variables and a hazard the
+player had to keep track of across turns; the spell is easier to read and to plan
+around as a one-shot burst, so the walk-in and dispersal events are gone.
+
+Because the halos never outlive the event, the cleanup (`clear(BURST)`,
+`clear(FADING)`) runs after the `pcall` and unconditionally — `[item]`s are saved
+scenario state, so one escaping through an error would survive a save/load.
+
+The duration on the blindness is `"turn end"`, **not** `"turn"`: a modifier with
+`duration="turn"` is stripped in `unit::new_turn()` — at the *start* of its owner's
+turn — so an enemy would shake the blindness off before ever acting.
 
 Art is the Heir to the Throne alchemist's flashpowder smoke, recoloured in the
 image path (`~GS()~CS(190,190,190)`); the three `~CS` values must stay equal or the
-cloud picks up a tint.
+cloud picks up a tint. The frames run at `:45` rather than `:90` so the puff reads
+inside its ~860 ms on screen, and the last stage swaps to the tail frames
+(`[0009~0015]`), scaled up to `~SCALE(170,145)` and faded to `~O(35%)`, so the
+smoke visibly thins out instead of being cut off mid-frame.
 
 ### Bend Nature (`skill_bend_*`) — one duration, no terraforming
 

@@ -889,7 +889,7 @@ function wesnoth.interface.game_display.unit_status()
     if u.status.blinded then
         table.insert(status, wml.tag.element{
             image   = "misc/eye.png",
-            tooltip = _"blinded: This unit is caught in a blinding cloud. It has no attacks and holds no zone of control.",
+            tooltip = _"blinded: This unit has its attacks disabled and cannot enforce a ZoC.",
         })
     end
 

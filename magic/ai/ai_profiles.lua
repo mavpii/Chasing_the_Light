@@ -80,7 +80,7 @@ return {
 
     -- Flash disarms everything next to the caster, its own side included, so the
     -- high ally_penalty is the point: it is only worth casting when the caster is
-    -- the one surrounded and has nobody of its own standing in the cloud.
+    -- the one surrounded and has nobody of its own standing next to it.
     skill_blindflash = { kind = "aoe_self", radius = 1, power = 18, min = 2, ally_penalty = 14, base = 10 },
     skill_cataclysm = { kind = "aoe_self", radius = 4, power = 18, min = 3, ally_penalty = 20, base = 10 },
 
