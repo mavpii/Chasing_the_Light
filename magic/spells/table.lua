@@ -211,10 +211,10 @@ local skill_set = {
 		description = header_spell().._"Take the shape of another creature. Lasts until cancelled.\n            Replaces $caster’s attacks, spells, and passives, but does not affect hitpoints.",
 		description_extra_separator = ", ",
 		description_extra = {
-			skill_polymorph_lizard = _"           <i><ref dst='unit_Swamp Lizard'>Swamp Lizard</ref></i>",
-			skill_polymorph_bear   = _"           <i><ref dst='unit_Cave Bear'>Cave Bear</ref></i>",
-			skill_polymorph_yeti   = _"           <i><ref dst='unit_Yeti'>Yeti</ref></i>",
-			skill_polymorph_orc    = _"           <i><ref dst='unit_Orcish Warlord'>Orcish Warlord</ref></i>",
+			skill_polymorph_lizard = _"           <i><ref dst='unit_Swamp Lizard Poly'>Swamp Lizard</ref></i>",
+			skill_polymorph_bear   = _"           <i><ref dst='unit_Cave Bear Poly'>Cave Bear</ref></i>",
+			skill_polymorph_yeti   = _"           <i><ref dst='unit_Yeti Poly'>Yeti</ref></i>",
+			skill_polymorph_orc    = _"           <i><ref dst='unit_Orcish Warlord Poly'>Orcish Warlord</ref></i>",
 		},
 		subskills   = {
 			[1]={ id="skill_polymorph_lizard", xp_cost=8,  label="   <span>".._"Swamp Lizard".." (<span color='#00bbe6' style='italic'>".._"8 XP" .."</span>)</span>   " },

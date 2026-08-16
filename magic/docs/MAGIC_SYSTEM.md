@@ -120,7 +120,8 @@ All stored as WML variables under the prefix `caster_<unit_id>.*`.
 | `groups[i]` | `.spell_group_1` … `.spell_group_10` | comma-list | Spell pool per slot |
 | `spellcasting_disabled` | `.utils_spellcasting_allowed` | `"disabled"` / nil | Hides right-click menu |
 | `advancement_disabled` | `.utils_advancement_allowed` | `"disabled"` / nil | Hides advance button |
-| `polymorphed` | `.polymorphed` | any / nil | Blocks casting while set |
+| `polymorphed` | `.polymorphed` | form spell id / nil | Blocks casting while set; holds the id that must be cancelled |
+| — | `.captured_village_turn` | turn number / nil | Polymorph's village check (see below) |
 | `wait_to_select` | `.wait_to_select_spells` | `"yes"` / nil | Forces selection mode on next open |
 | `reselect_free` | `.reselect_free` | `true` / nil | Upgrade: shows "Change Spells" button |
 | `max_casts` | `.max_casts` | number (≥1) | Upgrade: casts allowed per turn |
@@ -855,6 +856,58 @@ waiting are listed in `revert_bend_turn`; the revert event is filtered on that
 queue being non-empty, drops its turn from the list when done, and `prestart`/
 `victory` clear every queue the list still names.
 
+### Polymorph (`skill_polymorph_*`) — the caster is replaced, not modified
+
+The cast stores the caster in `pre_polymorphed_caster_<id>`, kills it, and builds a
+fresh unit of the form's type with the same id, HP, XP, facing and `attacks_left`.
+`caster_<id>.polymorphed` holds **the form's spell id** — it is both the "casting is
+blocked" flag the dialog reads and the id the `victory` handler needs in order to
+cancel the right form, so it must never be set to a placeholder.
+
+**The forms carry their identity in the unit type, not in the cast event.**
+`magic/units/Polymorph_Forms.cfg` derives four `[base_unit]` types from mainline,
+each with the one thing that form is for:
+
+| Form | XP | Type | Ability | Role |
+|---|---|---|---|---|
+| Swamp Lizard | 8 | `Swamp Lizard Poly` | `poison` on the bite (+ inherited swamp lurk) | cheap debuffer, hides in swamp |
+| Cave Bear | 12 | `Cave Bear Poly` | `consume` — 30% of max HP per kill | burst recovery |
+| Yeti | 20 | `Yeti Poly` | `regenerates` | the wall: 142 HP and +8/turn anywhere |
+| Orcish Warlord | 32 | `Orcish Warlord Poly` | `charge` on the greatsword | 30×3 burst, double damage taken |
+
+Derived types matter for more than tidiness: the ability shows up on the unit's own
+help page, so `<ref dst='unit_Cave Bear Poly'>` in `table.lua` documents the form
+truthfully. This used to be two `[object]`s applied inside the cast event — one of
+them filtered on `Frost Stoat`, a form CtL never had, so it was dead code, and the
+bear's `consume` was invisible in the help browser because the link pointed at the
+stock `unit_Cave Bear` page.
+
+`consume` itself is a `[dummy]` special; the `last breath` handler in
+`EVENT_POLYMORPH` is what actually heals, and it filters out undead and elementals.
+
+**Moves after transforming.** The form gets `form.max_moves − (spent before the
+cast) − penalties`, so a bigger body does not refund the movement already used.
+Two penalties zero it outright:
+
+* `zoc_penalty` — the caster ended its move at 0 MP next to an enemy (stopped by a
+  zone of control), or has already attacked;
+* `village_penalty` — the caster captured a village this turn *and* still has 0 MP.
+
+Without the second one, "capture a village, then polymorph" hands out the whole
+difference between the two bodies' movement for free, because capturing sets moves
+to 0 and the formula reads that as "spent everything". The capture event stamps
+`caster_<id>.captured_village_turn` with the current turn; comparing turns rather
+than clearing a flag means no `new turn` bookkeeping, and pairing it with the 0-MP
+test makes an undone capture harmless — the undo gives the movement back, so the
+penalty no longer applies even though the stamp is still there.
+
+**No advancing as a beast.** A `pre advance` handler freezes any polymorphed caster
+at `max_experience − 1`. The beast is thrown away on cancel and the stored human is
+restored, so an AMLA taken in animal form would be lost — and worse, the AMLA resets
+`experience` to 0, and that zero is what gets copied back onto the caster. TDG marks
+its beast with `disable_stronger_amlas=yes`, but that variable only silences a TDG
+message; nothing in CtL reads it, so the block is what got ported, not the flag.
+
 ---
 
 ## Upgrade: Free Reselect
@@ -1113,6 +1166,6 @@ magic/
 | `magic/ai/ai_profiles.lua` | Editable catalogue of how the AI uses each spell (add/remove a line) |
 | `magic/mod/mod.cfg` | Modification: loads `mod.lua`, defines `MAGIC_MOD__EVENTS` |
 | `magic/mod/mod.lua` | Modification: options, awaken action, menu item, AI arming |
-| `magic/units/` | Elemental Air/Fire/Rock/Water (Summon), Brazier (Holy Ward), Phylactery. Mudcrawler, Swamp Lizard, Cave Bear, Yeti and Orcish Warlord come from mainline |
+| `magic/units/` | Elemental Air/Fire/Rock/Water (Summon), Brazier (Holy Ward), Phylactery, and `Polymorph_Forms.cfg` — the four Polymorph forms as `[base_unit]` derivatives of mainline types. Mudcrawler comes straight from mainline |
 | `magic/images/` | **Every** image the magic system uses (692 files), the familiar sprites excepted — see below. Includes `halo/blindflash/`, the Heir to the Throne alchemist's smoke frames copied in for Flash, since core has no smoke halo |
 | `magic/sounds/` | The 15 add-on sounds the spells and the air elemental play |
