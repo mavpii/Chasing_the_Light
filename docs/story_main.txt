@@ -13,6 +13,9 @@ I hope someone will carry on my work and find my notes useful.
 Glory to Ukraine!
 
 
+!!!OUTDATED!!!
+
+
 ===============================================================================================
 
 Scenario structure
