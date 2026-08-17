@@ -8,7 +8,7 @@ S1,S2:
 
 
 S7:
-- Додати юніта number-seventeen
+-! Додати юніта number-seventeen
 
 
 S10:
