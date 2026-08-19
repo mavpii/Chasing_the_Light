@@ -581,6 +581,55 @@ local skill_set = {
 		description = header_spell().._"Spend <span color='#00bbe6' style='italic'>6 XP</span> to set a trap on an empty adjacent hex.\n           The first unit to step on it stops there and takes <i>12 arcane</i> damage.",
 		xp_cost=6,
 	},
+	-------------------------
+	-- ALIEN BONES
+	-------------------------
+	[50] = {
+		id          = "skill_alien_bones",
+		label       = label(_"Alien Bones"),
+		image       = "icons/locked.png",
+		description = header_passive().._"Your skeleton is stitched together from beasts, not from a man.\n           Whenever an allied undead dies within <i>3</i> hexes of you, you scavenge its bones and heal <i>8 HP per its level</i>.",
+	},
+	-------------------------
+	-- MATTER EXCHANGE
+	-------------------------
+	[51] = {
+		id          = "skill_matter_exchange",
+		label       = label(_"Matter Exchange"),
+		image       = "icons/locked.png",
+		description = header_spell().._"Spend <span color='#00bbe6' style='italic'>28 XP</span> to trade your current hitpoints with a unit up to <i>5</i> hexes away.\n           Neither side may exceed its own maximum.",
+		xp_cost=28,
+	},
+	-------------------------
+	-- DECAY
+	-------------------------
+	[52] = {
+		id          = "skill_decay",
+		label       = label(_"Decay"),
+		image       = "icons/locked.png",
+		description = header_spell().._"Spend <span color='#00bbe6' style='italic'>22 XP</span> to rot everything within <i>2</i> hexes: enemies take <i>24 impact</i>,\n           and the ground beneath them crumbles to bare dirt, losing all terrain defence.",
+		xp_cost=22,
+	},
+	-------------------------
+	-- REFORGE
+	-------------------------
+	[53] = {
+		id          = "skill_reforge",
+		label       = label(_"Reforge"),
+		image       = "icons/locked.png",
+		description = header_spell().._"Spend <span color='#00bbe6' style='italic'>20 XP</span> to remake an adjacent ally into the next stage of its kind.\n           It does not summon anything new -- it perfects what already stands beside you.",
+		xp_cost=20,
+	},
+	-------------------------
+	-- EFFIGY
+	-------------------------
+	[54] = {
+		id          = "skill_effigy",
+		label       = label(_"Effigy"),
+		image       = "icons/locked.png",
+		description = header_spell().._"Spend <span color='#00bbe6' style='italic'>26 XP</span> to remake an adjacent undead of <i>level 2 or lower</i>\n           into a lesser copy of yourself.",
+		xp_cost=26,
+	},
 }
 
 --###############################

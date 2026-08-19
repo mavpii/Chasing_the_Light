@@ -126,6 +126,11 @@ return {
     -- are PASSIVE — auto-applied via refresh_skills, never cast — so no AI profile.
 
     -- Faisim — Group 4 soul & flame (strong, expensive; affordability gates them)
+    -- Джев'ян. hp_swap кастується лише коли обмін дає йому щонайменше min_gain HP.
+    skill_matter_exchange = { kind = "hp_swap", range = 5, min_gain = 12, loss_weight = 0.5, base = 20 },
+    skill_reforge         = { kind = "upgrade_ally", range = 1, threat = 5, base = 18 },
+    skill_effigy          = { kind = "transmute_ally", range = 1, max_level = 2, threat = 4, base = 22 },
+    skill_decay           = { kind = "aoe_self", radius = 2, power = 24, min = 2, base = 16 },
     skill_soul_siphon = { kind = "damage", range = 6, power = 30, dtype = "arcane", base = 22 },
     skill_oblivion    = { kind = "damage", range = 5, power = 50, dtype = "arcane", base = 40 },
     -- AoE on the clicked enemy's hex (harm_unit radius=2) -- score by cluster size, not just its own HP

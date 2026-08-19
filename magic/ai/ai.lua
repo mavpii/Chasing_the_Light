@@ -260,6 +260,51 @@ KINDS.buff_team = function(u, p)
     return { util = (p.base or 10) + (p.weight or 8) * allies, self = true }
 end
 
+-- Обмін поточними HP з ціллю (Джев'янове "Обмін матерій"). Має сенс ТІЛЬКИ коли
+-- кастер поранений, а ціль здоровіша за нього: інакше він добровільно віддає
+-- власне здоров'я. Тому рахуємо реальний приріст і не повертаємо нічого, поки
+-- він не перевищить min_gain. loss_weight -- наскільки цінна шкода, завдана цілі.
+KINDS.hp_swap = function(u, p)
+    local best, bv
+    for _, e in ipairs(enemies_within(u, p.range or 1)) do
+        local gain = math.min(e.hitpoints, u.max_hitpoints) - u.hitpoints
+        local loss = e.hitpoints - math.min(u.hitpoints, e.max_hitpoints)
+        if gain >= (p.min_gain or 8) then
+            local v = gain + loss * (p.loss_weight or 0.5)
+            if not best or v > bv then best, bv = e, v end
+        end
+    end
+    if best then return { util = (p.base or 20) + bv, target = best } end
+end
+
+-- Підняти сусіда на рівень ("Перековка"). Вартує лише коли поруч є бій і коли
+-- є кого підіймати -- юніт без advances_to від закляття нічого не отримає.
+KINDS.upgrade_ally = function(u, p)
+    if #enemies_within(u, p.threat or 5) < 1 then return nil end
+    local best, bv
+    for _, a in ipairs(allies_within(u, p.range or 1, false)) do
+        if a.advances_to and #a.advances_to > 0 then
+            local v = (a.level or 1) * 10 + (a.max_hitpoints - a.hitpoints) * 0.1
+            if not best or v > bv then best, bv = a, v end
+        end
+    end
+    if best then return { util = (p.base or 18) + bv, target = best } end
+end
+
+-- Переліпити сусіда на слабку копію себе ("Подоба"). Придатна лише дрібнота
+-- (max_level), і серед неї беремо найдешевшу втрату -- найнижчий рівень.
+KINDS.transmute_ally = function(u, p)
+    if #enemies_within(u, p.threat or 4) < 1 then return nil end
+    local best, bv
+    for _, a in ipairs(allies_within(u, p.range or 1, false)) do
+        if (a.level or 1) <= (p.max_level or 2) then
+            local v = 20 - (a.level or 1) * 4
+            if not best or v > bv then best, bv = a, v end
+        end
+    end
+    if best then return { util = (p.base or 22) + bv, target = best } end
+end
+
 KINDS.summon = function(u, p)
     if #enemies_within(u, p.threat or 4) < 1 then return nil end
     local hex = empty_adjacent_toward_enemy(u)
