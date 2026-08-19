@@ -60,12 +60,12 @@ Peaceful life of the Green Isle's inhabitants turned into a nightmare in an inst
 - 08_Quiescence✔
 ### Chapter 3: Tough Choices                                                                                                                                 
 - 09_Stormvale✔                                                                                                                             
-- 10_Priorities✔                                                                                                                                 
-- 11_Duty🔁️
-- 12_Dissonance
+- 10_Retone🔁️                                                                                                                                
+- 11_Dissonance
+- 12_Refrain
 - 12x_Accord
-- 13_Southbay_Outskirts
-- 14_Caror
+- 13_Cadence
+- 14_Requiem
 ### Chapter 4: Against the World
 - 15_Retone (TBD)
 - 16_Frontline | 15_Fording (TBD)
