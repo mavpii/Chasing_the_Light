@@ -67,10 +67,8 @@ Peaceful life of the Green Isle's inhabitants turned into a nightmare in an inst
 - 13_Cadence
 - 14_Requiem
 ### Chapter 4: Against the World
-- 15_Retone (TBD)
-- 16_Frontline | 15_Fording (TBD)
-- 16x_Asylum (TBD)
-- 17_Deceivers
-- 18_Gambit
-- 19_Lenvan
-- 20_Temple_in_the_Deep
+- 15_Guile
+- 16_Deceivers
+- 17_Gambit
+- 18_Lenvan
+- 19_Temple_in_the_Deep
