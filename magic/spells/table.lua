@@ -584,7 +584,7 @@ local skill_set = {
 	-------------------------
 	-- ALIEN BONES
 	-------------------------
-	[50] = {
+	[53] = {
 		id          = "skill_alien_bones",
 		label       = label(_"Alien Bones"),
 		image       = "icons/locked.png",
@@ -593,7 +593,7 @@ local skill_set = {
 	-------------------------
 	-- MATTER EXCHANGE
 	-------------------------
-	[51] = {
+	[54] = {
 		id          = "skill_matter_exchange",
 		label       = label(_"Matter Exchange"),
 		image       = "icons/locked.png",
@@ -603,7 +603,7 @@ local skill_set = {
 	-------------------------
 	-- DECAY
 	-------------------------
-	[52] = {
+	[55] = {
 		id          = "skill_decay",
 		label       = label(_"Decay"),
 		image       = "icons/locked.png",
@@ -613,7 +613,7 @@ local skill_set = {
 	-------------------------
 	-- REFORGE
 	-------------------------
-	[53] = {
+	[56] = {
 		id          = "skill_reforge",
 		label       = label(_"Reforge"),
 		image       = "icons/locked.png",
@@ -623,7 +623,7 @@ local skill_set = {
 	-------------------------
 	-- EFFIGY
 	-------------------------
-	[54] = {
+	[57] = {
 		id          = "skill_effigy",
 		label       = label(_"Effigy"),
 		image       = "icons/locked.png",
