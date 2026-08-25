@@ -61,7 +61,7 @@ Peaceful life of the Green Isle's inhabitants turned into a nightmare in an inst
 ### Chapter 3: Tough Choices                                                                                                                                 
 - 09_Stormvale✔                                                                                                                             
 - 10_Retone🔁️                                                                                                                                
-- 11_Dissonance
+- 11_Dissonance🔁️ 
 - 12_Refrain
 - 12x_Accord
 - 13_Cadence
