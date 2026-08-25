@@ -630,6 +630,16 @@ local skill_set = {
 		description = header_spell().._"Spend <span color='#00bbe6' style='italic'>26 XP</span> to remake an adjacent undead of <i>level 2 or lower</i>\n           into a lesser copy of yourself.",
 		xp_cost=26,
 	},
+	-------------------------
+	-- BONEMAIL
+	-------------------------
+	[58] = {
+		id          = "skill_bonemail",
+		label       = label(_"Bonemail"),
+		image       = "icons/cuirass_muscled.png",
+		description = header_spell().._"Spend <span color='#00bbe6' style='italic'>12 XP</span> to get bone armor, with each undead dying within <i>3</i> hexes adding a plate, up to 3.\n           At full armor: <i>+60% blade</i> and <i>+80% pierce</i>, but <i>-20% impact</i> and <i>-60% arcane</i>.",
+		xp_cost=12,
+	},
 }
 
 --###############################
