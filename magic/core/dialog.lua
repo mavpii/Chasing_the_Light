@@ -971,6 +971,8 @@ local function build_layout(caster, caster_data, groups, selecting, free_slots)
     return dialog
 end
 
+local selection_committed = false
+
 ---------------------------------------------------------------------------
 -- Public: make_preshow
 -- Returns a function(dialog) that populates and wires the dialog.
@@ -1058,6 +1060,7 @@ local function make_preshow(caster, caster_data, groups, selecting, free_slots)
                     for i = 1, #free_slots do
                         if slot_choice[i] then list[#list + 1] = slot_choice[i] end
                     end
+                    selection_committed = true
                     wesnoth.sync.invoke_command("magic_commit",
                         { id = caster.id, equipped = table.concat(list, ","), wait = "" })
                     gui.widget.close(dlg)
@@ -1067,6 +1070,7 @@ local function make_preshow(caster, caster_data, groups, selecting, free_slots)
             local wb = dlg["wait_button"]
             if wb then
                 wb.on_button_click = function()
+                    selection_committed = true
                     wesnoth.sync.invoke_command("magic_commit",
                         { id = caster.id, equipped = "", wait = "yes" })
                     gui.widget.close(dlg)
@@ -1275,6 +1279,7 @@ local function make_preshow(caster, caster_data, groups, selecting, free_slots)
                             table.insert(new_eq, sel.id)
                         end
                     end
+                    selection_committed = true
                     wesnoth.sync.invoke_command("magic_commit",
                         { id = caster.id, equipped = table.concat(new_eq, ","), wait = "" })
                     gui.widget.close(dlg)
@@ -1283,6 +1288,7 @@ local function make_preshow(caster, caster_data, groups, selecting, free_slots)
             local wb = dlg["wait_button"]
             if wb then
                 wb.on_button_click = function()
+                    selection_committed = true
                     wesnoth.sync.invoke_command("magic_commit",
                         { id = caster.id, equipped = "", wait = "yes" })
                     gui.widget.close(dlg)
@@ -1359,8 +1365,13 @@ local function open_dialog(caster, caster_data, selecting)
         -- The dialog is local UI; the Confirm / Choose Later button handlers commit
         -- the result on all clients via the magic_commit synced command (data passed
         -- as parameters). This is the same pattern cast mode uses for spell costs.
+        selection_committed = false
         wesnoth.sync.evaluate_single(function()
             gui.show_dialog(dialog, preshow)
+            if not selection_committed and #(caster_data.equipped or {}) == 0 then
+                wesnoth.sync.invoke_command("magic_commit",
+                    { id = caster_id, equipped = "", wait = "yes" })
+            end
         end)
         return false -- no reselect from selection mode
 
