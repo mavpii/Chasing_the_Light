@@ -637,7 +637,7 @@ local skill_set = {
 		id          = "skill_bonemail",
 		label       = label(_"Bonemail"),
 		image       = "icons/cuirass_muscled.png",
-		description = header_spell().._"Spend <span color='#00bbe6' style='italic'>12 XP</span> to get bone armor, with each undead dying within <i>3</i> hexes adding a plate, up to 3.\n           At full armor: <i>+60% blade</i> and <i>+80% pierce</i>, but <i>-20% impact</i> and <i>-60% arcane</i>.",
+		description = header_spell().._"Spend <span color='#00bbe6' style='italic'>12 XP</span> to take on a skeleton's resistances: <i>40% blade</i>, <i>60% pierce</i>, <i>60% cold</i>.\n           But <i>-20% impact</i>, <i>-20% fire</i> and <i>-40% arcane</i>. Lasts until cancelled.",
 		xp_cost=12,
 	},
 }
