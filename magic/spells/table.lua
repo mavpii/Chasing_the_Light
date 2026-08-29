@@ -674,11 +674,11 @@ local skill_set = {
 		description = header_attack().._"Ranged 3x3 fire. A unit it hits is blinded until the end of the turn.\n           Blinded units have their attacks disabled and cannot enforce a <ref dst='movement'>ZoC</ref>.",
 	},
 	-------------------------
-	-- SPEAR
+	-- STING
 	-------------------------
 	[63] = {
-		id          = "skill_spear",
-		label       = label(_"Spear"),
+		id          = "skill_sting",
+		label       = label(_"Sting"),
 		image       = "attacks/spear-magic.png",
 		description = header_attack().._"Melee 14x2 pierce, <i><ref dst='weaponspecial_impale'>impale</ref></i>.\n           An adjacent enemy that moves out of reach takes <i>14 pierce</i> damage.",
 	},
