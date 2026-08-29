@@ -6,13 +6,24 @@ Ukrainian
 S1,S2:
 - Оновити story
 
+S4:
+- Переробити друге випробування відповідно до нових заклять
+
 
 S7:
 -! Додати юніта number-seventeen
 
 
+S9:
+- Переробити частину квестів, щоб враховувати нові закляття Даеоли
+
+
 S10:
 - Замінити на Retone
+
+
+S11,S12,S12x:
+- Зробити
 
 
 Історія:
@@ -20,10 +31,10 @@ S10:
 
 
 Закляття:
-- Регрупувати закляття за стандартом TDG
-- Зменшити кількість Spell Groups
+- Регрупувати закляття Гараліна за стандартом TDG
 - Переробити Haralin's spell set in Chapter 2. Додати більш потужні закляття.
 - Переробити Haralin's spell set in Chapter 3/4
+- Скоригувати розблокування нових заклять для Даеоли
 
 
 Юніти:
@@ -32,82 +43,18 @@ S10:
 
 Інше:
 - Доробити журнал
-- Портрети Даеоли з намистом/без
+- Розмістити портрети Даеоли з намистом/без
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-НЕЗАЛЕЖНЕ ВІД МЕНЕ:
 Графіка:
 - Анімації атаки/захисту/смерті для Faisim
 
 
 Портрети:
-- Дати портретам Аси більш бронзовий відтінок шкіри
-- Зробити Асу з Chapter 3 молодшою на вигляд
-- Зробити Гараліна з Chapter 3 молодшим, прибрати закляття
-
-
-
-
-ПІСЛЯ ВСЬОГО ІНШОГО:
-S11:
-- Прибрати відхід Єнцира за підкріпленням, замість цього він відпочиває в селі біля озера
-- Портал Даеола може відкрити лише якщо підібрала обруч в S9. Це веде до порятунку ветеранів та босфайту в S12
-- Доробити
-
-
-S12:
-- Створити каркас
-- Зробити мапу
+- Отримати від number-seventeen оновлені портрети для Гараліна та Аси
 
 
 Інше:
 - Протестувати кампанію 2-3 рази
-
-
-
-
-
-
-================================
-Chasing the Light: 2.0
-English OUTDATED
-================================
-
-
-S10:
-- Add a time limit for units to desert
-- Clarify that Asa will not desert
-- Simplify access to the Place of Force
-- Clarify exactly what benefits the player receives for holding back the undead
-- Add a note to the objectives that might hint at Haralin's leaving.
-
-
-Storyline:
-- Modify the storyline of Chapter 2 to take into account Dalas' ideas/suggestions
-
-
-Spells:
-- Regroup spells according to the standards of TDG
-- Reduce the number of spell groups
-- Add healing-related spells for Daeola. Passive XP for healing
-- Rework Bend Nature
-- Rework Haralin's spell set in Chapter 2. Add more powerful spells.
-- Rework Haralin's spell set in Chapters 3/4.
-
-
-Units:
-- Buff the Spell Knight

@@ -292,8 +292,8 @@ local skill_set = {
 	-------------------------
 	[24] = {
 		id          = "skill_disattack",
-		label       = label(_"Lightbeam"),
-		image       = "attacks/lightbeam.png",
+		label       = label(_"Ray of Light"),
+		image       = "attacks/beam-eye.png",
 		-- #po: Використайте <span color='#00bbe6' style='italic'>6 XP</span>, щоб атакувати ворога дальньою містичною атакою <b>9x3</b>. \n<i>6 клітинок.</i>
 		description = header_spell().._"Spend <span color='#00bbe6' style='italic'>6 XP</span> to attack the enemy with a <b>9x3</b> ranged arcane attack. \n"..header_radius().._"<i>6 hexes.</i>",
 		xp_cost=6,
@@ -355,9 +355,9 @@ local skill_set = {
 	-------------------------
 	[30] = {
 		id          = "skill_lightbeam",
-		label       = label(_"Ray of Light"),
-		image       = "attacks/beam-eye.png",
-		description = header_attack().._"Ranged 15x2 arcane, <i><ref dst='weaponspecial_magical'>magical</ref></i>.",
+		label       = label(_"Lightbeam"),
+		image       = "attacks/lightbeam.png",
+		description = header_attack().._"Ranged 12x3 arcane, <i><ref dst='weaponspecial_magical'>magical</ref></i>.",
 	},
 	-------------------------
 	-- MASSHEAL
@@ -545,7 +545,7 @@ local skill_set = {
 		id          = "skill_empathy",
 		label       = label(_"Empathy"),
 		image       = "icons/potion_red_small.png",
-		description = header_passive().._"Whenever your healing ability restores allies at the start of your turn,\n               you gain <span color='#00bbe6' style='italic'>2 XP</span> for every unit you heal.",
+		description = header_passive().._"Whenever an adjacent ally regains hitpoints, you gain <span color='#00bbe6' style='italic'>XP equal to half that amount</span>.",
 	},
 	-------------------------
 	-- DISPEL
@@ -554,10 +554,6 @@ local skill_set = {
 		id          = "skill_dispel",
 		label       = label(_"Purge"),
 		image       = "attacks/eyeofstorm.png",
-		-- #po: Використайте <span color='#00bbe6' style='italic'>14 XP</span>, щоб завдати <b>сусідньому</b> мерцю або монстру половину вже втраченого ним здоров'я.
-		-- Races are help SECTIONS, so their links need the '..' prefix that mainline
-		-- uses too (core/encyclopedia/geography.cfg: dst='..race_elf'); without it
-		-- the link resolves to a topic that does not exist and opens blank.
 		description = header_spell().._"Spend <span color='#00bbe6' style='italic'>14 XP</span> to deal an <b>adjacent</b> <ref dst='..race_undead'>undead</ref> or <ref dst='..race_monster'>monster</ref> half the damage it has already taken.",
 		xp_cost=14,
 	},
@@ -577,7 +573,7 @@ local skill_set = {
 	[52] = {
 		id          = "skill_glyph",
 		label       = label(_"Glyph"),
-		image       = "attacks/circle-basic.png",
+		image       = "attacks/rune.png",
 		description = header_spell().._"Spend <span color='#00bbe6' style='italic'>6 XP</span> to set a trap on an empty adjacent hex.\n           The first unit to step on it stops there and takes <i>12 arcane</i> damage.",
 		xp_cost=6,
 	},
@@ -639,6 +635,52 @@ local skill_set = {
 		image       = "icons/cuirass_muscled.png",
 		description = header_spell().._"Spend <span color='#00bbe6' style='italic'>12 XP</span> to take on a skeleton's resistances: <i>40% blade</i>, <i>60% pierce</i>, <i>60% cold</i>.\n           But <i>-20% impact</i>, <i>-20% fire</i> and <i>-40% arcane</i>. Lasts until cancelled.",
 		xp_cost=12,
+	},
+	-------------------------
+	-- REDEMPTION
+	-------------------------
+	[59] = {
+		id          = "skill_redemption",
+		label       = label(_"Redemption"),
+		image       = "icons/sap.png",
+		description = header_attack().._"Melee 7x3 arcane, <i><ref dst='weaponspecial_magical'>magical</ref></i>, <i><ref dst='weaponspecial_redemption'>redemption</ref></i>.",
+	},
+	-------------------------
+	-- HEALING
+	-------------------------
+	[60] = {
+		id          = "skill_healing",
+		label       = label(_"Healing"),
+		image       = "attacks/entangle.png",
+		description = header_passive().._"Gain <i><ref dst='ability_heals_8'>heals +8</ref></i> and <i><ref dst='ability_cures'>cures</ref> abilities</i>.",
+	},
+	-------------------------
+	-- INTERDICT
+	-------------------------
+	[61] = {
+		id          = "skill_interdict",
+		label       = label(_"Interdict"),
+		image       = "attacks/kelp.png",
+		description = header_spell().._"Spend <span color='#00bbe6' style='italic'>16 XP</span> to interdict one adjacent, empty hex.\n           No unit can enter or cross it. Lasts until cancelled.",
+		xp_cost=16,
+	},
+	-------------------------
+	-- DAZZLE
+	-------------------------
+	[62] = {
+		id          = "skill_dazzle",
+		label       = label(_"Dazzle"),
+		image       = "attacks/fire-blast.png",
+		description = header_attack().._"Ranged 3x3 fire. A unit it hits is blinded until the end of the turn.\n           Blinded units have their attacks disabled and cannot enforce a <ref dst='movement'>ZoC</ref>.",
+	},
+	-------------------------
+	-- SPEAR
+	-------------------------
+	[63] = {
+		id          = "skill_spear",
+		label       = label(_"Spear"),
+		image       = "attacks/spear-magic.png",
+		description = header_attack().._"Melee 14x2 pierce, <i><ref dst='weaponspecial_impale'>impale</ref></i>.\n           An adjacent enemy that moves out of reach takes <i>14 pierce</i> damage.",
 	},
 }
 
