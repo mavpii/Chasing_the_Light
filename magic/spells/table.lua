@@ -603,7 +603,7 @@ local skill_set = {
 		id          = "skill_decay",
 		label       = label(_"Decay"),
 		image       = "icons/locked.png",
-		description = header_spell().._"Spend <span color='#00bbe6' style='italic'>22 XP</span> to rot everything within <i>2</i> hexes: enemies take <i>24 impact</i>,\n           and the ground beneath them crumbles to bare dirt, losing all terrain defence.",
+		description = header_spell().._"Spend <span color='#00bbe6' style='italic'>22 XP</span> to rot everything within <i>2</i> hexes: enemies take <i>24 impact</i>.",
 		xp_cost=22,
 	},
 	-------------------------
@@ -613,7 +613,7 @@ local skill_set = {
 		id          = "skill_reforge",
 		label       = label(_"Reforge"),
 		image       = "icons/locked.png",
-		description = header_spell().._"Spend <span color='#00bbe6' style='italic'>20 XP</span> to remake an adjacent ally into the next stage of its kind.\n           It does not summon anything new -- it perfects what already stands beside you.",
+		description = header_spell().._"Spend <span color='#00bbe6' style='italic'>20 XP</span> to remake an adjacent ally into the next level of its type.",
 		xp_cost=20,
 	},
 	-------------------------
@@ -680,7 +680,7 @@ local skill_set = {
 		id          = "skill_sting",
 		label       = label(_"Sting"),
 		image       = "attacks/spear-magic.png",
-		description = header_attack().._"Melee 14x2 pierce, <i><ref dst='weaponspecial_impale'>impale</ref></i>.\n           An adjacent enemy that moves out of reach takes <i>14 pierce</i> damage.",
+		description = header_attack().._"Melee 17x2 pierce, <i><ref dst='weaponspecial_impale'>impale</ref></i>.\n           An adjacent enemy that moves out of reach takes <i>14 pierce</i> damage.",
 	},
 }
 
