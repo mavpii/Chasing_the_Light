@@ -322,7 +322,7 @@ local function build_picker_grid(spells)
                     T.row{ T.column{ horizontal_alignment="center", border="all", border_size=3,
                         T.image{ id="pick_img" .. idx, label = spell_image(spell) }}},
                     T.row{ T.column{ horizontal_alignment="center", border="bottom", border_size=3,
-                        T.label{ id="pick_name" .. idx, use_markup=true,
+                        T.label{ id="pick_name" .. idx, use_markup=true, wrap=true,
                             label = "<span size='small'>" .. compact_name(spell) .. "</span>" }}},
                 }}})
     end
@@ -365,7 +365,7 @@ local function build_picker_list(spells)
                     T.column{ border="all", border_size=4, horizontal_alignment="center", vertical_alignment="center",
                         T.image{ id="pick_list_img" .. idx, label = spell_image(spell) }},
                     T.column{ border="all", border_size=4, horizontal_alignment="left", vertical_alignment="center",
-                        T.label{ id="pick_list_name" .. idx, use_markup=true,
+                        T.label{ id="pick_list_name" .. idx, use_markup=true, wrap=true,
                             label = "<span size='small'>" .. compact_name(spell) .. "</span>" }},
                     -- No grow: the spacer row above already fixes this column's
                     -- width, and growing it back would undo that.
@@ -400,12 +400,21 @@ end
 -- sizes elsewhere in core Wesnoth. Width is tuned per view (grid's rows are
 -- much narrower than list's, and since size_lock fixes width unconditionally
 -- too, sharing one value would either starve the list's description column or
--- stretch the grid wider than its content needs). Both use screen-relative
--- formulas (same mechanism already used in this addon by
+-- stretch the grid wider than its content needs). Height and the list's width
+-- are screen-relative (same mechanism already used in this addon by
 -- journey_ui.lua/outro_teaser.lua) capped with an absolute pixel ceiling so
 -- the box neither overflows small screens nor balloons on huge ones.
+--
+-- The grid's width cannot be: its 6 cells are a fixed 90px each, so the view
+-- needs 6 * (90 + 4 + 4) + a 15px scrollbar = 603px, and size_lock with
+-- horizontal_scrollbar_mode="never" cannot lay out anything narrower -- gui2
+-- throws layout_exception_width_resize_failed, which has no what() of its own
+-- and so reaches Lua as a bare "std::exception". A screen-relative width fell
+-- under 603 on any canvas below ~1725px (a 1600-wide window, or 1920 at UI
+-- scale 2), so it is pinned to the content instead and only ever shrinks to
+-- stay on a canvas too small to hold it.
 local PICKER_HEIGHT     = "(min(700, screen_height * 65 / 100))"
-local PICKER_GRID_WIDTH = "(min(650, screen_width * 35 / 100))"
+local PICKER_GRID_WIDTH = "(min(650, max(610, screen_width - 60)))"
 local PICKER_LIST_WIDTH = "(min(900, screen_width * 45 / 100))"
 
 -- Wraps any picker content grid in a scrollbar_panel locked to PICKER_HEIGHT
