@@ -178,7 +178,7 @@ function wml_actions.note_paper(cfg)
 	local paper_window = wml.load("~add-ons/Chasing_the_Light/gui/widget/window_transparent.cfg")
     gui.add_widget_definition("window", "transparent", wml.get_child(paper_window, 'window_definition'))
 	
-	local result = wesnoth.sync.evaluate_single(function()
+	wesnoth.sync.run_unsynced(function()
 		return { value = gui.show_dialog(wml.get_child(dialog_wml, 'resolution'), pre_show) }
 	end)
 

@@ -613,7 +613,7 @@ local function build_header(caster_data, selecting)
         T.row{ T.column{
             T.label{ definition="title", horizontal_alignment="center", label=title }}},
         T.row{ T.column{ border="top", border_size=15,
-            T.label{ use_markup=true, label=help }}},
+            T.label{ use_markup=true, wrap=true, label=help }}},
         T.row{ T.column{ border="top", border_size=15,
             T.image{ label="icons/banner2.png" }}},
     }

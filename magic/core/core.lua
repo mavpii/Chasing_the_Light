@@ -683,10 +683,29 @@ end
 -- SELECT / SHOW CASTER SKILLS
 ---------------------------------------------------------------------------
 
-local function open_for_unit(u, force_select)
+local function dialog_owner(u)
+    local side = wesnoth.sides[u.side]
+    if not (side and side.controller == "human" and side.is_local) then return false end
+    return true, wml.variables["side_number"] == u.side
+end
+
+local pending_select_ids = {}
+
+local function open_for_unit(u, force_select, queue_if_early)
     if wml.variables["is_badly_timed"] then return end
     local data = CasterState.load(u.id)
     if not data or data.spellcasting_disabled then return end
+
+    local owned, now = dialog_owner(u)
+    if not (owned and now) then
+        if owned and queue_if_early then
+            for _, id in ipairs(pending_select_ids) do
+                if id == u.id then return end
+            end
+            pending_select_ids[#pending_select_ids + 1] = u.id
+        end
+        return
+    end
 
     wml.variables["current_caster"] = u.id
 
@@ -710,34 +729,64 @@ end
 -- moment — the same approach RESELECT_SKILLS_AFTER_OBJECTIVES already relies on.
 local deferred_select_ids = {}
 
-wml_actions["select_caster_skills"] = function(cfg)
-    local units = wesnoth.units.find_on_map(require_filter(cfg, "select_caster_skills"))
-    if #units == 0 then return end
+local function schedule_deferred(ids)
+    if #ids == 0 then return end
 
     local schedule = (#deferred_select_ids == 0) -- only install the handler once
-    for _, u in ipairs(units) do
-        deferred_select_ids[#deferred_select_ids + 1] = u.id
+    for _, id in ipairs(ids) do
+        deferred_select_ids[#deferred_select_ids + 1] = id
     end
     if not schedule then return end
 
     local prev = wesnoth.game_events.on_mouse_move
     wesnoth.game_events.on_mouse_move = function(x, y)
         wesnoth.game_events.on_mouse_move = prev -- one-shot: restore previous handler
-        local ids = deferred_select_ids
+        local queue = deferred_select_ids
         deferred_select_ids = {}
         wesnoth.audio.play("miss-2.ogg")
-        for _, id in ipairs(ids) do
+        for _, id in ipairs(queue) do
             local u = wesnoth.units.find_on_map{ id = id }[1]
-            if u then open_for_unit(u, true) end
+            if u then open_for_unit(u, true, true) end
         end
         if prev then return prev(x, y) end
     end
 end
 
+wml_actions["select_caster_skills"] = function(cfg)
+    local units = wesnoth.units.find_on_map(require_filter(cfg, "select_caster_skills"))
+    local ids = {}
+    for _, u in ipairs(units) do ids[#ids + 1] = u.id end
+    schedule_deferred(ids)
+end
+
+---------------------------------------------------------------------------
+-- PENDING SELECTS
+---------------------------------------------------------------------------
+
+wml_actions["magic_flush_pending_selects"] = function(_cfg)
+    if #pending_select_ids == 0 then return end
+
+    local keep, ready = {}, {}
+    for _, id in ipairs(pending_select_ids) do
+        local u = wesnoth.units.find_on_map{ id = id }[1]
+        if u then
+            local owned, now = dialog_owner(u)
+            if owned and now then
+                ready[#ready + 1] = id
+            elseif owned then
+                keep[#keep + 1] = id
+            end
+        end
+    end
+
+    pending_select_ids = keep
+    schedule_deferred(ready)
+end
+
 wml_actions["show_caster_skills"] = function(cfg)
     wesnoth.audio.play("miss-2.ogg")
     local units = wesnoth.units.find_on_map(require_filter(cfg, "show_caster_skills"))
-    for _, u in ipairs(units) do open_for_unit(u, false) end
+    for _, u in ipairs(units) do open_for_unit(u, false, false) end
 end
 
 ---------------------------------------------------------------------------

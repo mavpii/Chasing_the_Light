@@ -31,7 +31,7 @@ function wml_actions.caves_map(cfg)
     gui.add_widget_definition("window", "transparent", window_def)
 
     -- показ діалогу (як у note_paper)
-    local result = wesnoth.sync.evaluate_single(function()
+    wesnoth.sync.run_unsynced(function()
         return {
             value = gui.show_dialog(resolution, pre_show)
         }

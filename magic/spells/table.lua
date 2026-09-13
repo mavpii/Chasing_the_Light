@@ -682,6 +682,33 @@ local skill_set = {
 		image       = "attacks/spear-magic.png",
 		description = header_attack().._"Melee 17x2 pierce, <i><ref dst='weaponspecial_impale'>impale</ref></i>.\n           An adjacent enemy that moves out of reach takes <i>14 pierce</i> damage.",
 	},
+	-------------------------
+	-- UNDEATH
+	-------------------------
+	[64] = {
+		id          = "skill_undeath",
+		label       = label(_"Undeath"),
+		image       = "icons/locked.png",
+		description = header_passive().._"Every <ref dst='..race_human'>human</ref> that dies anywhere on the battlefield rises on your side.\n           <i>Level 1</i> dead rise as a <ref dst='unit_Walking Corpse'>Walking Corpse</ref>, <i>level 2</i> and above as a <ref dst='unit_Soulless'>Soulless</ref>.",
+	},
+	-------------------------
+	-- SACRIFICE
+	-------------------------
+	[65] = {
+		id          = "skill_sacrifice",
+		label       = label(_"Sacrifice"),
+		image       = "icons/locked.png",
+		description = header_passive().._"Every hit you take heals you to full and is passed on to a random ally instead.\n           That ally takes <i>100%</i> of the damage, and the blow can kill it.",
+	},
+	-------------------------
+	-- RUBY COMET
+	-------------------------
+	[66] = {
+		id          = "skill_ruby_comet",
+		label       = label(_"Comet"),
+		image       = "icons/locked.png",
+		description = header_attack().._"Ranged 24x4 fire, <i><ref dst='weaponspecial_magical'>magical</ref></i>.\n           Meteors fall from the sky onto the target.",
+	},
 }
 
 --###############################

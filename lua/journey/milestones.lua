@@ -17,6 +17,7 @@ local JOURNEYLOG_WML_STORE = "__naia_journeylog_progression"
 local JOURNEYLOG_UI_HOTKEY = "j"
 
 local function milestone_ui_impl(banner_text)
+	if CTL_JOURNAL_DISABLED then return end
 	local banner = ("<span color='#fd8'>★</span> %s"):format(
 		tostring( _ "New knowledge unlocked — %s to browse journal"):format(
 			"<span color='#fd8' face='monospace' weight='bold'>" ..

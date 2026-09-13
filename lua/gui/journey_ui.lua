@@ -2373,6 +2373,7 @@ end
 --   [/journeylog]
 --
 function wesnoth.wml_actions.journeylog()
+	if CTL_JOURNAL_DISABLED then return end
 	-- [journeylog] does not modify the gamestate, so it does not require a
 	-- synced context to run.
 	wesnoth.sync.run_unsynced(function() journeylog_ui() end)
@@ -2382,6 +2383,7 @@ end
 -- Create WML context menu items
 --
 
+if not CTL_JOURNAL_DISABLED then
 wesnoth.wml_actions.set_menu_item {
 	id = "naia:70_journeylog",
 	description = _ "Journal",
@@ -2403,3 +2405,4 @@ wesnoth.wml_actions.set_menu_item {
 		T.journeylog {}
 	}
 }
+end
