@@ -42,6 +42,7 @@ local function register()
 
 	if not ok then
 		broken = true
+		wesnoth.log("err", "[CtL] dialogue widgets failed to register: " .. tostring(err))
 		return false
 	end
 
@@ -307,22 +308,26 @@ function gui.show_narration(msg, options, text_input)
 		local retval, shown = nil, false
 
 		for i = level_in_use, #LEVELS do
-			local level = LEVELS[i]
-			local built, dlg = pcall(scene, msg, options, level)
-			if not built then
-					:format(level.name, tostring(dlg)))
-			else
-				local ok, r = pcall(gui.show_dialog, dlg)
-				if ok then
-					if level_in_use ~= i then
-						level_in_use = i
-					end
-					retval, shown = r, true
-					break
-				end
-					:format(level.name, tostring(r)))
+	local level = LEVELS[i]
+	local built, dlg = pcall(scene, msg, options, level)
+	if not built then
+		wesnoth.log("err", ("[CtL] dialogue level %s did not build: %s")
+			:format(level.name, tostring(dlg)))
+	else
+		local ok, r = pcall(gui.show_dialog, dlg)
+		if ok then
+			if level_in_use ~= i then
+				wesnoth.log("warning", "[CtL] dialogue level in use: " .. level.name)
+				level_in_use = i
 			end
+			retval, shown = r, true
+			break
+		else
+			wesnoth.log("err", ("[CtL] dialogue level %s failed to show: %s")
+				:format(level.name, tostring(r)))
 		end
+	end
+end
 
 		if not shown then
 			broken = true
