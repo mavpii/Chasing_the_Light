@@ -19,7 +19,11 @@ local HINT_COLOR    = "#8a8270"
 local TEXT_CHARS_PER_LINE = 78
 local CHOICE_WRAP_CHARS   = 100
 
-local PORTRAIT_SIZE = 360
+local PORTRAIT_SLOT   = 300
+local PORTRAIT_MAX_H  = 400
+local PORTRAIT_REACH  = 560
+
+local BOX_MIN_HEIGHT = 58
 
 --###########################################################################################################################################################
 --                                                                   REGISTRATION
@@ -93,23 +97,34 @@ end
 --###########################################################################################################################################################
 --                                                                      LAYOUT
 --###########################################################################################################################################################
-local function portrait_widget(image, mirror)
-	local ipf = ("~SCALE_INTO(%d,%d)"):format(PORTRAIT_SIZE, PORTRAIT_SIZE)
-	if mirror then ipf = ipf .. "~FL()" end
+local function portrait_layer(image, mirror, side)
+	local h = PORTRAIT_MAX_H
 
-	return T.image {
-		label = image .. ipf,
+	local drawing = T.drawing {
+		width = PORTRAIT_REACH,
+		height = h,
+		T.draw {
+			T.image {
+				name = image,
+				mirror = mirror and true or false,
+				w = ("(if(image_original_height > %d, (image_original_width * %d) / image_original_height, image_original_width))")
+					:format(h, h),
+				h = ("(if(image_original_height > %d, %d, image_original_height))"):format(h, h),
+				x = (side == "right") and "(width - image_width)" or "0",
+				y = "(height - image_height)",
+			},
+		},
 	}
-end
 
-local function portrait_column(image, mirror, side)
-	return T.column {
-		grow_factor = 0,
-		horizontal_alignment = side,
-		vertical_alignment = "bottom",
-		border = "left,right",
-		border_size = 4,
-		portrait_widget(image, mirror),
+	return T.layer {
+		T.row {
+			grow_factor = 1,
+			T.column {
+				horizontal_alignment = side,
+				vertical_alignment = "bottom",
+				drawing,
+			},
+		},
 	}
 end
 
@@ -181,13 +196,32 @@ local function box_panel(msg, options, level)
 		})
 	end
 
+	local body = T.stacked_widget {
+		T.layer {
+			T.row {
+				grow_factor = 1,
+				T.column { T.spacer { width = 1, height = BOX_MIN_HEIGHT } },
+			},
+		},
+		T.layer {
+			T.row {
+				grow_factor = 1,
+				T.column {
+					horizontal_grow = true,
+					vertical_alignment = "top",
+					T.grid(rows),
+				},
+			},
+		},
+	}
+
 	if not level.chrome then
-		return T.grid(rows)
+		return body
 	end
 
 	return T.panel {
 		definition = "ctl_dialogue_box",
-		T.grid(rows),
+		T.grid { T.row { T.column { horizontal_grow = true, body } } },
 	}
 end
 
@@ -199,29 +233,56 @@ local function scene(msg, options, level)
 	if second == "" or second == "none" then second = nil end
 
 	local on_left = (msg.left_side ~= false) or (second ~= nil)
+	local show_art = level.portrait
 
-	local cells = { grow_factor = 0 }
-
-	if portrait and level.portrait and on_left then
-		table.insert(cells, portrait_column(portrait, msg.mirror, "left"))
+	-- The slot is reserved whether or not anyone is standing in it, so the box
+	-- always begins at the same place and keeps the same width.
+	local function slot()
+		return T.column {
+			grow_factor = 0,
+			T.spacer { width = PORTRAIT_SLOT, height = 1 },
+		}
 	end
 
-	table.insert(cells, T.column {
+	local box = T.column {
 		grow_factor = 1,
 		horizontal_grow = true,
 		vertical_alignment = "bottom",
 		border = "all",
 		border_size = 10,
 		box_panel(msg, options, level),
+	}
+
+	local cells = { grow_factor = 0 }
+	if on_left then
+		table.insert(cells, slot())
+		table.insert(cells, box)
+	else
+		table.insert(cells, box)
+		table.insert(cells, slot())
+	end
+	if second and show_art then
+		table.insert(cells, slot())
+	end
+
+	local layers = {}
+	if portrait and show_art then
+		table.insert(layers, portrait_layer(portrait, msg.mirror, on_left and "left" or "right"))
+	end
+	if second and show_art then
+		table.insert(layers, portrait_layer(second, msg.second_mirror, "right"))
+	end
+
+	table.insert(layers, T.layer {
+		T.row {
+			grow_factor = 1,
+			T.column {
+				horizontal_grow = true,
+				vertical_alignment = "bottom",
+				T.grid { T.row(cells) },
+			},
+		},
 	})
-
-	if portrait and level.portrait and not on_left then
-		table.insert(cells, portrait_column(portrait, msg.mirror, "right"))
-	end
-
-	if second and level.portrait then
-		table.insert(cells, portrait_column(second, msg.second_mirror, "right"))
-	end
 
 	local dismissable = (#options == 0) and level.dismiss
 
@@ -249,7 +310,7 @@ local function scene(msg, options, level)
 							T.column {
 								horizontal_grow = true,
 								vertical_alignment = "bottom",
-								T.grid { T.row(cells) },
+								T.stacked_widget(layers),
 							},
 						},
 					},
