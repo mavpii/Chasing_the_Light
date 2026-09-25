@@ -20,8 +20,6 @@ local TEXT_CHARS_PER_LINE = 78
 local CHOICE_WRAP_CHARS   = 100
 
 local PORTRAIT_SLOT   = 300
-local PORTRAIT_MAX_H  = 400
-local PORTRAIT_REACH  = 560
 
 local BOX_MIN_HEIGHT = 58
 
@@ -98,23 +96,8 @@ end
 --                                                                      LAYOUT
 --###########################################################################################################################################################
 local function portrait_layer(image, mirror, side)
-	local h = PORTRAIT_MAX_H
-
-	local drawing = T.drawing {
-		width = PORTRAIT_REACH,
-		height = h,
-		T.draw {
-			T.image {
-				name = image,
-				mirror = mirror and true or false,
-				w = ("(if(image_original_height > %d, (image_original_width * %d) / image_original_height, image_original_width))")
-					:format(h, h),
-				h = ("(if(image_original_height > %d, %d, image_original_height))"):format(h, h),
-				x = (side == "right") and "(width - image_width)" or "0",
-				y = "(height - image_height)",
-			},
-		},
-	}
+	local path = tostring(image)
+	if mirror then path = path .. "~FL()" end
 
 	return T.layer {
 		T.row {
@@ -122,7 +105,7 @@ local function portrait_layer(image, mirror, side)
 			T.column {
 				horizontal_alignment = side,
 				vertical_alignment = "bottom",
-				drawing,
+				T.image { label = path },
 			},
 		},
 	}
