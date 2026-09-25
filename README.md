@@ -52,7 +52,7 @@ Peaceful life of the Green Isle's inhabitants turned into a nightmare in an inst
 - 02_Invasion✔                                                                                                                                      
 - 03_Despair✔ 
 ### Chapter 2: Inner Doubts                                                                                                                                     
-- 04_Daeola✔                                                                                                                                      
+- 04_Interlude✔                                                                                                                                      
 - 04x_Southbay✔                                                                                                                                      
 - 05_Aftermath✔
 - 06_Miscreants✔                                                                                                                              

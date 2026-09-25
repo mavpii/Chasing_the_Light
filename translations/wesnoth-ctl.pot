@@ -648,7 +648,7 @@ msgstr ""
 #: Chasing_the_Light/scenarios/01_Overture.cfg:216
 #: Chasing_the_Light/scenarios/02_Invasion.cfg:30
 #: Chasing_the_Light/scenarios/02_Invasion.cfg:168
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:151
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:151
 #: Chasing_the_Light/scenarios/04x_Southbay.cfg:293
 #: Chasing_the_Light/scenarios/07_Scarhane.cfg:728
 #: Chasing_the_Light/scenarios/07_Scarhane.cfg:746
@@ -820,7 +820,7 @@ msgstr ""
 #. [unit]: id=Scared_Child, type=Daeola_L0
 #. [unit]: gender=female, type=Daeola_L0_Apprentice_Unarmed
 #. [side]
-#. [scenario]: id=04_Daeola
+#. [scenario]: id=04_Interlude
 #. [unit]: gender=female, type=Daeola_L1_Mage
 #. [message]: speaker=narrator
 #. [unit]: gender=female, type=Daeola_L2
@@ -835,10 +835,10 @@ msgstr ""
 #. Агов, Вчителю, ви мене чуєте? Тут ще більше цих огидних людожерів, нам дуже потрібна ваша допомога!
 #: Chasing_the_Light/journey/profiles.cfg:80
 #: Chasing_the_Light/scenarios/02_Invasion.cfg:821
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:100
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:127
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:7
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:2
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:100
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:127
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:7
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:2
 #: Chasing_the_Light/scenarios/04x_Southbay.cfg:347
 #: Chasing_the_Light/scenarios/04x_Southbay.cfg:365
 #: Chasing_the_Light/scenarios/05_Aftermath.cfg:2593
@@ -920,7 +920,7 @@ msgstr ""
 #. [unit]: id=Dolmannumbil, type=Wose Shaman, type=Wose, type=Wose
 #. Долманнумбіл
 #: Chasing_the_Light/journey/profiles.cfg:212
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:324
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:324
 #: Chasing_the_Light/scenarios/05_Aftermath.cfg:1459
 msgid "Dolmannumbil"
 msgstr ""
@@ -1001,7 +1001,7 @@ msgstr ""
 #. [unit]: id=haenys, type=Mage, gender=male
 #. Гаеніс
 #: Chasing_the_Light/journey/profiles.cfg:298
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:473
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:473
 msgid "Haenys"
 msgstr ""
 
@@ -1714,20 +1714,20 @@ msgstr ""
 #: Chasing_the_Light/scenarios/03_Despair.cfg:602
 #: Chasing_the_Light/scenarios/03_Despair.cfg:1015
 #: Chasing_the_Light/scenarios/03_Despair.cfg:1052
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:578
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:801
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:965
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:1354
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:1424
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:1928
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:2050
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:2151
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:2645
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:2679
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:2754
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:2759
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:3334
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:3400
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:578
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:801
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:965
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:1354
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:1424
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:1928
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:2050
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:2151
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:2645
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:2679
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:2754
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:2759
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:3334
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:3400
 #: Chasing_the_Light/scenarios/05_Aftermath.cfg:352
 #: Chasing_the_Light/scenarios/05_Aftermath.cfg:357
 #: Chasing_the_Light/scenarios/05_Aftermath.cfg:362
@@ -1911,17 +1911,17 @@ msgstr ""
 #: Chasing_the_Light/scenarios/03_Despair.cfg:353
 #: Chasing_the_Light/scenarios/03_Despair.cfg:358
 #: Chasing_the_Light/scenarios/03_Despair.cfg:363
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:583
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:588
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:593
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:598
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:603
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:608
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:613
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:618
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:623
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:961
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:1250
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:583
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:588
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:593
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:598
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:603
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:608
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:613
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:618
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:623
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:961
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:1250
 #: Chasing_the_Light/scenarios/05_Aftermath.cfg:342
 #: Chasing_the_Light/scenarios/05_Aftermath.cfg:347
 #: Chasing_the_Light/scenarios/05_Aftermath.cfg:864
@@ -2582,16 +2582,16 @@ msgstr ""
 #: Chasing_the_Light/scenarios/03_Despair.cfg:1639
 #: Chasing_the_Light/scenarios/03_Despair.cfg:1434
 #: Chasing_the_Light/scenarios/03_Despair.cfg:1452
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:759
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:1465
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:1785
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:2186
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:2283
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:2284
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:2448
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:3324
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:3525
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:3794
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:759
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:1465
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:1785
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:2186
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:2283
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:2284
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:2448
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:3324
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:3525
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:3794
 #: Chasing_the_Light/scenarios/04x_Southbay.cfg:604
 #: Chasing_the_Light/scenarios/05_Aftermath.cfg:844
 #: Chasing_the_Light/scenarios/05_Aftermath.cfg:1252
@@ -4106,7 +4106,7 @@ msgstr ""
 #. Я...
 #. Я...
 #: Chasing_the_Light/scenarios/03_Despair.cfg:1474
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:2512
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:2512
 msgid "I am..."
 msgstr ""
 
@@ -4306,7 +4306,7 @@ msgstr ""
 #. [part]
 #. newlines at the beginning help to (depending on the screne size) center this vertically. The space at the end stops the last letter from getting cut off
 #. В гонитві за Світлом | Женучись за Світлом  Частина Друга
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:23
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:23
 msgid ""
 "<span font_family='Oldania ADF Std' size='90000'><i>Chasing the Light </i>\n"
 "Chapter Two \n"
@@ -4316,7 +4316,7 @@ msgstr ""
 #. [part]
 #. newlines at the beginning help to (depending on the screne size) center this vertically. The space at the end stops the last letter from getting cut off
 #. Частина Друга    Внутрішні Сумніви
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:32
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:32
 msgid ""
 "<span font_family='Oldania ADF Std' size='90000'>Chapter Two \n"
 "Internal Doubts<i>(169-168 BW) </i>\n"
@@ -4325,43 +4325,43 @@ msgstr ""
 
 #. [part]
 #. Минуло більше дев'ятнадцяти років з тої страхітливої битви на Чорнильних Болотах, де купка переляканих селян з останніх сил стримувала натиск викривлених західняцьких чудовиськ та мерців, що з жахливим виттям продовжували свій, здавалося б, нескінченний марш з Північних земель. Дуже небагатьом пощастило пережити ту ніч, не в останню чергу завдяки старанням Гараліна — людини, що невідомими нікому шляхами змогла заволодіти дивними силами, котрих ніколи ще не бачили на Зеленому Острові.
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:40
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:40
 msgid "More than nineteen years have passed since that terrifying battle in the Inky Moor, where a bunch of scared peasants fought with their last strength to hold off the onslaught of warped Wesfolk monsters and undead, who continued their seemingly endless march from the Northlands with a terrifying howl. Very few were lucky enough to survive that night, due in no small part to the efforts of Haralin, a man who, through unknown means, was able to wield strange powers never before seen on the Green Isle."
 msgstr ""
 
 #. [part]
 #. Після того, як королівські війська, хоч і з великими втратами, але змогли призупинити загарбників на підступах до Чорнотопу, Гаралін зустрівся з Принцом Адрораном, щоб детальніше обговорити умови їхньої 'співпраці'. Узгодили на тому, що Південна Бухта забезпечить чоловіку тихе та спокійне місце будь-де на Острові, а також приставить охорону, щоб той міг, не відволікаючись ні на що, навчати інших людей. Також Його Височність не забув попіклуватися про інших селян, запропонувавши їм можливість відбудуватися на півдні Острову, однак більшість з них відмовилася, вирішивши послідувати за Гараліном чи то з вдячності за порятунок, чи то просто з цікавості.
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:46
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:46
 msgid "After the royal forces managed to stop the invaders on the outskirts of Blackmore, albeit with heavy losses, Haralin met with Prince Addroran to discuss the terms of their 'partnership' in more detail. It was agreed that Southbay would provide the man with a quiet and peaceful place anywhere on the Isle, as well as a guard so that he could teach other people without distraction. His Highness also took care of the other villagers, offering them the opportunity to rebuild in the south of the island, but most of them refused, choosing to follow Haralin either out of gratitude for his rescue or curiosity."
 msgstr ""
 
 #. [part]
 #. Сам же Гаралін не був занадто задоволений таким розвитком подій, тому що найбільше йому хотілося в бій, щоб ім'ям Світла мститися західнякам за свого батька та усіх, хто загинув у тій різанині, проте таємничий голос переконав його відповісти його саме так. Там, на болотах, маг одразу подумав, що то було його власне рішення, його вибір, проте, як минав час, все більше він розумів, що це не так, хоча й внутрішнє чуття невпинно намагалося переконати його в протилежному. Однак відмовлятися від своїх слів вже було надто пізно, тому Гараліну не лишилося нічого іншого, окрім як підкоритися волі Принца та навчати людей своєму мистецтву, про яке він і сам майже нічого не знав.
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:52
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:52
 msgid "Haralin himself was not too pleased with this course of events, because most of all he wanted to go into battle, in the name of the Light, to take revenge on the Wesfolk for his father and all those who died in that massacre, but a mysterious voice convinced him to answer in this way. There, in the swamps, the magician immediately thought that it was his own decision, his choice, but as time passed, he realized more and more that this was not the case, although his inner sense was constantly trying to convince him otherwise. However, it was too late to retract his words, so Haralin had no choice but to obey the Prince's will and teach people his art, about which he himself knew almost nothing."
 msgstr ""
 
 #. [part]
 #. Майбутній Вчитель довго думав де йому поселитися, але врешті-решт його вибір зупинився на хащах Древнього Лісу. Серед місцевих про цей ліс ходили доволі погані чутки — він взагалі вважався проклятим, бо, наче, там жили якісь дивні потвори, ззовні схожі на дерева, так звані лісовики. Ніхто не міг спростувати чи довести існування цих істот, проте селюкам навіть цього було достатньо, щоб обоходити ліс десятою дорогою. Проте Гараліну чомусь схотілося оселитися саме там, може, він відчув там якесь джерело магії або щось інше спонукало його, проте навіть Принцу він не відкрив причини свого вибору.
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:58
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:58
 msgid "The would-be Teacher thought for a long time about where to settle, but in the end he chose the depths of the Oldwood. There were quite bad rumors about this forest among the locals — it was generally considered cursed, because it was said to be inhabited by some strange tree-like beings, the so-called woses. No one could confirm or deny the existence of these creatures, but this was enough for the villagers to avoid the forest on the tenth road. However, for some reason, Haralin wanted to settle exactly there, maybe he felt some source of magic there or something else motivated him, but he did not reveal the reason for his choice even to the Prince."
 msgstr ""
 
 #. [part]
 #. Саме там він і дізнався, що люди це не єдині розумні істоти на Острові — проходжаючись лісом, він в якийсь момент помітив, що його ноги повністю обплутані живим корінням, а з усіх сторін на нього пильно дивляться десятки сяючих помаранчевих очей. То були лісовики, однак не спотворені чудовиська, про яких розповідають в казках, а мудрі та спокійні стражі лісу. Гараліну якимось дивом вдалося порозумітися з ними й навіть отримати дозвіл на прожиття в цьому місці, за умови, якщо його люди не завдаватимуть клопоту деревами. Чоловіка це цілком влаштовувало, тому незабаром він оселився у велетенській печері в центрі лісу, котра з часом перетворилися на затишну оселю.
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:64
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:64
 msgid "It was there that he learned that humans are not the only intelligent beings on the Isle — walking through the forest, he noticed at one point that his feet were completely entangled in living roots, and dozens of shining orange eyes were looking at him from all sides. They were woses, but not the disfigured monsters that are told in fairy tales, but wise and calm guardians of the forest. By some miracle, Haralin managed to get along with them and even got permission to live in this place, provided that his people did not harm any tree. The man was quite satisfied with this, so soon he settled in a giant cave in the center of the forest, which eventually turned into a cozy residence."
 msgstr ""
 
 #. [part]
 #. Потому потягнулися нудні дні та роки, впродовж яких Гаралін вивчав нові закляття, писав книги та тренував тих, у кому відчував хоч найменшу крихту магії. Він страшенно нудьгував, тож єдиною його розвагою були іспити, де він міг спостерігати за учнями, як ті намагалися уникнути небезпеки, використовуючи свої знання та вміння. Це приносило йому задоволення, в такі моменти він згадував про своє минуле та бажав хоч ще раз в житті стати на бій проти тих проклятих західняків.
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:70
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:70
 msgid "Boring days and years followed, during which Haralin studied new spells, wrote books, and trained those in whom he sensed even the slightest bit of magic. He was terribly bored, so his only entertainment was the exams, where he could watch his students try to avoid danger using their knowledge and skills. It gave him pleasure, and at such moments he remembered his past and wished that at least once in his life he could fight against those damned Wesfolk."
 msgstr ""
 
 #. [part]
 #. І сьогодні, на річницю битви на болотах, якраз мав бути один з таких днів — його учениця Даеола, одна з тих дітей, яких Гаралін врятував багато років тому, нарешті закінчила навчання та, щоб стати повноцінним магом, мала пройти два небезпечних Випробування...
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:76
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:76
 msgid "And today, on the anniversary of the battle in the swamps, was supposed to be one of those days — his student Daeola, one of the children Haralin had saved many years ago, had finally completed her studies and had to pass two dangerous Trials to become a full-fledged Mage..."
 msgstr ""
 
@@ -4369,14 +4369,14 @@ msgstr ""
 #. наївна  Через свій обмежений життєвий досвід може вірити речам, які інші не вважатимуть нічим більшим за маячню.
 #. наївна  Через свій обмежений життєвий досвід може вірити речам, які інші не вважатимуть нічим більшим за маячню.
 #. наївна  Через свій обмежений життєвий досвід може вірити речам, які інші не вважатимуть нічим більшим за маячню.
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:107
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:107
 #: Chasing_the_Light/scenarios/04x_Southbay.cfg:354
 #: Chasing_the_Light/scenarios/04x_Southbay.cfg:372
 msgid "naive"
 msgstr ""
 
 #. [trait]
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:107
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:107
 #: Chasing_the_Light/scenarios/04x_Southbay.cfg:354
 #: Chasing_the_Light/scenarios/04x_Southbay.cfg:372
 msgid "Due to her limited life experience, Daeola may believe things that others would consider nothing more than nonsense."
@@ -4385,7 +4385,7 @@ msgstr ""
 #. [side]
 #. Елементалі
 #. Елементалі
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:140
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:140
 #: Chasing_the_Light/scenarios/07_Scarhane.cfg:284
 #: Chasing_the_Light/scenarios/99_Playground.cfg:59
 msgid "Elementals"
@@ -4393,31 +4393,31 @@ msgstr ""
 
 #. [side]: id=Haralin_Fake, type=Haralin_L2
 #. Храм Давньолісся
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:161
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:161
 msgid "Oldwood Temple"
 msgstr ""
 
 #. [set_variable]
 #. Зустрітися з Вчителем
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:175
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:175
 msgid "Meet with the Teacher"
 msgstr ""
 
 #. [set_variable]
 #. (додатково) Поговорити з іншими магами
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:181
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:181
 msgid "(optional) Talk to other mages"
 msgstr ""
 
 #. [objective]: condition=lose
 #. Загибель Даеоли
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:195
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:920
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:1374
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:1444
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:1948
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:2069
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:3131
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:195
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:920
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:1374
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:1444
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:1948
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:2069
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:3131
 #: Chasing_the_Light/scenarios/05_Aftermath.cfg:229
 #: Chasing_the_Light/scenarios/05_Aftermath.cfg:1867
 #: Chasing_the_Light/scenarios/06_Miscreants.cfg:1017
@@ -4442,905 +4442,905 @@ msgstr ""
 
 #. [event]
 #. (позіхає) Аааах, вже ранок?...
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:670
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:670
 msgid "(yawns) Ahhh, is it morning already?"
 msgstr ""
 
 #. [event]
 #. Шкода, що треба вставати, однак в мене є одна дуже важлива справа...
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:678
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:678
 msgid "It's a pity I have to get up, but I have one very important thing to do..."
 msgstr ""
 
 #. [event]
 #. Що ж, мій час настав — сьогодні я складу іспит та нарешті стану справжнім магом!
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:707
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:707
 msgid "Well, my time has come — today I will pass the exam and finally become a real Mage!"
 msgstr ""
 
 #. [event]
 #. Мені треба поквапитися до Вчителя, бо він вже, мабуть, зачекався. Він має бути в центральній будівлі, біля Сяйної Сосни.
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:716
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:716
 msgid "I have to hurry to the Teacher, because he is probably already waiting for me. He must be in the central building, near the Shining Pine."
 msgstr ""
 
 #. [then]
 #. Доброго ранку, Вчителю! Сьогодні важливий день, чи не так?
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:744
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:744
 msgid "Good morning, Teacher! Today is an important day, isn't it?"
 msgstr ""
 
 #. [then]
 #. Так-так, Даеоло, хай осяє Світло цей чудовий ранок. І справді, сьогодні ти складатимеш іспит на здобуття звання мага. Мені відомо, що ти дуже на нього чекала, але спочатку тобі доведеться вислухати мою розповідь про особливі кристали, що є в паличці кожного мага.
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:746
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:746
 msgid "Yes, yes, Daeola, let the Light shine on this beautiful morning. Indeed, today you will take the exam to become the Mage. I know that you have been looking forward to it, but first you will have to listen to me tell you about the special crystals that are in every sorcerer's wand."
 msgstr ""
 
 #. [then]
 #. Вчителю, однак я вже зна...
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:748
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:748
 msgid "Teacher, however, I already kno..."
 msgstr ""
 
 #. [then]
 #. Ім'ям Світла, не перебивай мене, Даеоло. Моє чуття підказує, що тобі конче необхідно прослухати все це ще раз.
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:752
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:752
 msgid "In the name of Light, do not interrupt me, Daeola. My inner sense is telling me that you really need to listen to this again."
 msgstr ""
 
 #. [then]
 #. (зітхає) Добре, Вчителю...
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:754
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:754
 msgid "(sighs) All right, Teacher..."
 msgstr ""
 
 #. [then]
 #. Тож почнімо, бо це надзвичайно важливо. Як ти вже, мабуть, знаєш, Даеоло, ми можемо чаклувати і без паличок, та й взагалі можемо обійтися без них, тому що магія скрізь — я ледве це відчуваю, але мені здається, що все, що нас оточує, було створено та існує завдяки ній.
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:756
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:756
 msgid "So let's get started, because this is extremely important. As you probably already know, Daeola, we can cast spells without wands, and we can do without them at all, because magic is everywhere — I can barely feel it, but it seems to me that everything around us was created and exists because of it."
 msgstr ""
 
 #. [then]
 #. Щодо самих кристалів, то вони допомагають краще проводити магію та розкривати твій справжній потенціал, проте самі по собі вони не зроблять з тебе мага, не нададуть жодних сил. Взагалі ми живемо в цьому святилищі, тому що Світло вказало мені на велике джерело таких кристалів поблизу ефірної безодні, проте зараз це неважливо...
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:758
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:758
 msgid "As for the crystals themselves, they help you to perform magic better and reveal your true potential, but they will not make you a sorcerer or give you any powers. As a matter of fact, we live in this sanctuary because the Light showed me a large source of such crystals near the etheric abyss, but this is not important now..."
 msgstr ""
 
 #. [then]
 #. Заради Світла, не дивись на мене так, я скоро закінчу! (зітхає) Так-от, до чого я веду — окрім природніх кристалів, можливо створити й штучні коштовності, які виконуватимуть не лише роль провідника магії, а й значно посилюватимуть її або відкриватимуть нові можливості.
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:761
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:761
 msgid "For the sake of the Light, don't look at me like that, I'll finish soon! (sighs) So, what I'm getting at is that in addition to natural crystals, it is possible to create artificial gemstones that will not only act as a conductor of magic, but will also significantly enhance it or open up new opportunities."
 msgstr ""
 
 #. [then]
 #. Зі звичайної людини такий кристал мага не зробить, але я припускаю, що в нього можна закласти певне закляття, яким можна буде скористатися, майже не маючи підготовки.
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:763
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:763
 msgid "Such crystal won't make an ordinary person a mage, but I assume that it can be embedded with a certain spell that can later be used with little or no training."
 msgstr ""
 
 #. [then]
 #. Прикладом такого штучного кристала певно, що слугує мій власний посох, котрий я нещодавно створив разом з паном Гаенісом. Він має шароподібний кристал, що допоміг мені підкорити магію вогню, яка раніше давалася мені з трудом. Також...
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:765
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:765
 msgid "An example of such an artificial crystal is most certainly my own staff, which I recently created with the help of Haenys. It has a spherical crystal, which helped me to subdue the magic of fire, which I had previously struggled with. Also..."
 msgstr ""
 
 #. [then]
 #. ... Так, це тобі теж варто знати... Коли тієї ночі прийшли прокляті західняки, я відчув... Відчув наближення чогось настільки могутнього, що я був впевнений, жодна жива істота на Острові нездатна протистояти тій силі.
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:773
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:773
 msgid "... Yes, you should know that too... When the damned Wesfolk came that night, I felt... I felt something so powerful coming that I was sure no living thing on the Isle could resist that force."
 msgstr ""
 
 #. [then]
 #. Це був, як вони його називають, 'Володар-Ліч Карор' — один з тих мерців, що привели свій нечестивий народ на нашу землю. Я не знаю чому він зупинився і не знищив Чорнотоп, а заодно й всі інші Королівства, проте є те, що я знаю напевне — тоді, у ту ніч, я відчув не лише огидного мерця, а також потужний артефакт.
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:775
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:775
 msgid "It was, as they call him, 'Lord-Lich Caror' — one of that undead who brought their wicked people to our land. I don't know why he stopped and didn't destroy Blackmore and all the other Kingdoms, but there is one thing I know for sure - that night I felt not only his disgusting corpse, but also a powerful artifact."
 msgstr ""
 
 #. [then]
 #. Артефакт? До чого ви розповідали про кристали, невже...?
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:777
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:777
 msgid "An artifact? Why were you talking about crystals, can it be that...?"
 msgstr ""
 
 #. [then]
 #. Саме так, Даеоло, тепер мені відомо, що скоріше за все то був штучний магічний кристал. Я відчуваю його навіть звідси, і хай помилує нас Світло, щоб я ніколи більше не відчув його наближення, інакше ніхто і ніщо не зупинить проклятих західняків.
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:779
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:779
 msgid "That's right, Daeola, I know now that it was most likely an artificial magic crystal. I can feel it even from here, and may the Light have mercy on us, so that I never feel it coming again, otherwise no one and nothing will stop the damned Wesfolk."
 msgstr ""
 
 #. [then]
 #. Навіть ви, Вчителю? Навіть ви не зможете зупинити мерців?
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:781
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:781
 msgid "Even you, Teacher? Even you wouldn't be able to stop undead?"
 msgstr ""
 
 #. [then]
 #. Я не...
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:783
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:783
 msgid "I am n..."
 msgstr ""
 
 #. [then]
 #. Послухай мене, Даеоло. Світло вкаже нам шлях, воно обов'язково захистить нас та направить туди, де ми потрібні. Головне вірь — як би не складалася доля, в кінці-кінців останнє слово залишається за Світлом.
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:791
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:791
 msgid "Listen to me, Daeola. The Light will show us the way, it will definitely protect us and guide us to where we are needed. The main thing is to believe that no matter how fate unfolds, in the end, the Light has the last word."
 msgstr ""
 
 #. [then]
 #. І я віритиму, Вчителю, хай так і буде! Ми обов'язково переможемо та врятуємо наших людей!
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:793
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:793
 msgid "And I will believe, Teacher, let it be so! We will definitely win and save our people!"
 msgstr ""
 
 #. [then]
 #. Добре, Даеоло, хай благословить тебе Світло... А тепер повертаймося до твого іспиту — для нього тобі необхідна паличка з повноцінним кристалом, тому сходи до сховища та візьми її там, після чого повертайся до мене.
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:795
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:795
 msgid "Very well, Daeola, may the Light bless you... Now, back to your exam — you need a wand with a proper crystal for it, so go to the storage and get it, and then come back to me."
 msgstr ""
 
 #. [then]
 #. Як скажете, Вчителю, я швидко з цим впораюся!
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:797
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:797
 msgid "As you say, Teacher, I will quickly cope with this!"
 msgstr ""
 
 #. [set_variable]
 #. Знайти паличку в сховищі
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:907
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:907
 msgid "Find the wand in storage"
 msgstr ""
 
 #. [then]
 #. Чудово, ти принесла паличку. Мабуть, тобі також варто знати, що в цю паличку вставлено саме той кристал, який я знайшов майже два десятки років біля нашого села і за допомогою нього ім'ям Світла карав проклятих західняків. Проте зараз він мені непотрібен, тому я доручаю його тобі, тож бережи його.
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:940
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:940
 msgid "Excellent, you brought the wand. Perhaps you should also know that this wand contains the very crystal that I found almost two decades ago near our village and used to punish undead in the name of Light. However, I don't need it now, so I'm entrusting it to you, so take care of it."
 msgstr ""
 
 #. [then]
 #. Для мене це честь, Вчителю, я берегтиму цю магічну паличку ціною свого життя!
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:942
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:942
 msgid "It is an honor for me, Teacher, and I will keep this magic wand at the cost of my life!"
 msgstr ""
 
 #. [then]
 #. Іменем Світла, не кажи такого, Даеоло, ти взагалі мене слухала?! Декілька хвилин тому я розповідав, що таке ці кристали та що вони можуть. Мені здалося, що ти все запам'ятала, але, схоже, доведеться все повторити...
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:944
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:944
 msgid "In the name of Light, don't say that, Daeola, have you been listening to me? A few minutes ago I told you what these crystals are and what they can do. I thought you had finally memorized something, but it seems that I will have to repeat it..."
 msgstr ""
 
 #. [then]
 #. Не треба, Вчителю, я все пам'ятаю! Просто... Ваші розповіді та ця річ нагадують мені... про ту жахливу ніч... коли загинули мої батьки... і...
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:946
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:946
 msgid "No need, Teacher, I remember everything! It's just... Your stories and this thing remind me... of that terrible night... when my parents died... and..."
 msgstr ""
 
 #. [then]
 #. Даеоло...
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:948
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:948
 msgid "Daeola..."
 msgstr ""
 
 #. [then]
 #. ... однак ви врятували стількох людей і... врятували мене... За це я вдячна та буду вдячною вам усе своє життя! І саме тому ваш колишній кристал стільки означає для мене!
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:950
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:950
 msgid "... however, you saved so many people and... you saved me... For that I am grateful and will be grateful to you for the rest of my life! And that is why your former crystal means so much to me!"
 msgstr ""
 
 #. [then]
 #. Я зробив те, що мав зробити... Світло вказало мені вірний шлях і за це я вдячний йому, тому... Даеоло, давай краще повернемося до іспиту.
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:955
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:955
 msgid "I did what I had to do... Light showed me the right path and for that I am grateful, so... Daeola, let's get back to the exam."
 msgstr ""
 
 #. [then]
 #. Як скажете, Вчителю...
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:957
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:957
 msgid "As you say, Teacher..."
 msgstr ""
 
 #. [message]: speaker=Haralin_Fake
 #. Ми почнемо як тільки ти будеш готова.
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:986
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:986
 msgid "We'll start as soon as you're ready."
 msgstr ""
 
 #. [option]
 #. Я готова, не можу дочекатися розпочати!
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:989
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:989
 msgid "I'm ready, I can't wait to get started!"
 msgstr ""
 
 #. [command]
 #. Тож почнімо. Твій іспит складатиметься з двох частин — у першій ти повинна будеш продемонструвати знання закляття зміни місцями, а у другій ти використовуватимеш левітацію, магічний снаряд та зцілення на відстані. Зазвичай учні проходять перевірку лише двох заклять, проте у тебе є беззаперечний хист до магії, тому й не дивно, що ти знаєш набагато більше. Тепер йди за мною.
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:994
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:994
 msgid "So let's get started. Your exam will consist of two parts — the first will be to demonstrate your knowledge of the swap spell, and the second will be to use levitation, magic missile and distant healing. Normally, apprentices are only expected to demonstrate knowledge of two spells, but you have an undeniable talent for magic, so it's no surprise that you know much more than that. Now follow me."
 msgstr ""
 
 #. [command]
 #. Твій іспит почнеться як тільки ти увійдеш всередину. Також пам'ятай, що я уважно спостерігатиму за кожним твоїм кроком за допомогою своїх заклять, проте в разі небезпеки можу не встигнути тебе врятувати.
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:1041
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:1041
 msgid "Your examination will begin as soon as you step inside. Also, remember that I will be watching your every move with my spells, but I may not be able to save you in time if you are in danger."
 msgstr ""
 
 #. [command]
 #. Що ж, бажаю тобі успіхів, Даеоло, і хай тебе оберігає Світло.
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:1043
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:1043
 msgid "Well, I wish you success, Daeola, and may the Light protect you."
 msgstr ""
 
 #. [command]
 #. Дякую, Вчителю.
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:1045
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:1045
 msgid "Thanks, Teacher."
 msgstr ""
 
 #. [message]
 #. Натисніть двічі на Даеолу, щоб використати її закляття.
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:1262
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:1262
 msgid "Double-click on Daeola to cast her spells."
 msgstr ""
 
 #. [option]
 #. Поки ні, мені треба доробити ще кілька справ.
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:1269
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:1269
 msgid "Not yet, I have a few more things to do."
 msgstr ""
 
 #. [command]
 #. Пошвидше їх закінчуй, бо бачить Світло — іспит не може чекати весь день.
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:1272
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:1272
 msgid "Hurry up and finish them, because Light be a witness — the exam cannot wait all day."
 msgstr ""
 
 #. [event]
 #. (позіхає) Ґа, шо, вже ранок? Я не хочу вставати...
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:1290
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:1290
 msgid "(yawns) Huh, what, is it morning already? I don't want to get up..."
 msgstr ""
 
 #. [event]
 #. Що ти робиш у моїй кімнаті, Даеоло? Негайно вийди звідси!
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:1302
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:1302
 msgid "What are you doing in my room, Daeola? Get out of here at once!"
 msgstr ""
 
 #. [event]
 #. Привіт, Даеоло. Бажаю успіхів на іспиті!
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:1314
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:1314
 msgid "Hello, Daeola. Good luck with your exam!"
 msgstr ""
 
 #. [event]
 #. Дякую, сподіваюся, я нарешті стану справжнім магом.
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:1316
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:1316
 msgid "Thank you, I hope I will finally become a real mage."
 msgstr ""
 
 #. [event]
 #. Ти безсумнівно заслуговуєш на це, у тебе все вийде!
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:1318
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:1318
 msgid "You definitely deserve it, you will succeed!"
 msgstr ""
 
 #. [then]
 #. Так-так, спочатку ми беремо це, змішуємо з оцим... А потім... О, Даеоло, ти дуже вчасно. Можеш, будь ласка, принести трохи слизу борщовика?
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:1338
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:1338
 msgid "Yes-yes, first we take this, mix it with this... And then... Oh, Daeola, you're just in time. Could you please bring some borschovyk's mucus?"
 msgstr ""
 
 #. [then]
 #. Фе, це ж бридота, навіщо він тобі треба?!
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:1340
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:1340
 msgid "Feh, that's disgusting, why do you need it?"
 msgstr ""
 
 #. [then]
 #. Я намагаюся створити зілля відновлення сил, розумієш? Я роблю його за... Де ж ця штука поділась... А, ось! Вчитель позичив мені свої записи про лікувальні трави.
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:1342
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:1342
 msgid "I'm trying to create a potion of healing, you know? I'm making it with... Where's that thing?... Oh, here! Teacher lent me his notes on herbs."
 msgstr ""
 
 #. [then]
 #. Вчитель пропонував мені прочитати їх, однак мені не схотілося. Магія Світла набагато краще підходить для лікування.
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:1344
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:1344
 msgid "Teacher offered me to read them too, but I didn't want to. The magic of Light is much more suitable for healing."
 msgstr ""
 
 #. [then]
 #. Справді? А як же... хто? А, точно! А як же люди, що не знають магії? Як їм лікуватися, як... як магів нема поряд?
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:1346
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:1346
 msgid "Really? And what about... who? Oh, that's right! What about people who don't know magic? How can they be cured if... if the mages aren't around?"
 msgstr ""
 
 #. [then]
 #. Маєш рацію, що ж, тоді я принесу тобі цього бридотного слизу, заради людей.
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:1348
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:1348
 msgid "You're right, well, then I'll bring you this disgusting mucus, for the sake of people."
 msgstr ""
 
 #. [then]
 #. (передає Даеолі пустий бутиль) Буду вдячним, я міг би сходити сам, але... Почекай-но, а куди я поклав...
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:1350
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:1350
 msgid "(hands an empty bottle to Daeola) I'd be grateful, I could go myself, but... Wait a minute, where did I put..."
 msgstr ""
 
 #. [set_variable]
 #. (додатково) Знайти слиз борщовика у сховищі
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:1360
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:1360
 msgid "(optional) Find borschovyk's mucus in the storage"
 msgstr ""
 
 #. [then]
 #. О, Даеоло, ти принесла цю... цю штуку. Візьми це намисто в знак моєї подяки, воно... Що воно робить? Почекай-но...
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:1400
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:1400
 msgid "Oh, Daeola, you brought this... this thing. Take this necklace as a token of my gratitude, it... What does it do? Wait a minute..."
 msgstr ""
 
 #. [then]
 #. А, точно. Це намисто відновлення сил. Воно буде лікувати твої рани, наче... наче що? А, наче поряд з тобою завжди є цілитель! Як тобі таке?
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:1405
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:1405
 msgid "Oh, that's right. It's a necklace of regeneration. It will heal your wounds as if... as if what? Oh, as if you always have a healer by your side! How about that?"
 msgstr ""
 
 #. [then]
 #. Я принесла ту гидоту заради людей, а не нагороди, однак все одно дякую. Я одягну його одразу ж, як стану справжнім магом.
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:1407
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:1407
 msgid "I brought that disgusting thing for the sake of the people, not for a reward, but thank you anyway. I will wear it as soon as I become a real mage."
 msgstr ""
 
 #. [then]
 #. А чого ти... цей, чого зараз не одягнеш? На іспиті точно знадобиться, тим паче ще, може, шрам отой залікує.
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:1409
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:1409
 msgid "Why are you... don't you put this on now? It'll definitely come in handy on the exam, and maybe it'll heal that scar."
 msgstr ""
 
 #. [then]
 #. (прикриває обличчя рукою) Мій шрам?.. Я... Це нагадування про все зло, яке зробили прокляті західняки, і я... і я носитиму його, поки не стану справжнім магом, здатним захистити інших!
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:1411
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:1411
 msgid "(covers the face with her hand) My scar? I... It's a reminder of all the evil that the damned wesfolk have done, and I... and I will wear it until I am a true mage who can protect others!"
 msgstr ""
 
 #. [then]
 #. А... Пробач, я не знав та... Почекай-но, а куди я поклав...
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:1413
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:1413
 msgid "Oh... I'm sorry, I didn't know and... Wait a minute, where did I put the..."
 msgstr ""
 
 #. [object]
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:1416
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:1416
 msgid "Necklace of Regeneration"
 msgstr ""
 
 #. [object]
 #. Починаючи з наступного сценарію, Даеола отримає здібність 'Регенерація +4' до кінця кампанії
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:1419
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:1419
 msgid "Starting in the next scenario, Daeola will gain the 'Regeneration +4' ability til the end of the campaign"
 msgstr ""
 
 #. [set_variable]
 #. (додатково) Віднести слиз борщовика алхіміку
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:1430
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:1430
 msgid "<span strikethrough='true'>(optional) Take borschovyk's mucus to the alchemist</span>"
 msgstr ""
 
 #. [event]
 #. Добре-добре, я вже йду.
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:1467
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:1467
 msgid "Okay-okay, I'm leaving now."
 msgstr ""
 
 #. [event]
 #. Доброго ранку, Даеоло. Йдеш на іспит до Вчителя, еге ж?
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:1479
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:1479
 msgid "Good morning, Daeola. You're going to the exam with the Teacher, aren't you?"
 msgstr ""
 
 #. [event]
 #. Привіт. Так, нарешті я дочекалася цього дня.
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:1481
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:1481
 msgid "Hello. Yes, I finally made it to this day."
 msgstr ""
 
 #. [event]
 #. Бажаю тобі удачі, хоч вона тобі й не знадобиться — у тебе все без проблем вийде.
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:1483
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:1483
 msgid "I wish you good luck, even though you won't need it — you'll do great."
 msgstr ""
 
 #. [event]
 #. Будь ласка, покинь мою кімнату. Я хочу... (позіхає) ...спати...
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:1495
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:1495
 msgid "Please leave my room. I want to... (yawns) ...sleep..."
 msgstr ""
 
 #. [event]
 #. Ранок, Даеоло, є хв'линка?
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:1507
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:1507
 msgid "Mornin’, Daeola, got a moment?"
 msgstr ""
 
 #. [event]
 #. Привіт, це знову щодо твоїх досліджень? Як вони?
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:1509
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:1509
 msgid "Hi, is this about your research again? How's it going?"
 msgstr ""
 
 #. [event]
 #. Чудово, мені здається, я н'решті здогадався як піднять в небо к'гось іншого. М'жу я накласти на тебе закляття? Ць'го разу точно спрацює.
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:1511
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:1511
 msgid "Great, I reckon I’ve finally figured out how to get someone else up in the air. Mind if I cast a spell on ya? This time it’ll <i>definitely</i> work."
 msgstr ""
 
 #. [message]: speaker=Daeola
 #. Що ж, минулого разу я сильно вдарилася головою об стелю, тому...
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:1516
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:1516
 msgid "Well, last time I hit my head hard on the ceiling, so..."
 msgstr ""
 
 #. [option]
 #. ... я не проти спробувати ще раз, бо я вірю в тебе!
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:1519
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:1519
 msgid "... I won't mind trying again, because I believe in you!"
 msgstr ""
 
 #. [command]
 #. Чудово, тоді стій на місці й...
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:1522
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:1522
 msgid "Great, then stand still and... Da alienum ad consurgam in caelo!"
 msgstr ""
 
 #. [command]
 #. Я й справді літаю, однак, на відміну від левітації, не можу контролювати свої рухи!
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:1543
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:1543
 msgid "I really am flying, but unlike levitation, I can't control my movements!"
 msgstr ""
 
 #. [command]
 #. Ґе-ґе-ґе чудово! Пр'сто чудово! Н'решті, це воно!
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:1545
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:1545
 msgid "Ha-ha-ha, perfict! Just perfekt! Finally, this is it!"
 msgstr ""
 
 #. [command]
 #. А опустити мене на землю не хочеш? Взагалі-то у мене є справи...
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:1550
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:1550
 msgid "Don't you want to bring me down? Actually, I have things to do..."
 msgstr ""
 
 #. [command]
 #. Т'чно, зовсім забувся.
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:1552
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:1552
 msgid "Right, almost forgot. Et lingua tacet!"
 msgstr ""
 
 #. [command]
 #. Готово, і дякую за д'помогу.
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:1572
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:1572
 msgid "All done, and thanks for the help."
 msgstr ""
 
 #. [option]
 #. ... я відмовлюся, краще спробуй на манекенах.
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:1579
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:1579
 msgid "... I'll refuse, better try it on quintains."
 msgstr ""
 
 #. [command]
 #. Шкода, але то є твоє право.
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:1582
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:1582
 msgid "Reckon it’s a shame, but that’s yer have right."
 msgstr ""
 
 #. [then]
 #. За цими дверима знаходиться кімната з випробуванням. Я хочу якнайшвидше зайти всередину, однак починати без дозволу Вчителя не можна.
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:1650
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:1650
 msgid "Behind this door is a room with a trial. I want to go inside as soon as possible, but I cannot begin without the Teacher's permission."
 msgstr ""
 
 #. [then]
 #. А ось тут вихід з кімнати з випробуванням, нічого цікавого.
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:1669
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:1669
 msgid "And here is the exit from the trail chamber, nothing interesting."
 msgstr ""
 
 #. [event]
 #. Двері до кімнати Вчителя. Вони зачинені, та й мені сюди не треба, однак іноді я маю відчуття, що є там щось цікаве...
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:1682
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:1682
 msgid "The door to the Teacher's room. It is closed, and I do not need to go there, however, sometimes I have a feeling that there is something interesting there..."
 msgstr ""
 
 #. [event]
 #. За цими дверима знаходяться кімнати варти. Вони охороняють нас за наказом Короля, однак я відчуваю, що більшість з них не рада тут бути. Краще не турбувати їх без потреби.
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:1694
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:1694
 msgid "Behind these doors are the guard rooms. They are protecting us on the King's orders, however I sense that most of them are not happy to be here. It is best not to disturb them unnecessarily."
 msgstr ""
 
 #. [event]
 #. Моє улюблене місце в цьому підземеллі, тут так... спокійно...
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:1706
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:1706
 msgid "My favorite place in this dungeon, it is so... peaceful..."
 msgstr ""
 
 #. [event]
 #. Брр, холодно...
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:1718
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:1718
 msgid "Brr, it's cold..."
 msgstr ""
 
 #. [event]
 #. Ефірна безодня, така гарна, хоч і небезпечна для магів. Вчитель казав, що вона вже була тут, коли він знайшов цю печеру, однак цікаво — звідки ж таке взялося?
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:1730
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:1730
 msgid "Ethereal Abyss, so beautiful, though dangerous for sorcerers. Teacher said that it was already here when he found this cave, but I wonder where it came from."
 msgstr ""
 
 #. [then]
 #. Однак що це там вглибині? Там щось сяє...
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:1748
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:1748
 msgid "However, what is it there in the depths? Something shines there..."
 msgstr ""
 
 #. [then]
 #. Майже з два десятка років тому я помер, захищаючи своє село від загарбників, але сила Гараліна навіки приковала мій дух до цього світу...
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:1755
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:1755
 msgid "Almost two decades ago, I died defending my village from the invaders, but the power of Haralin chained my spirit to this world forever..."
 msgstr ""
 
 #. [then]
 #. Жах! Певно, вам найбільше за все хочеться на спочинок?
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:1757
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:1757
 msgid "What a nightmare! You probably want to rest most of all, don't you?"
 msgstr ""
 
 #. [then]
 #. Не знаю, я вже нічого не знаю... Здається, я скоро забуду вже навіть своє ім'я...
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:1762
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:1762
 msgid "I don't know, I don't know anything anymore... I think I will soon forget even my own name..."
 msgstr ""
 
 #. [then]
 #. Я ОБІЦЯЮ УПОКОЇТИ ВАС, КОЛИ ЗРОЗУМІЮ ЯК ЦЕ ЗРОБИТИ!
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:1787
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:1787
 msgid "I PROMISE TO PUT YOU TO REST WHEN I FIGURE OUT HOW TO DO IT!"
 msgstr ""
 
 #. [then]
 #. Пане, що то за крики?
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:1792
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:1792
 msgid "Sir, what are those shouts?"
 msgstr ""
 
 #. [then]
 #. По голосу це Даеола та... один з шановних духів. Схоже, вона знову обіцяє йому звільнення.
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:1797
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:1797
 msgid "Sounds like Daeola and... one of the honored spirits. She seems to be promising them release again."
 msgstr ""
 
 #. [then]
 #. Чому ж Вчитель з цим не розбереться? Хіба він не може упокоїти духів, яких сам же й закликав?
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:1802
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:1802
 msgid "Why does Teacher not deal with this? Can't he make the spirits, whom he himself called, to rest?"
 msgstr ""
 
 #. [then]
 #. Мені невідомо, проте я впевнений, що Вчителю видніше і якби він вважав за потрібне щось зробити, він би це зробив. Але шкода — бідоласі в цьому підземеллі й робити нічого, окрім як вештатися довкола та розмовляти.
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:1804
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:1804
 msgid "I don't know, but I am sure that Master knows best and if he thought it necessary to do something, he would do it. But it's a pity — the poor thing in this dungeon has nothing to do but wander around and talk."
 msgstr ""
 
 #. [event]
 #. Гей, ти! Чаклунам не дозволено покидати підземелля без дозволу пана Гараліна та його лісового товариша.
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:1819
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:1819
 msgid "Hey, you! Sorcerers aren't allowed to leave the dungeon without the permission of Master Haralin and his 'forest friend'."
 msgstr ""
 
 #. [event]
 #. Вибачте, я вже повертаюся.
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:1821
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:1821
 msgid "Excuse me, I'm coming back now."
 msgstr ""
 
 #. [event]
 #. Дивися мені, я не хочу мати неприємностей, як когось з вас розчаве лісовик.
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:1823
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:1823
 msgid "Watch me, I don't want to get in trouble if one of you gets crushed by a wose."
 msgstr ""
 
 #. [event]
 #. Про що це ти? Взагалі-то лісовики доволі мирні та...
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:1825
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:1825
 msgid "What are you talking about? Actually, woses are quite peaceful and..."
 msgstr ""
 
 #. [event]
 #. Навіть чути не хочу! Йди, йди звідси!
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:1827
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:1827
 msgid "I don't even want to hear it! Go, go away from here!"
 msgstr ""
 
 #. [event]
 #. А ось і сховище, дай-но відкрию двері.
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:1841
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:1841
 msgid "Here is the storage, let me open the door."
 msgstr ""
 
 #. [event]
 #. Готово, тепер потрібно відшукати справжню магічну паличку.
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:1860
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:1860
 msgid "Done, now I need to find a magic wand."
 msgstr ""
 
 #. [event]
 #. На вигляд, наче звичайне золоте кільце, однак я відчуваю, що воно випромінює сильну магію. Краще його не чіпати, бо мені невідомо яке саме закляття на нього накладено.
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:1872
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:1872
 msgid "It looks like an ordinary gold ring, but I can feel that it radiates strong magic. It's better not to touch it, because I don't know what kind of spell is cast on it."
 msgstr ""
 
 #. [event]
 #. Наша спільна з Вчителем праця — свята вода, що дозволяє звичайній зброї бити мерців силою Світла. Сподіваюся, хтось скоро скористається нею проти клятих західняків.
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:1884
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:1884
 msgid "Our joint work with the Teacher — holy water, which allows ordinary weapons to beat the undead with the power of Light. I hope someone will soon use it against the damned Wesfolk."
 msgstr ""
 
 #. [then]
 #. А тут... Фе, якась гидка бридота, краще це не чіпати...
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:1904
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:1904
 msgid "And here... Ugh, it's disgusting, it's better not to touch it..."
 msgstr ""
 
 #. [then]
 #. Однак це безперечно слиз борщовика, тому... лише заради людей. (набирає слиз у бутиль)
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:1913
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:1913
 msgid "However, it is definitely borschovyk's mucus, so... only for the sake of people. (collects mucus in a bottle)"
 msgstr ""
 
 #. [then]
 #. Треба пошвидше віднести це та... забути.
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:1924
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:1924
 msgid "I need to deliver it as quickly as possible and... just forget about it."
 msgstr ""
 
 #. [set_variable]
 #. (додатково) Віднести слиз борщовика алхіміку
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:1934
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:1934
 msgid "(optional) Take borschovyk's mucus to the alchemist"
 msgstr ""
 
 #. [event]
 #. Купа книжок Вчителя, мені ніколи не подобалося їх читати, однак... доводилось. Вони доволі корисні, однак неймовірно нудні.
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:1971
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:1971
 msgid "A lot of Teacher's books, I never liked reading them, but... I had to. They are quite useful, but incredibly boring."
 msgstr ""
 
 #. [event]
 #. Якийсь запечатаний ящик. Я не відчуваю жодної магії, відповідно нічого особливого там нема.
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:1983
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:1983
 msgid "It's like a sealed box. I don't feel any magic, so there's nothing special there."
 msgstr ""
 
 #. [event]
 #. Ваза? Вона доволі гарна, однак чому вона тут?.. (заглядає всередину)
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:1995
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:1995
 msgid "Ornate? It's quite beautiful, but why is it here... (looks inside)"
 msgstr ""
 
 #. [message]: speaker=narrator
 #. Ваза   Хсссс....
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:1999
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:1999
 msgid "Ornate"
 msgstr ""
 
 #. [message]: speaker=narrator
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:1999
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:1999
 msgid "Hssss...."
 msgstr ""
 
 #. [event]
 #. (відсахується) Жах!
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:2003
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:2003
 msgid "(gasps) Horrible!"
 msgstr ""
 
 #. [event]
 #. Зачарований плащ одного з магів. Він може зробити невидимим того, що з миром йде серед дерев. Я чула, що цьому закляттю його навчили самі лісовики...
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:2020
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:2020
 msgid "The enchanted cloak of one of the mages. It can make anyone walking in peace among the trees invisible. I heard that he was taught this spell by the woses themselves..."
 msgstr ""
 
 #. [event]
 #. А ось і вона — моя паличка зі справжнім магічним кристалом, нарешті! Мені вже набридло користуватися тою 'іграшкою', з якою Вчитель змушує нас тренувати рухи для заклять.
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:2032
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:2032
 msgid "And here it is — my wand with a real magic crystal, at last! I'm tired of using that 'toy' that Teacher makes us practice spell movements with."
 msgstr ""
 
 #. [event]
 #. Добре, тепер треба повернутися до Вчителя.
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:2046
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:2046
 msgid "Okay, now I have to go back to the Teacher."
 msgstr ""
 
 #. [set_variable]
 #. Повернутися до Вчителя
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:2056
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:2056
 msgid "Return to the Teacher"
 msgstr ""
 
 #. [event]
 #. ... і відповідно, твій іспит буде проведено наступного тижня. Питання?
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:2089
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:2089
 msgid "...and accordingly, your exam will be held next week. Any questions?"
 msgstr ""
 
 #. [event]
 #. Пане, я не знаю жодних заклять переміщення, тоді ж як мені пройти Друге Випробування? Там же крізь одні провалля!
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:2091
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:2091
 msgid "Sir, I don't know any movement spells, so how am I supposed to pass the Second Trial? It's all chasms!"
 msgstr ""
 
 #. [event]
 #. Знаю, знаю. Не забувай, що, за згодою Вчителя, замість левітації, я навчив тебе закляттю ухиляння, щоб жодна звичайна зброя не змогла торкнутися тебе. Гадаю, шановний Долманнумбіл зможуть підлаштувати Випробування під твої вміння.
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:2093
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:2093
 msgid "I know, I know. Don't forget that, with the Master's consent, instead of levitation, I taught you a dodging spell so that no ordinary weapon could touch you. I believe that the honored Dolmannumbil will be able to adjust the Trial to your skills."
 msgstr ""
 
 #. [event]
 #. Вони безперечно будуть не раді, ми почуємо щось типу: 'Наше коріння землю втомилося рухатись. Дерев посадіть більше, тоді допоможемо ми'.
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:2095
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:2095
 msgid "They will definitely not be happy, we will hear something like: 'Roots our tired are of moving earth. More trees plant, then help you will we."
 msgstr ""
 
 #. [event]
 #. Нічого з цим не поробиш, такий вже в них договір з Вчителем.
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:2097
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:2097
 msgid "There is nothing to be done about it, such is their contract with our Master."
 msgstr ""
 
 #. [event]
 #. Шкода, що я не вивчив ще й левітацію на додачу, не треба було б йти на поступки цій живій колоді...
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:2099
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:2099
 msgid "I wish I had learned levitation in addition, so we wouldn't have had to make concessions to this living log..."
 msgstr ""
 
 #. [event]
 #. Теж нічого з цим не поробиш. Не всі такі талановиті як Вчитель чи Даеола, і не у всіх є час вивчити все.
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:2101
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:2101
 msgid "Nothing can be done about it either. Not everyone is as talented as Master or Daeola, and not everyone has time to learn everything."
 msgstr ""
 
 #. [event]
 #. Чи відомо тобі про останні новини з Чорнотопу? Я чув, що західняки знову розпочали атаку і місто може опинитися в облозі.
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:2118
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:2118
 msgid "Do you know about the latest news from Blackmore? I heard that the Wesfolk have started attacking again and the city may be under siege."
 msgstr ""
 
 #. [then]
 #. Гой, ти! Убєрайся від м'їх грибочків!
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:2140
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:2140
 msgid "Hey, ya! Git away from ma mushroo-mushrooms!"
 msgstr ""
 
 #. [then]
 #. Вибачте, пане Джуанг, я не збиралася чіпати ваші гриби.
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:2142
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:2142
 msgid "I'm sorry, sir Juangh, I didn't mean to touch your mushrooms."
 msgstr ""
 
 #. [then]
 #. Забєрайся зв'дси! Бдуть вам грибочки, будуть! Як тіки зізріють!
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:2144
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:2144
 msgid "Git lost, ya hear! Y’all’ll get yer mushrooms, ya will! As soon as they’re ripe!"
 msgstr ""
 
 #. [then]
 #. От розтяпа!
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:2147
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:2147
 msgid "What a douche!"
 msgstr ""
 
 #. [then]
 #. Ґа?! Даеоло, дівко, це ти? Як ж' ти вирасла, сто років т'бе не бачив...
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:2177
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:2177
 msgid "Eh?! Daeola, lass, is that you? How’d ya grow up so much, ain’t seen ya in a hunnert year..."
 msgstr ""
 
 #. [then]
 #. Про що це ви, пане? Ми з вчора розмов...
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:2179
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:2179
 msgid "What are you talking about, sir? We've been chatting yesterd-..."
 msgstr ""
 
 #. [then]
 #. Еге ж, давно те було... Ше як мерці та чаклуни прєйшли... Тогді ми з Гараліном славно побилися, а тєпер лиш грибочки лишились...
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:2181
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:2181
 msgid "Yeah, been a while... Back when undead an' spell-slingers came through... Me an' Haral'n had a good ol' fight, now all that's left's the mushroomzs..."
 msgstr ""
 
 #. [then]
 #. ... Я...
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:2183
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:2183
 msgid "... I am..."
 msgstr ""
 
 #. [then]
 #. Я т'пер садівник, але чот сонце в цьому селі погано світе, то тільки грибочки й ростуть...
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:2185
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:2185
 msgid "Ah’m a gardener now, but with th' sun bein’ so bad round d'his village, only mushrooms’ll grow…"
 msgstr ""
 
 #. [then]
 #. Ґа?! Даеоло, дівко, це ти? Як ж' ти вирасла, сто років т'бе не бачив...
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:2191
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:2191
 msgid "Eh?! Daeola, lass, is that you? How’d ya grow up so much, ain’t seen ya in a hunnert years..."
 msgstr ""
 
 #. [then]
 #. (відходить в сторону) <i>Бідний старий... Я обов'язково вигадаю закляття, що зможе зцілити його розум, обіцяю!</i>
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:2196
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:2196
 msgid "(steps aside) <i>Poor old man... I'll create a spell to heal his mind, I promise!</i>"
 msgstr ""
 
 #. [then]
 #. Доброго ранку, пане Зегаме. Як ваші справи?
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:2221
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:2221
 msgid "Good morning, sir Zeham. How are you?"
 msgstr ""
 
 #. [then]
 #. І тобі доброго ранку. Справи як завжди — сиджу в цьому підземеллі, охороняючи клятих чаклунів. Надворі лісовики, а всередині диваки...
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:2223
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:2223
 msgid "Good morning to you, too. Business as usual — I'm in this dungeon, guarding the damn sorcerers. Outside, there are treefolk, and inside, there are weirdos..."
 msgstr ""
 
 #. [then]
 #. Стільки років минуло, однак ви й досі недолюблюєте магів. Чому ж?
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:2225
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:2225
 msgid "All these years later, you still don't like mages. Why is that?"
 msgstr ""
 
 #. [then]
 #. Вперше я ту 'магію' побачив ще молодим хлопцем, чи знаєш де? Тоді, коли на наше село вперше напали ті загарбники. Серед них був ватажок у дурнуватій одежі, що своєю рукою пускав блискавки. Хіба ж в нашого Гараліна не таке ж чаклунство?
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:2227
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:2227
 msgid "The first time I saw this 'magic' was when I was a young boy, do you know where? When our village was first attacked by those invaders! Among them was a chief in stupid clothes who could make lightning with his hand. Doesn't our Haralin have the same kind of powers?"
 msgstr ""
 
 #. [then]
 #. Все то від західняків пішло, я відчуваю це, бо звідки ж цій 'магії' інакше взятися?
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:2229
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:2229
 msgid "It all came from Wesfolk, I can feel it, because where else would this 'magic' appear from?"
 msgstr ""
 
 #. [then]
 #. Мужик діло каже. Діди наші та прадіди без цього жили, але варто було прийти західнякам-чаклунам — одразу ж і в нас свої чаклуни з'явилися.
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:2234
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:2234
 msgid "This man has a point. Our grandfathers and great-grandfathers lived without it, but as soon as the Wesfolk came, we had our own sorcerers."
 msgstr ""
 
 #. [then]
 #. Все не так, взагалі-то магія буває різною. Ті прокляті західняки це злі та темні чаклуни, однак Вчитель, натомість, слуга Світла та носій його волі. Він ніколи не вивчав та не вивчатиме їхні нечестиві закляття!
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:2239
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:2239
 msgid "It's not like that, in fact, there are different kinds of magic. Those accursed people are evil and dark sorcerers, but Teacher is a servant of the Light and a bearer of its will. He has never learned and will never learn their unholy spells!"
 msgstr ""
 
 #. [then]
 #. Аякже, це слова Гараліна... ...Даеоло, моя тобі порада — як вже почала знатися з Гараліном, хоча б не надто захоплюйся. Відчуваю, що добром це не скінчиться.
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:2241
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:2241
 msgid "Of course, all these are Haralin's words... ...Daeola, my advice to you — even though you already are acquainted with Haralin, at least don't get too carried away. I have a feeling it won't end well."
 msgstr ""
 
 #. [then]
 #. Все буде добре, пане. Коли я стану справжнім магом, то доведу вам, що наша Світла служить лише добру. Ми завжди допомагатимемо людям нашого Острову та захищатимемо їх від західняків, я обіцяю!
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:2243
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:2243
 msgid "Everything will be fine, sir. When I become a real mage, I will prove to you that our Light serves only good. We will always help the people of our Green Isle and protect them from Wesfolk, I promise!"
 msgstr ""
 
 #. [then]
 #. Сподіваюся, що так і буде, хоч я й навряд зможу в це повірити.
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:2245
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:2245
 msgid "I hope that it will be so, although I can hardly believe it."
 msgstr ""
 
 #. [then]
 #. Слухай, Даеоло, нас залишилося мало, мало людей з нашого села, тому я не хочу, щоб... Ні ти, ні хай навіть той клятий чаклун, який дурить тобі голову... Бережіть себе.
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:2250
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:2250
 msgid ""
 "Listen, Daeola, there are only few of us left, few people from our village, so I don't want... Not you, not even that damned sorcerer who's been messing with your head, I don't want...\n"
 "...\n"
@@ -5349,737 +5349,737 @@ msgstr ""
 
 #. [then]
 #. Я не буду з тобою розмовляти, Даеоло. Ти розбуркала діда та зіпсувала мені розвагу.
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:2286
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:2286
 msgid "I'm not going to talk to you, Daeola. You've agitated grandpa and ruined my fun."
 msgstr ""
 
 #. [else]
 #. Тихше, Даеоло, не турбуй діда Джуанга, інакше в мене не вийде 'позичити' його грибів.
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:2290
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:2290
 msgid "Quiet, Daeola, don't disturb grandpa Juangh, or I won't be able to 'borrow' some of his shrooms"
 msgstr ""
 
 #. [else]
 #. Взагалі-то красти не можна, тим паче ми матимемо гриби на вечерю.
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:2292
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:2292
 msgid "Actually, stealing is wrong, and we will have mushrooms for dinner anyway."
 msgstr ""
 
 #. [else]
 #. Тю, ну тебе. Як завжди, псуєш мені настрій та веселощі.
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:2294
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:2294
 msgid "Oh, come on. As usual, you spoil my mood and fun."
 msgstr ""
 
 #. [then]
 #. Колись мене вела дорога пригод, але потім мені прострілили коліно. Ось так я й став сільським вартовим.
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:2320
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:2320
 msgid "I used to be an adventurer, then I took an arrow in the knee. That's how I became a village guard."
 msgstr ""
 
 #. [then]
 #. Усі наші тимчасово покинули ліві бараки, тому що черговий чаклун буде проходити Випробування у сусідньому приміщенні.
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:2345
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:2345
 msgid "All of us have temporarily left the left barracks because the next sorcerer will be undergoing the Trial in that special room."
 msgstr ""
 
 #. [then]
 #. Гаралін нещодавно навчив мене писати, тому я збираюся написати рукопис про його тодішній подвиг та життя в цій печері.
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:2370
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:2370
 msgid "Haralin recently taught me how to write, so I'm going to create a manuscript about his then feat and life in this cave."
 msgstr ""
 
 #. [then]
 #. Файний ліс тута, однак мні здається, що за мною хтось постійно спостерігає. Може то оті живі дерева?
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:2395
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:2395
 msgid "Nice woods ‘round here, but I got this feelin’ like someone’s always watchin’ me. Could be them livin’ trees, reckon?"
 msgstr ""
 
 #. [event]
 #. Ґа?.. А як я..?
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:2444
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:2444
 msgid "Huh?.. How am I..?"
 msgstr ""
 
 #. [event]
 #. ДАЕОЛО, ЦЕ ТВОЯ РОБОТА?! АГОВ, ВИПУСТІТЬ МЕНЕ ЗВІДСИ НЕГАЙНО!
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:2468
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:2468
 msgid "DAEOLA, IS THIS YOUR WORK?! HEY, LET ME OUT OF HERE RIGHT NOW!"
 msgstr ""
 
 #. [event]
 #. Іменем Світла, що тут сталося? Що ти робиш в цій кімнаті випробувань і де Даеола?
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:2497
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:2497
 msgid "In the name of Light, what happened here? What are you doing in this trial chamber and where is Daeola?"
 msgstr ""
 
 #. [event]
 #. Вона знову практикує на мені свої закляття, причому без мого дозволу! Це було закляття зміни місцями, ось що тут сталося, Вчителю!
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:2499
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:2499
 msgid "She is practicing her spells on me again, and without my permission! It was a spell of swapping places, that's what happened here, Teacher!"
 msgstr ""
 
 #. [event]
 #. Жах, схоже, в мене знову проблеми. Навіщо ж я це зробила?
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:2501
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:2501
 msgid "Terrible, it looks like I'm in trouble again. Why did I do that?"
 msgstr ""
 
 #. [event]
 #. З мене досить твоїх витівок, Даеоло! Тепер я житиму в твоїй кімнаті, подалі від усього цього. А ти... можеш поселитися де-інде, аби тільки не поряд зі мною.
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:2514
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:2514
 msgid "I've had enough of your tricks, Daeola! From now on, I'll live in your room, away from all this. And you... you can live anywhere but next to me."
 msgstr ""
 
 #. [event]
 #. Вибач, однак я не хоті...
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:2516
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:2516
 msgid "I'm sorry, but I didn't mean to..."
 msgstr ""
 
 #. [event]
 #. Ім'ям Світла, це воістину є справедливе покарання за черговий вчинений тобою безлад, Даеоло. Щось подібне варто було зробити набагато раніше, може, вдалося б уникнути того випадку з піччю та моїм пирогом... Проте наразі це вже неважливо. Скажи, як тобі взагалі це вдалося, змінитися місцями через стіну?
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:2546
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:2546
 msgid "In the name of the Light, this is truly a just punishment for yet another mess you've made, Daeola. Something like this should have been done much earlier, perhaps it would have avoided that incident with the oven and my pie... But it doesn't matter now. Tell me, how did you manage to do it, to change places through the wall?"
 msgstr ""
 
 #. [event]
 #. Я не знаю як так сталося, я просто відчула поряд ще когось і мені, наче, щось підказало переміститися саме туди...
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:2551
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:2551
 msgid "I don't know how it happened, I just felt someone else near me and it was as if something told me to move there..."
 msgstr ""
 
 #. [event]
 #. Кажеш, що тобі щось підказало? Іменем Світла, невже і ти?..
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:2553
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:2553
 msgid "You say that something told you? In the name of the Light, did you too?.."
 msgstr ""
 
 #. [event]
 #. Ні-ні, це є малоймовірно, хоча й не виключено... Проте це також неважливо. Чуття підказує мені, що ми маємо повертатися до іспиту, інакше ми не встигнемо.
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:2559
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:2559
 msgid "No, no, this is unlikely, although not impossible... But it doesn't matter either. My inner senses are telling me that we have to get back to the exam, otherwise we won't be done in time."
 msgstr ""
 
 #. [event]
 #. Про що ви це кажете, до чого ми маємо встигнути, Вчителю?
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:2561
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:2561
 msgid "What do you mean, what do we have to make it to in time for, Teacher?"
 msgstr ""
 
 #. [event]
 #. Ім'ям Світла, негайно повертайся до кімнати з випробуванням і спробуй ще раз, у нас мало часу!
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:2563
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:2563
 msgid "In the name of Light, go back to the trial chamber immediately and try again, we don't have much time!"
 msgstr ""
 
 #. [event]
 #. Як скажете, Вчителю.
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:2565
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:2565
 msgid "As you say, Teacher."
 msgstr ""
 
 #. [event]
 #. Чудова техніка, Даеоло, твоє закляття працює бездоганно! Клянуся Світлом, продовжуй так далі і ти успішно складеш цей іспит! Головне, уникай атак манекенів.
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:2677
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:2677
 msgid "Excellent technique, Daeola, your spell is working flawlessly! By the Light, keep it up and you'll pass this exam! Just avoid the quintain's attacks."
 msgstr ""
 
 #. [event]
 #. Аааа, це опудало дотягнулося до мене й воно атакує!
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:2720
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:2720
 msgid "Aaaah, this puppet has reached me and is attacking!"
 msgstr ""
 
 #. [event]
 #. Ім'ям Світла, будь обережнішою, Даеоло. Ми, маги, занадто слабкі тілом, щоб дозволити собі потрапляти під удар противника, тому використовуй свої закляття та не повторюй цієї помилки!
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:2730
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:2730
 msgid "In the name of Light, be careful, Daeola. We mages are too weak in body to allow ourselves to be struck by the enemy, so use your spells and don't make the same mistake!"
 msgstr ""
 
 #. [event]
 #. Нарешті, мені це вдалося! Вчителю, ви це бачили, справді ж гарно вийшло?
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:2763
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:2763
 msgid "Finally, I did it! Teacher, you saw it, didn't you think it was good?"
 msgstr ""
 
 #. [then]
 #. Так, Даеоло, ім'ям Світла клянуся, що я й не мав у тобі жодних сумнівів. Принаймні окрім того, що навіть на іспиті ти як і завжди спробуєш щось утнути, що і сталося. Проте все ж ти успішно склала іспит з другої спроби, тому зараз це неважливо, дай-но я прийду та відкрию двері.
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:2772
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:2772
 msgid "Yes, Daeola, I swear in the name of the Light that I had no doubts about you. At least, not that you'd try to play the fool even during the First Trial, as you always do, and you did. But you passed the exam on the second try, so it doesn't matter now, let me come and open the door."
 msgstr ""
 
 #. [else]
 #. Так, Даеоло, ім'ям Світла клянуся, що я й не мав у тобі жодних сумнівів. Принаймні окрім того, що навіть на іспиті ти як і завжди спробуєш щось утнути, але сьогодні ти мене дивуєш. Проте зараз це неважливо, дай-но я прийду та відкрию двері.
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:2776
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:2776
 msgid "Yes, Daeola, I swear in the name of the Light that I had no doubts about you. At least, not that you'd try to play the fool even during the First Trial, as you always do, but today you surprise me. Anyway, it doesn't matter now, let me come and open the door."
 msgstr ""
 
 #. [event]
 #. Що ж, ти й справді чудово впоралася, тому я не бачу жодних причин чому ми не можемо одразу ж перейти до Другого Випробування. Що скажеш?
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:2895
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:2895
 msgid "Well, you've really done a great job, so I don't see any reason why we can't move on to the Second Trial right away. What do you think?"
 msgstr ""
 
 #. [event]
 #. Вчителю, я тільки цього й чекаю, давайте почнемо!
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:2897
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:2897
 msgid "Teacher, I'm waiting for this, let's get started!"
 msgstr ""
 
 #. [event]
 #. Що ж, тобі йди за мною. Як ти знаєш, кімната з Другим випробуванням відгороджена від нашого святилища невеликим озером, тому нам зможе знадобитися допомога шановного Долманнумбіла. Тобі ж відомо, що лісовики також володіють магією?
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:2899
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:2899
 msgid "Well, you'll have to follow me. As you know, the room with the Second Trial is separated from our sanctuary by a small lake, so we may need the help of the honorable Dolmannumbil. You also know that woses also have magic, right?"
 msgstr ""
 
 #. [event]
 #. Так, Вчителю, мені відомо все, що ви про них розповідали. Ви прохаєте їх створити прохід до кімнати?
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:2914
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:2914
 msgid "Yes, Teacher, I know everything you have told me about them. Are you asking them to create a passage to the room?"
 msgstr ""
 
 #. [event]
 #. Саме так. Також, як ти знаєш, їхня магія зовсім не така як в нас, вона здатна здатна творити неймовірні дива, котрі й уявити важко. Відчуття підказує мені, що це через те, що лісовики набагато ближчі до природи і тому краще відчувають силу Світла довкола себе.
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:2929
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:2929
 msgid "That's right. Also, as you know, their magic is not at all like ours, it is capable of performing incredible miracles that are hard to imagine. My senses tell me that this is because the woses are much closer to nature and therefore feel the power of Light around them better."
 msgstr ""
 
 #. [event]
 #. Тобто вони на набагато вищому рівні розуміння магії й вони зможуть краще протистояти мерцям?
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:2948
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:2948
 msgid "That is, they have a much higher level of understanding of magic and will be able to better resist undead?"
 msgstr ""
 
 #. [event]
 #. Ні, ім'ям Світла, ні. Хоч вони й безперечно розуміються краще за нас, проте їх сильно обмежують їхні деревоподібні тіла та світогляд. Наскільки мені вдалося дізнатися, лісовикам найдорожчим за все є їхній рідний ліс, їх не хвилює ніщо, що відбувається за його межами, в них нема жодної мети, окрім як мирно жити серед дерев. Розумієш про що я, Даеоло?
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:2963
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:2963
 msgid "No, in the name of Light, no. Though they undoubtedly understand better than we do, they are severely limited by their tree-like bodies and worldview. As far as I've learned, all of woses cherish their own forest above all else, they don't care about anything that happens outside of it, they have no goal but to live peacefully among the trees. Do you understand what I mean, Daeola?"
 msgstr ""
 
 #. [event]
 #. Ви натякаєте, що...
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:2974
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:2974
 msgid "Are you implying that... "
 msgstr ""
 
 #. [event]
 #. ...навіть якщо кляті західняки та мерці захоплять увесь Зелений Острів, однак не чіпатимуть ліс, лісовики навіть не ворухнуться...
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:2981
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:2981
 msgid "...even if the damned Wesfolk and undead take over the entire Green Isle, but don't disturb the forest, the woses won't even move..."
 msgstr ""
 
 #. [event]
 #. Я дуже сподіваюся, що це не так і вони допоможуть, але... бачить Світло — я не можу знати напевне, ніхто не може, окрім них самих.
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:2986
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:2986
 msgid "I really hope that this is not the case and that they will help, but... Light be a witness — I cannot know for sure, no one can but them."
 msgstr ""
 
 #. [event]
 #. Я вірю, що Королі не пропустять мерців так далеко в серце Острову, однак навіть якщо таке станеться, ми обов'язково зупинимо їх, Вчителю.
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:2995
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:2995
 msgid "I believe that the Kings will not allow undead to enter the heart of the island, but even if they do, we will stop that monsters!"
 msgstr ""
 
 #. [event]
 #. Ми починаємо... ДОЛМАННУМБІЛЕ, ПІДНІМІТЬ ЗЕМЛЮ ТА ДАЙТЕ ПРОЙТИ ДО КІМНАТИ!
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:3035
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:3035
 msgid "We are starting... DOLMANNUMBIL, RAISE THE GROUND AND LET MY APPRENTICE INTO THE CHAMBER!"
 msgstr ""
 
 #. [event]
 #. Мені здається, що вони не поч...
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:3040
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:3040
 msgid "It seems to me that they didn't hear..."
 msgstr ""
 
 #. [event]
 #. Проходь усередину, Даеоло, та побалакай з шановним лісовиком. Я залишуся тут, щоб спостерігати за твоїми діями за допомогою закляття.
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:3106
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:3106
 msgid "Go inside, Daeola, and speak to the honorable wose. I will stay here to observe your actions with the spell."
 msgstr ""
 
 #. [set_variable]
 #. Зустрітися з Долманнумбілом
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:3118
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:3118
 msgid "Meet with Dolmannumbil"
 msgstr ""
 
 #. [then]
 #. (стучить по дереву) Пане лісовику, ви ще тут?
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:3169
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:3169
 msgid "(knocking on wood) Sir wose, are you still here?"
 msgstr ""
 
 #. [message]: speaker=Dolmannumbil
 #. (скрипить) Тут завжди ми, і будемо завжди. Потребуєш чи моєї ти допомоги зараз?
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:3176
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:3176
 msgid "(creaks) Here always are we, and always shall be we. Need you my help now, do you?"
 msgstr ""
 
 #. [option]
 #. Так, відновіть кімнату, будь ласка.
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:3179
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:3179
 msgid "Yes, restore the chamber, please."
 msgstr ""
 
 #. [command]
 #. Добре, проте заради лише мудрого двоногого це робимо ми, це пам'ятай.
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:3182
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:3182
 msgid "Good, then. Yet for the wise two-legged alone, this we do. Remember this, you must."
 msgstr ""
 
 #. [option]
 #. Ні, мені просто було цікаво чи вміють лісовики спати.
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:3190
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:3190
 msgid "No, I was just wondering if the woses could sleep."
 msgstr ""
 
 #. [command]
 #. Рід ваш є такий увесь — до дерев чіпляєтеся без потреби. Як ти допомоги не потребуєш моєї, не чіпай тоді даремно.
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:3193
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:3193
 msgid "Your kind, this is all — to trees cling need without. If my help you not do require, disturb not then, in vain."
 msgstr ""
 
 #. [event]
 #. Як тільки Даеола підійшла до крислатого дерева, осяяного сонячним світлом згори, позаду почувся страшний гуркіт і земляний прохід зник глибоко під водою. Після того дерево наче ожило, заворушилося і на дівчину тепер дивилося для спокійних помаранчевих ока, це був лісовик.
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:3214
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:3214
 msgid "As soon as Daeola approached the leafy tree, illuminated by the sunlight from above, she heard a terrible rumble behind her and the earthen passage disappeared deep under the water. After that, the tree seemed to come to life, stirred, and now looked at the girl with calm orange eyes, it was one of the woses."
 msgstr ""
 
 #. [event]
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:3263
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:3263
 msgid "... !"
 msgstr ""
 
 #. [event]
 #. (скрипить) Двонога чергова турбувати сміє спокій наш, двоногий мудрий землю підняти наказав землю бо ж. Потребуєш нас від чого ти?
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:3272
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:3272
 msgid "(creaks) Two-legged, disturb our peace dare, the wise two-legged commanded the earth to rise, for earth it is. From what, need you us?"
 msgstr ""
 
 #. [event]
 #. Пане До-... Долман-... Долнубіле, мій Вчитель послав мене до вас, щоб пройти Друге випробування. Ви ж допоможете?
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:3274
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:3274
 msgid "Sir Do-... Dolman-... Dolnubil, my Teacher has sent me to you to pass the Second Trial. Will you help me, please?"
 msgstr ""
 
 #. [event]
 #. Ймення є наше Долманнумбіл, двоного, це пам'ятай ти. Іншого щодо, угоду поважаємо нашу з двоногими мудрим, допомогти ми тому маємо.
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:3276
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:3276
 msgid "Name ours Dolmannumbil is, two-legged, this remember you must. As for another, the agreement with the wise two-legged we respect, to help we must."
 msgstr ""
 
 #. [event]
 #. Долбаммунібле, чи можу я спочатку задати вам питання?	
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:3282
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:3282
 msgid "Dolbammumbil, can I ask you a question first?"
 msgstr ""
 
 #. [event]
 #. Досі ймення є наше Долманнумбіл, двоного. Іншого щодо, питати ти можеш, цінуй час наш однак — якнайшвидше ми під сонцем до дрімоти воліємо повернутися.
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:3284
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:3284
 msgid "Still, name ours is Dolmannumbil, two-legged. As for another, ask you may, but our time value — to slumber under the sun, swiftly wish return we to."
 msgstr ""
 
 #. [event]
 #. Вибачте, пане лісовик, ваше ім'я занадто довге. Щодо питання... Чи збираєтеся ви щось робити, якщо наш Острів захоплять мерці?
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:3286
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:3286
 msgid "I'm sorry, sir wose, your name is too long. As for the question... Are you going to do something if our Isle is taken over by undead?"
 msgstr ""
 
 #. [event]
 #. Нічого очі наші не бачать за межами лісу цього, й діла до іншої нема землі нам тому. Проте у ліс варто їм вступити тільки, станемо ми на дерев від нечисті захист.
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:3288
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:3288
 msgid "Nothing eyes see our beyond the borders of this forest, and no other land concerns us. Yet, into the forest must they step only, when we stand upon trees, to protect from the corrupt."
 msgstr ""
 
 #. [event]
 #. Невже вам все одно на людей і на всі інші землі? Якщо прийдуть мерці, нічого з цього не лишиться!
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:3293
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:3293
 msgid "Do you not care about people and all other lands? If undead come, none of this will be left!"
 msgstr ""
 
 #. [event]
 #. Народ наш тут жив до твого ще народу, і тут будемо ми, і мерці коли підуть. Були раніше ми тут усіх, кінець кінцем, вважаю, залишимося тут ми до кінця самого тому.
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:3295
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:3295
 msgid "Folk our lived here before your people, and here we shall remain, even too when the undead depart. We were once all here, and in the end, I believe, here we shall stay, until the very end."
 msgstr ""
 
 #. [event]
 #. Нечувано... такі могутні істоти, як ви, спільними зусиллями та своєю магією точно змогли б їх зупинити, однак ви просто сидите в цьому лісі, не роблячи нічого.
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:3297
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:3297
 msgid "Unbelievable... such powerful beings as you could definitely stop them with your magic, but you are just sitting in this forest, doing nothing..."
 msgstr ""
 
 #. [event]
 #. На усе свій є час, двоного. Ми колись у подорож рушимо, ліс поширити щоб, проте сонце до того не зійшло ще.
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:3302
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:3302
 msgid "All things, their time there is, two-legged. Once we shall journey, to spread the forest we will, but the sun has yet to rise on that."
 msgstr ""
 
 #. [event]
 #. Тобто все ж ви...
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:3304
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:3304
 msgid "So you are after all..."
 msgstr ""
 
 #. [event]
 #. Вважаємо, що з тебе, двоного, досить, ми. Під сонцем час не витрачай наш, ми починаємо.
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:3306
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:3306
 msgid "Believe we do, enough of you, two-legged, is it is. The sun under, waste not our time, we begin."
 msgstr ""
 
 #. [event]
 #. Як скажете, пане.
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:3308
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:3308
 msgid "As you say, sir."
 msgstr ""
 
 #. [event]
 #. Наc слухай, двоного — з землі було уступи створено нами, маєш пролетіти ти ними тому. Також мага хворого зцілити, мудрий двоногий бо так сказав. Починай.
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:3319
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:3319
 msgid "Listen to us, two-legged — from the earth, steps were made by us, through them must pass you. Also, the sick one may be healed, for the wise two-legged has said so. Begin."
 msgstr ""
 
 #. [event]
 #. Пане лісовику, а чи зникатиме земля у мене під ногами? Іншим учням ви казали щось подібне.
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:3321
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:3321
 msgid "Sir wose, will also the ground disappear under my feet? You said something similar to the other mages."
 msgstr ""
 
 #. [event]
 #. Спокій і так порушено угодою мій, проте збавили сил мені з тобою розмови, тож стоятиме і не ворушитиметься земля так. Починай.
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:3323
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:3323
 msgid "Peace, indeed, has been disturbed by my agreement, yet too drained of strength by our conversation, I am. The earth shall stand still, unmoving thus. Begin."
 msgstr ""
 
 #. [then]
 #. Чудова робота, Даеоло, я вже почуваюся набагато краще. Гаразд, час подати знак, щоб ти змогла завершити це випробування.  ... ЛІСОВИКУ, ПРОШУ ТЕБЕ ПІДНЯТИ ЗЕМЛЮ!
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:3367
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:3367
 msgid "Great job, Daeola, I feel much better already. Okay, it's time to give the sign so you can complete this trial. ...WOSE, I ASK YOU TO LIFT THE GROUND!"
 msgstr ""
 
 #. [event]
 #. Нарешті я дійшла до кі...! Почекайте, однак чому провалля є й далі, хіба це не кінець?
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:3418
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:3418
 msgid "I've finally reached the en...! Wait, but why is there a gap further ahead, isn't this the end?"
 msgstr ""
 
 #. [then]
 #. Схоже, що шановний Долманнумбіл порушив мої вказівки та трохи переоцінив твої сили, Даеоло. Клянусь Світлом, це гарний знак, але я відчуваю, що ти зараз не зможеш скористатися закляттям, тому перепочинь трохи та продовжуй.
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:3431
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:3431
 msgid "It seems that the honorable Dolmannumbil has disobeyed my instructions and overestimated your powers a bit, Daeola. By the Light, this is a good sign, but I sense that you will not be able to use the spell at this time, so rest a while and continue."
 msgstr ""
 
 #. [else]
 #. Схоже, що шановний Долманнумбіл порушив мої вказівки та трохи переоцінив твої сили, Даеоло. Однак, клянусь Світлом, ти вчергове перевершила усі мої очікування, тому просто продовжуй йти до кінця, наче це звичайна частина випробування.
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:3445
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:3445
 msgid "It seems that the honorable Dolmannumbil has disobeyed my instructions and overestimated your powers a bit, Daeola. However, by the Light, you have once again exceeded all my expectations, so just keep going to the end as if it were a normal part of the trial."
 msgstr ""
 
 #. [event]
 #. А ось і ти, Даеоло! Як підійдеш поближче, вилікуй мене своїм закляттям, щоб я зміг подати знак лісовику пропустити тебе далі.
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:3461
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:3461
 msgid "Here you are, Daeola! When you get close, heal me with your spell so that I can give the sign to the wose, so they let you pass."
 msgstr ""
 
 #. [event]
 #. Чудова робота, Даеоло, ти тільки що знищила опудало основним атакуючим закляттям, котре має знати кожен маг, продовжуй у тому ж дусі і, клянуся Світлом, ти зможеш пройти це Випробування.
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:3475
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:3475
 msgid "Well done, Daeola, you have just destroyed the quintain with a basic attack spell that every mage should know, keep it up and I swear by the Light you will pass this Trial."
 msgstr ""
 
 #. [event]
 #. Ім'ям Світла, Даеоло, ти й справді добре впоралася, що й варто було очікувати від мага твого рівня. Проте є одна річ, котру я помітив доволі давно, й вона мене дещо непокоїть. Скажи мені, Даеоло, чому ти не згадуєш ім'я Світла в своїх закляттях, хоч і користуєшся його силою
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:3517
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:3517
 msgid "Light be a witness, Daeola, you have done well indeed, as is to be expected of a mage of your skill. However, there is one thing that I have noticed for quite some time, and it worries me. Tell me, why you don't mention the name of the Light in your spells, even though you use its power."
 msgstr ""
 
 #. [event]
 #. оли я промовляю закляття, усім серцем я звертаюся до сил Світла, Вчителю, та благаю їх про допомогу. Якщо Світлу цього достатньо й мої закляття утілюються в життя, тоді ж чому ще потрібно промовляти це вголос?
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:3522
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:3522
 msgid "Then I say a spell, I turn with all my heart to the Forces of Light, Teacher, and beg them for help. If this is enough for the Light and my spells are brought to life, then why else do I need to say something out loud?"
 msgstr ""
 
 #. [event]
 #. Клянуся Світлом, твої думки напрямлені в потрібну сторону, Даеоло, проте тобі ще досі не вистачає досвіду та мудрості. У такому разі я вважаю, що тобі конче необхідно ще раз прослухати про важливість пошуку Світла у нашому житті, тож слухай...
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:3524
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:3524
 msgid "I swear by the Light that your thoughts are in the right direction, Daeola, but you still lack experience and wisdom. In that case, I believe it is imperative that you listen again to the importance of <b>Chasing the Light</b> in our lives, so listen..."
 msgstr ""
 
 #. [event]
 #. ...і ось саме чому ім'я Світла необхідно згадувати на початку кожної справи. Тепер ти розумієш, Даеоло?
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:3546
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:3546
 msgid "...and that is why the name of the Light must be mentioned at the beginning of every doing. Do you understand now, Daeola?"
 msgstr ""
 
 #. [unit]: id=temple_messenger, type=Dragoon
 #. Пан Рудрі
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:3563
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:3563
 #: Chasing_the_Light/scenarios/04x_Southbay.cfg:476
 msgid "Sir Ruddry"
 msgstr ""
 
 #. [event]
 #. Пане Гараліне, до вас прибув королівський посланець з Південної Бухти!
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:3596
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:3596
 msgid "Master Haralin, a royal envoy from the Southbay has arrived!"
 msgstr ""
 
 #. [event]
 #. Клянуся Світлом, це чи не вперше за останні кілька років, коли Їхня Величність згадував про наше святилище. Які ж справи має до мене сам Король Аддроран, посланцю?
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:3598
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:3598
 msgid "By the Light, this is perhaps the first time in years that Their Majesty has thought of our temple. What business does King Addroran himself have with me, envoy?"
 msgstr ""
 
 #. [event]
 #. Наш Король наказує, щоб ви негайно покинули всі свої справи та в моєму супроводі вирушили до Південної Бухти, пане.
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:3600
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:3600
 msgid "Our King commands that you immediately abandon all your business and travel to the Southbay with me, sir."
 msgstr ""
 
 #. [event]
 #. Негайно покинути все та вирушити в подорож...
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:3603
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:3603
 msgid "Immediately abandon all your business and travel..."
 msgstr ""
 
 #. [event]
 #. Якщо ви сумніваєтесь чи виконувати наказ Їхньої Величності, мені було наказано нагадати, що саме за рахунок коштів Південної Бухти це місце може мирно існувати.
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:3611
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:3611
 msgid "In case you are in doubt about whether to follow Their Majesty's orders, I have been instructed to remind you that it is at the expense of the Southbay that this place can exist in peace."
 msgstr ""
 
 #. [event]
 #. Я це добре пам'ятаю, я не забув та ніколи не забуду щедрість Короля Південної Бухти. Проте ж чому, ім'ям Світла, йому знадобилися мої послуги? Хіба я не віддав йому на службу достатньо магів?
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:3614
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:3614
 msgid "I remember it well, I have not forgotten and will never forget the generosity of the King of the Southbay. But why, in the name of Light, would he need my services? Had I not given him enough mages to serve him?"
 msgstr ""
 
 #. [event]
 #. Мені було наказано доставити вас до Південної Бухти, пане, причини мені невідомі. Наказ Короля є наказом Короля — це все, що варто знати.
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:3616
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:3616
 msgid "I have been ordered to bring you to the Southbay, sir, reasons unknown to me. The King's orders are the King's orders, that's all you need to know."
 msgstr ""
 
 #. [event]
 #. Що ж, доведеться їхати, бо бачить Світло — я не маю іншого вибору, ніколи не мав... Проте мені потрібно трохи часу, щоб віддати вказівки своїм учням.
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:3622
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:3622
 msgid "Well, I have to go, because Light be a witness — I have no other choice, I never had any... However, I need some time to give instructions to my apprentices."
 msgstr ""
 
 #. [event]
 #. Ми рушимо після опівдня, щоб пізно ввечері вибратися з лісу, так західняцьким шпигунам було важче помітити нас вночі. До того часу, пане, можете закінчити свої справи. Я ж почекаю знадвору, мені не по собі в цьому дивному місці.
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:3624
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:3624
 msgid "We will move after noon to get out of the woods late in the evening, so that it will be harder for Wesfolk spies to spot us at night. Until then, sir, you can finish your business. I'll wait outside, I feel uneasy in this strange place."
 msgstr ""
 
 #. [event]
 #. Як ви не проти, я повернуся на свій пост, пане Гараліне.
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:3638
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:3638
 msgid "If you don't mind, I'll return to my post, Master Haralin."
 msgstr ""
 
 #. [event]
 #. Так, можеш бути вільним...
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:3640
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:3640
 msgid "Of course, you can go now..."
 msgstr ""
 
 #. [event]
 #. Вчителю, мені почулося, наче ви збираєте покинути наше святилище. Чи це правда?
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:3674
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:3674
 msgid "Master, I heard that you are going to leave our temple. Is it true?"
 msgstr ""
 
 #. [event]
 #. Так, на жаль, надійшов наказ від Короля Аддрорана негайно прибути до Південної Бухти. Моє чуття чомусь підказує, що не варто туди їхати, але хіба я можу піти проти королівської волі?
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:3676
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:3676
 msgid "Yes, unfortunately, I have received an order from King Addroran to report to the Southbay immediately. For some reason, my inner senses tell me not to go there, but how can I go against the king's will?"
 msgstr ""
 
 #. [event]
 #. І справді, нічого з цим не поробиш. Хоча чому б і не поїхати? Король завжди добре до вас ставився, тож цього разу щось має змінитися?
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:3678
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:3678
 msgid "Indeed, there is nothing to be done about it. But why not go? The king has always treated you well, so why should anything change this time?"
 msgstr ""
 
 #. [event]
 #. Ім'ям Світла, я хочу туди відправитися: побачити просторі поля Серединних Земель, безмежний Великий Океан та ще раз побувати серед величних шпилів Південної Бухти. Проте, Гаенісе, моє чуття, воно проти цього. Я відчуваю якусь небезпеку, однак ніяк не можу збагнути яку саме.
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:3680
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:3680
 msgid "In the name of Light, I want to go there: to see the vast fields of the Midlands, the boundless Great Ocean, and to visit once again the majestic spires of the Southbay. But, Haenys, senses are against it. I feel some kind of danger, but I can't put my finger on it."
 msgstr ""
 
 #. [event]
 #. Все буде добре, Вчителю. Мабуть, ви просто занадто багато часу провели в цій глушині та відвикли від усього.
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:3682
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:3682
 msgid "Everything will be fine, Master. Perhaps, you have spent too much time in this wilderness and have become unused to everything."
 msgstr ""
 
 #. [event]
 #. Так... Певно, що ти правий.
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:3684
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:3684
 msgid "Yes... Perhaps, you're right."
 msgstr ""
 
 #. [event]
 #. Що ж, Гаенісе, у такому разі, поки мене не буде, ти відповідатимеш за безпеку та навчання учнів. Ти єдиний у цьому святилищі, кому я можу довірити щось подібне.
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:3689
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:3689
 msgid "Well, Haenys, in that case, while I'm gone, you'll be responsible for the safety and education of the disciples. You're the only one in this temple I can trust with something like that."
 msgstr ""
 
 #. [event]
 #. Для мене це велика честь, Вчителю. Але в мене є певні побоювання щодо...
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:3692
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:3692
 msgid "It is a great honor for me, Master. But I have some concerns about..."
 msgstr ""
 
 #. [event]
 #. Вчителю, ви там не забули про мене? Я тепер справжній маг?
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:3694
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:3694
 msgid "Teacher, haven't you forgotten about me? Am I a real Mage now?"
 msgstr ""
 
 #. [event]
 #. ... щодо неї.
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:3696
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:3696
 msgid "quietly^<i>... about her.</i>"
 msgstr ""
 
 #. [event]
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:3701
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:3701
 msgid "In the name of Light, Daeola, I have truly forgotten all about you. Well, you've helped me a lot with my research over the years, learned more spells than any other of my apprentices, and passed the Trial, so Light be a witness, it would be unjust not to make you a mage. Therefore, congratulations, Daeola, and may the Light shine on your path."
 msgstr ""
 
 #. [event]
 #. Дякую, Вчителю! Тепер я зможу присвятити своє життя допомозі жителям цього Острову та довести усім, що наша магія зовсім не схожа на західняцьку. Однак спочатку мені треба...
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:3703
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:3703
 msgid "Thank you, Teacher! Now I can devote my life to helping the people of our Green Isle and prove to everyone that our magic is not at all like Wesfolk's one. But first I need to..."
 msgstr ""
 
 #. [event]
 #. Я відчуваю себе набагато легше, як же давно я хотіла... зачекай-но, щось не так! (обмацує обличчя руками)
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:3736
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:3736
 msgid "I feel so much better, how long have I wanted to... wait a minute, something's wrong! (feels her face with hands)"
 msgstr ""
 
 #. [event]
 #. Мій шрам... Чому ж.. чому ж він не зник?! Я ж зцілила себе магією Світла!
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:3741
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:3741
 msgid "My scar... Why... why didn't it disappear?! I healed myself with the magic of the Light itself!"
 msgstr ""
 
 #. [event]
 #. Даеоло... Клянуся Світлом, жодна магія не здатна повністю зцілити настільки старе поранення, ти добре це знаєш...
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:3746
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:3746
 msgid "Daeola... By the Light, no magic can fully heal a wound that old, you know that well..."
 msgstr ""
 
 #. [event]
 #. Я-я.. просто хотіла вірити, що в мене все вийде...
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:3748
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:3748
 msgid "I... I just wanted to believe that I would succeed..."
 msgstr ""
 
 #. [event]
 #. Можливо, твоє закляття лікування було недостатньо потужним. Але ж його можна зробити набагато потужніщим, чи не так, Вчителю?
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:3750
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:3750
 msgid "Perhaps your healing spell was not powerful enough. But it can be made much more powerful, can't it, Master?"
 msgstr ""
 
 #. [event]
 #. Ім'ям Світла, ти кажеш істину, Гаенісе. Останнім часом мені спадало на думку поширити наші з тобою успіхи й серед інших магів, включаючи Даеолу й навіть Раду в Південній Бухті.
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:3755
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:3755
 msgid "In the name of Light, you speak the truth, Haenys. Lately, it has occurred to me to share our successes with other mages, including Daeola and even the Council in the Southbay."
 msgstr ""
 
 #. [event]
 #. Вчителю, невже ви говорите про...?
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:3757
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:3757
 msgid "Teacher, are you really talking about...?"
 msgstr ""
 
 #. [event]
 #. Саме так, Даеоло. Як ти певно, що знаєш, ми разом з паном Гаенісом, користуючись направляннями самого Світла, створили штучний кристал для мого посоху. Тому, коли я повернуся з Південної Бухти, допоможу тобі створити щось схоже, але більше підлаштоване під твої закляття. І тоді, якщо на те буде воля Світла, ти зможеш загоїти свою рану.
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:3762
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:3762
 msgid "That is right, Daeola. As I'm sure you know, sir Haenys and I, using the guidance of the Light itself, created an artificial crystal for my staff. So, when I return from the Southbay, I will help you create something similar, but more adapted to your spells. And then, if it is the will of the Light, you will be able to heal your scar."
 msgstr ""
 
 #. [event]
 #. Дякую вам, Вчителю, ви даруєте мені надію! Однак... чи не могли ви взяти мене з собою до Південної Бухти? Я дуже хочу побачити це місто, кажуть, воно найвеличніше на всьому нашому Острові!
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:3764
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:3764
 msgid "Thank you, Teacher, you give me hope! However... could you take me with you to the Southbay? I really want to see this city, I've heard it's the most magnificent on our entire Isle!"
 msgstr ""
 
 #. [then]
 #. Клянуся Світлом, Даеоло, після сьогоднішньої твоєї витівки під час Першого випробування я ще раз переконався, що тебе аж ніяк не можна залишати без мого нагляду.
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:3773
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:3773
 msgid "By the Light, Daeola, after your behavior today during the First Trial, I have once again become convinced that you must never be left without my supervision."
 msgstr ""
 
 #. [else]
 #. Клянуся Світлом, Даеоло, що хоч сьогодні ти дивуєш мене своєю поведінкою, однак усіх твоїх попередніх витівок було достатньо, щоб переконати мене, що тебе аж ніяк не можна залишати без мого нагляду.
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:3777
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:3777
 msgid "By the Light, Daeola, although your behavior today has surprised me, all your previous actions have been enough to convince me that you must never be left without my supervision."
 msgstr ""
 
 #. [event]
 #. Тобто це означає, що ви візьмете мене з собою, Вчителю?
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:3781
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:3781
 msgid "Does this mean that you are taking me with you, Teacher?"
 msgstr ""
 
 #. [event]
 #. Звісно ж, що...
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:3783
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:3783
 msgid "Of course, that..."
 msgstr ""
 
 #. [event]
 #. ...проте чуття каже мені, що краще тобі все-таки залишитися в святилищі. Гадаю, пан Гаеніс зможе з тобою впоратися.
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:3793
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:3793
 msgid "...but my feeling tells me that it is better for you to stay in the temple. I think sir Haenys can handle you."
 msgstr ""
 
 #. [event]
 #. Вчителю, ви не можете ось так розбити мою мрію, коли майже погодились! Я прошу вас, будь ласка, дозвольте мені мені поїхати!
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:3796
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:3796
 msgid "Teacher, you can't break my dream like this when you almost agreed! I'm begging you, please let me go with you!"
 msgstr ""
 
 #. [event]
 #. Ім'ям Світла, Даеоло, я не...
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:3798
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:3798
 msgid "Let Light be a witness, Daeola, I just don-..."
 msgstr ""
 
 #. [event]
 #. І справді, Вчителю, будь ласка, заберіть її з собою. Ви маєте розуміти, що так буде краще для всіх, тим паче, може, їй знайдеться робота при дворі або де-інде. Закляття Даеоли мають допомагати людям, а не використовуватися на інших учнях цього підземелля!
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:3800
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:3800
 msgid "Indeed, Master, please take her with you. You must realize that it is better for everyone, especially since it might be possible for her to find job in the Southbay or elsewhere. Daeola's spells are meant to help people, not to be used on other students of this dungeon!"
 msgstr ""
 
 #. [event]
 #. Гаеніс правду каже — я хочу почати допомагати людям нашого Зеленого Острову якнайскоріше і ця подорож чудова можливість це зробити!
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:3802
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:3802
 msgid "Haenys is right — I want to start helping the people of our Green Isle as soon as possible, and this trip is a great opportunity to do so!"
 msgstr ""
 
 #. [event]
 #. Добре-добре, хай буде по-вашему, мої учні. Що ж, Даеоло, клянуся, ти їдеш зі мною і ніщо на світі нездатне це змінити, як би ця подорож не закінчилася! Візьми зі сховища нову робу, основу для посоха та рушаймо. Також дорога буде довгою, тому я встигну допомогти тобі створити власний штучний кристал на основі того, що в твоїй паличці.
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:3812
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:3812
 msgid "All right, all right, have it your way, my students..."
 msgstr ""
 
 #. [event]
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:3813
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:3813
 msgid "Daeola, I swear you are coming with me, and nothing in the world can change that, no matter how this journey goes! Get your new robe and a staff base from the storage, and let's go. It's going to be a long voyage, so I'll have enough time to help you create your own artificial crystal based on what's in your wand."
 msgstr ""
 
 #. [event]
 #. Як скажете, Вчителю! Сьогодні й справді надзвичайно чудовий день!
-#: Chasing_the_Light/scenarios/04_Daeola.cfg:3815
+#: Chasing_the_Light/scenarios/04_Interlude.cfg:3815
 msgid "As you say, Teacher! Today is indeed an extremely wonderful day!"
 msgstr ""
 
