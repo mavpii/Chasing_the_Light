@@ -327,8 +327,8 @@ local skill_set = {
 		id          = "skill_ward",
 		label       = label(_"Holy Ward"),
 		image       = "icons/ward.png",
-		-- #po: Використайте <span color='#00bbe6' style='italic'>10 XP</span>, щоб на кілька ходів розмістити на мапі <i><ref dst='unit_Brazier'>Оберіг</ref></i>.\n           Кожного ходу він завдаватиме навколишнім мерцям <b>20</b> містичної шкоди. \n<i>2 клітинки.</i>
-		description = header_spell().._"Spend <span color='#00bbe6' style='italic'>10 XP</span> to place a <i><ref dst='unit_Brazier'>Ward</ref></i> on the map for a few turns.\n           Each turn, it will deal <b>20</b> arcane damage to the surrounding undead. \n"..header_radius().._"<i>2 hexes.</i>",
+		-- #po: Використайте <span color='#00bbe6' style='italic'>10 XP</span>, щоб розмістити на мапі <i><ref dst='unit_Brazier'>Оберіг</ref></i> із <b>60</b> ОЗ, що <i><ref dst='ability_deteriorate'>руйнується</ref></i> на <b>10</b> ОЗ щоходу.\n           Кожного ходу він завдаватиме навколишнім мерцям <b>20</b> містичної шкоди. \n<i>2 клітинки.</i>
+		description = header_spell().._"Spend <span color='#00bbe6' style='italic'>10 XP</span> to place a <i><ref dst='unit_Brazier'>Ward</ref></i> with <b>60</b> HP that <i><ref dst='ability_deteriorate'>deteriorates</ref></i> by <b>10</b> HP each turn.\n           Each turn, it will deal <b>20</b> arcane damage to the surrounding undead. \n"..header_radius().._"<i>2 hexes.</i>",
 		xp_cost=10,
 	},
 	-------------------------
