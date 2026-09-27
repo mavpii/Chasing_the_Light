@@ -380,19 +380,9 @@ local skill_set = {
 		xp_cost=16,
 	},
 	-------------------------
-	-- NATURE'S REVENGE
-	-------------------------
-	[34] = {
-		id          = "skill_nature_revenge",
-		label       = label(_"Nature's Revenge"),
-		image       = "attacks/entangle.png",
-		description = header_spell().._"Spend <span color='#00bbe6' style='italic'>16 XP</span> to deal 30 impact damage to every adjacent enemy unit.",
-		xp_cost=16,
-	},
-	-------------------------
 	-- RAGE
 	-------------------------
-	[35] = {
+	[34] = {
 		id          = "skill_fury",
 		label       = label(_"Magic Rage"),
 		image       = "attacks/frenzy.png",
@@ -405,7 +395,7 @@ local skill_set = {
 	-------------------------
 	-- ASTRAL ARMS
 	-------------------------
-	[36] = {
+	[35] = {
 		id          = "skill_astral_arms",
 		label       = label(_"Weapon"),
 		image       = "icons/sword-astral.png",
@@ -421,7 +411,7 @@ local skill_set = {
 	-------------------------
 	-- SHADOWSTEP
 	-------------------------
-	[37] = {
+	[36] = {
 		id          = "skill_shadowstep",
 		label       = label(_"Shadowstep"),
 		image       = "icons/relocate.png", --TODO
@@ -431,7 +421,7 @@ local skill_set = {
 	-------------------------
 	-- PHANTOM FLURRY
 	-------------------------
-	[38] = {
+	[37] = {
 		id          = "skill_phantom_flurry",
 		label       = label(_"Flurry"), --TODO
 		image       = "icons/dancing-daggers.png", --TODO
@@ -441,7 +431,7 @@ local skill_set = {
 	-------------------------
 	-- ASTRAL CHAINS
 	-------------------------
-	[39] = {
+	[38] = {
 		id          = "skill_astral_chains",
 		label       = label(_"Chains"),
 		image       = "icons/swap.png",
@@ -451,7 +441,7 @@ local skill_set = {
 	-------------------------
 	-- HASTE
 	-------------------------
-	[40] = {
+	[39] = {
 		id          = "skill_haste",
 		label       = label(_"Haste"),
 		image       = "icons/sandals.png", --TODO
@@ -461,7 +451,7 @@ local skill_set = {
 	-------------------------
 	-- VEIL
 	-------------------------
-	[41] = {
+	[40] = {
 		id          = "skill_veil_ward",
 		label       = label(_"Veil"),
 		image       = "icons/shield.png",
@@ -470,7 +460,7 @@ local skill_set = {
 	-------------------------
 	-- VIGOR
 	-------------------------
-	[42] = {
+	[41] = {
 		id          = "skill_bloodbound_vigor",
 		label       = label(_"Vigor"), --TODO
 		image       = "icons/potion_green_small.png",
@@ -479,7 +469,7 @@ local skill_set = {
 	-------------------------
 	-- KNIT
 	-------------------------
-	[43] = {
+	[42] = {
 		id          = "skill_soul_knit",
 		label       = label(_"Knit"), --TODO
 		image       = "icons/disheal.png",
@@ -488,7 +478,7 @@ local skill_set = {
 	-------------------------
 	-- GUARD
 	-------------------------
-	[44] = {
+	[43] = {
 		id          = "skill_phantom_guard",
 		label       = label(_"Guard"), --TODO
 		-- Was icons/illusion.png, which only ever existed in TDG: the file is not
@@ -501,7 +491,7 @@ local skill_set = {
 	-------------------------
 	-- DRAIN
 	-------------------------
-	[45] = {
+	[44] = {
 		id          = "skill_soul_siphon",
 		label       = label(_"Drain"),
 		image       = "icons/enervate.png", --TODO
@@ -511,7 +501,7 @@ local skill_set = {
 	-------------------------
 	-- OBLIVION
 	-------------------------
-	[46] = {
+	[45] = {
 		id          = "skill_oblivion",
 		label       = label(_"Curse"), --TODO
 		image       = "attacks/beam-eye.png",
@@ -521,7 +511,7 @@ local skill_set = {
 	-------------------------
 	-- RIFT
 	-------------------------
-	[47] = {
+	[46] = {
 		id          = "skill_void_rift",
 		label       = label(_"Rift"),
 		image       = "icons/cataclysm.png", --TODO
@@ -531,7 +521,7 @@ local skill_set = {
 	-------------------------
 	-- PHYLACTERY
 	-------------------------
-	[48] = {
+	[47] = {
 		id          = "skill_phylactery",
 		label       = label(_"Backup"),
 		image       = "icons/contingency.png", --TODO
@@ -541,7 +531,7 @@ local skill_set = {
 	-------------------------
 	-- EMPATHY
 	-------------------------
-	[49] = {
+	[48] = {
 		id          = "skill_empathy",
 		label       = label(_"Empathy"),
 		image       = "icons/potion_red_small.png",
@@ -550,7 +540,7 @@ local skill_set = {
 	-------------------------
 	-- DISPEL
 	-------------------------
-	[50] = {
+	[49] = {
 		id          = "skill_dispel",
 		label       = label(_"Purge"),
 		image       = "attacks/eyeofstorm.png",
@@ -560,7 +550,7 @@ local skill_set = {
 	-------------------------
 	-- BLINDING FLASH
 	-------------------------
-	[51] = {
+	[50] = {
 		id          = "skill_blindflash",
 		label       = label(_"Flash"),
 		image       = "icons/contingency.png",
@@ -570,7 +560,7 @@ local skill_set = {
 	-------------------------
 	-- GLYPH
 	-------------------------
-	[52] = {
+	[51] = {
 		id          = "skill_glyph",
 		label       = label(_"Glyph"),
 		image       = "attacks/rune.png",
@@ -580,7 +570,7 @@ local skill_set = {
 	-------------------------
 	-- ALIEN BONES
 	-------------------------
-	[53] = {
+	[52] = {
 		id          = "skill_alien_bones",
 		label       = label(_"Alien Bones"),
 		image       = "icons/locked.png",
@@ -589,7 +579,7 @@ local skill_set = {
 	-------------------------
 	-- MATTER EXCHANGE
 	-------------------------
-	[54] = {
+	[53] = {
 		id          = "skill_matter_exchange",
 		label       = label(_"Matter Exchange"),
 		image       = "icons/locked.png",
@@ -599,7 +589,7 @@ local skill_set = {
 	-------------------------
 	-- DECAY
 	-------------------------
-	[55] = {
+	[54] = {
 		id          = "skill_decay",
 		label       = label(_"Decay"),
 		image       = "icons/locked.png",
@@ -609,7 +599,7 @@ local skill_set = {
 	-------------------------
 	-- REFORGE
 	-------------------------
-	[56] = {
+	[55] = {
 		id          = "skill_reforge",
 		label       = label(_"Reforge"),
 		image       = "icons/locked.png",
@@ -619,7 +609,7 @@ local skill_set = {
 	-------------------------
 	-- EFFIGY
 	-------------------------
-	[57] = {
+	[56] = {
 		id          = "skill_effigy",
 		label       = label(_"Effigy"),
 		image       = "icons/locked.png",
@@ -629,7 +619,7 @@ local skill_set = {
 	-------------------------
 	-- BONEMAIL
 	-------------------------
-	[58] = {
+	[57] = {
 		id          = "skill_bonemail",
 		label       = label(_"Bonemail"),
 		image       = "icons/cuirass_muscled.png",
@@ -639,7 +629,7 @@ local skill_set = {
 	-------------------------
 	-- REDEMPTION
 	-------------------------
-	[59] = {
+	[58] = {
 		id          = "skill_redemption",
 		label       = label(_"Redemption"),
 		image       = "icons/sap.png",
@@ -648,7 +638,7 @@ local skill_set = {
 	-------------------------
 	-- HEALING
 	-------------------------
-	[60] = {
+	[59] = {
 		id          = "skill_healing",
 		label       = label(_"Healing"),
 		image       = "attacks/entangle.png",
@@ -657,7 +647,7 @@ local skill_set = {
 	-------------------------
 	-- INTERDICT
 	-------------------------
-	[61] = {
+	[60] = {
 		id          = "skill_interdict",
 		label       = label(_"Interdict"),
 		image       = "attacks/kelp.png",
@@ -667,7 +657,7 @@ local skill_set = {
 	-------------------------
 	-- DAZZLE
 	-------------------------
-	[62] = {
+	[61] = {
 		id          = "skill_dazzle",
 		label       = label(_"Dazzle"),
 		image       = "attacks/fire-blast.png",
@@ -676,7 +666,7 @@ local skill_set = {
 	-------------------------
 	-- STING
 	-------------------------
-	[63] = {
+	[62] = {
 		id          = "skill_sting",
 		label       = label(_"Sting"),
 		image       = "attacks/spear-magic.png",
@@ -685,7 +675,7 @@ local skill_set = {
 	-------------------------
 	-- UNDEATH
 	-------------------------
-	[64] = {
+	[63] = {
 		id          = "skill_undeath",
 		label       = label(_"Undeath"),
 		image       = "icons/locked.png",
@@ -694,7 +684,7 @@ local skill_set = {
 	-------------------------
 	-- SACRIFICE
 	-------------------------
-	[65] = {
+	[64] = {
 		id          = "skill_sacrifice",
 		label       = label(_"Sacrifice"),
 		image       = "icons/locked.png",
@@ -703,7 +693,7 @@ local skill_set = {
 	-------------------------
 	-- RUBY COMET
 	-------------------------
-	[66] = {
+	[65] = {
 		id          = "skill_ruby_comet",
 		label       = label(_"Comet"),
 		image       = "icons/locked.png",

@@ -77,7 +77,6 @@ return {
 
     -- single-target adjacent area damage
     skill_smite          = { kind = "aoe_self", radius = 1, power = 30, min = 1, base = 15 },
-    skill_nature_revenge = { kind = "aoe_self", radius = 1, power = 30, min = 1, base = 15 },
 
     -- big radius — also catches allies (ally_penalty) so it needs an enemy majority
     skill_blizzard  = { kind = "aoe_self", radius = 3, power = 6,  min = 2, ally_penalty = 4,  base = 12 },
