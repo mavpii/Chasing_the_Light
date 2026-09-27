@@ -137,6 +137,8 @@ return {
                            dtype = "arcane", ally_penalty = 15, base = 30 },
     skill_phylactery  = { kind = "buff_self", threat = 2, weight = 10, base = 20 },
 
+    skill_haunt       = { kind = "buff_self", threat = 5, weight = 6, base = 25 },
+
     -- auras / control
     skill_counterspell = { kind = "debuff_aura", radius = 3, weight = 8, vs_casters = true, base = 15 },
 

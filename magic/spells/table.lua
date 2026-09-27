@@ -699,6 +699,17 @@ local skill_set = {
 		image       = "icons/locked.png",
 		description = header_attack().._"Ranged 24x4 fire, <i><ref dst='weaponspecial_magical'>magical</ref></i>.\n           Meteors fall from the sky onto the target.",
 	},
+	-------------------------
+	-- HAUNT
+	-------------------------
+	[66] = {
+		id          = "skill_haunt",
+		label       = label(_"Haunt"),
+		image       = "icons/locked.png",
+		-- #po: Витратьте <span color='#c06a61' style='italic'>свою атаку</span>, щоб підняти <i>4</i> <ref dst='unit_Ghost'>Привидів</ref> 1 рівня на вільних клітинках навколо себе.\n           Привиди не можуть рухатися чи атакувати у хід своєї появи.
+		description = header_spell().._"Spend <span color='#c06a61' style='italic'>your attack</span> to raise <i>4</i> level 1 <ref dst='unit_Ghost'>Ghosts</ref> on free hexes around you.\n           The ghosts cannot move or attack on the turn they appear.",
+		atk_cost=1,
+	},
 }
 
 --###############################
