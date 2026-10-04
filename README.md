@@ -26,10 +26,12 @@ Peaceful life of the Green Isle's inhabitants turned into a nightmare in an inst
 - Mechanical
 - lhybrideur
 - AncientGeneral
+- [Dalas](https://github.com/Dalas121)
 
 ## With the help of
 - [ForestDragon](https://github.com/ForestDragon-wesnoth)
 - [Refumee](https://github.com/Refumee)
+- [Dalas](https://github.com/Dalas121)
 - Myrion
 - Durzi
 - Emperor/ZombieKnight
@@ -47,6 +49,7 @@ Peaceful life of the Green Isle's inhabitants turned into a nightmare in an inst
 
 
 ## Scenario structure
+
 ### Chapter 1: First Omen
 - 01_Overture✔                                                                                                                                      
 - 02_Invasion✔                                                                                                                                      
@@ -62,11 +65,11 @@ Peaceful life of the Green Isle's inhabitants turned into a nightmare in an inst
 - 09_Stormvale✔                                                                                                                             
 - 10_Retone🔁️                                                                                                                                
 - 11_Dissonance🔁️
-- 12_Refrain
+- 12_Refrain🔁️
 - 12x_Accord
 - 13_Cadence
 - 14_Requiem
-### Chapter 4: Against the World
+### Chapter 4: (TBD)
 - 15_Guile
 - 16_Deceivers
 - 17_Gambit
