@@ -6,7 +6,7 @@
 		НЕ ВАРТО ##skill_camouflage невидимість вибір (вночі, в лісі, в селах. Активується кнопками як у поліморфа)
 		
 		#skill_etherealness ультимативне - полишити тіло(створюється фантом, яким можна рухатися, поки тіло чілить)
-		spell_group_2 = skill_levitate,     skill_flight,      skill_shield,             skill_polymorph,        skill_regenerate, skill_camouflage, skill_etherealness
+		spell_group_2 = skill_levitate,     skill_flight,      skill_shield,             skill_guise,        skill_regenerate, skill_camouflage, skill_etherealness
 		#support закляття
 		##Активне skill_sacrifice(обирається ціль через TRSS range 1 (ворожа чи своя) - якщо вона помирає до наступного ходу стається вибух)
 		##Активне skill_invincible обраний юніт стає невразливим на час свого ходу, range 1 

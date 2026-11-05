@@ -15,48 +15,7 @@ Glory to Ukraine!
 
 !!!OUTDATED!!!
 
-
-===============================================================================================
-
-Scenario structure
-
-Chapter 1: First Omen
-
-    01_Overture✔
-    02_Invasion✔
-    03_Despair✔
-
-Chapter 2: Inner Doubts
-
-    04_Interlude✔
-    04x_Southbay✔
-    05_Aftermath✔
-    06_Miscreants✔
-    07_Scarhane✔
-    08_Quiescence✔
-
-Chapter 3: Tough Choices
-
-    09_Stormvale✔
-    10_Priorities✔
-    11_Duty🔁️
-    12_Dissonance
-    13_Accord
-    14_Southbay_Outskirts
-    15_Caror
-
-Chapter 4: Against the World
-
-    15_Necessity (TBD)
-    16_Frontline | 15_Fording (TBD)
-    16x_Asylum (TBD)
-    17_Deceivers
-    18_Gambit
-    19_Oldwood(?)
-    20_Lenvan
-    21_Temple_in_the_Deep
-
-===============================================================================================
+!!!OUTDATED!!!
 
 11_Duty
 
