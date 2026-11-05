@@ -132,8 +132,8 @@ local function eligible(u, s)
 end
 
 -- Caster state is keyed by unit id, and the WML side of the system builds
--- variable NAMES out of that id -- polymorph stores the original unit in
--- "pre_polymorphed_caster_<id>", and $-substitution stops at the first character
+-- variable NAMES out of that id -- guise stores the original unit in
+-- "pre_guise_caster_<id>", and $-substitution stops at the first character
 -- that cannot appear in a variable name. Scenario-authored casters (Haralin,
 -- Mage_1) are fine; units that were never given an id are not, and in a
 -- multiplayer game most units are exactly that. Give those a safe one, derived
@@ -188,7 +188,7 @@ local function ready_description(name, allow_change)
 end
 
 -- Returns { spell_id, sub1, sub2, ... } so unlocking a multi-skill (Summon,
--- Bend, Polymorph) also unlocks the subskills that are the actually castable ids.
+-- Bend, Astral Arms) also unlocks the subskills that are the actually castable ids.
 local function with_subskills(spell_id)
     local out = { spell_id }
     for _, s in pairs(spell_data.skill_set) do
@@ -260,7 +260,7 @@ function M.make_caster(u, s, opts)
     data.reselect_free   = s.allow_change and not opts.spells
     data.free_casting    = (s.costs == "free")
     data.levels_normally = M.levels_normally()
-    -- Equipping Summon/Bend/Polymorph/Astral Arms hands over all of its
+    -- Equipping Summon/Bend/Astral Arms hands over all of its
     -- subskills at once: there is no campaign here to earn them from, so
     -- without this every multi-skill would sit in the cast window showing
     -- nothing but "Locked" buttons.

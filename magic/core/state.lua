@@ -122,7 +122,7 @@ function CasterState.load(unit_id)
 
         spellcasting_disabled = wml.variables[prefix .. ".utils_spellcasting_allowed"] == "disabled",
         advancement_disabled  = wml.variables[prefix .. ".utils_advancement_allowed"]  == "disabled",
-        polymorphed           = wml.variables[prefix .. ".polymorphed"],
+        in_guise              = wml.variables[prefix .. ".in_guise"],
         wait_to_select        = wait_to_select,
 
         -- Upgrade: free spell reselect at any time.
@@ -147,7 +147,7 @@ function CasterState.load(unit_id)
         -- Let this caster advance like a normal unit instead of being frozen at
         -- max XP - 1 (see the "pre advance" handler in utils.cfg).
         levels_normally = wml.variables[prefix .. ".levels_normally"] == true,
-        -- Equipping a multi-skill (Summon, Bend, Polymorph, Astral Arms) unlocks
+        -- Equipping a multi-skill (Summon, Bend, Astral Arms) unlocks
         -- all of its subskills at once, instead of earning them one by one as the
         -- campaign does. Set by the magic modification, where there is no
         -- campaign progression to earn them from.
@@ -196,7 +196,7 @@ function CasterState.save(data)
 
     wml.variables[prefix .. ".utils_spellcasting_allowed"] = data.spellcasting_disabled and "disabled" or nil
     wml.variables[prefix .. ".utils_advancement_allowed"]  = data.advancement_disabled  and "disabled" or nil
-    wml.variables[prefix .. ".polymorphed"]                = data.polymorphed
+    wml.variables[prefix .. ".in_guise"]                   = data.in_guise
     wml.variables[prefix .. ".wait_to_select_spells"]      = data.wait_to_select
 
     wml.variables[prefix .. ".reselect_free"]   = data.reselect_free and true or nil
@@ -254,7 +254,7 @@ function CasterState.from_config(unit, cfg)
 
         spellcasting_disabled = (cfg.spellcasting_allowed == false),
         advancement_disabled  = false,
-        polymorphed           = nil,
+        in_guise              = nil,
         wait_to_select        = nil,
 
         reselect_free   = false,

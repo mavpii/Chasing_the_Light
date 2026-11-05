@@ -1,7 +1,7 @@
 -- ai_profiles.lua
 -- Editable catalogue: how the AI uses EVERY castable spell and EVERY subskill.
 --
--- One entry per *castable* id (for multi-skills like Summon/Bend/Polymorph that is
+-- One entry per *castable* id (for multi-skills like Summon/Bend/Astral Arms that is
 -- the SUBSKILL id — the engine expands an equipped parent to its subskills).
 -- ADD a line to enable a spell, DELETE a line to disable it. The engine (ai.lua)
 -- dispatches on `kind`. Each turn an AI caster scores every profiled, AFFORDABLE
@@ -101,12 +101,8 @@ return {
     -- stasis: petrifies the CASTER and adjacent units — defensive last resort. CAVEAT.
     skill_stasis   = { kind = "buff_self", threat = 1, weight = 8, min = 2, base = 5 },
 
-    -- polymorph forms — become a melee bruiser when threatened; affordability (and
-    -- `base`) makes it pick the strongest form it can pay for. Lasts until cancelled.
-    skill_polymorph_lizard = { kind = "buff_self", threat = 2, weight = 4,  base = 6 },
-    skill_polymorph_bear   = { kind = "buff_self", threat = 2, weight = 6,  base = 10 },
-    skill_polymorph_yeti   = { kind = "buff_self", threat = 2, weight = 8,  base = 14 },
-    skill_polymorph_orc    = { kind = "buff_self", threat = 2, weight = 10, base = 18 },
+    -- guise — become an Orcish Warlord when threatened. Lasts until cancelled.
+    skill_guise = { kind = "buff_self", threat = 2, weight = 10, base = 18 },
 
     -- Faisim — conjure a melee weapon when an enemy is in reach (then wade in)
     skill_arms_blade   = { kind = "buff_self", threat = 1, weight = 4, base = 12 },

@@ -152,7 +152,7 @@ section "Event registration"
 grep -o '^#define EVENT_[A-Z_0-9]*' "$SPELLS" | sed 's/#define //' | sort -u > /tmp/lint_def.txt
 sed -n '/^#define MAGIC_SYSTEM__SPELLS_EVENTS$/,/^#define /p' "$SPELLS" \
     | grep -o '{EVENT_[A-Z_0-9]*}' | tr -d '{}' | sort -u > /tmp/lint_reg.txt
-unreg=$(comm -23 /tmp/lint_def.txt /tmp/lint_reg.txt | grep -v 'EVENT_REMOVE_SKILLS\|EVENT_BEND_NATURE_REVERT_PRE\|EVENT_SUMMON_CAST\|EVENT_POLYMORPH_TYPE')
+unreg=$(comm -23 /tmp/lint_def.txt /tmp/lint_reg.txt | grep -v 'EVENT_REMOVE_SKILLS\|EVENT_BEND_NATURE_REVERT_PRE\|EVENT_SUMMON_CAST')
 if [ -n "$unreg" ]; then
     for m in $unreg; do warn "$m is defined but never expanded in MAGIC_SYSTEM__SPELLS_EVENTS"; done
 else

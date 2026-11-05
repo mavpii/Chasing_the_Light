@@ -202,25 +202,15 @@ local skill_set = {
 		xp_cost=16,
 	},
 	-------------------------
-	-- POLYMORPH
+	-- GUISE
 	-------------------------
 	[16] = {
-		id          = "skill_polymorph",
-		label       = label(_"Polymorph"),
-		image       = "icons/polymorph.png",
-		description = header_spell().._"Take the shape of another creature. Lasts until cancelled.\n            Replaces $caster’s attacks, spells, and passives, but does not affect hitpoints.",
-		description_extra_separator = ", ",
-		description_extra = {
-			skill_polymorph_lizard = _"           <i><ref dst='unit_Swamp Lizard Poly'>Swamp Lizard</ref></i>",
-			skill_polymorph_bear   = _"           <i><ref dst='unit_Cave Bear Poly'>Cave Bear</ref></i>",
-			skill_polymorph_yeti   = _"           <i><ref dst='unit_Yeti Poly'>Yeti</ref></i>",
-			skill_polymorph_orc    = _"           <i><ref dst='unit_Orcish Warlord Poly'>Orcish Warlord</ref></i>",
-		},
-		subskills   = {
-			[1]={ id="skill_polymorph_lizard", xp_cost=8,  label="   <span>".._"Swamp Lizard".." (<span color='#00bbe6' style='italic'>".._"8 XP" .."</span>)</span>   " },
-			[2]={ id="skill_polymorph_bear",   xp_cost=12, label="   <span>".._"Bear"  .." (<span color='#00bbe6' style='italic'>".._"12 XP".."</span>)</span>   " },
-			[3]={ id="skill_polymorph_yeti",   xp_cost=20, label="   <span>".._"Yeti"  .." (<span color='#00bbe6' style='italic'>".._"20 XP".."</span>)</span>   " },
-			[4]={ id="skill_polymorph_orc",    xp_cost=32, label="   <span><span color='#a308b8'>".._"Orcish Warlord".."</span> (<span color='#00bbe6' style='italic'>".._"32 XP".."</span>)</span>   " }, },
+		id          = "skill_guise",
+		label       = label(_"Guise"),
+		image       = "icons/guise.png",
+		-- #po: Витратьте <span color='#00bbe6' style='italic'>32 досвіду</span>, щоб стати <i>Орком-воєводою</i> до скасування.    Ближній 15x3 рубаючий з натиском, дальній 8x2 колючий. $caster зберігає здоров'я, але втрачає закляття.
+		description = header_spell().._"Spend <span color='#00bbe6' style='italic'>32 XP</span> to become an <i><ref dst='unit_Orcish Warlord Guise'>Orcish Warlord</ref></i> until cancelled.\n           Melee 15x3 blade <i><ref dst='weaponspecial_charge'>charge</ref></i>, ranged 8x2 pierce. $caster keeps HP, loses spells.",
+		xp_cost=32,
 	},
 	-------------------------
 	-- DANCING DAGGERS

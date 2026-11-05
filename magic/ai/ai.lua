@@ -48,7 +48,7 @@ do
     for _, s in pairs(spell_data.skill_set) do put(s) end
 end
 
--- Parent spell id -> list of its subskill ids (summon/bend/polymorph). A caster
+-- Parent spell id -> list of its subskill ids (summon/bend/astral arms). A caster
 -- equips the PARENT, so the AI expands it to the individually-castable subskills.
 local subcasts = {}
 for _, s in pairs(spell_data.skill_set) do
@@ -351,7 +351,7 @@ local function casters_for(cfg)
     local out = {}
     for _, u in ipairs(wesnoth.units.find_on_map(filter)) do
         local data = CasterState.load(u.id)
-        if data and not data.spellcasting_disabled and CasterOps.can_cast(data) then
+        if data and not data.spellcasting_disabled and not data.in_guise and CasterOps.can_cast(data) then
             out[#out + 1] = { unit = u, data = data }
         end
     end

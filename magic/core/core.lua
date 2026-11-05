@@ -198,7 +198,7 @@ end
 --             wait ("yes" = "Choose Later").
 -- Free-assign vs. standard is decided by the caster's own free_assign flag.
 -- Unlocks every subskill of the caster's equipped multi-skills (Summon, Bend,
--- Polymorph, Astral Arms). Campaign casters earn those one at a time, so the
+-- Astral Arms). Campaign casters earn those one at a time, so the
 -- picker rightly shows the rest as "Locked"; a caster flagged unlock_subskills
 -- (the magic modification, which has no campaign progression to earn them from)
 -- gets the whole spell the moment it is equipped.
@@ -740,6 +740,10 @@ local function schedule_deferred(ids)
 
     local prev = wesnoth.game_events.on_mouse_move
     wesnoth.game_events.on_mouse_move = function(x, y)
+        if wesnoth.current.synced_state ~= "unsynced" then
+            if prev then return prev(x, y) end
+            return
+        end
         wesnoth.game_events.on_mouse_move = prev -- one-shot: restore previous handler
         local queue = deferred_select_ids
         deferred_select_ids = {}
@@ -903,6 +907,7 @@ end)
 
 function wml_actions.listen_for_mousemove(_cfg)
     wesnoth.game_events.on_mouse_move = function(x, y)
+        if wesnoth.current.synced_state ~= "unsynced" then return end
         -- Clear BEFORE firing, not after. The event chain this starts ends in
         -- [select_caster_skills], which installs its own one-shot on_mouse_move to
         -- defer the dialog to an unsynced moment; clearing afterwards wiped that

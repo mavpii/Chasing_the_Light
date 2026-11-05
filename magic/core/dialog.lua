@@ -138,8 +138,8 @@ local function describe(spell)
     end
     if text == nil then return "" end
 
-    -- A description may refer to the caster by name with $caster (Polymorph does:
-    -- "Replaces $caster's attacks..."). One string then serves every caster that
+    -- A description may refer to the caster by name with $caster (Guise does:
+    -- "$caster keeps HP..."). One string then serves every caster that
     -- can learn the spell, instead of naming one of them in the text.
     local name = desc_ctx and desc_ctx.name
     if name and tostring(text):find("$caster", 1, true) then
@@ -1145,9 +1145,9 @@ local function make_preshow(caster, caster_data, groups, selecting, free_slots)
             blocked_label = "   <span>" .. ((max_casts == 1)
                 and tostring(_"1 spell/turn")
                 or  (max_casts .. " " .. _"spells/turn")) .. "</span>   "
-        elseif caster_data.polymorphed then
-            blocked_label = small and small_label(_"Polymorphed")
-                                  or  _"<span>  Blocked by\n  Polymorph</span>"
+        elseif caster_data.in_guise then
+            blocked_label = small and small_label(_"In Guise")
+                                  or  _"<span>  Blocked by\n  Guise</span>"
         elseif wesnoth.units.find_on_map{
             id=caster.id,
             wml.tag.filter_location{ radius=3, wml.tag.filter{ id="Haralin_mirror3" }}
@@ -1348,7 +1348,7 @@ local function open_dialog(caster, caster_data, selecting)
     }
 
     -- Every read below happens AFTER the dialog closed, and the cast fired from it may
-    -- have replaced the unit — polymorph swaps in a whole new unit — which leaves this
+    -- have replaced the unit — guise swaps in a whole new unit — which leaves this
     -- proxy dangling ("bad argument #1 to 'index' (unit not found)"). The id is stable
     -- across that swap, so capture it now, while the unit is definitely still there.
     local caster_id = caster.id
