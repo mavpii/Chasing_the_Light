@@ -1,1 +1,3 @@
 *.pbl
+/tools
+/.wcc
