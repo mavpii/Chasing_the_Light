@@ -525,6 +525,17 @@ local function open_picker(used, allowed_set)
     end
 end
 
+local function sole_unlocked(group)
+    local only = nil
+    for _, spell in ipairs(group) do
+        if spell.id and spell.id ~= "skill_locked" then
+            if only then return nil end
+            only = spell
+        end
+    end
+    return only
+end
+
 local function prepare_groups(caster_data)
     -- Returns an ordered array of display groups (no sparse keys).
     -- Order follows the numeric order of caster_data.groups keys.
@@ -629,7 +640,10 @@ local function build_skill_rows(groups, selecting, equipped_list, unlocked_set)
 
         local button, subskill_row
 
-        if selecting then
+        local only = selecting and sole_unlocked(group)
+        if only then
+            button = T.label{ id="button"..i, use_markup=true, label=spell_label(only) }
+        elseif selecting then
             -- Menu button for picking which spell from this group.
             button = T.menu_button{ id="button"..i, use_markup=true }
             for _, spell in ipairs(group) do
@@ -1202,12 +1216,19 @@ local function make_preshow(caster, caster_data, groups, selecting, free_slots)
     return function(dlg)
         -- Selection mode: keep Confirm disabled while any group still has a
         -- "Locked" option selected — every pick must be a valid unlocked spell.
+        local function selected_in(gi)
+            local g = groups[gi]
+            local only = sole_unlocked(g)
+            if only then return only end
+            local mb = dlg["button" .. gi]
+            return mb and g[mb.selected_index]
+        end
+
         local function update_confirm_enabled()
             local cb = dlg["confirm_button"]
             if not cb then return end
-            for gi, g in ipairs(groups) do
-                local mb  = dlg["button" .. gi]
-                local sel = mb and g[mb.selected_index]
+            for gi in ipairs(groups) do
+                local sel = selected_in(gi)
                 if sel and sel.id == "skill_locked" then cb.enabled = false; return end
             end
             cb.enabled = true
@@ -1215,8 +1236,15 @@ local function make_preshow(caster, caster_data, groups, selecting, free_slots)
 
         for i, group in ipairs(groups) do
             local btn = dlg["button"..i]
+            local only = selecting and sole_unlocked(group)
 
-            if selecting then
+            if only then
+                dlg["image"..i].label = spell_image(only)
+                dlg["label"..i].label = describe(only)
+                make_links_clickable(dlg["label"..i])
+                update_confirm_enabled()
+
+            elseif selecting then
                 -- Set default selected index to the currently equipped spell.
                 for j, spell in ipairs(group) do
                     if spell.id and caster_data.equipped_set[spell.id] then
@@ -1281,9 +1309,8 @@ local function make_preshow(caster, caster_data, groups, selecting, free_slots)
                     -- Read each group's current menu selection directly, so the
                     -- same spell may appear in multiple groups without collisions.
                     local new_eq = {}
-                    for gi, g in ipairs(groups) do
-                        local mb  = dlg["button" .. gi]
-                        local sel = mb and g[mb.selected_index]
+                    for gi in ipairs(groups) do
+                        local sel = selected_in(gi)
                         if sel and sel.id and sel.id ~= "skill_locked" then
                             table.insert(new_eq, sel.id)
                         end
