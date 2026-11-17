@@ -264,6 +264,7 @@ wml_actions["assign_caster"] = function(cfg)
         registry_add(u.id)
         wml.fire("caster_set_menu")
         wml.fire("refresh_skills", { id=u.id })
+        wml.variables["current_caster"] = u.id
         wml.fire.do_command({ wml.tag.fire_event{ raise="magic_system_add_animations" }})
     end
 end
@@ -280,6 +281,7 @@ wml_actions["modify_caster"] = function(cfg)
             CasterOps.apply_config(data, cfg)
             CasterState.save(data)
             wml.fire("refresh_skills", { id=u.id })
+            wml.variables["current_caster"] = u.id
             wml.fire.do_command({ wml.tag.fire_event{ raise="magic_system_add_animations" }})
         else
             wml.fire("assign_caster", cfg)
@@ -625,8 +627,10 @@ end
 ---------------------------------------------------------------------------
 
 wml_actions["refresh_skills"] = function(cfg)
+    local previous = wml.variables["current_caster"]
     wml.variables["current_caster"] = cfg.id
     wesnoth.game_events.fire("refresh_skills")
+    wml.variables["current_caster"] = previous
 end
 
 ---------------------------------------------------------------------------
