@@ -1,31 +1,129 @@
 ##атаки
-		spell_group_1 = skill_magic_blast,  skill_fireball2,   skill_lightning,          skill_rage,             skill_dancing_daggers 
-		##пов'язане з рухом, захисні                                           
-		##skill_regenerate за досвід відновлює все здоров'я
-		
-		НЕ ВАРТО ##skill_camouflage невидимість вибір (вночі, в лісі, в селах. Активується кнопками як у поліморфа)
-		
+		spell_group_1 = 
+		##пов'язане з рухом, захисні                         
 		#skill_etherealness ультимативне - полишити тіло(створюється фантом, яким можна рухатися, поки тіло чілить)
-		spell_group_2 = skill_levitate,     skill_flight,      skill_shield,             skill_guise,        skill_regenerate, skill_camouflage, skill_etherealness
+		spell_group_2 = , skill_etherealness
 		#support закляття
-		##Активне skill_sacrifice(обирається ціль через TRSS range 1 (ворожа чи своя) - якщо вона помирає до наступного ходу стається вибух)
 		##Активне skill_invincible обраний юніт стає невразливим на час свого ходу, range 1 
 		##Пасивне skill_duty(померлі союзники повертаються як мерці, високорівневі привиди, ультимативний)
-		spell_group_3 = skill_mnemonic,     skill_glamour,     skill_find_familiar,      skill_panacea,          skill_sacrifice,             skill_invincible,    skill_duty
+		spell_group_3 = ,             skill_invincible,    skill_duty
 		#елементальні закляття 
-		#skill_blizzard відкривається у S14 
-		#skill_terrashift наносить шкоду усім довкола(reused Nature's Revenge)
-		#skill_electrify(якщо ворог стоїть поряд з іншими ворогами, то вони отримують 60 чи 80 відсотків його шкоди після атаки гараліна)
+		
 		#skill_golem великий голем з h2tt(ультимативне) - працює як Фамільяр, один на мапу
-		spell_group_4 = skill_summon,       skill_bend,        skill_stasis,              skill_blizzard,  skill_terrashift, skill_electrify, skill_golem
+		spell_group_4 =       , skill_golem
 		#Катаклізми
 		##, Eternal Timezone(зміна ToD на обрану до кінця сценарію) - або споживає XP Гараліна кожного ходу, або робить цей ToD на N ходів, потім обертає на протилежний ToD
 		## Викривлення реальності(перетворює мапу на щось інше(терейн поверхності, мертві юніти гараліна на лоялістів)
 		spell_group_5 = skill_time_dilation,  skill_cataclysm, skill_timezone, skill_reality
-		#spell_group_6 = daeola_spell
-		
-		що з цього можна використати в chapter 2
 		
 		
 		
-		skill_invincible, skill_terrashift, skill_electrify
+		
+		
+ЗАКЛЯТТЯ Re
+	
+	ДАЕОЛА 
+	
+	##First Trial - Swap
+	##Second Trial - Empathy, Healing, Flash . Гравець проходить повз одного ворога через Flash. Тоді має відхилити юніта з Healing/Empathy, щоб отримати досвід та пройти з Flash далі
+		
+	##Відкриваються пізніше у Chapter 2: Magic Missile, Ray of Light, Distant Heal, Ward
+	
+	Сh2 total: 8
+	
+	HARALIN. Ідея - мати стільки ж заклять у Chapter 2, як і Даеола. Без опційних
+	
+	
+	Правила:
+	- subskills ніколи
+	- мінімум заклять з TDG
+	- сумарна кількість заклять рівна кількості заклять в Даеоли
+	- Частина заклять Chapter 2 сильніша за закляття Chapter 3
+	- У битві з босом Гаралін втрачає усі закляття, окрім здобутих та Chapter 1(magic blast, levitate, mnemonic, summon mud, summon_rock, rage, bend_earth)
+	
+	
+	
+	##S2-S3, базові - Levitate(необхідно для опційної обжективи S3), Magic Blast(природня атака)
+	##S2-S3, опціональні - Mnemonic(чому саме він?), Summon Mud(виключно mudcrawlers, робоча назва)
+	
+	Ch1 total: 4
+	
+	##Chapter 2: 
+	chill_wave(8x4 magic cold, заміна fireball2) або magic_blast2(12x3 magic impact)
+	skill_bend_earth(позбавитися усіх subskills)
+	skill_find_familiar(можливо, замінити на іншу тварину?)
+	skill_sacrifice(обирається ціль через TRSS range 1 (ворожа чи своя) - якщо вона помирає до наступного ходу стається вибух)
+	skill_terrashift(наносить шкоду усім довкола(reused Nature's Revenge / Smite))
+	skill_electrify(якщо ворог стоїть поряд з іншими ворогами, то вони отримують 60 чи 80 відсотків його шкоди після атаки гараліна)
+	
+	#Опційні
+	skill_summon_rock(виключно earth elementals, робоча назва)
+	skill_rage(melee fire berserker, S7)
+	
+	Ch2 total: (2+2)+(6+2) = 11 Без опційних: 8
+	
+	Разлом Chapter 2:
+	
+	Levitate
+	Magic Blast
+	Summon Mud(optional)
+	Mnemonic(optional)
+	Magic Blast2
+	Summon Rock(optional)
+	Bend Earth
+	Find Familiar
+	Sacrifice
+	Terra Shift
+	Electrify
+	Rage(optional)
+	
+	Закляття, які втрачаються назавжди після S8: Find Familiar, Sacrifice, Terra Shift, Electrify, Magic Blast2
+
+	
+	
+	##Chapter 3:
+	
+	Залишаються з Chapter 1/2: Levitate, Magic Blast, Mnemonic(optional), Summon Mud(optional), Magic Blast2, Summon Rock(optional), Bend Earth, Rage(optional).
+	Без опційних: Levitate, Magic Blast, Bend Earth
+	
+	skill_shield
+	skill_lightning
+	skill_stasis
+	skill_inspire(panacea, але без загибелі юніта та використовує атаку Гараліна)
+	skill_invincible(обраний юніт стає невразливим на час свого ходу, range 1)
+	skill_bend_fire(bend_earth, але лава, яка зникає після нанесення шкоди)
+	
+	spell_group_1 = ?
+	spell_group_2 = ?
+	spell_group_3 = ?
+	spell_group_4 = optional daeola_spell from S9
+	
+	Опційні:
+	skill_daeola (S9, будь-яке закляття Даеоли)
+	skill_bonemail (S10, з скелета-вершника. Раніше планувався за перемогу над Lich-Lord, але це практично неможливо)
+	skill_impale (S11, наносить шкоду ворогу, що відступає. Dalas'у не подобається, придумати щось нове)
+	
+	Ch3 total: (3 + 4 ) + (6 + 3) = 16 Без опційних: 9
+	Реалістично при нормальному геймплеї: Ch3 total: (3 + 2 ) + (6 + 2) = 13 Без опційних: 9
+	Spell groups = 4
+	
+	
+	
+	Разом Chapter 3:
+	
+	Levitate
+	Magic Blast
+	Mnemonic(optional)
+	Summon Mud(optional)
+	Summon Rock(optional)
+	Bend Earth
+	Rage(optional)
+	Daeola's Spell from S9(optional)
+	Shield
+	Lightning
+	Stasis
+	Bonemail(optional)
+	Impale(TBD, optional)
+	Inspire
+	Invincible
+	Bend Fire
