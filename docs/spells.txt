@@ -126,4 +126,4 @@
 	Impale(TBD, optional)
 	Inspire
 	Invincible
-	Bend Fire
+	Bend Fire - замінити на Bend Vines, що замедлює усіх ворогів
