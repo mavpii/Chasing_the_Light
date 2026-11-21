@@ -83,9 +83,23 @@ local function same_team(a, b)
     return wesnoth.sides[a.side].team_name == wesnoth.sides[b.side].team_name
 end
 
+local unit_snapshot
+
+local function all_units()
+    return unit_snapshot or wesnoth.units.find_on_map{}
+end
+
+local function with_snapshot(fn, ...)
+    unit_snapshot = wesnoth.units.find_on_map{}
+    local ok, a, b = pcall(fn, ...)
+    unit_snapshot = nil
+    if not ok then error(a, 0) end
+    return a, b
+end
+
 local function enemies_within(u, range)
     local out = {}
-    for _, e in ipairs(wesnoth.units.find_on_map{}) do
+    for _, e in ipairs(all_units()) do
         if e.id ~= u.id and not same_team(u, e)
            and wesnoth.map.distance_between(u.x, u.y, e.x, e.y) <= range then
             out[#out + 1] = e
@@ -96,7 +110,7 @@ end
 
 local function allies_within(u, range, include_self)
     local out = {}
-    for _, a in ipairs(wesnoth.units.find_on_map{}) do
+    for _, a in ipairs(all_units()) do
         if same_team(u, a) and (include_self or a.id ~= u.id)
            and wesnoth.map.distance_between(u.x, u.y, a.x, a.y) <= range then
             out[#out + 1] = a
@@ -109,7 +123,7 @@ end
 -- u's own position -- for scoring a candidate target's splash radius.
 local function enemies_near_hex(u, x, y, radius)
     local out = {}
-    for _, e in ipairs(wesnoth.units.find_on_map{}) do
+    for _, e in ipairs(all_units()) do
         if e.id ~= u.id and not same_team(u, e)
            and wesnoth.map.distance_between(x, y, e.x, e.y) <= radius then
             out[#out + 1] = e
@@ -120,7 +134,7 @@ end
 
 local function allies_near_hex(u, x, y, radius)
     local out = {}
-    for _, a in ipairs(wesnoth.units.find_on_map{}) do
+    for _, a in ipairs(all_units()) do
         if same_team(u, a) and wesnoth.map.distance_between(x, y, a.x, a.y) <= radius then
             out[#out + 1] = a
         end
@@ -446,12 +460,12 @@ end
 -- eval returns a big constant that the candidate action's max_score caps to score.
 function M.eval_auto(side)
     side = wesnoth.current.side or tonumber(side)
-    return choose({ side = side }) and 1000000 or 0
+    return with_snapshot(choose, { side = side }) and 1000000 or 0
 end
 
 function M.exec_auto(side)
     side = wesnoth.current.side or tonumber(side)
-    local pick = choose({ side = side })
+    local pick = with_snapshot(choose, { side = side })
     if pick then do_cast({}, pick) end
 end
 
@@ -489,11 +503,11 @@ end
 -- Positional args (see the note on eval_auto for why).
 function M.eval(side, spell, range, mode, score, is_self)
     local cfg = { side = side, spell = spell, range = range, mode = mode, self = is_self }
-    return select_explicit(cfg) and (score or 1) or 0
+    return with_snapshot(select_explicit, cfg) and (score or 1) or 0
 end
 function M.exec(side, spell, range, mode, score, is_self)
     local cfg = { side = side, spell = spell, range = range, mode = mode, self = is_self }
-    local pick = select_explicit(cfg)
+    local pick = with_snapshot(select_explicit, cfg)
     if pick then do_cast(cfg, pick) end
 end
 
