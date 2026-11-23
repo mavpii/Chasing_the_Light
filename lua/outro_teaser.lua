@@ -203,7 +203,8 @@ gui.add_widget_definition("button", "iftu_beeg_button", {
 	}
 })
 
-function wesnoth.wml_actions.outro_teaser()
+function wesnoth.wml_actions.outro_teaser(cfg)
+	local title = cfg.title or _("Chasing the Light: Chapter III")
 	wesnoth.sync.run_unsynced(function()
 		gui.show_dialog(teaser_dlg, function(self)
 			self:set_canvas(1, {
@@ -217,7 +218,7 @@ function wesnoth.wml_actions.outro_teaser()
 			})
 
 			self.big_text.marked_up_text = ("%s\n<span size='larger'><span size='larger'>%s</span></span>"):format(
-				_("Continued in..."), _("Chasing the Light: Chapter III")
+				_("Continued in..."), title
 			)
 			self.text.marked_up_text = ("<span size='larger'>%s</span>"):format(
 				_("Use this save file once more scenarios are released.")
