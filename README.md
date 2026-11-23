@@ -38,14 +38,13 @@ Peaceful life of the Green Isle's inhabitants turned into a nightmare in an inst
 
 ## Using resources from
 - [Dalas](https://github.com/Dalas121)
-- [inferno8](https://github.com/inferno8)
 - Maksiu
 - Mechanical
 - IftU
-- Trader
 - Archaic_Resources
 - War of Legends
 - [WesTactics](https://github.com/wtactics)
+- Era of Magic
 
 
 ## Scenario structure
@@ -67,8 +66,8 @@ Peaceful life of the Green Isle's inhabitants turned into a nightmare in an inst
 - 11_Dissonance🔁️
 - 12_Refrain🔁️
 - 12x_Accord🔁
-- 13_Cadence
-- 14_Requiem
+- 13_Cadence🔁
+- 14_Requiem🔁
 ### Chapter 4: (TBD)
 - 15_Guile
 - 16_Deceivers
