@@ -34,6 +34,8 @@ function M.forget_profile(id)       M.profiles[id] = nil end
 local REPEAT_WINDOW     = 3
 local REPEAT_MIN_FACTOR = 0.5
 
+M.EARLY_SCORE = 199000
+
 ---------------------------------------------------------------------------
 -- Cost index (id -> costs), including subskills, for affordability checks.
 ---------------------------------------------------------------------------
@@ -375,41 +377,22 @@ end
 -- Issues the chosen cast through the WML tags. Charged unless cfg.free == true.
 -- Moves the caster to pick.move_to first if the best casting hex isn't its current one.
 local function do_cast(cfg, pick)
+    local cmd = {
+        id       = pick.caster.id,
+        spell_id = pick.cast or pick.spell,
+        free     = (cfg.free == true) or (pick.free == true),
+        record   = pick.cast,
+    }
+    if not pick.self then
+        cmd.target_x, cmd.target_y = pick.target.x, pick.target.y
+    end
+
     if pick.move_to and (pick.move_to.x ~= pick.caster.x or pick.move_to.y ~= pick.caster.y) then
         AH.movefull_stopunit(ai, pick.caster, pick.move_to.x, pick.move_to.y)
     end
+    if not pick.caster.valid then return end
 
-    -- pick.free comes from the caster's own free_casting flag (set by choose_for /
-    -- select_explicit), so a free-casting caster is never charged here either.
-    local free = (cfg.free == true) or (pick.free == true)
-    local id = pick.cast or pick.spell
-    if pick.self then
-        wml.fire("cast_spell", {
-            spell_id = id, free = free, count_cast = true,
-            wml.tag.filter{ id = pick.caster.id },
-        })
-    else
-        wml.fire("cast_targeted_spell", {
-            spell_id = id, free = free, count_cast = true,
-            target_x = pick.target.x, target_y = pick.target.y,
-            wml.tag.filter{ id = pick.caster.id },
-        })
-    end
-
-    -- Record for repeat-avoidance scoring. Only autonomous-mode picks set `cast`
-    -- (explicit-mode CASTER_AI_SPELL picks only set `spell` -- it forces one spell
-    -- by design, so there is no choice to diversify there). Reload fresh rather
-    -- than reusing the pre-cast `data` from choose_for: the wml.fire above already
-    -- incremented casts_this_turn (and applied costs) directly in WML, and saving
-    -- the stale snapshot here would overwrite that back to its pre-cast value --
-    -- which silently breaks max_casts, since can_cast() would never see the cast.
-    if pick.cast then
-        local fresh = CasterState.load(pick.caster.id)
-        if fresh then
-            CasterOps.record_cast(fresh, pick.cast, wesnoth.current.turn)
-            CasterState.save(fresh)
-        end
-    end
+    wesnoth.sync.invoke_command("magic_ai_cast", cmd)
 end
 
 ---------------------------------------------------------------------------
@@ -428,7 +411,8 @@ local function choose_for(u, data)
                     if not best or res.util > best.util then
                         best = { caster = u, spell = spell_id, cast = cast_id,
                                  util = res.util, self = res.self, target = res.target,
-                                 move_to = hex, free = data.free_casting }
+                                 move_to = not prof.in_place and hex or nil,
+                                 free = data.free_casting }
                     end
                 end
             end
@@ -448,19 +432,19 @@ local function choose(cfg)
     return best
 end
 
--- IMPORTANT: the candidate-action eval/exec live in a WML <<...>> string, and the
--- WML preprocessor does NOT substitute macro parameters ({SIDE}, {SCORE}) inside
--- it. So we pass NOTHING through the string — the side comes from the AI context
--- (wesnoth.current.side, i.e. whose turn it is), and the priority is set by the
--- candidate action's max_score (a normal attribute, which does substitute). eval
--- returns a big constant that max_score caps to the configured score.
--- `side`/`score` may be passed by the macro (from WML variables); we PREFER
--- wesnoth.current.side (the side whose turn it is), which is correct even when
--- several sides each register a CASTER_AI, and fall back to the passed side.
--- eval returns a big constant that the candidate action's max_score caps to score.
-function M.eval_auto(side)
+local function casts_early(pick)
+    local m = pick.move_to
+    if m and (m.x ~= pick.caster.x or m.y ~= pick.caster.y) then return false end
+    local c = cost[pick.cast or pick.spell]
+    return pick.free or not (c and c.gold)
+end
+
+function M.eval_auto(side, score)
     side = wesnoth.current.side or tonumber(side)
-    return with_snapshot(choose, { side = side }) and 1000000 or 0
+    local pick = with_snapshot(choose, { side = side })
+    if not pick then return 0 end
+    if casts_early(pick) then return M.EARLY_SCORE end
+    return tonumber(score) or 95000
 end
 
 function M.exec_auto(side)

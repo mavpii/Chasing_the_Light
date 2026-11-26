@@ -378,8 +378,9 @@ function M.arm_ai_side(side_num, s)
             id        = "ctl_magic_mod_ai_" .. side_num,
             engine    = "lua",
             name      = "ctl_magic_mod_ai_" .. side_num,
-            max_score = 95000,
-            evaluation = 'return wesnoth.require("~add-ons/Chasing_the_Light/magic/ai/ai.lua").eval_auto()',
+            max_score = wesnoth.require("~add-ons/Chasing_the_Light/magic/ai/ai.lua").EARLY_SCORE,
+            wml.tag.args{ score = 95000 },
+            evaluation = 'local _, a = ... return wesnoth.require("~add-ons/Chasing_the_Light/magic/ai/ai.lua").eval_auto(nil, a.score)',
             execution  = 'wesnoth.require("~add-ons/Chasing_the_Light/magic/ai/ai.lua").exec_auto()',
         },
     })

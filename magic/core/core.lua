@@ -879,6 +879,32 @@ wml_actions["cast_targeted_spell"] = function(cfg)
 end
 
 ---------------------------------------------------------------------------
+-- AI CAST  (synced command)
+---------------------------------------------------------------------------
+
+function wesnoth.custom_synced_commands.magic_ai_cast(t)
+    if not wesnoth.units.find_on_map{ id = t.id }[1] then return end
+    local tag = {
+        spell_id = t.spell_id, free = t.free, count_cast = true,
+        wml.tag.filter{ id = t.id },
+    }
+    if t.target_x and t.target_y then
+        tag.target_x, tag.target_y = t.target_x, t.target_y
+        wml.fire("cast_targeted_spell", tag)
+    else
+        wml.fire("cast_spell", tag)
+    end
+    if t.record then
+        local data = CasterState.load(t.id)
+        if data then
+            CasterOps.record_cast(data, t.record, wesnoth.current.turn)
+            CasterState.save(data)
+        end
+    end
+    wml.fire.do_command({ wml.tag.fire_event{ raise="magic_sync_flush" }})
+end
+
+---------------------------------------------------------------------------
 -- DOUBLE-CLICK DETECTION
 -- Uses wesnoth.ms_since_init() (real wall-clock milliseconds) instead of
 -- os.clock() which measured CPU time and misbehaved on slow/paused systems.

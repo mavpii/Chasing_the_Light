@@ -95,27 +95,27 @@ return {
     skill_panacea  = { kind = "heal_self_aura", radius = 1, base = 2 },
 
     -- self defensive buffs (fire only when enemies are close)
-    skill_shield   = { kind = "buff_self", threat = 3, weight = 12, base = 20 },
-    skill_levitate = { kind = "buff_self", threat = 2, weight = 10, base = 12 },
+    skill_shield   = { kind = "buff_self", in_place = true, threat = 3, weight = 12, base = 20 },
+    skill_levitate = { kind = "buff_self", in_place = true, threat = 2, weight = 10, base = 12 },
 
     -- stasis: petrifies the CASTER and adjacent units — defensive last resort. CAVEAT.
     skill_stasis   = { kind = "buff_self", threat = 1, weight = 8, min = 2, base = 5 },
 
     -- guise — become an Orcish Warlord when threatened. Lasts until cancelled.
-    skill_guise = { kind = "buff_self", threat = 2, weight = 10, base = 18 },
+    skill_guise = { kind = "buff_self", in_place = true, threat = 2, weight = 10, base = 18 },
 
     -- Faisim — conjure a melee weapon when an enemy is in reach (then wade in)
-    skill_arms_blade   = { kind = "buff_self", threat = 1, weight = 4, base = 12 },
-    skill_arms_spear   = { kind = "buff_self", threat = 1, weight = 4, base = 10 },
-    skill_arms_mace    = { kind = "buff_self", threat = 1, weight = 4, base = 10 },
-    skill_arms_daggers = { kind = "buff_self", threat = 1, weight = 4, base = 11 },
-    skill_arms_astral  = { kind = "buff_self", threat = 1, weight = 4, base = 9 },
+    skill_arms_blade   = { kind = "buff_self", in_place = true, threat = 1, weight = 4, base = 12 },
+    skill_arms_spear   = { kind = "buff_self", in_place = true, threat = 1, weight = 4, base = 10 },
+    skill_arms_mace    = { kind = "buff_self", in_place = true, threat = 1, weight = 4, base = 10 },
+    skill_arms_daggers = { kind = "buff_self", in_place = true, threat = 1, weight = 4, base = 11 },
+    skill_arms_astral  = { kind = "buff_self", in_place = true, threat = 1, weight = 4, base = 9 },
 
     -- Faisim — Group 3 mobility / burst
     skill_shadowstep     = { kind = "damage",    range = 6, power = 0, base = 8 },  -- gap-close to an enemy
     skill_astral_chains  = { kind = "damage",    range = 4, power = 0, base = 8 },  -- yank an enemy in
-    skill_phantom_flurry = { kind = "buff_self", threat = 1, weight = 4, base = 10 },
-    skill_haste          = { kind = "buff_self", threat = 2, weight = 4, base = 8 },
+    skill_phantom_flurry = { kind = "buff_self", in_place = true, threat = 1, weight = 4, base = 10 },
+    skill_haste          = { kind = "buff_self", in_place = true, threat = 2, weight = 4, base = 8 },
 
     -- Faisim — Group 2 (veil_ward / bloodbound_vigor / soul_knit / phantom_guard)
     -- are PASSIVE — auto-applied via refresh_skills, never cast — so no AI profile.
